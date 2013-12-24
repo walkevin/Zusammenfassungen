@@ -1,0 +1,255 @@
+\section{Zahlentheorie}
+\begin{tabular}{l >{$}l<{$}}
+ Teilbarkeit		& a \mid b \Leftrightarrow \exists n: a\cdot n = b \Leftrightarrow \text{ $b$ ist Vielfaches von $a$} \Rightarrow b > a\\
+ Euklid.Restsatz	& a = q\cdot m + r\\
+ Rest			& r =: R_m(a)\\
+ Modulare Arithmetik	& a = b + q\cdot m \Leftrightarrow a \equiv_m b \Leftrightarrow m \mid (a-b)\quad \equiv_m \text{ ist Äquivalenzrelation}\\
+ ``Resttheoreme``	& \begin{array}[t]{l}
+                 	   R_m(a+b) = R_m(R_m(a) + R_m(b))\\
+			   R_m(a\cdot b) = R_m(R_m(a) \cdot R_m(b))\\
+			   R_m(a^b) = R_m(R_m(a)^b)
+                 	  \end{array}\\
+ Beispiel		&  \begin{array}[t]{l}
+			   R_7(2011^{2011}) = R_7(R_7(2011)^{2011}) = R_7(2^{2011}) =  R_7(2^{3\cdot Q + 1}) = R_7(2^{3\cdot Q} \cdot 2) =\\
+			   R_7(R_7(8^Q)\cdot R_7(2)) = R_7(R_7(8)^Q \cdot 2) = R_7(1^Q \cdot 2) = 2
+			   \end{array}\\\hline
+ Ideal (=ggT)		& \begin{array}[t]{l}
+      			   (a,b) = \{x\cdot a + y\cdot b \mid a,b,x,y \in\mathbb{Z}\}\\
+			   \forall a_i \in\mathbb{Z} ~\exists d\in\mathbb{Z} : (a_1,...,a_n) = \{z\cdot d \mid z\in\mathbb{Z}\} = d\mathbb{Z}
+      			  \end{array}\\
+ ggT,kgV		& \begin{array}[t]{l|l}
+        		   \text{$d$ heisst ggT von $a$ und $b$, falls:}	& \text{$l$ heisst kgV von $a$ und $b$, falls:}\\\hline
+			   d \mid a						& a \mid l\\
+			   d \mid b						& b \mid l\\
+			   c \mid a \wedge c \mid b \Rightarrow c \mid d	& a \mid m \wedge b\mid m \Rightarrow l\mid m\\
+			   \mathrm{ggT}(a,b) = |d| = (a,b)			& a\cdot b = \mathrm{kgV}\cdot\mathrm{ggT}
+        		  \end{array}\\
+ Erw.Euklid.Algo (EEA)	& \begin{array}[t]{l|l|ll}
+               		   \mathrm{ggT}(24,9)	&	& 24				& 9\\\hline
+						& 24	& 1				& 0\\
+						& 9	& 0				& 1\\
+	24 \mod 9 = 24 - \mathbf{2} \cdot 9 =	& 6	& 1-\mathbf{2}\cdot 0 = 1	& 0-\mathbf{2}\cdot 1 = -2\\
+		9 - \mathit{1} \cdot 6		& 3	& 0-\mathit{1}\cdot 1 = -1	& 1-\mathit{1}\cdot -2 = 3\\
+		6 - 2\cdot 3			& 0	& 1-2\cdot (-1) = 3		& -2 - 2 \cdot 3 = -8\\
+			   \multicolumn{3}{l}{\mathrm{ggT}(24,9) = 3 = -24 + 3\cdot 9}\\
+               		  \end{array}\\
+ Multiplikative Inverse	& \begin{array}[t]{l}
+                       	   a\cdot \uuline{x} \equiv_b 1\\
+			   \text{Nur vorhanden, falls ggT(a,b) = 1}\\
+                       	  \end{array}\\
+ Beispiel (mit EEA)	& \begin{array}[t]{l|l|ll}
+                   	   \multicolumn{2}{l|}{57^{-1} \equiv_{128} ?}	& 128	& 57\\\hline
+							& 128		& 1	& 0\\
+							& 57		& 0	& 1\\
+						2	& 14		& 1	& -2\\
+						4	& 1		& -4	& \uuline{9}\\
+			   \multicolumn{4}{l}{-4\cdot 128 + 9\cdot 57 = 1 \Rightarrow \uuline{9}\cdot 57 \equiv_{128} 1}
+                   	  \end{array}\\
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+ Chin. Restsatz (CRS)		& \begin{array}[t]{l}
+                            	   \begin{array}{l|ll}
+				    x \equiv_3 1	& m_1 = 3	& a_1 = 1\quad M = 3\cdot 4\cdot 5 = 60\\
+				    x \equiv_4 3	& m_2 = 4	& a_2 = 3\\
+				    x \equiv_5 3	& m_3 = 5	& a_3 = 3\\
+				   \end{array}\\
+				  M_i = \frac{M}{m_i}:\quad M_1 = 20,~M_2 = 15,~M_3 = 12\\
+				  M_iN_i \equiv_{m_i} 1\text{ erraten}: \begin{array}{l}
+									  20\cdot N_1 \equiv_3 1 \rightarrow N_1 = 2\\
+									  15\cdot N_2 \equiv_3 1 \rightarrow N_2 = 3\\
+									  12\cdot N_3 \equiv_3 1 \rightarrow N_3 = 3\\
+									\end{array}\\
+				  \tilde{x} = R_M\left(\sum_{i=1}^{r} a_iM_iN_i\right)\\
+				  \tilde{x} = R_{60}(1\cdot 20 \cdot 2 + 3 \cdot 15 \cdot 3 + 3 \cdot 12 \cdot 3 ) = R_{60} (40+135+108) = R_{60}(283) = 43\\
+				   x = \tilde{x} (\mod 60)
+                            	  \end{array}\\
+\end{tabular}\\
+Umwandlung in ein reguläres CRS-System aus CRS-System mit nicht teilerfremden Moduli\\
+$
+\left. \begin{array}{ll}
+        z\equiv_6 1	& \begin{cases}
+			   z\equiv_2 1\\
+                   	   z\equiv_3 1
+                   	  \end{cases}\\
+	z\equiv_{10} 3	& \begin{cases}
+			   z\equiv_2 3 &= z\equiv_2 1\\
+                   	   z\equiv_5 3
+                   	  \end{cases}\\
+        z\equiv_{75} 28	& \begin{cases}
+			   z\equiv_3 28 &= z\equiv_3 1\\
+                   	   z\equiv_{25} 28 &= z\equiv_{25} 3
+                   	  \end{cases}\\
+       \end{array}
+\right\rbrace
+\begin{array}{l}
+	\left. \begin{array}{l}
+		z\equiv_2 1\\
+		z\equiv_3 1
+		\end{array}
+	\right\rbrace z\equiv_6 1\\
+	z\equiv_{25} 3
+\end{array}
+\Rightarrow
+\begin{vmatrix}
+ z\equiv_6 1\\
+ z\equiv_{25} 3
+\end{vmatrix}
+z = 103 (\mod 150)
+$\\
+\section{Algebra}
+\begin{tabular}{l >{$}l<{$}}
+Gruppe (G,$\ast$)	& \begin{array}{ll}
+                 	   \text{Assoziativität}	& \forall a,b,c \in G: (a\ast b)\ast c = a\ast(b\ast c)\\
+			   \text{Neutrales Element}	& \exists e: a \ast e = e \ast = a \forall a\\
+			   \text{Inverses}		& \forall a \exists b : a \ast b = b\ast a = e
+                 	  \end{array}\\
+Geometrische Gruppen	& \text{Rotationen, Ähnlichkeitstrafos, Translationen, Spiegelungen}\\
+Symmetriegruppe $s_n$	& \text{Spiegelungen und Rotationen am n-Eck}\quad |s_n| = 2n\\
+Untegruppen		& H \subset G \text{ falls $H$ bzgl. $\ast$ selbst eine Gruppe ist}\\
+Lagrange		& |H| \mid |G|\\
+			& \text{Falls G Untergruppen hat, so sind diese paarweise disjunkt}\\
+Produkt von Gruppen	& \mathbb{Z}_{15}^{\ast} = \left\lbrace \tbinom{1}{1},\tbinom{2}{1},\tbinom{3}{1},\tbinom{4}{1},\tbinom{1}{2},\tbinom{2}{2},\tbinom{3}{2},\tbinom{4}{2}\right\rbrace
+ = \{1,2,3,4\} \times \{1,2\} = \mathbb{Z}_5^{\ast} \times \mathbb{Z}_3^{\ast}\\
+			& \mathbb{Z}_{15}^{\ast} = \{1,2,4,7,8,11,13,14\}\\
+			& \mathbb{Z}_m = \mathbb{Z}_p \times \mathbb{Z}_q\quad\text{falls $m = p\cdot q$}\\
+Endliche Gruppen	& \mathbb{Z}_p\quad  \mathbb{Z}_{p-1}^{\ast}\quad p\text{ prim}\\
+Ordnung endl. Gruppen	& \begin{array}[t]{l}
+                     	    \mathrm{ord}(a) := \min\{i > 0 \mid a^i = e\}\\
+			    \mathrm{ord}(a) \mid |G| \quad a^{|G|} = e
+                     	  \end{array}\\
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+Zyklische endl. Gruppen	& \begin{array}[t]{l}
+                       	   G \text{ heisst zyklisch, falls }\exists g \in G: \mathrm{ord}(g) = |G|\\
+			   G = \{g^0, g^1, g^2,...,g^{|G|-1}\}\\
+			   g \text{ heisst Generator von G, } G = <g>\\
+			   |G| \text{ prim} \Rightarrow G \text{ zyklisch} \Rightarrow G\text{ abelsch}\\
+			   |G| \text{ prim} \Rightarrow \text{jedes $g \neq e$ ist Generator}
+                       	  \end{array}\\
+Beispiel		& \mathbb{Z}_p^{\ast}\\
+$\varphi$-Funktion	& \begin{array}[t]{l}
+                  	   \mathbb{Z}_m^{\ast} := \{ a \in \mathbb{Z}_m | \mathrm{ggT}(a,m) = 1\}\\
+			   \varphi(m) = |\mathbb{Z}_m^{\ast}|\quad\text{''Anzahl teilerfremde Zahlen von m``}\\
+			   \varphi(m) = \prod_{i=1}^r (p_i-1)\cdot p_i^{e_i-1}\quad m = \prod_{i=1}^r p_i^{e_i}\quad\text{Primfaktorzerlegung}\\
+			   \varphi(p) = p-1
+                  	  \end{array}\\
+Beispiel		& \begin{array}[t]{l}
+        		   |\mathbb{Z}_{45}^{\ast}|\quad 45=3^2\cdot 5^1\Rightarrow p_1 = 3,e_1 = 2;p_2 = 5,e_2 = 1\\
+			   \varphi(45) = (3-1)\cdot 3^{2-1}\cdot (5-1)\cdot 5^{1-1} = 2\cdot 3\cdot 4 = 24
+        		  \end{array}\\
+Satz von Fermat-Euler	& \begin{array}[t]{l}
+                     	   \forall m \geq 2 ~\forall a: \mathrm{ggT}(a,m) = 1\\
+			   a^{\varphi(m)}\equiv_m 1\\
+			   a^{p-1}\equiv_p 1
+                     	  \end{array}\\
+Diskreter Logarithmus	& \begin{array}[t]{l}
+                     	   R_p(a^x) \leftrightarrow x \xleftrightarrow{isomorph} \mathbb{Z}_p^{\ast}\\
+			   x \rightarrow R_p(a^x)\quad\text{ einfach}\\
+			   R_p(a^x) \rightarrow x\quad\text{ schwierig, lösbar z.B. mit Babystep-Giantstep}
+                     	  \end{array}\\
+Babystep-Giantstep Algo	& \begin{array}[t]{l}
+                       	   \text{Eingabe: zykl.endl.Gruppe $G$, Generator $g$, Gruppenelement $a$}\\
+			   \text{Ausgabe: }x = \log_g a\\
+			   m := \left\lceil \sqrt{|G|} \right\rceil\\
+			   \forall j \in \{0,...,m-1\} \text{ berechne $g^j$ und speichere $(j,g^j)$ in der Tabelle T}\\
+			   \forall i \in \{0,...,m-1\} \text{ berechne $a\cdot \left(g^{-m}\right)^i$ und suche den Wert in T}\\
+			   \text{Falls gefunden, gib $im+j$ aus}
+                       	  \end{array}\\
+Beispiel		& \begin{array}[t]{l}
+        		   R_{29}(11^x) = 3\quad G = 29, g = 11, a = 3\\
+			   |G| = \varphi(29) = 28 \Rightarrow m:= \left\lceil \sqrt{28} \right\rceil = 6\\
+			   \begin{array}{l|l|l|l|l|l|l}
+			    j	& 0 & 1  & 2 & 3  & 4  & 5\\\hline
+			    11^j& 1 & 11 & 5 & 26 & 25 & 14
+			   \end{array}\\
+			   11^{-6} = 11^{28-6} = 13\\
+			   \begin{array}{l|l|l|l}
+			   i		& 0 & 1  & 2\\\hline
+			   3\cdot 13^i	& 3 & 10 & 14
+			   \end{array}\\
+			   i = 2, j = 5 \Rightarrow x = 2\cdot 6 + 5 = 17
+        		  \end{array}\\
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+Körper (K,+,$\cdot$)	& \begin{array}[t]{l}
+                    	   (K,+) \text{ abelsche Gruppe bzgl. Addition mit NE 0}\\
+			   (K^{\ast},\cdot) \text{ abelsche Gruppe bzgl. Multiplikation mit NE 1}\\
+			   \forall a,b,c \in K:~a\cdot(b+c) = a\cdot b + a \cdot c
+                    	  \end{array}\\
+Endliche Körper		& \begin{array}[t]{l}
+               		   (\mathbb{Z}_p,+,\cdot) =: GF(m)\\
+			   \text{$p$ prim, $n\in\mathbb{N} \Rightarrow \exists !$ endlicher Körper mit $p^n$ Elementen, genannt $GF(p^n)$}\\
+			   \text{Werden Zeilen oder Spalten eines GF vertauscht,}\\
+			   \text{so ist es immer noch der gleiche (isomorphe) GF}
+               		  \end{array}\\
+Beispiele		& \begin{array}[t]{l|ll||l|ll}
+         		   \multicolumn{6}{l}{GF(2)}\\
+			   + & 0 & 1 & \cdot & 0 & 1\\\hline
+			   0 & 0 & 1 &     0 & 0 & 0\\
+			   1 & 1 & 0 &     1 & 0 & 1
+         		  \end{array}\quad
+			  \begin{array}[t]{l|llll||l|llll}
+         		   \multicolumn{10}{l}{GF(4) = GF(2^2)}\\
+			   + & 0 & 1 & a & b & \cdot & 0 & 1 & a & b\\\hline
+			   0 & 0 & 1 & a & b &     0 & 0 & 0 & 0 & 0\\
+			   1 & 1 & 0 & b & a &     1 & 0 & 1 & a & b\\
+			   a & a & b & 0 & 1 &     a & 0 & a & b & 1\\
+			   b & b & a & 1 & 0 &     b & 0 & b & 1 & a
+         		  \end{array}\\
+irreduzible Polynome	& \begin{array}[t]{l}
+			   \text{Analogon zu Primzahlen}\\
+                    	   \text{Polynom hat Nullstellen $\Rightarrow$ Nicht irreduzibel}\\
+			   \text{Für Polynome mit Grad $\leq 3$ gilt obiges in beide Richtungen.}
+                    	  \end{array}\\
+iP über GF(2)		& \begin{array}[t]{ll}
+             		   \text{Grad 1:} & x, ~x+1\\
+			   \text{Grad 2:} & x^2+x+1\\
+			   \text{Grad 3:} & x^3+x+1, ~x^3+x^2+1\\
+			   \text{Grad 4:} & x^4+x^3+1, ~x^4+x+1, ~x^4+x^3+x^2+x+1
+             		  \end{array}\\
+Elemente des $GF(2^3)$		& \begin{array}[t]{ll}
+				   \text{Elemente des $GF(2): 0,1$}\\
+                          	   \text{Nimm ein irreduzibles Polynom, z.B. $P = x^3+x+1=0$}\\
+				   \text{Alle Polynome, die strikt kleiner sind als das Primpolynom, sind $\in GF(2^3)$}
+				   \Rightarrow 0,1,x,x+1,x^2,x^2+1,x^2+x,x^2+x+1
+                          	  \end{array}\\
+ Teilbarkeit		& a(x) \mid b(x) \Leftrightarrow \exists n(x): a\cdot n(x) = b \Rightarrow \mathrm{deg}(b) \geq \mathrm{deg}(a)\\
+ Euklid.Restsatz	& a(x) = q(x)\cdot m(x) + r(x)\\
+ Rest			& r(x) =: R_{m(x)}(a(x))\\
+ Modulare Arithmetik	& a(x) = b(x) + q(x)\cdot m(x) \Leftrightarrow a(x) \equiv_{m(x)} b(x) \Leftrightarrow m(x) \mid (a(x)-b(x))\\
+ Multiplikative Inverse & a(x) \cdot \uuline{z(x)} \equiv_{m(x)} 1\\
+ Beispiel (mit EEA)	& \begin{array}[t]{l|l|ll}
+                   	   \multicolumn{2}{l|}{x^{-1} \equiv_{x^2+x+1}}	& x^2+x+1	& x\\\hline
+							& x^2+x+1	& 1		& 0\\
+							& x		& 0		& 1\\
+						x+1	& 1		& 1		& \uuline{x+1}\\
+			   \multicolumn{4}{l}{(x+1)\cdot x + x^2+x+1 \equiv_{x^2+x+1} 1 \Rightarrow \uuline{x+1}\cdot x \equiv_{x^2+x+1} 1}
+                   	  \end{array}\\
+\end{tabular}\\
+\begin{tabular}{l>{$}l<{$}}
+RSA	& \begin{array}[t]{lll}
+   	   \text{Alice}					&\text{Eve}		& \text{Bob}\\\hline
+	   p,q := \text{prim}				&			& m:=\text{Nachricht}\quad m\leq n\\
+	   \rightarrow n =p\cdot q			&			& \\
+	   \rightarrow f = \varphi(n) = (p-1)(q-1)	&			& \\
+	   e:= \mathrm{ggT}(e,f) = 1			&\xRightarrow{~~n,e~~}	& c = R_n(m^e)\\
+	   \rightarrow d = q\cdot f+e^{-1}		&\xLeftarrow{~~~c~~~}		& \\
+	   \rightarrow m = R_n(c^d)			&			& 	   
+   	  \end{array}\\
+	& \begin{array}[t]{l}
+	   \text{Angriffspunkte}\\\hline
+	   \text{1. Finde $n = p\cdot q$, berechne $d$ und $m$ wie Alice}\\
+	   \text{2. $c = R_n(m^e)$ durchprobieren}
+	  \end{array}\\
+Diffie-Hellman	& \begin{array}[t]{lcl}
+   	   \text{Alice}					&\text{Eve}			& \text{Bob}\\\hline
+	   				&\text{Einwegfkt: $x\mapsto R_p(g^x)$}		& \\
+	   p := \text{prim, }g:= \text{Generator}	&\xRightarrow{~~~p,g~~~}		& \\
+	   x:=\text{geheim} \in \{0,...,p-2\}		&\xRightarrow{~~R_p(g^x)~~}	& \\
+							&\xLeftarrow{~~R_p(g^y)~~}	& y:=\text{geheim} \in \{0,...,p-2\}\\
+	   \rightarrow K_{AB} = R_p\left((g^y)^x\right)	&				& \rightarrow K_{BA} = R_p\left((g^x)^y\right)\\
+	   \multicolumn{3}{l}{K_{AB} = K_{BA} \text{ ist der gemeinsame Schlüssel}}
+   	  \end{array}\\ 
+\end{tabular}\\
+
+

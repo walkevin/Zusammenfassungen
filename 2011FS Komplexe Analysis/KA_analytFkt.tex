@@ -1,0 +1,104 @@
+\section{Analytische Funktionen}
+
+\subsection{Definition}
+  $f:\Omega\to\mathbb{C}, \Omega\subset\mathbb{C}$ offen heisst analytisch, falls $\exists f'(z)\forall z\in\Omega$\\
+  Die komplexe Ableitung von $f$ in $z\in\Omega$ ist $f'(z) = \lim_{h\to 0} \frac{f(z+h)-f(z)}{h}$\\
+  \subsection{Cauchy-Riemannsche Differentialgleichungen (CR-DGL)}
+  $f(x+iy) = u(x,y)+iv(x,y)\quad x,y\in\mathbb{R}$\\
+  $f$ analytisch $\Leftrightarrow u_x = v_y \wedge u_y = -v_x$
+  \subsection{Spezielle Funktionen und Regeln}
+  \subsubsection{Potenzreihen}
+  Konvergente Potenzreihen definieren analytische Funktionen mit der Ableitung $f'(z) = \sum_{n=0}^{\infty} n\cdot a_n(z-a)^{n-1}$\\
+  $f(z) = \sum_{n=0}^{\infty} a_n (z-a)^n\enspace a_n\in\mathbb{C}$, konvergiert absolut für $|z-a| < R$\\
+
+%--Beginn Einschub aus Analysis 1
+  \subsubsection*{Konvergenzradius bei Potenzreihen}
+  \begin{tabular}{ll}
+    Quotientenkriterium	& $r = \lim_{k\to\infty} \left|\frac{a_k}{a_{k+1}}\right|$\\
+    Wurzelkriterium	& $r = \frac{1}{\limsup_{k\to\infty}\left(\sqrt[k]{|a_k|}\right)}$\\
+    geometrische Reihe	& $r = 1$ bei $\sum_{k=0}^{\infty} q^k$ falls $|q| < 1$\\
+    binomische Reihe	& $r = 1$ bei $\sum_{k=0}^{\infty} \binom{\alpha}{k}\cdot z^k$ falls $|z| < 1$
+  \end{tabular}\\
+  \begin{align*}
+    \text{Beispiel:}\quad	& \text{Konv.radius von}\enspace f(z) = \frac{1}{z-2}\\
+			  & \frac{1}{z-2} = -\frac{1}{2-z} = -\frac{1}{2(1-\tfrac{z}{2})}\\
+			  & -\frac{1}{2}\cdot\frac{1}{1-\tfrac{z}{2}} = -\frac{1}{2}\sum\left(\frac{z}{2}\right)^k\\
+			  & \frac{z}{2} < 1 \Leftrightarrow z < 2 = \text{Konvergenzradius}
+  \end{align*}
+  \subsubsection*{Binomische Reihe}
+  $\sum_{k=0}^{\infty} \binom{\alpha}{k} \cdot z^k = (1+z)^{\alpha}$ für $|z| < 1$\\
+  $\begin{array}{ll}
+  \alpha = n\in\mathbb{Z}^{\geq 0}:	& (1+x)^n = \sum_{k=0}^{\infty} \binom{n}{k}\cdot z^k\\
+  \alpha = -n; n\in\mathbb{Z}^{\geq 0}:& \frac{1}{(1-z)^n} = \sum_{k=0}^{\infty} \binom{n+k-1}{k}\cdot z^k\\
+  \alpha = -1				& \frac{1}{1-z} = \sum_{k=0}^{\infty} z^k\\
+  \alpha = \frac{1}{2}			&\sqrt{1+z} = \sum_{k=0}^{\infty} \binom{1/2}{k}\cdot z^k
+  \end{array}
+$
+%--Ende Einschub aus Analysis 1
+
+\subsubsection{Logarithmus}
+\begin{align*}
+  \text{Mehrwertiger Logarithmus:}\quad	 & \Log(z) = \log|z| + i \arg(z) + 2\pi ik\quad k\in\mathbb{Z}\\
+  \text{Hauptwert des Logarithmus:}\quad & \Log:\mathbb{C}\smallsetminus\mathbb{R}_{\leq 0} \rightarrow \mathbb{C}\\
+					 &z\mapsto \Log(z) = \log|z| + i\cdot \arg(z)\quad -\pi < \arg(z) < \pi\\
+\end{align*}
+Log ist analytisch, mit Ableitung $\Log(z)' = \frac{1}{z}$\\
+
+\subsubsection{Allgemeine Potenz}
+\begin{align*}
+ z&\mapsto z^a:= e^{a\Log z}\quad z\in\mathbb{C}\smallsetminus\mathbb{R}_{\leq 0}\\
+\Leftrightarrow\enspace re^{i\varphi} & \mapsto (re^{i\varphi})^a := r^a\cdot e^{i\varphi\cdot a}
+\end{align*}
+Die allgemeine Potenz ist analytisch mit Ableitung $(z^a)' = a\cdot z^{a-1}$\\
+
+\subsubsection{Satz der inversen Funktion}
+$(f^{-1})(z) = \frac{1}{f'(f^{-1}(z))}\quad z\in\mathbb{C}$\\
+$\Rightarrow$ Ist eine Funktion analytisch, so ist auch ihre inverse Funktion analytisch.
+
+\subsection{Abbildungen}
+\subsubsection{Tangentialabbildung}
+Sei $\gamma$ durch $f$ analytisch. Die Parameterdarstellung lautet: $t\mapsto \omega(t) = f(z(t))$\\
+Der Tangentialvektor dieser Bildkurve ist $\omega'(t) = f'(z(t))\cdot z'(t)$\\
+In $z_0$ lautet die Tangentialabbildung $v\mapsto f'(z_0) v$\\
+Analytische Funktionen mit $f'\neq 0$ sind winkeltreu.
+
+\subsubsection{Möbiustransformationen (MT)}
+Eine MT hat die Form $f(z) = \frac{az+b}{cz+d}\quad ad-bc\neq 0$\\
+In Matrizenschreibweise: $\begin{pmatrix}a & b\\ c & d\end{pmatrix}$\\
+\subsubsection*{Eigenschaften}
+Die Eigenschaften von Matrizen gelten auch für MT, wobei gilt:\\
+\begin{itemize}
+ \item Die Matrizen $\begin{pmatrix}a & b\\ c & d\end{pmatrix}$ und $\lambda \begin{pmatrix}a & b\\ c & d\end{pmatrix}$ entsprechen derselben MT.\\
+ \item Inverse MT: $\left(f^{-1}\right)(z) = \frac{1}{ad-bc}\begin{pmatrix}d & -b\\ -c & a\end{pmatrix} \corresponds \begin{pmatrix}d & -b\\ -c & a\end{pmatrix}$\\
+ \item Komposition von MT: $(f_1 \circ f_2)(z) = \begin{pmatrix}a_1 & b_1\\ c_1 & d_1\end{pmatrix} \cdot \begin{pmatrix}a_2 & b_2\\ c_2 & d_2\end{pmatrix}$\\
+ \item MT bilden eine Gruppe bezüglich der Komposition (aber nicht abelsch!)\\
+ \item Auf $\mathbb{C}\cup \{\infty\}$ sind MT wie folgt definiert:
+  \subitem $f\left(-\tfrac{d}{c}\right) = \infty$\\
+  \subitem $f(\infty) = \left(\lim_{z\to\infty} \frac{az+b}{cz+d} \right) = \frac{a}{c}$
+\end{itemize}
+\subsubsection*{Grundtransformationen}
+
+\begin{enumerate}
+ \item id$(z) = z$\\
+ \item t$(z,b) = z+b, b\in\mathbb{C}\quad\text{Translation um b}$\\
+ \item s$(z,a) = az, a\in\mathbb{C}\quad$Drehstreckung um a $\Re(a) = 0\Rightarrow$ Drehung, $\Im(a) = 0\Rightarrow$ Streckung\\
+ \item I$(z) = \frac{1}{z}$
+\end{enumerate}
+\subsubsection*{Doppelverhältnis}
+Eine MT ist durch drei verschiedene Punkte $z_1,z_2,z_3$ definiert.\\
+$f(z) = \frac{az+b}{cz+d} = \frac{(z-z_1)(z_3-z_2)}{(z-z_2)(z_3-z_1)}$ (Doppelverhältnis)\\
+Damit ist $f(z_1) = 0, f(z_2) = \infty, f(z_3) = 1$\\
+$\begin{pmatrix}a & b\\ c & d\end{pmatrix} = \begin{pmatrix}z_3-z_2 & -z_1(z_3-z_2)\\ z_3-z_1 & -z_2(z_3-z_1)\end{pmatrix}$\\
+Vielfach kann man eine MT aber auch ohne das Doppelverhältnis ``direkt'' bestimmen.\\
+\begin{align*}
+\text{Beispiel:}\quad & \text{Finde eine MT, sodass}\enspace f(0) = 1, f(\infty) = 0, f(1) = \infty\\
+& T(z) = \frac{az+b}{cz+d}\\
+& f(0) = \frac{b}{d} = 1, f(\infty) = \frac{a\infty +b}{c\infty +d} = 0, f(1) = \frac{a+b}{c+d}\\
+& b=d, a\infty+b = 0 \Rightarrow \infty = -\tfrac{b}{a} \Rightarrow a = 0, c+d = 0\Rightarrow -c = d\\
+&f(z) = \frac{d}{-dz+d} = \frac{1}{1-z}
+\end{align*}
+
+\subsubsection{Riemannscher Abbildungssatz}
+Zu jedem einfach zusammenhängenden Gebiet $\Omega$ mit $\Omega\neq\empty, \Omega\neq\mathbb{C}$ gibt es eine analytischee bijektive konforme Abbildung $f:\Omega\to D$
+mit analytischem Inversen $f^{-1}:D\to\Omega$ auf der offenen Einheitskreisscheibe $D = \lbrace z\in\mathbb{C} | |z| < 1\rbrace$
+\subsubsection*{Beispiele}

@@ -1,0 +1,23 @@
+\section{Vektorwertige Funktionen}
+  \subsection{Funktionalmatrix (Jacobimatrix)}
+  Sei $U\subset\mathbb{R}^m$ offen; $f=\begin{pmatrix}f_1\\\vdots\\f_m\end{pmatrix}: U\rightarrow\mathbb{R}^m$\\
+  Dann ist $\nabla f = \begin{pmatrix}\frac{\partial f_1}{\partial x_1} & \dotsb & \frac{\partial f_1}{\partial x_n}\\
+				      \vdots				& \ddots & \vdots\\
+				      \frac{\partial f_m}{\partial x_1} & \dotsb & \frac{\partial f_m}{\partial x_n}
+                       \end{pmatrix}$\\
+  eine $m\times n$-Matrix, genannt die Funktionalmatrix resp. Jacobimatrix\\
+  \subsubsection*{Zusammenhang mit Hessematrix}
+  Sei $P:U\rightarrow\mathbb{R}^2$ eine $C^2$-Funktion.\\
+  Dann ist $(\nabla P)^T$ eine vektorwertige Funktion mit 2 Variablen\\
+  $\Rightarrow$ Die Funktionalmatrix von $(\nabla P)^T$ ist eine $n\times n$-Matrix, die genau der Hessematrix $\nabla^2 P$ entspricht.
+  \subsection{Funktionaldeterminante (Jacobideterminante)}
+  $\det\nabla f(x_0)$ heisst Funktionaldeterminante.
+  \subsection{Kettenregel für vektorwertige Funktionen}
+  \begin{math}
+    \text{Formel:}\quad\nabla(g\circ f) = (\underbrace{\nabla g)\bigl(f(x)\bigr)}_{\text{m Spalten}}
+      \cdot \underbrace{(\nabla f)\bigl(x\bigr)}_{\text{m Zeilen}}\quad\leftarrow\text{Matrixmultiplikation}\\
+  \end{math}
+
+  \subsection{Inverse}
+  Sind $f,g$ zueinander invers, so ist $\nabla f$ eine invertierbare Matrix und d.h.\\
+  $\nabla g\bigl(f(x)\bigr) = (\nabla f)^{-1}\Leftrightarrow g(y) = \biggl(\nabla f\bigl(g(y)\bigr)\biggr)^{-1}$

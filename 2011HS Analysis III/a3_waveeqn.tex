@@ -1,0 +1,64 @@
+\section{Wave Equation}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Form	& \frac{ \partial^2 u}{\partial t^2} = c^2 \frac{ \partial^2 u}{\partial x^2}\\
+Boundary Conditions	& u(0,t) = 0 = u(L,t)\\
+Initial Conditions	& u(x,0) = f(x)\\
+			& \frac{\partial u}{\partial t} (x,0) = g(x)
+\end{tabular}
+\subsection{Solution}
+The Ansatz Separation of variables is applicable if PDE and BC are linear homogenuous.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Ansatz (Sep. of vars)		& \begin{array}[t]{l}
+       		   \mathbf{u(x,t)= X(x)T(t)}\\
+		   \frac{ \partial^2 u}{\partial t^2} = X(x) T''(t);\quad \frac{ \partial^2 u}{\partial x^2} = X''(x)T(t)\\
+		   \Rightarrow \frac{ \partial^2 u}{\partial t^2} = c^2 \frac{ \partial^2 u}{\partial x^2} \Leftrightarrow X(x)T''(t) = c^2X''(x)T(t)\\
+		   \Leftrightarrow \frac{1}{c^2} \frac{T''(t)}{T(t)} = \frac{X''(x)}{X(x)} = k
+       		  \end{array}\\
+ODE-System	& \begin{array}[t]{l||l}
+          	   I	& X''(x)-kX(x) = 0\\
+		   II	& T''(t) - kc^2T(t) = 0
+          	  \end{array}\\
+Imposing BC	& \begin{array}[t]{||l}
+           	   u(0,t) = X(0)T(t) = 0\\
+		   u(L,t) = X(L)T(t) = 0
+           	  \end{array}
+		  \quad\forall t\\
+		& \Rightarrow
+		  \begin{array}[t]{||l}
+		  X''-kX = 0\\
+		  X(0) = 0\\
+		  X(L) = 0
+		  \end{array}
+		  \quad k = -p^2 < 0\\
+Consider cases	& \begin{tabular}[t]{p{3cm}|| >{$}l<{$}}
+              	   $k = 0$	& \lambda_{1,2} = 0,0\\
+				& X(x) = Ax + B\\
+				& X(0) = A = 0\\
+				& X(L) = 0 + B = 0\\
+              	  \end{tabular}
+		  \rightarrow \text{ only trivial solution}\\
+		& \begin{tabular}[t]{p{3cm}|| >{$}l<{$}}
+		$k = \mu^2 > 0$	& \lambda_{1,2} = \pm \mu\\
+				& X(x) = A e^{\mu x} + B e^{-\mu x}\\
+				& X(0) = A + B = 0\\
+				& X(L) = A \left( e^{\mu L} - e^{-\mu L} \right) = 0
+		 \end{tabular}
+		 \rightarrow \text{ only trivial solution}\\
+		& \begin{tabular}[t]{p{3cm}|| >{$}l<{$}}
+		$k = -p^2 < 0$	& \lambda_{1,2} = \pm ip\\
+				& X(x) = A \cos(px) + B \sin(px)\\
+				& X(0) = A = 0\\
+				& X(L) = \sin(pL) = 0 \Rightarrow pL = n\pi
+		  \end{tabular}\\
+		& \Rightarrow \boxed{ X_n(x) = \sin\left(\frac{n\pi}{L} x \right) } \quad n\in\mathbb{Z}^{>0}\quad k = -\left( \frac{n\pi}{L} \right)^2\\
+		& \Rightarrow \boxed{ T_n(t) = C_n \cos (\lambda_n t) + D_n \sin (\lambda_n t) }\quad \lambda = \frac{n\pi c}{L}\\
+\end{tabular}\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+General solution	& u_n(x,t) = \sin\left( \frac{n\pi x}{L} \right) \cdot \left( C_n \cos (\lambda_n t) + D_n \sin (\lambda_n t) \right) \quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Superposition	& u(x,t) = \sum_{n=1}^{\infty} u_n(x,t)\\
+		& u(x,t) = \sum_{n=1}^{\infty} \sin\left( \frac{n\pi x}{L} \right) \cdot \left( C_n \cos (\lambda_n t) + D_n \sin (\lambda_n t) \right)\quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Imposing IC	& u(x,0) = \sum_{n=1}^{\infty} C_n\sin\left( \frac{n\pi x}{L} \right) = f(x)\\
+		& u_t(x,0) = \sum_{n=1}^{\infty} D_n \lambda_n \sin\left( \frac{n\pi x}{L} \right) = g(x)\\
+Fourier-Coefficients	& C_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n\pi x}{L} dx\\
+			& D_n = \frac{2}{cn\pi} \int_0^L g(x) \sin \frac{n\pi x}{L} dx\\
+\end{tabular}

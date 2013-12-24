@@ -1,0 +1,164 @@
+\section{Festkörper}
+kristalline Festkörper sind in Kristallgitter angeordnet. Davon gibt es einige Formen:\\
+\includegraphics[width = 15cm]{ph_kristallgitter.png}\\
+\subsection{Arten von Festkörper}
+\begin{tabular}{p{4cm} p{15cm}}
+Kovalente Festkörper	& \begin{itemize}
+                    	  	\item kovalente Bindung: lokalisierte, gerichtete Bindung
+				\item starke Bindung: Kristallschwingungen haben eine hohe Frequenz
+				\item schlechte Leitfähigkeit: keine freien Elektronen
+				\item Beispiele: GaAs, Diamant (beide $sp^3$-Hybridwellenfkt., beide (durchschnittlich) 4 Valenzelektronen.
+                    	  \end{itemize}\\
+Ionenkristalle		& \begin{itemize}
+              		  	\item regelmässige Anordnung von positiven und negativen Ionen
+				\item Ionen sind so angeordnet, so dass die gegenseitige elektrische WW eine stabile Konfiguration ergibt.
+				\item Ionenbindungskraft $<$ kovalente Bindungskraft
+				\item Ionen im Kristall angeordnet wie dichtgepackte Kugel.
+				\item Beispiele: NaCl
+              		  \end{itemize}\\
+Molekulare Festkörper	& \begin{itemize}
+                     	  	\item van der Waals-Kräfte: entsprechen Kräften zwischen zwei elektr. Dipolen
+				\item Kräfte aufgrund von instantanen elektrischen Dipolen
+                     	  \end{itemize}\\
+Metalle			& \begin{itemize}
+       			  	\item Elemente mit relativ geringer Ionisationsenergie
+				\item Bindung der positiven Ionen durch Elektronengas
+				\item Elektronengas: Elektronen bewegen sich frei durch das Kristallgitter und sind nicht lokalisiert.
+				\item sehr gute thermische und elektrische Leitfähigkeit
+       			  \end{itemize}
+\end{tabular}
+\subsection{N-atomiges Molekül}
+\begin{tabular}{p{4cm}p{15cm}}
+LCAO-Ansatz	& $\Psi(x) = \sum_{n=1}^N \psi(x-na)e^{ikna}$ Für $N=2$ haben wir die LCAO eines zweiatomigen Moleküls, z.B. $H_2^+$\\
+resultierende Wfkt.	& \includegraphics[width=14cm]{ph_n_molecule_lcao_wavefn.png}\\
+Wellenzahl	& $k = \frac{n\pi}{Na}\quad n=1,2,...,N$\\
+Energiebänder	& Je grösser $n$, desto kleiner werden die Unterschiede zwischen den einzelnen Energiekurven, wodurch sich ein kontinuierliches Energieband ergibt. In einem Kristallgitter kann es mehrere Energiebänder geben, die jeweils einem der Energieniveaus der Atome entsprechen, die das Gitter bilden.\\
+Energie im Band = Breite des Bands	& $E = \frac{p^2}{2m_e} = \frac{\hbar^2k^2}{2m_e}$\\
+\end{tabular}
+\subsection{Modell freier Elektronen}
+\includegraphics[width = 6cm]{ph_model_free_electrons.png}
+\begin{tabular}[b]{p{4cm}p{9cm}}
+Wellenfunktion	& $\Psi(x) = e^{ikx}$\\
+Impuls		& $p = \hbar k$\\
+Energie		& $E = \frac{\hbar k^2}{2m} \propto k^2$\\
+Wellenzahl	& $k_{max} = \frac{\pi}{a}$\\
+Energie im Band	& $E_{max} = \frac{\hbar^2\pi^2}{2m_ea^2}$\\
+Gruppengeschw. Elektronen	& $v_g = \frac{d\omega}{dk} = \frac{1}{\hbar}\frac{dE}{dk},\quad E = \hbar\omega$\\
+Kraft		& $F = ma = m\frac{dv_g}{dt}$
+\end{tabular}
+\subsection{Elektronen in periodischer Struktur}
+\includegraphics[width = 6cm]{ph_electrons_in_periodic_potential.png}
+\begin{tabular}[b]{p{4cm}p{9cm}}
+Wellenfunktion (Blochzustand)	& \begin{tabular}[t]{l}
+				    $\Psi(x) = e^{ikx}u(x),\quad \underbrace{u(x+a) = u(x)}_{\text{Blochzustand}}$\\
+				    $\Psi(x) = \sum_{n=1}^N \psi(x-na)e^{ikna}$ ist ein Blochzustand.
+				  \end{tabular}\\
+Energie		& Mit der Näherung des tight binding models ergibt sich: $E(k) = E_0 - 2A\cos(k_i a),\quad k_i = \frac{2\pi}{aN}i$\\
+effektive Masse	& $\frac{1}{m^{\ast}} = \frac{1}{\hbar^2}\frac{d^2E}{dk^2}$\\
+Kraft		& $F = m^{\ast}a = m^{\ast}\frac{dv_g}{dt}$
+\end{tabular}
+\subsection{Elektronenleitung}
+\begin{tabular}{p{4cm}p{15cm}}
+Fermienergie $E_F$	& \includegraphics[width = 6cm]{ph_fd_statistics.png}\\
+Theorie zur Elektronenleitung	& \includegraphics[width = 13cm]{ph_electron_conduction.png}\\
+				& blau: gleich viele Elektronen mit Impuls $+p (\propto k)$ wie mit $-p \Rightarrow$ im Mittel Impuls = 0 $\Rightarrow$ kein Strom. Nur Elektronen im roten Bereich tragen zum Strom bei. In vollständig gefüllten Bändern kann die Verschiebung (Bild links zu Bild rechts) jedoch nicht geschehen. Deshalb keine Leitung\\
+Isolator		& Das oberste Band ist vollständig besetzt (Valenzband). Die Energielücke zum Leitungsband ist zu hoch. Laut Fermi-Dirac Statistik ist dann die WSK 0, im Leitungsband ein Teilchen zu finden.\\
+Metalle			& Das oberste Band ist nicht voll. Die Fermienergie liegt im Leitungsband.\\
+Halbleiter		&  Es gibt zwar ein Valenzband, doch die Energielücke zum nächsthöheren Band (Leitungsband) ist klein genug, sodass es eine WSK gibt, ein Teilchen im Leitungsband zu finden.
+\end{tabular}
+\subsection{Zustandsdichte}
+Die Zustandsdichte gibt an, wie viele Zustände pro $k$ oder $E$ existieren. Man macht dazu zwei Annahmen:
+\begin{enumerate}
+	\item Kristallwürfel der Kantenlänge $L$ mit unendliche hohen Potentialbarrieren am Rand des Würfels. $\Psi($Rand des Würfels$) = 0$
+	\item Periodische Randbedingungen $\Psi(x,y,z) = \Psi(x+L,y+L,z+L)$
+\end{enumerate}
+\subsubsection{Zustandsdichte im $\vec{k}$-Raum}
+Da wir in 3D sind, brauchen wir den Vektor $\vec{k}$ und nicht nur den Skalar $|\vec{k}|$\\
+\begin{tabular}{p{4cm}p{15cm}}
+Wellenfkt. 1D-Potentialtopf	& $\Psi_n(x,t) = \sqrt{\frac{2}{L}} \sin\frac{n\pi x}{L}\exp\left(-i\frac{E_n}{\hbar}t\right)\quad k_n = \pm\frac{n\pi}{L}$ (pro $n$ \textbf{zwei} $k_n$ !)\\
+Volumen eines Zustands		& \begin{tabular}[t]{llll}
+				  1D	& $(\Delta k) \cdot 2 \cdot 1$		&						& $ = \left(\frac{2\pi}{L}\right)$\\
+				  2D	& $(\Delta k)^2 \cdot 2 \cdot 2$	& $ = \left(\frac{\pi}{L}\right)^3 \cdot 4$	& $ = \left(\frac{2\pi}{L}\right)^2$\\
+				  3D	& $(\Delta k)^3 \cdot 2 \cdot 3$	& $= \left(\frac{\pi}{L}\right)^3 \cdot 8$	& $ = \left(\frac{2\pi}{L}\right)^3$\\
+				  \end{tabular}
+				  $\Delta k = \frac{\pi}{L}$\\
+Zustandsdichte			& \begin{tabular}[t]{lll}
+				  \multicolumn{3}{p{14cm}}{Pro (räumlichen) Zustand gibt es 2 Elektronen (Spin up, Spin down). Das Volumen eines solchen Zustands ist oben angegeben. Für die Zustandsdichte gilt also allgemein $D = \frac{2}{\text{Zustandsvolumen}}$}\\
+				  1D							& 2D							& 3D\\
+				  $D_1(k) = \frac{2}{\left(\frac{2\pi}{L}\right)}$	& $D_2(k) = \frac{2}{\left(\frac{2\pi}{L}\right)^2}$	& $D_3(k) = \frac{2}{\left(\frac{2\pi}{L}\right)^3}$
+				  \end{tabular}
+\end{tabular}
+\subsubsection{Zustandsdichte im $E$-Raum}
+Die Zustandsdichten aus dem $\vec{k}$-Raum möchten wir nun in den $E$-Raum übersetzen. Dafür müssen wir aber von $\vec{k}$ nach $|\vec{k}|$ kommen.\\
+\begin{tabular}{p{4cm}p{15cm}}
+Zustandsdichten im $|\vec{k}|$-Raum	& \begin{tabular}[t]{lll}
+ 				  \multicolumn{3}{p{14cm}}{Für die Zustandsdichte gilt allgemein $D = \frac{\text{Volumen mit konstantem $\vec{k}$}}{\text{Zustandsvolumen}}\cdot 2$}\\
+				  1D								& 2D							& 3D\\
+				  $D_1(k) = \frac{dk}{\left(\frac{2\pi}{L}\right)}\cdot 2$	& $D_2(k) = \frac{2\pi k dk}{\left(\frac{2\pi}{L}\right)^2}\cdot 2$	& $D_3(k) = \frac{4\pi k^2 dk}{\left(\frac{2\pi}{L}\right)^3}\cdot 2$
+				  \end{tabular}\\
+Beziehung $E$-$|\vec{k}|$ (Modell freier Elektronen)	& \begin{tabular}[t]{l}
+				    $E = \frac{\hbar^2 k^2}{2m_e} \Leftrightarrow k = \sqrt{\frac{2m_e E}{\hbar^2}}$\\
+				    $\frac{dk}{dE} = \sqrt{\frac{2m_e}{\hbar^2}}\frac{1}{2\sqrt{E}}$
+				  \end{tabular}\\
+Zustandsdichten im $E$-Raum	& \begin{tabular}[t]{|l|l|l|}
+				  \hline
+				  $D_1(E) = \frac{L}{\pi\hbar}\sqrt{\frac{2m_e}{E}} dE$	& $D_2(E) = \frac{L^2m_e}{\pi\hbar^2} dE$	& $D_3(E) = \frac{L^3}{2\pi^2}\left( \frac{2m_e}{\hbar^2} \right)^{\frac{3}{2}} \sqrt{E} dE$\\\hline
+				  \end{tabular}\\
+Zusammenhänge			& \begin{tabular}[t]{l}
+				    $g(E) = \frac{D(E)}{V}$\\
+				    $D(E) = \frac{dN}{dE}\quad $ N: Total Anzahl Elektronen in V\\
+				    $g(E) = \frac{dn}{dE}\quad $ n: Elektronendichte\\
+				    $n = \int_0^{E_F}g(E) dE$
+				  \end{tabular}
+\end{tabular}
+\subsubsection{Alternative Herleitung für $D_3$}
+\begin{tabular}[t]{p{4cm}p{15cm}}
+Anzahl Energiezustände in einem 3D Kasten	& \begin{tabular}[t]{l}
+							    $\tilde{N}(E) = \boldsymbol{\tfrac{1}{8} \pi k^3} = \frac{8\pi V}{3h^3} (2m^3)^{\frac{1}{2}} E^{\frac{3}{2}}\quad V:$ Volumen des Kastens\\
+							    $\tilde{D}_3(E) := \frac{d\tilde{N}}{dE} = \frac{4\pi V (2m^3)^{\frac{1}{2}}}{h^3}E^{\frac{1}{2}} = \frac{L^3}{2\pi^2}\left( \frac{2m_e}{\hbar^2} \right)^{\frac{3}{2}} \sqrt{E} dE$\\
+							  \end{tabular}\\
+Gesamtzahl der Elektronen innerhalb $E + dE$	& \begin{tabular}[t]{p{14cm}}
+						   Jeder Energiezustand kann zwei Elektronen aufnehmen (Spin up, down). Also $d\tilde{N}$ mit 2 multiplizieren.\\
+						   $D_3(E) := \frac{d\tilde{N}}{dE} = \frac{8\pi V (2m^3)^{\frac{1}{2}}}{h^3}E^{\frac{1}{2}}$
+						  \end{tabular}\\
+\end{tabular}
+\subsection{Löcher}
+Als Löcher bezeichnet man fehlende Elektronen im Valenzband. Löcher sind also nur Gedankenkonstrukte, die das Rechnen vereinfachen. Sie haben folgende Eigenschaften:\\
+\begin{tabular}{ll}
+Ladung: +e				& Impuls: $k_h = -k_e$\\
+Energie: $E_h(k_h) = -E_e(k_e)$		& effektive Masse: $m_h^{\ast} = -m_e^{\ast}$
+\end{tabular}\\
+\begin{tabular}{p{4cm}p{15cm}}
+Fermi-Dirac WSK-Verteilung		& $f(E) = \frac{1}{e^{(E-E_F)/k_BT}+1}$\\
+Elektronendichte im Leitungsband	& $n = \int_{E_L}^{\infty} f(E)g(E)dE \quad g(E) = \frac{8\pi \sqrt{2(m_e^{\ast})^3}}{h^3}\sqrt{E-\boldsymbol{E_L}}$\\
+					& Resultat: $\boxed{n = N_C \exp\left(-\frac{E_L-E_F}{k_BT}\right), \quad N_C \equiv 2 \left( \frac{2\pi m_e^{\ast}k_BT}{h^2} \right)^{\frac{3}{2}}}$\\
+Löcherdichte im Valenzband		& $p = \int_{0}^{E_V} (1-f(E))g(E)dE \quad g(E) = \frac{8\pi \sqrt{2(m_{hole}^{\ast})^3}}{h^3}\sqrt{\boldsymbol{E_V}-E}$\\
+					& Resultat: $\boxed{p = N_V \exp \left( -\frac{E_F-E_V}{k_BT} \right), \quad N_V \equiv 2 \left(\frac{2\pi m_{hole}^{\ast}k_BT}{h^2} \right)^{\frac{3}{2}}}$\\
+Fermienergie eines intrinsischen Halbleiters (ohne Fremdatome, $\Rightarrow n = p$)	& $E_F \equiv E_i = \frac{E_L + E_V}{2} + \frac{k_BT}{2}\ln\left(\frac{N_V}{N_C}\right)$\\
+Ladungsträgerdichte eines intri. Halbleiters	& $n_i = \sqrt{n\cdot p} = \sqrt{N_LN_V}\exp \left( -\frac{E_g}{2k_BT} \right)\quad E_g \equiv E_L-E_V$ Bandgap energy (Bsp: GaAs 1.43eV)\\
+Stromdichte				& $j = nqv$\\
+					& \begin{tabular}[t]{l}
+					    n: Zahl der Teilchen (z.B. Elektronen) pro Volumeneinheit\\
+					    q: Ladung der Teilchen. q = -e = -1.602 $\cdot 10^{-19}A\cdot s$ Elementarladung der Elektronen\\
+					    v: Driftgeschwindigkeit der Ladungsträger (z.B. Elektronen)
+					  \end{tabular}\\
+Stromrichtung				& Per Definition: von plus nach minus\\
+Kraft des elektrischen Felds		& $F = qE$\\
+Driftgeschwindigkeit im Halbleiter	& $v_d = \mu E\quad [\mu] = cm^2V^{-1}s^{-1}:$ Mobilität\\
+Stromdichte im Halbleiter		& $j = \sigma E\quad \sigma = e\mu_n n + e \mu_p p\quad \mu_p \ll \mu_n$
+\end{tabular}
+\subsection{Absorption und Emission von Photonen}
+\begin{tabular}{p{4cm}p{15cm}}
+Absorption	& Absorption eines Photons mit $E = h\nu$ entspricht einem Übergang eines Elektrons vom Valenzband ins Leitungsband. Die Bandlückenenergie $E_g$ entspricht $h\nu$\\
+Emission	& Emission eines Photons entspricht einem Übergang eines Elektrons vom Leitungsband ins Valenzband.
+\end{tabular}
+\subsection{Dotierungen}
+``Störstellen'' eines intrinsischen Halbleiters. Dadurch verändert sich die Fermienergie und weitere Parameter gegenüber einem intrinsischen Halbleiter.\\
+\begin{tabular}{p{4cm}p{15cm}}
+Donatoren	& Fremdatome, die mehr Elektronen beitragen können. Bsp: P (5 Aussen$e^-$) in Si(4 Aussen$e^-$) $\Rightarrow$ Das überzählige Elektron liegt auf einem Energielevel knapp unter $E_L$. Es kann also leicht ins Leitungsband angeregt werden, wo es leiten kann.\\
+Akzeptor	& Fremdatome, die weniger Elektronen (= mehr Löcher) haben. Bsp: Al (3 Aussen$e^-$) in Si $\Rightarrow$. Das überzählige Loch ist auf einem Energielevel, das knapp über $E_V$ liegt. Ein Elektron aus dem Valenzband kann nun das Loch besetzen und somit ein Loch im Valenzband freigeben, das zur Leitung genutzt werden kann.\\
+Elektronendichte im Leitungsband	& $n = \frac{N_D^+-N_A^-}{2}+ \sqrt{\left( \frac{N_D^+-N_A^-}{2} \right)^2 + n_i^2},\quad N_D^+ > N_A^-\quad N_D^+:$ Dichte von Donor-Atomen\\
+Löcherdichte im Valenzband		& $p = \frac{N_A^--N_D^+}{2}+ \sqrt{\left( \frac{N_A^--N_D^+}{2} \right)^2 + n_i^2},\quad N_A^- > N_D^+\quad N_A^-:$ Dichte von Akzeptor-Atomen\\
+Fermienergie im n-dotierten Halbl.	& $E_{F_n} = E_i + k_BT \ln \left(\frac{n}{n_i} \right)$\\
+Fermienergie im p-dotierten Halbl.	& $E_{F_p} = E_i - k_BT \ln \left( \frac{p}{n_i} \right)$
+\end{tabular}

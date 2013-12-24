@@ -1,0 +1,200 @@
+\documentclass[a4paper,12pt,fleqn]{article}
+
+\usepackage{CH_template}
+\usepackage{color,colortbl}
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+
+\section{Konstanten}
+\begin{tabular}{l >{$}l<{$}}
+ Stoffmenge 		& \n(X): 1\mol = 6.022\cdot 10^{23} \text{Teilchen} = \# \text{Atome in 12g $^{12}_6C$} \\
+ molare Masse 		& \M(X): \g \cdot \mol^{-1} \quad \text{Bsp: }\M(H_2 O) = 2\cdot 1.0079 + 15.9994\\
+ Masse 			& \m(X): \g\\
+ \multicolumn{2}{l}{$\n(X) \cdot M(X) = m(X)$}\\
+ Stoffmengenkonzentration & \M = \mol\cdot\mathrm{L}^{-1}\\
+ Atommasseneinheit	& \mathrm{u} \quad 12\mathrm{u} = \text{Masse eines $^{12}_6 C$-Teilchens} = 1.66 \cdot 10^{-24}\g\cdot 12\\\hline
+
+ Avogadro-Zahl		& \N_A = 6.022\cdot 10^{23} \mol^{-1}\\
+ ideales Gasvolumen	& 22.41~ \mathrm{L} \cdot \mol^{-1}\\
+ ideale Gaskonstante	& \R = 8.31447 \J\cdot\mol^{-1}\cdot\K^{-1} = 8.31447 \kPa\cdot\mathrm{L}\cdot\mol^{-1}\cdot\K^{-1}\\
+ Grad Celsius		& ^{\circ}\C = \K-273.15\\
+ Elementarladung	& \e = 1.6\cdot 10^{-19} \C\\
+ Faraday-Konstante	& \F = \N_A \cdot \e = 96485 \C\cdot\mol^{-1}\\
+
+\end{tabular}
+
+\section{Geschwindigkeitsgesetz}
+Allgemein: $v(AX) = k\cdot[A]^x\cdot[X]^y$ \\
+``Die Reaktion ist x+y-ter Ordnung insgesamt, x-ter Ordnung bzgl. A und y-ter Ordnung bzgl. X''\\
+\begin{tabular}{l|>{$}l<{$}|>{$}l<{$}|l|>{$}l<{$}}
+ Ordnung	& \text{Geschw.gesetz}	& \text{Zeitabh. der Konzentration}	& lin. Beziehung	& \text{Halbwertszeit}\\\hline
+ 0		& v=k			& [A] = -k\cdot t+[A]_0			& [A] gegen t		& \frac{[A]_0}{2k}\\
+ 1		& v=k\cdot [A]		& \ln [A] = -k\cdot t+\ln [A]_0		& ln [A] gegen t	& \frac{\ln 2}{k}\\
+ 2		& v=k\cdot[A]^2		& \frac{1}{[A]} = k\cdot t + \frac{1}{[A]_0}&$\frac{1}{[A]}$ gegen t	& \frac{1}{k\cdot [A]_0}
+\end{tabular}
+
+\section{Massenwirkungsgesetz (MWG)}
+ Für die allgemeine Reaktion $aA + eE \rightleftharpoons xX + zZ$ lautet das MWG\\
+$ \frac{[X]^x \cdot [Z]^z}{[A]^a \cdot [E]^e} = K_c = \frac{k_{\text{hin}}}{k_{\text{rück}}}\quad\text{In mehrstufigen Reakt. ist K das Produkt der Einzelreakt.}\\
+K_p = \frac{p^x(X) \cdot p^z(Z)}{p^a(A) \cdot p^e(E)},\quad\text{falls \textbf{alle} beteiligten Stoffe Gase sind.}\\
+K_p = K_c \cdot (RT)^{\Delta n},\qquad \begin{array}{l}
+                                         R = \text{ideale Gaskonstante}\\
+					 T = \text{Temperatur }[K]\\
+					 \Delta n = x+z-(a+e)
+                                      \end{array}\\
+$
+\section{Säure-Base}
+\begin{tabular}{l >{$}l<{$}}
+ allg.Reakt.gleichung	& HA + H_2 O \rightleftharpoons A^- + H^+\\
+			& B^- + H_2 O \rightleftharpoons B + OH^-\\
+ $pH$			& pH = -\log [H^+] \mathrm{L}\cdot\mol^{-1}\\
+ $pOH$			& pOH = -\log [OH^-] \mathrm{L}\cdot\mol^{-1}\\
+ $pK_w$			& pK_w = pH + pOH = 14\\
+ Ionenprodukt 		& 10^{-14} = [OH^-][H^+] \\
+ Massenerhaltung	& [HA]_0 = [HA] + [A^-]\\
+ Elektroneutralität	& [H+] = [OH^-] + [A^-]\\
+ Säuredissoziationskonstante	& K_s(HA) = \frac{[A^-] \cdot [H^+]}{[HA]}\\
+ $pK_s$			& pK_s = -\log K_s\\
+ Säurestärke		& \begin{array}{ll}
+            		   \text{schwach:}	& pK_s > 3.5\\
+			   \text{mittel:}	& 3.5 > pK_s > 0.35\\
+			   \text{stark:}	& pK_s < 0.35
+            		  \end{array}\\
+ Mehrprotonige Säuren	& pK_2 = pK_1 + 5, pK_3 = pK_2 + 5,\quad \text{Bsp: }K_1 = \frac{[H_2 A^-][H^+]}{[H_3 A]}\\
+ Oxidosäuren		& \text{Für Oxidosäuren } H_a XO_b \text{ gilt:}\\
+			& \begin{array}{lll}
+			   pK_1 = 7	& \text{falls }a=b	&HOCl\\
+			   pK_1 = 2	& \text{falls }a=b-1	&(HO)_2 SO\\
+			   pK_1 = -3	& \text{falls }a=b-2	&HONO_2\\
+			  \end{array}\\
+ Basendissoziationskonstante	& K_b(A^-) = \frac{[OH^-] \cdot [HA]}{[A^-]}\\
+ $pK_b$			& pK_b = -\log K_b\\
+ $pK_w$			& pK_w = pK_s + pK_b = 14\quad\text{Bsp: }pK_s(NH_4^+) + pK_b(NH_3) = 14\\
+ Dissoziationsgrad	& \alpha = \frac{[A]^-}{[HA]}\\
+ Zsh. $K_s$ mit $[H^+]$	& [H^+] = -\frac{1}{2} K_s + \sqrt{\frac{1}{4}K_s^2+K_s\cdot c_0},\quad c_0 = \text{Anfangskonz. von } HA\\
+			& \text{mit }HA \rightleftharpoons H^+ + A^- \\
+ $[H^+]$ schwacher Säuren& [H^+] = \sqrt{K_s \cdot c_0}\\
+ $[OH^-]$ schwacher Basen& [OH^-] = \sqrt{K_b \cdot c_0}\\
+ $pH$ schwacher Säuren	& pH \approx \frac{1}{2}\left(pK_s - \log\left(\frac{c_0}{\mol \cdot \mathrm{L}^{-1}}\right)\right)\\
+ $pOH$ schwacher Basen	& pOH \approx \frac{1}{2}\left(pK_b - \log\left(\frac{c_0}{\mol \cdot \mathrm{L}^{-1}}\right)\right)\\
+ H.son-Hasselbalch-Gleichung & \text{Charakteristik von Pufferlösungen}\\
+			& pH = pK_s(HA) - \log \frac{[HA]}{[A^-]}, \quad\text{wobei } \frac{[HA]}{[A^-]} \in \left[\tfrac{1}{10},10\right]\\
+ HSAB-Regel		& \text{Harte säure lieben harte Basen, weiche Säuren weiche Basen}\\
+ Neutralisation		& V_{HA}\cdot[HA] = V_B\cdot[B]\\
+ Metall-Ionen als Säure	& [M(OH_2)_x]^{n+} + H_2 O \rightleftharpoons [M(OH_2)_{x-1}(OH)]^{n-1} + H_3 O^+
+ 
+\end{tabular}
+
+\section{Löslichkeitsprodukt}
+ Für die allgemeine Reaktion $A_aX_x \rightleftharpoons aA^{x+} + xX^{a-}$ lautet das Löslichkeitsprodukt\\
+ $L = \left[A^{x+}\right]^a \cdot \left[X^{a-}\right]^x$\\
+\subsection*{Fällungsreaktionen}
+$
+I < L \Rightarrow \text{Lösung ungesättigt}\\
+I = L \Rightarrow \text{Lösung gesättigt}\\
+I > L \Rightarrow \text{Lösung übersättigt, es gibt eine Fällung}\\
+$
+\begin{itemize}
+ \item $\left[H^+\right]^2 \cdot \left[S^{2-}\right] = 1.1\cdot 10^{-22}$\\
+ \item vergrösserte Volumina $\Rightarrow$ verringerte Konzentrationen\\
+ \item pH-Angabe $\Rightarrow [OH^-]$ resp. $[H^+]$-Konz. anpassen
+\end{itemize}
+
+\section{Grundlagen der chemischen Thermodynamik}
+
+\subsection*{1.Hauptsatz (Energieerhaltung)}
+$
+\Delta H = \Delta U + p\Delta V\qquad\begin{array}{l}
+                                     \Delta H = \text{Reaktionsenthalpie}\\
+				     \Delta U = U_2-U_1, \text{Veränderung der inneren Energie, Wärme, Reakt.energie bei }\Delta V = 0\\
+				     \Delta V = \text{Veränderung des Volumens}\\
+				     p = \text{Atmosphärendruck}\\
+                                    \end{array}\\
+\text{Enthalpie für Reaktionen mit Gasen}\\
+\Delta H = \Delta U + \Delta n RT\qquad\begin{array}{l}
+                                       \Delta n = \text{Veränderung der Stoffmenge}\\
+					RT = 2.479\frac{kJ}{\mol}\enspace\text{@ 25\textcelsius}\\
+                                      \end{array}
+$
+\subsection*{2.Hauptsatz}
+\begin{itemize}
+ \item Bei einer spontanen Zustandsänderung vergrössert sich die Entropie S. S ist ein Mass für die Unordnung eines Systems.\\
+ \item Bei einer Reaktion wird ein Energieminimum angestrebt.\\
+ \item Bei einer Reaktion wir ein Maximum an Unordnung angestrebt.\\
+\end{itemize}
+\begin{tabular}{l >{$}l<{$}}
+ Gesamtentropie		& \Delta S_{Ges} = \Delta S_{Sys} + \Delta S_{Umg}\\
+			& \Delta S_{Umg} = -\frac{\Delta H}{T}\\
+ Gibbs-Energie (kJ/mol)	& \Delta G = \Delta H - T\Delta S\\
+ Gibbs-freie Enthalpie	& G = H-TS\\
+ Ablauf der Reaktion	& \begin{array}{ll}
+                    	   \Delta G < 0	& \text{Reaktion verläuft spontan}\\
+			   \Delta G = 0	& \text{System  in Glgw.}\\
+			   \Delta G > 0	& \text{Reaktion verläuft nicht spontan}
+                    	  \end{array}\\
+ freie Reaktionsenergie	& \Delta F = \Delta U - T\Delta S\\
+ Standard-Bildungsenthalpie	& \Delta G_f^{\circ} = \text{Gibbs-Energie für 1mol der Verbindung}\\
+			& \Delta G^{\circ}_f = \Delta H^{\circ}_f - T\Delta S^{\circ}\\
+			& \Delta G^{\circ} = \sum \Delta G_f^{\circ}\text{Produkte} - \sum \Delta G_f^{\circ}\text{Edukte}\\
+			& \Delta G^{\circ}(\text{Element}) \equiv 0
+
+\end{tabular}
+
+\subsection*{3.Hauptsatz}
+\begin{itemize}
+ \item Die Entropie einer Substanz nimmt mit der Temperatur zu.\\
+ \item Die Entropie einer perfekten kristallinen Substanz beim absolut Nullpunkt ist 0
+\end{itemize}
+\begin{tabular}{l >{$}l<{$}}
+ absolute Standard-Entropie	& S^0: \text{Entropie bei }101.3kPa\\
+ Standard-Reaktionsentropie	& \Delta S^0: \sum\text{abs.Entropie(Produkte)} - \sum\text{abs.Entropie(Edukte)}\\
+ Temperaturabhängigkeit von K	& \Delta G^0 = -RT\cdot\ln K\quad\text{K = K aus MWG}\\
+				& G = G^0 + RT\cdot\ln a\quad a = \frac{p}{101.3kPa} = f\cdot\frac{c}{\mol\cdot\mathrm{L}^{-1}}\\
+				& RT = 2.479 \frac{kJ}{mol}\\
+ Clausius-Clap.-Glgw.		& \ln\left(\frac{p_2}{p_1}\right) = \frac{\Delta H_v}{R}\left(\frac{1}{T_1}-\frac{1}{T_2}\right)\\
+ CCG II				& \ln\left(\frac{K_2}{K_1}\right) = \frac{\Delta H^0}{R}\left(\frac{1}{T_1}-\frac{1}{T_2}\right)\\
+\end{tabular}
+
+\section{Elektrochemie}
+\subsection*{Masseinheiten und Beziehungen}
+\begin{tabular}{lll}
+			 & Symbol		& Masseinheit\\
+elektr.Potential	 & E			& Volt (V)\\
+Stromstärke		 & I			& Ampère (A)\\
+Widerstand		 & R			& Ohm ($\Omega$)\\
+Ladung			 & q,e,L		& Coulomb (C)\\
+Leitfähigkeit		 & $\frac{1}{R}$	& Siemens (S)\\\hline
+Elementarladung		 & $\e = 1.6\cdot 10^{-19} \C$&\\
+Faraday-Konstante	 & $\F = \N_A \cdot \e = 96485 \C\cdot\mol^{-1} = 96.485 \frac{kJ}{V\cdot \mol}$&\\
+\end{tabular}\\
+$1A = \frac{1C}{s}\qquad		1J = 1V\cdot C\qquad	1\Omega = 1\frac{V}{A} = 1J\cdot s\qquad		1S = 1\Omega^{-1}$\\
+
+\subsection*{Faraday'sches Gesetz}
+$m = \frac{M}{z}\cdot\frac{L}{F}\qquad\begin{array}{l}
+                                      m = \text{abgeschiedene Menge} [kg]\\
+				      \frac{M}{z} = \text{molare Äquivalentmasse} [kg]\\
+					\quad M = \text{molare Masse}\\
+					\quad z = \text{Anzahl mol Elektronen}\\
+				      L = \text{Elektrizitätsmenge} [C = A\cdot s]\\
+				      F = 96.485 \frac{kJ}{V\cdot \mol}
+                                     \end{array}
+$
+
+\subsection*{Galvanische Zelle}
+\begin{tabular}{l >{$}l<{$}}
+ Erzeugte elektr. Energie	& W = L\cdot\Delta E\\
+ Gibbs-Energie (kJ/mol)		& \Delta G = -\underbrace{n\cdot F}_{L} \cdot \Delta E \quad\text{n = Anz. beteiligte Elektr. bei Reaktion}\\
+ Spannung			& \Delta E = E^0(Kathode)-E^0(Anode)\quad\text{Stromgewinn bei $\Delta E > 0$}\\
+ Nernst-Gleichung		& \Delta E = \Delta E^0 - \frac{2.303~ RT}{nF}\log Q\quad \begin{array}{l}
+                 		                                                        Q = \frac{a^x(X)\cdot a^z(Z)}{a^a(A)\cdot a^e(E)}\\
+											\text{Feststoffe: } a = [~]\\
+											\text{Gase: } a = \frac{p}{101.3kPa}
+                 		                                                       \end{array}\\
+ ~~@ 25 \textcelsius	& \Delta E = \Delta E^0 - \frac{0.05916}{n}\log Q\\
+ ~~Halbreaktion			& E = E^0 + \frac{0.05916}{n}\log \frac{[Oxidiert]}{[Reduziert]}
+\end{tabular}
+
+
+\end{document}

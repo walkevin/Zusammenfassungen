@@ -1,0 +1,51 @@
+\section{Gemeinsame und bedingte Wahrscheinlichkeiten}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Bedingte WSK	& \P(A|B) := \frac{\P(A \cap B)}{\P(B)} \Longleftrightarrow \P(A|B) \P(B) = \P(A \cap B)\\
+		& \P(A|B^c) := \frac{\P(A \cap B^c)}{\P(B^c)} \Longleftrightarrow \P(A|B^c) \P(B^c) = \P(A \cap B^c)\\
+Satz der totalen WSK (I)	& \P(A) = \P(A \cap B) + \P(A \cap B^c) = \P(A|B)\P(B) + \P(A|B^c)\P(B^c)\\
+Satz der totalen WSK (II)	& \P(A) = \sum_{i=1}^k \P(A|B_i)\P(B_i)\qquad \bigcup_{i=1}^k B_i = \Omega\\
+Satz von Bayes			& \P(B_i|A) = \frac{\P(A|B_i) \P(B_i)}{\P(A|B_1)\P(B_1) + ... + \P(A|B_k)\P(B_k)}
+\end{tabular}
+\subsection{Gemeinsame und bedingte Verteilungen}
+\begin{tabular}{p{3cm} >{$}p{8cm}<{$} | >{$}p{8cm}<{$}}
+			& \text{Diskret}				& \text{Stetig}\\
+\hline\hline
+gem. Verteilungsfkt.	& \P(X = x,Y = y)				& \P(X \leq x, Y \leq y) = \int_{-\infty}^x \int_{-\infty}^y f(x,y) dx dy\\
+Randverteilung		& \P(X = x) = \sum_{y\in W_Y} \P(X = x,Y = y)	& f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) dy\\
+			& \P(Y = y) = \sum_{x\in W_X} \P(X = x,Y = y)	& f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) dx\\
+Unabhängigkeits kriterium	& \P(X = x,Y = y) = \P(X = x)\P(Y = y)	& f_{X,Y}(x,y) = f_X(x) f_Y(y)\\
+Bedingte Verteilung	& \P(X = x) = \sum_{y\in W_Y} \P(X = x|Y = y)\P(Y = y)	& f_{Y|X = x}(y) := f_Y(y|X = x) := \frac{f_{X,Y}(x,y)}{f_X(x)}\\
+Erwartungswert		& \E(g(X,Y)) = \sum_i \sum_j g(x_i,y_j) \P(X = x_i, Y = y_j)	& \E(g(X,Y)) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y)f_{X,Y}(x,y) dxdy\\
+bedingter Erwartungswert	&					& \E(h(Y) | X = x) = \int_{-\infty}^{\infty} h(y) f_Y(y|X=x) dy\\
+\hline\hline
+\end{tabular}
+\begin{tabular}{p{3cm} >{$}p{16cm}<{$}}
+2-dim Normalverteilung		& f_{X,Y}(x,y) = \frac{1}{2\pi \sqrt{\det \Sigma} } \exp \left(-\frac{1}{2} (x-\mu_X, y-\mu_Y) \Sigma^{-1} \binom{x-\mu_X}{y-\mu_Y} \right)\\
+				& \Sigma = \begin{pmatrix}
+				           \V(X)	& \Cov(X,Y)\\
+					   \Cov(X,Y)	& \V(Y)
+				           \end{pmatrix}
+				  \Sigma^{-1} = \frac{1}{\V(X)\V(Y) - \Cov(X,Y)^2} \begin{pmatrix}
+				                                                   -V(X)	& \Cov(X,Y)\\
+										   \Cov(X,Y)	& -\V(Y)
+				                                                   \end{pmatrix}
+\end{tabular}
+\subsection{Kovarianz und Korrelation}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Kovarianz		& \Cov(X,Y) = \E(XY) - \E(X)\E(Y)\\
+			& \Cov(X,X) = \V(X)\\
+Korrelation		& \Corr(X,Y) := \rho_{XY} := \frac{\Cov(X,Y)}{\sigma_X \sigma_Y}\quad \in[-1,1]\\
+Rechenregeln		& \Cov(a + bX, c + dY) = bd\Cov(X,Y)\\
+			& \Corr(a + bX, c + dY) = \sgn(b)\sgn(d) \Corr(X,Y)\\
+			& \quad\V(X + Y) = \V(X) + \V(Y) + 2 \Cov(X,Y)\\
+			& \quad\E(XY) = \E(X)\E(Y) + \Cov(X,Y)\\
+			& X,Y \text{ unabhängig } \Rightarrow \Corr(X,Y) = 0 \Rightarrow \Cov(X,Y) = 0\\
+			& \Corr(X,Y) = +1 \Leftrightarrow Y = a + bX,\quad a \in \mathbb{R}, b \boldsymbol{>} 0\\
+			& \Corr(X,Y) = -1 \Leftrightarrow Y = a + bX,\quad a \in \mathbb{R}, b \boldsymbol{<} 0\\
+Lineare Prognose	& \hat{Y} = \mu_Y + \frac{\Cov(X,Y)}{\V(X)}(X-\mu_X)\\
+Prognosefehler		& \E \big( (Y-\hat{Y})^2 \big) = (1-\rho_{XY}^2) \V(Y)
+\end{tabular}
+
+
+
+

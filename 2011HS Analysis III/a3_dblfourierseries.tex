@@ -1,0 +1,31 @@
+\section{Solve PDE by Double Fourier-Series}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+PDE	& u_{tt} = u_{xx} + u_{yy}\\
+BC	& u(x,y,t) = 0 ~\text{for boundaries }x = 0, x = L, y = 0, y = L\\
+IC	& u(x,y,0) = f(x)\\
+	& u_t(x,y,0) = g(x)\\
+Ansatz	& \begin{array}[t]{rl}
+      	   \multicolumn{2}{l}{u(x,y,t) = S(x,y)\cdot T(t)}\\
+	   u_{tt} = S(x,y)T''(t)	& u_{xx} + u_{yy} = \Delta S(x,y)T(t)\quad = ( X''Y + XY'')T\\
+	   \text{PDE: } S(x,y)T''(t) 	& = \Delta S(x,y) T(t) = 0\\
+	   \Leftrightarrow \frac{T''(t)}{T(t)}	& = \frac{\Delta S(x,y)}{S(x,y)} = -p^2
+      	  \end{array}\\
+ODE-PDE System	& \begin{array}[t]{ll}
+              	   I.	& T''(t) + p^2T(t) = 0\\
+		   II.	& \Delta S(x,y) + p^2S(x,y) = 0
+              	  \end{array}\\
+PDE II	  & \begin{array}[t]{l}
+	     S(x,y) = X(x)Y(y)\\
+	     \text{PDE II: } \frac{X''(x)}{X(x)} = -\frac{Y''(y)}{Y(y)}-p^2 = -k^2\quad p^2 > k^2\\
+	    \end{array}\\
+ODE System	& \begin{array}[t]{ll}
+              	   I.	& T''(t) + p^2T(t) = 0\\
+		   II._1	& X''(x) + k^2X(x) = 0\\
+		   II._2	& Y''(y) + (p^2-k^2)Y(y) = 0
+          	  \end{array}\\
+Impose BC	& \text{Get basic solutions: } X_m(x), Y_n(y), T_{mn}(t)\\
+General solution	& u_{mn}(x,y,t) = X_m(x) Y_n(y) T_{mn}(t)\\
+Superposition	& u(x,y,t) = \sum_{m=0}^{\infty} \sum_{n=0}^{\infty} u_{mn}(x,y,t)\\
+Impose IC	& \text{Die Fourierkoeffizienten der inneren FR berechnen, diesen Ausdruck einsetzen und als Funktion der äusseren FR nutzen}
+\end{tabular}
+

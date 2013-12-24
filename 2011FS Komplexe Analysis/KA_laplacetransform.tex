@@ -1,0 +1,33 @@
+\section{Laplace-Transformationen (LT)}
+\subsection{Definition}
+Sei $f(t)$ definiert für $t\geq 0$\\
+Dann ist die Laplace-Transformierte (LT) von $f(t)$\\
+\begin{equation*}
+ \text{LT} := \lap[f(t)](s) = F(s) = \int_0^{\infty} f(t) e^{-st} dt
+\end{equation*}
+Alternativ wird folgende Notation verwendet: $f(t) \laplace F(s)$
+
+\subsection{Eigenschaften von LT}
+$
+\begin{array}{lll}
+ \text{Linearität:} 	&\lap[\lambda f+\mu g]			&= \lambda \lap[f] + \mu \lap[g]\quad \lambda,\mu\in\mathbb{C} \\
+ \text{Verschiebung:}	&\lap[ e^{-at}f(t)]			&= F(s+a)\\
+ \text{Verschiebung 2:}	& \multicolumn{2}{l}{ \lap^{-1}[e^{-sa} F(s)] = H(t-a)f(t-a) = \begin{cases} f(t-a), & t\geq a \\ 0, & t\leq a\end{cases}   }\\
+ \text{Skalierung:}	&\lap[f(at)] \enspace(a>0)			&=\frac{1}{a}\cdot F\left( \frac{s}{a} \right) \\
+ \text{Ableitung:} 	&\lap\left[ \frac{df}{dt} \right] (s)	&= sF(s) - f(0)  \\
+			&\lap\left[ \frac{d^2f}{dt^2} \right](s)&= s^2F(s) - sf(0) -f'(0) \\
+			&\lap\left[ \frac{d^nf}{dt^n} \right](s)&= s^nF(s) - \sum_{k=0}^{n-1} s^{n-1-k} \frac{d^kf}{dt^k}(0)  \\
+ \text{Ableitung 2:}	&f(t) = t^k g(t)			&\Rightarrow F(s) (-1)^k \frac{d^k}{ds^k}G(s)\\
+ \text{Faltungsprodukt:}& \multicolumn{2}{l}{\text{Definition im ``Laplaceraum'':} \Bigl( f\ast g\Bigr)(t) := \int_{0}^{t} f(t-s)g(s) ds \quad f,g: [0,\infty[ \to\mathbb{C} }\\
+			&\Bigl(f\ast g\Bigr)(t)			&\Rightarrow L[f\ast g](s) = F(s)\cdot G(s)\\
+ \text{Spezialfall:}	&\lap\left[\int_0^t f(\tau) d\tau\right]&= \frac{1}{s}F(s)\\
+ \text{Periodische Fkt:}&f(t+T) = f(t) \forall t >0				& \Rightarrow F(s) = \frac{1}{1-e^{-sT}} \int_0^T f(t)e^{-st}dt
+\end{array}
+$
+
+\subsection{Umkehrfunktion}
+Sei $f$ stückweise stetig mit Sprungstellen und es gelte $|f(t)| \leq ce^{at}, t\geq0, a\in\mathbb{R}$. Dann ist $F(s)$ analytisch für $\re(s) \geq a$
+\begin{equation*}
+ f(t) = \frac{1}{2\pi i}\int_{\gamma} F(s)e^{st} ds\\
+\gamma: \text{Gerade $t\mapsto b+it$ für beliebiges $b>a$}
+\end{equation*}

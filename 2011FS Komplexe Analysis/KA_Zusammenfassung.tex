@@ -1,0 +1,30 @@
+\documentclass[a4paper,12pt, fleqn]{article}
+
+\usepackage{trfsigns} %Laplace-Transformation http://mirror.switch.ch/ftp/mirror/tex/macros/latex/contrib/trfsigns/trfsigns.pdf
+
+\usepackage{templateZsf} %Achtung \im aus trfsigns wird hier überschrieben
+\DeclareMathOperator{\lap}{L} %Alternativer Laplace-Operator
+
+\usepackage{color,colortbl}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{document}
+%Analytische Funktionen
+\input{KA_analytFkt.tex}
+
+\newpage
+%Komplexe Integration
+\input{KA_integration.tex}
+
+\newpage
+%Fourierreihen
+\input{KA_fourierreihen.tex}
+
+\newpage
+%Fouriertransformationen
+\input{KA_fouriertransform.tex}
+
+\newpage
+%Laplacetransformationen
+\input{KA_laplacetransform.tex}
+\end{document}

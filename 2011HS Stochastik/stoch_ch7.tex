@@ -1,0 +1,32 @@
+\section{Punktschätzungen}
+\subsection{Momentenmethode}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Parametervektor $\Theta$	& \text{Enthält die für eine Verteilung relevanten Parameter. Bsp: } \Theta = (\mu, \sigma^2) \text{ bei Normalverteilung}, \Theta = \lambda \text{ bei Poissonverteilung}\\
+Schätzer für $\Theta$		& \hat{\Theta}_j := g_j(\hat{\mu}_1,...,\hat{\mu}_d)\quad j = 1,...,d\\
+				& \text{wobei } \hat{\mu}_j := \frac{1}{n} \sum_{i=1}^n x_i^j = \E(X^k)\quad j = 1,...,d\\
+Bsp: Poissonverteilung		& \begin{array}[t]{lll}
+                      		  \lambda = \E(X)			& \Rightarrow	& \hat{\lambda} = \frac{1}{n} \sum_{i=1}^n X_i\\
+				  \lambda = \V(x) = \E(X^2) - \E(X)^2	& \Rightarrow
+                      		  \end{array}
+\end{tabular}
+
+\subsection{Maximum-Likelihood-Schätzer}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Max.Likelihood Funktion		& L(\vec \Theta ; \vec x) = \prod_{i=1}^n f_{\Theta}(x_i)\quad f_{\Theta} = \text{Dichtefunktion}\\
+log-Likelihood Fkt.		& \ell := \log (L) = \sum_{i=1}^n \log f_{\Theta}(x_i)\\
+\end{tabular}
+\begin{tabular}{p{4cm} p{15cm}}
+Vorgehen	& \begin{enumerate}
+        	  	\item Stelle Max.Likelihood Fkt. für die gewünschte Verteilung auf. Die Dichtefunktion soll dabei mit den Parametern $\Theta_j$ geschrieben werden. Bsp: $f(x) = \lambda e^{-\lambda x} \Leftrightarrow f(\Theta ; \vec x) = \Theta e^{-\Theta x_i}$. Bei mehreren Parametern entsprechend mit $\Theta_1, \Theta_2$ usw.
+			\item Berechne $\Theta_j$ für die $L(\vec \Theta; \vec x)$ oder $\ell(\vec \Theta; \vec x)$ maximal wird.
+        	  \end{enumerate}
+\end{tabular}
+\subsubsection{Beispiel}
+$X \sim EXP(\Theta)$\\
+\begin{tabular}{p{4cm}  >{$}p{16cm}<{$}}
+Dichtefunktion		& f(\Theta ; \vec x) = \Theta e^{-\Theta x_i}\\
+$L(\Theta ; \vec x)$	& L(\Theta ; \vec x) = \prod_{i=1}^n \Theta e^{-\Theta x_i}\\
+$\ell(\Theta ; \vec x)$	& \ell(\Theta ; \vec x) = \sum_{i=1}^n \ln \left( \Theta e^{-\Theta x_i} \right) = \sum_{i=1}^n \ln (\Theta) - \Theta x_i\\
+Ableiten		& 0 = \frac{\partial \ell}{\partial \Theta} = \sum_{i=1}^n \frac{1}{\Theta} - x_i = \frac{n}{\Theta} - \sum_{i=1}^n x_i\\
+Schätzer		& \Rightarrow \hat{\Theta} = \frac{n}{\sum_{i=1}^n x_i} = \frac{1}{\widebar{X}_n}
+\end{tabular}

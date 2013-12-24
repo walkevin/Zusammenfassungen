@@ -1,0 +1,42 @@
+\section{Introduction to Linear Programming (LP)}
+\subsection{Definition of LP}
+A LP is a problem to minimize or maximize a linear so called objective function, satisfying a finite set of linear constraints. \textbf{All} of the given linear constraints must be fulfilled. The number of variables and the number of linear constraints need not be the same.\\
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+Objective function	& c_1x_1 + c_2x_2 + ... + c_nx_n = c^Tx\quad c \in \mathbb{R}^n,\quad \text{$x$ are variables}\\
+Linear constraints	& a_{i1}x_1 + a_{i2}x_2 + ... + a_{in}x_n = b_i\\
+			& a_{j1}x_1 + a_{j2}x_2 + ... + a_{jn}x_n \geq b_j\\
+			& a_{k1}x_1 + a_{k2}x_2 + ... + a_{kn}x_n \leq b_k\\
+			& i,j,k \text{ stand for different row indices},\quad b\in\mathbb{R}^m\quad A\in\mathbb{R}^{m,n}\\
+			& \text{Strict inequalities are not allowed!}\\
+Compact LP notation	& \begin{array}[t]{ll}
+                   	   \text{\{min,max\}}	& c^Tx\\
+			   \text{subject to}	& Ax = b\\
+						& A'x \geq b'\\
+						& A''x \leq b''
+                   	  \end{array}\\
+Example			& \begin{array}[t]{lrcrcrr}
+       			   \min		& 2x_1 & - &  x_2 & - & 3x_3\\
+			   \text{s.t.}	&  x_1 & + & 4x_2 &   &     &\leq 4\\
+					&      &   &  x_2 & + & x_3 &\leq 4\\
+					&  x_1 &\geq 0&x_2 & \geq 0\\\\
+			   \multicolumn{7}{l}{\Leftrightarrow \min c^Tx \text{ s.t. }Ax \leq b}
+       			  \end{array}\qquad
+			  \begin{array}[t]{ll}
+			   c^T		& = [2,-1,-3]\\
+			   A		& = \begin{bmatrix}
+			    		     1 & 4 & 0\\
+					     0 & 1 & 1\\
+					     -1& 0 & 0\\
+					     0 & -1 & 0\\
+			    		    \end{bmatrix}\\
+			   b^T		& = [4,4,0,0]\\
+			   x		& = [x_1,x_2,x_3]
+			  \end{array}
+\end{tabular}
+\subsection{Solution of LP's}
+{\itshape Ref. P.13}\\
+\begin{tabular}{p{4cm} p{15cm}}
+Theorem 1.3	& Every LP is either \textbf{infeasible}, \textbf{unbounded} or it has an \textbf{optimal} solution\\
+Infeasibility	& The constraints are such that they cannot be fulfilled at the same time. (Insert graphics for 2D case)\\
+Unboundedness	& The constraints form a feasible region which is infinite in the direction of the objective function (unbounded) (Insert graphics for 2D case)
+\end{tabular}

@@ -1,0 +1,74 @@
+\section{Störungstheorie}
+\begin{tabular}{p{4cm} p{15cm}}
+Hamilton-Operator	& $\hat{H}|n\rangle = E_n|n\rangle$\\
+			& $\hat{H} = \hat{H}^0 + \lambda \hat{H}' + \lambda^2 \hat{H}'' + ... \quad \hat{H}'' \ll \hat{H}' \ll \hat{H}$\\
+Bekannte Teillösung	& $\hat{H}^0 | n^0 \rangle = E^0 | n^0 \rangle$\quad Eigenwerte $E_n^0$ und Eigenfkt $|n^0\rangle$ bekannt.\\
+Parameter $\lambda$	& $0 \leq \lambda \leq 1$\quad 0: lösbäres Problem $\hat{H}^0$, 1: gestörtes Problem\quad $\lambda$ wird am Schluss 1 gesetzt.\\
+\end{tabular}
+\subsection{Störungsrechnung für nicht entartete Zustände}
+Vollständige Herleitung siehe 7-2 ff.\\
+\begin{tabular}{p{4cm} p{15cm}}
+Potenzreihenentwicklung	& \begin{tabular}[t]{rcl}
+			    $|n\rangle$	& = & $|n^0 \rangle + \lambda |n'\rangle + \lambda^2 |n''\rangle + ...$\\
+			    $E_n$	& = & $E_n^0 + \lambda E_n' + \lambda^2 E_n'' + ...$
+			  \end{tabular}\\
+$|n' \rangle$			& $|n' \rangle = \sum_{k\neq n} c_k|k^0\rangle$\\
+Korrekturterm 1. Ordnung für $n = m$ (Eigenwerte)	& $E_n' = \langle n^0 | \hat{H}'| n^0 \rangle = \hat{H}'_{nn}$\\
+Korrekturterm 1. Ordnung für $n \neq m$ (Eigenfkt)	& $|n' \rangle = \sum_{m\neq n} \frac{\langle m^0 | \hat{H}' | n^0 \rangle}{E_n^0 - E_m^0} |m^0\rangle$\\
+$|n'' \rangle$		& $|n''\rangle = \sum_{k\neq n} b_k | k^0 \rangle $\\
+Korrekturterm 2. Ordnung für $n = m$	& $E_n'' = \sum_{m\neq n} \frac{ |\langle n |\hat{H}'|m \rangle|^2}{E_n^0-E_m^0}$\\
+Korrekturterm 2. Ordnung für $n \neq m$	& $|n''\rangle = \sum_{m\neq n} \frac{\langle m^0 | \hat{H}'' | n^0 \rangle + \langle m^0 | \hat{H}'| n' \rangle}{E_n^0-E_m^0}$
+\end{tabular}
+\subsubsection*{Beispiel}
+\begin{tabular}{p{4cm} p{15cm}}
+Hamilton-Operator	& \begin{tabular}[t]{l}
+			    $\hat{H} = -\frac{\hbar^2}{2M} \frac{d^2}{dx^2} + V^0(x) + V'(x)$\\
+			    $V^0(x) = \begin{cases} 0 & 0 < x < L\\ \infty & \text{sonst}\end{cases}$\\
+			    $\hat{H}' = V'(x) = -\epsilon \sin \left( \frac{\pi x}{L} \right)$
+			  \end{tabular}\\
+Bekannte Teillösung	& \begin{tabular}[t]{rcl}
+			    $E_n^0$		& = & $\frac{h^2n^2}{8ML^2}$\\
+			    $|n^0\rangle$	& = & $ \sqrt{\frac{2}{L}} \sin \left(\frac{n\pi x}{L} \right)$
+			  \end{tabular}\\
+Eigenwertkorrektur 1. Ordnung (n=1)		& $E_{n=1}' = \hat{H}'_{nn} = \langle 1^0 |\hat{H} | 1^0 \rangle = \int_0^L \sqrt{\frac{2}{L}} \sin \left( \frac{\pi x}{L} \right) \cdot \left( -\epsilon \sin \left( \frac{\pi x}{L} \right) \right) \cdot \sqrt{\frac{2}{L}} \sin \left( \frac{\pi x}{L} \right) dx = ... = -\frac{8\epsilon}{3\pi}$\\
+Eigenwertkorrektur 2. Ordnung (n=1)		& \begin{tabular}[t]{rcl}
+						    $E_{n=1}''$	& = & $\sum_{m\neq n} \frac{ |\overbrace{\langle n |\hat{H}'|m}^{H'_{nm}} \rangle|^2}{E_n^0-E_m^0}$\\
+						  $E_1^0-E_m^0$	& = & $\frac{h^2}{8ML^2}(1-m^2)$\\
+						      $H_{1m}'$	& = & $-\frac{2\epsilon}{L} \int_0^L \sin\left(\frac{\pi x}{L} \right) \sin\left(\frac{\pi x}{L} \right) \sin\left(\frac{m\pi x}{L} \right) dx$ \\
+								& = & $ \frac{\epsilon}{\pi} \left(\frac{1}{m} - \frac{1}{2(m+2)}-\frac{1}{2(m-2)} \right) ((-1)^m -1)$\\
+						    $E_{n=1}''$	& = & $-\frac{8\epsilon^2ML^2}{h^2} (3.60 \cdot 10^{-3} + 2.45\cdot 10^{-5} + 1.4 \cdot 10^{-6} +...)$
+						   \end{tabular}\\
+korrigierter Eigenwert		& $E_{n=1} \approx \underbrace{\frac{h^2}{8ML^2}}_{=E_{n=1}^0}- \frac{8\epsilon}{3\pi} -3.63 \cdot 10^{-3}\frac{8\epsilon^2ML^2}{h^2} + ...$
+\end{tabular}
+\subsection{Störungsrechnung für entartete Zustände}
+\begin{tabular}{p{4cm} p{15cm}}
+Entartung	& $E_1^0 = E_2^0 = ... = E_N^0 = E^0$\\
+gestörtes Problem	& $\hat{H} \varphi_j = E_j \varphi_j$\\
+Fkt. nullter Ordnung	& $\varphi_j^0 = \sum_i^N c_{ij} \Psi_i^0$\\
+Potenzreihenentwicklung	& \begin{tabular}[t]{rcl}
+			    $\varphi_j$	& = & $\varphi_j^0 + \lambda \varphi_j' + \lambda^2 \varphi_j'' + ...$\\
+			    $E_j$	& = & $E^0 + \lambda E_j' + \lambda^2 E_j'' + ...$
+			  \end{tabular}\\
+Korrekturmatrix		& $\sum_{i=1}^N c_{ij} \left(\hat{H}'_{mi} - E_j' \delta_{mi} \right) = 0$\\
+			& $\Leftrightarrow
+			   \begin{bmatrix} \hat{H}'_{11}-E_j'	& \hat{H}'_{12}		& \dotsc	& \hat{H}'_{1N} \\
+					   \hat{H}'_{21}	& \hat{H}'_{22} - E_j'	& \dotsc	& \hat{H}'_{2N} \\
+					   \vdots		& \vdots		& \ddots	& \vdots\\
+					   \hat{H}'_{N1}	& \hat{H}'_{N2}		& \dotsc	& \hat{H}'_{NN}-E_j' \\
+			   \end{bmatrix}
+			   \begin{bmatrix}
+			   	c_{1j} \\ c_{2j} \\ \vdots \\ c_{Nj}
+			   \end{bmatrix}
+			  = 0$\\
+			& $E_j'$ und $c_{ij}$ sind die Eigenwerte resp. Eigenvektoren der Matrix $\hat{H}'$. Diese kann man in obigen Formeln (s. Potenzreihenentwicklung) einsetzen für die korrigierten Funktionen und Eigenwerte.
+\end{tabular}
+\subsection{Zeitabhängige Störungsrechnung}
+\begin{tabular}{p{4cm} p{15cm}}
+gestörtes Problem	& $\hat{H}'(t) = \hat{H}^0 + \hat{H}'(t)$\\
+Eigenfkt des ungestörten Problems	& $\Psi_n(t) = |n_0\rangle\exp \left( -\frac{iE_n^0t}{\hbar} \right) = \sum_k a_k(t) \Psi_k(t) = \sum_k a_k(t) |k_0\rangle\exp \left( -\frac{iE_k^0t}{\hbar} \right)$\\
+zeitabh. SG		& $\hat{H}\Psi(t) = i\hbar \frac{d}{dt} \Psi(t)$\\
+experimentelle Störung	& $\hat{H}'(t) = \hat{V} \cdot f(t)$\quad $\hat{V}$: Störung, $f(t)$: zeitl. Ablauf des Experiments\\
+Korrekturterm		& $a_p(t) \approx -\frac{i}{\hbar} V_{pn} \int_0^t f(\tau) \exp (i \omega_{pn}\tau) d\tau$\quad (Einsetzen in Eigenfkt.)\\
+ÜbergangsWSK		& $P_{np}(t) = |a_p(t)|^2$\quad Übergang von $|n^0\rangle$ zu $|p^0\rangle$\\
+Übergangsgeschw.	& $R_{np}(t) = \frac{d|a_p(t)|^2}{dt}$
+\end{tabular}

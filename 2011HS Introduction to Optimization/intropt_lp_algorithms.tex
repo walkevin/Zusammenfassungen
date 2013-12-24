@@ -1,0 +1,84 @@
+\section{LP Algorithms}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Transformation Canonical to Dictionary Form (DF)	& \begin{array}[t]{|lrclll|}
+                                    	   \text{max or min}	& x_f &&&&\\
+					   \text{s.t.}		& x_f & = & 0\cdot x_g & + & c^Tx_{N_0}\\
+								& x_{B_0} & = & b\cdot x_g & - & Ax_{N_0}\\
+								& x_g & = & 1 &&\\
+								& x_f & = & \text{free}&&\\
+								& x_j & \geq & 0 & \multicolumn{2}{l|}{\text{ for all other $j$}} \\
+                                    	  \end{array}\\
+Indexing in Dictionary	&D := \begin{array}[t]{l|l|llll}
+			&	\multicolumn{5}{c}{N}\\\hline
+	\multirow{5}{*}{B}&	  & g & 1 & 2 & 3 \\\hline
+			&	f & 0 & \multicolumn{3}{c}{c^T} \\
+                	 &      4 & \multirow{3}{*}{b}	& \multicolumn{3}{c}{-A}\\
+			&	5 & 			&\\
+			&	6 &			&\\
+                	  \end{array}\\
+Primal in DF		& \begin{array}[t]{|ll|}
+			   \text{max} & x_f\\
+			   \text{s.t.}& x_B = Dx_N\\
+				      & x_g = 1, x_f \in\mathbb{R}, x_j \geq 0 \text{ for all other $j$}\\
+			  \end{array}\\
+Dual in DF		& \begin{array}[t]{|ll|}
+			   \text{max} & y_g\\
+			   \text{s.t.}& y_N = -D^Ty_B\\
+				      & y_f = 1, y_g \in\mathbb{R}, y_j \geq 0 \text{ for all other $j$}\\
+			   \multicolumn{2}{l}{\text{This corresponds to the following LP: min  } b^Ty_B, s.t. A^Ty_B \geq c, y_B \geq 0}
+			  \end{array}\\
+Equation 4.8		& x^Ty = x_B^Ty_B + x_N^Ty_N = 0\quad x_B = Dx_N, y_N = -D^Ty_B\\
+			& \text{for any primal and dual feasible soultions $x$ and $y$}\\
+Basic Vector		& \begin{array}[t]{l}\text{
+              		   The basic vector $x(B,j)$ for $j\in N$ is the unique solution $\bar{x}$ to $x_B = Dx_N$ such that}\\
+			   \bar{x}_j = 1\\
+			   \bar{x}_{N-j} = \mathbf{0}\\
+			   \bar{x}_B = D._j
+              		  \end{array}\\
+Basic Solution		& x(B,g)\\
+Basic Directions	& x(B,j), j\in N-g\\
+Dual Basic Vector	& \begin{array}[t]{l}\text{
+              		   The Dual basic vector $y(B,i)$ for $i\in B$ is the unique solution $\bar{y}$ to $y_N= -D^Ty_B$ such that}\\
+			   \bar{y}_i = 1\\
+			   \bar{y}_{B-i} = \mathbf{0}\\
+			   \bar{y}_N = -(D_i)^T
+              		  \end{array}\\
+Dual Basic Solution	& y(B,f)\\
+Basic Directions	& y(B,i), i\in B-f\\
+Proposition 4.4		& \text{
+			  \begin{tabular}[t]{lp{14cm}}
+			  a. & If the dictionary is feasible then the associated basic solution is feasible.\\
+			  b. & If the dictionary is dual feasible then the associated dual solution is feasible.\\
+			  c. & If the dictionary is both primal and dual feasible then the associated basic solution $\bar{x}$ and the associated dual basic solution $\bar{y}$ are optimal, and furthermore $\bar{x}_f + \bar{y}_g = 0$
+			  \end{tabular}
+			  }\\
+Feasibility of LP's	& \text{See Figure 4.1 on page 37 and Figure 4.2 on page 38 in Fukuda's lecture notes}
+\end{tabular}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Pivot Operation	& D = \begin{array}[t]{l|lllll|}
+                	       & 	& j 		& 	& s &\\\hline
+			       &	& \vdots	& 	& \vdots &\\
+			     i & \cdots	& d_{ij}	& \cdots & d_{is} & \cdots\\
+			       & 	& \vdots	&	& \vdots &\\
+			     r & \cdots	& d_{rj}	& \cdots & d_{rs} & \cdots\\
+			       & 	& \vdots	&	& \vdots &\\\hline
+                	      \end{array}\quad i \in B-r, j\in N-s\\
+			& \Downarrow \text{Pivot on (r,s)}\\
+			& D' = \begin{array}[t]{l|lllll|}
+                	       & 	& j 		& 	& r &\\\hline
+			       &	& \vdots	& 	& \vdots &\\
+			     i & \cdots	& d_{ij}-\frac{d_{is} \cdot d_{rj}}{d_{rs}}	& \cdots & \frac{d_{is}}{d_{rs}} & \cdots\\
+			       & 	& \vdots	&	& \vdots &\\
+			     s & \cdots	& -\frac{d_{rj}}{d_{rs}}	& \cdots & \frac{1}{d_{rs}} & \cdots\\
+			       & 	& \vdots	&	& \vdots &\\\hline
+                	      \end{array}\quad i \in B-s, j\in N-r\\
+Proposition 4.6		& \text{
+			  \begin{tabular}[t]{lp{14cm}}
+			  a. & (Reversibility) The result of a pivot operation of $D'$ on $(s,r)$ is $D$\\
+			  b. & (Equivalence) The associated equation systems are equivalent $\Rightarrow V(D) = V(D')$, V denotes the set of solutions\\
+			  c. & (Dual equivalence) The associated dual equation systems are equivalent $\Rightarrow V(-D^T) = V(-D'^T)$
+			  \end{tabular}
+			  }\\
+CrissCross-Method	& \text{See algorithm on page 43 in Fukuda}
+\end{tabular}
+

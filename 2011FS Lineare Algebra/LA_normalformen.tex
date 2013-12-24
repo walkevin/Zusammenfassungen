@@ -1,0 +1,75 @@
+\section{Normalformen}
+\begin{tabular}{lp{15cm}}
+ Satz 9.1	& \begin{itemize}
+         	   \item Jede halbeinfache Matrix $A$ ist ähnlich zu einer Diagonalmatrix $D$
+		   \item Jede reelle symmetrische Matrix $A$ ist orthogonal-ähnlich zu einer Diagonalmatrix $D$
+		   \item Jede quadratische Matrix $A$ ist ähnlich zu einer Rechtsdreicksmatrix $R$ (In der Diagonalen von $R$ stehen die EW von $A$)
+         	  \end{itemize}\\
+ Def.		& Ein $\tilde{D}_{jj}$ der Ordnung 1 ist ein reeller EW von A\newline
+		  Ein $\tilde{D}_{jj}$ der Ordnung 2 hat die Form $\tilde{D}_{jj} = \begin{pmatrix}
+		                                                                 a_j & b_j\\
+		                                                                -b_j & a_j\\
+		                                                                \end{pmatrix}$, wobei $a_j \pm ib_j$ ein konjugiert komplexes Eigenwertpaar von $A$ ist.\\
+ Satz 9.2	& Jede reelle halbeinfache quadratische Matrix $A$ ist ähnlich zu einer reellen Blockdiagonalmatrix\newline
+		  $\tilde{D} = \begin{pmatrix}
+		                \tilde{D}_{11}	& & &0 \\
+				& \tilde{D}_{22}  & & \\
+				& & \ddots          &\\
+				0 & & &\tilde{D}_{kk}
+		               \end{pmatrix}$ mit Matrizen $\tilde{D}_{jj}$ der Ordnung 1 oder 2.\\
+		& Jede reelle quadratische Matrix $A$ ist ähnlich zu einer reellen oberen Blockdreiecksmatrix\newline
+		  $\tilde{R} = \begin{pmatrix}
+		                \tilde{R}_{11}	& & &\ast \\
+				& \tilde{R}_{22}  & & \\
+				& & \ddots          &\\
+				0 & & &\tilde{R}_{kk}
+		               \end{pmatrix}$ mit Matrizen $\tilde{R}_{jj}$ der Ordnung 1 oder 2.\\
+ Satz 9.3	& Zu jeder reellen quadratischen Matrix $A$ existiert eine orthogonale Matrix $U$, sodass $\tilde{S} := U^T AU$ eine reelle obere Blockdreiecksmatrix ist:\newline
+		  $R^{\ast} = \begin{pmatrix}
+		                R^{\ast}_{11}	& &\ast \\
+				& \ddots         &\\
+				0 & & R^{\ast}_{kk}
+		               \end{pmatrix}$ mit Matrizen $R^{\ast}_{jj}$ der Ordnung 1 oder 2. Die Ordnung 2 ist hier etwas anders:
+Die EW-Paare stehen nicht direkt drin, sondern so, dass man sie zuerst mit dem char.Polynom berechnen muss.\\
+\end{tabular}\\
+\begin{tabular}{lp{15cm}}
+  Satz 9.6	& {\bfseries Singulärwertzerlegung} Zu jeder reellen $m\times n$-M. $A$ vom Rang $r$ existieren\newline
+		  \begin{tabular}{lll}
+		  eine orthogonale & $m\times m-$Matrix $U$ & $u^{(i)}$ = {\bfseries Links-Singulärvektoren}\\
+		  eine orthogonale & $n\times n-$Matrix $V$ & $v^{(i)}$ = {\bfseries Rechts-Singulärvektoren}\\
+		  eine		   & $m\times n-$Matrix $S$,& $s_i$ = {\bfseries Singulärwerte} sodass
+		  \end{tabular}\newline
+		  \begin{equation*}
+		   A = USV^T
+		  \end{equation*}
+		  $S$ hat dabei Diagonalgestalt, d.h. $S = \begin{cases}
+		                                            \left(\tfrac{~\hat{S}~}{0}\right) & m \geq n\\
+							    (\hat{S} | 0)		     & m \leq n
+		                                           \end{cases}$ \newline und $\hat{S} = \mathrm{diag}(s_1,s_2,...,s_r,s_{r+1},...,s_p), p=\min(m,n)$\\
+		& \begin{itemize}
+		   \item $s_1 = ||A||_2, s_1 \geq s_2 \geq...\geq s_r > 0, s_{r+1} = ... = s_p = 0$
+		   \item Die Zahlen $s^2_i$ sind die EW von $\begin{cases}
+							      A^T A & m \geq n\\
+							      A A^T & m \leq n
+		                                            \end{cases}$
+		   \item Für die Spalten $u^{(i)}$ von $U$ und die Spalten $v^{(i)}$ von $V$ gilt:\newline
+			  $Av^{(i)} = s_iu^{(i)}$\newline
+			  $A^Tu^{(i)} = s_iv^{(i)},\quad i = 1,...,p$\newline
+			  Die ``restlichen'' $v^{(i)}$ und $u^{(i)}$ sind dann gleich 0
+		  \end{itemize}\\
+ Korollar 9.7	& Für jede $m\times n$-Matrix $A$ vom Rang $r$ gilt\newline
+		  \begin{tabular}{lll}
+		   Kern $A$	&=& span$\{v^{(r+1)},..,v^{(n)}\}$ = Spalten von $V$\\
+		   Bild $A$	&=& span$\{u^(1),...,u^(r)\}$ = Spalten von $U$
+		  \end{tabular}\\
+		& Für die transponierte Matrix $A^T$ gilt\newline
+		  \begin{tabular}{lll}
+		   Kern $A^T$	&=& span$\{u^{(r+1)},..,u^{(m)}\}$ = Spalten von $U$\\
+		   Bild $A^T$	&=& span$\{v^(1),...,v^(r)\}$ = Spalten von $V$
+		  \end{tabular}\\
+ Satz 9.8	& Sei $A$ eine $m\times n$-Matrix. Dann\newline
+		 $A = s_1E_1 + s_2E_2 +...+ s_pE_p,\quad p = \min(m,n)$\newline
+		 wobei $E_i := u^{(i)}{v^{(i)}}^T$ mit Rang $E_i = 1, \sum_{k=1}^{m} \sum_{l=1}^n ((E_i)_{kl})^2 = 1$\\
+ Lemma 9.9	& Sei $A$ eine $m\times n$-Matrix, $B$ eine $n\times p$-Matrix. Dann gilt für die $m\times p$-Produktematrix\\
+		& $AB = a^{(1)}b^{[1]}+a^{(2)}b^{[2]}+...+a^{(n)}b^{[n]}$
+\end{tabular}

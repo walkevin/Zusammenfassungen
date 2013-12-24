@@ -1,0 +1,161 @@
+\section{Rounded domains}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Sturm-Liouville-Operator	& (p(x)\cdot X')' + q(x)\cdot X = \lambda w(x)\cdot X\\
+Dirichlet problem (BC of 1st kind) & u(0,t) = ... \& u(L,t) = ...\\
+Neumann problem (BC of 2nd kind) & \frac{\partial u}{\partial x}(0,t) = ... \& \frac{\partial u}{\partial x}(L,t) = ...\\
+Robin problem (BC of 3rd kind)	& \alpha u(0,t) + \beta \frac{\partial u}{\partial x}(0,t) = 0 \& \gamma u(L,t) + \delta \frac{\partial u}{\partial x}(L,t) = 0\\
+Laplace Equation		& \boxed{\Delta u = 0}\\
+$\Delta u$			& \begin{array}[t]{ll}
+          			   \text{Cartesian (3D)}	& \Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\\
+				   \text{Polar (2D)}		& \Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \varphi^2}\\
+				   \text{Cylindrical (3D)}	& \Delta u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \varphi^2} + \frac{\partial^2 u}{\partial z^2}\\
+				   \text{Spherical (3D)}	& \Delta u = \frac{\partial^2 u}{\partial \rho^2} + \frac{2}{\rho}\frac{\partial u}{\partial \rho} + \frac{1}{\rho^2}\frac{\partial^2 u}{\partial \theta^2} + \frac{\cot \theta}{\rho^2} \frac{\partial u}{\partial \theta} + \frac{1}{\rho^2 \sin^2 \theta}\frac{\partial^2 u}{\partial \varphi^2}
+          			  \end{array}
+\end{tabular}
+\subsection{Polar coordinates}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Laplace equation		& \Delta u = 0 \Leftrightarrow\\
+				& \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \varphi^2} = 0\\
+Ansatz				& u(r,\varphi) = R(r)P(\varphi)\\
+ODE-System			& \begin{array}[t]{||ll}
+				   I & P'' + kP = 0\\
+				   II & r^2R'' + rR' -kR = 0
+             			  \end{array}\\
+Solution to ODE I		& \begin{array}[t]{l}
+                   		   \text{Hidden BC: } P(\varphi) = P(\varphi + 2\pi)\\
+				   P_n(\varphi) = a_n \cos(n\varphi) + b_n \sin(n\varphi),\quad k = n^2
+                   		  \end{array}\\
+Solution to ODE II		& \begin{array}[t]{l}
+                    		   \text{2nd order Euler equation $\Rightarrow$ Use Ansatz $R(r) = r^q$}\\
+				   \begin{cases}
+				    R_n = ar^n + br^{-n} & n = 1,2,3,...\\
+				    R_0 = a + b\ln(r)	 & n = 0
+				   \end{cases}
+                    		  \end{array}\\
+Additional constraints		& \begin{array}[t]{lll}
+                      		  \text{If domain...}		&\text{Take (to get bounded solutions)}\\
+				  \text{includes origin, excludes infinity}	& R_n(r) = a_nr^n		& n \geq 0\\
+				  \text{excludes origin, includes infinity}	& R_n(r) = b_nr^{-n}		& n \geq 0\\
+				  \text{excludes both origin and infinity}	& R_n(r) = a_nr^n + b_nr^{-n}	& n > 0\\
+										& R_0(r) = a + b \ln(r)		& n = 0
+                      		  \end{array}
+\end{tabular}
+\subsection{Bessel equations}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Bessel eqn of order $\alpha$	& x^2X'' + xX' + (x^2-\alpha^2)X = 0\\
+Solution			& A \cdot J_{\alpha}(x) + B \cdot Y_{\alpha}(x)\\
+Modified Bessel eqn of order $\alpha$	& x^2X'' + xX' + (\mathbf{-}x^2-\alpha^2)X = 0\\
+Solution			& A \cdot I_{\alpha}(x) + B \cdot K_{\alpha}(x)\\
+Properties of Bessel fns	& \begin{array}[t]{lllll}
+						& x \to 0		& x \to \infty		& \text{Behaviour}	& \text{Roots}\\
+				  I_{\alpha}(x)	& \text{bounded}	& \text{unbounded}	& \text{like $e^x$}	& \text{maybe at $x=0$} \\
+				  K_{\alpha}(x)	& \text{unbounded}	& \text{bounded}	& \text{like $e^{1/x}$}	& \text{none} \\
+				  Y_{\alpha}(x)	& \text{singular}	& 			& \text{oscillating}	& \text{countable many}\\
+				  J_{\alpha}(x)	& 			&			& \text{oscillating}	& \text{countable many}
+                        	  \end{array}
+\end{tabular}
+\subsection{Example for Bessel equation}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Almost Bessel equation		& \begin{array}[t]{l}
+				   r^2R'' + rR' + (p^2r^2 - n^2)R = 0\\
+				   \text{Substitute: }\varrho = p \cdot r\\
+				  \end{array}\\
+				& \begin{array}[t]{lll}
+				   \bar{R}(\varrho) 	&= R\left( \frac{\varrho}{p} \right)\\
+				   \bar{R}'(\varrho)	&= \left(R\left( \frac{\varrho}{p} \right) \right)'	& = \frac{1}{p} R'\left( \frac{\varrho}{p} \right)\\
+				   \bar{R}''(\varrho)	&= \left(R\left( \frac{\varrho}{p} \right) \right)''	& = \frac{1}{p^2} R''\left( \frac{\varrho}{p} \right)\\
+				  \end{array}\\
+Impose substitutions 		& \begin{array}[t]{cccccl}
+				   r^2R''(r)	& +	& rR'(r)	& +	& (p^2r^2 - n^2)R(r)	& = 0\\
+				   \frac{\varrho^2}{\cancel{p^2}} \cancel{p^2} \bar{R}''(\varrho)	& +	& \frac{\varrho}{\cancel{p}}\cancel{p} \bar{R}'(\varrho)	& +	& \left(\varrho^2 - n^2 \right) \bar{R}(\varrho)	& = 0
+                   		  \end{array}\\
+Bessel function			& \text{The above is now a Bessel equation of order $n$. Its solution is given by:}\\
+				& \bar{R}(\varrho) = R(r) = A J_n + B Y_n\\
+				& \text{If we want $|R(0)| < \infty$, then $B = 0$}
+\end{tabular}
+\subsection{Cylindrical coordinates}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Laplace equation		& \Delta u = 0 \Leftrightarrow\\
+				& \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\frac{\partial u}{\partial r} + \frac{1}{r^2} \frac{\partial^2 u}{\partial \varphi^2} + \frac{\partial^2 u}{\partial z^2} = 0\\
+Ansatz				& u(r,\varphi,z) = R(r)P(\varphi)Z(z)\\
+ODE-System			& \begin{array}[t]{||ll}
+				   I & P'' + k_2P = 0\\
+				   II & r^2R'' + rR' + (k_1r^2 -k_2)R = 0\\
+				   III & Z'' - k_1Z = 0
+            			  \end{array}\\
+Solution to ODE's		& \text{Hope that the solution is independent from $\varphi \Rightarrow u(r,\varphi,z) = R(r)Z(z), k_2 = 0$}\\
+Trick 77			& u = u_1 + u_2\\
+				& \begin{array}[t]{l|l}
+				   \Delta u_1 = 0	& \Delta u_2 = 0\\
+				   u_1(r,0) = 0		& u_2(r,0) = f(r)\\
+				   u_1(r,L) = 0		& u_2(r,L) = g(r)\\
+				   u_1(\mu,z) = h(z)	& u_2(\mu,z) = 0
+				  \end{array}\\
+Solve $u_1$ Problem		& \begin{array}[t]{l}
+                   		   Z''-k_1Z = 0, Z(0) = Z(L) = 0\\
+				   Z_{n1}(z) = \sin \frac{n\pi z}{L},\quad n = 1,2,...\quad k_1 = -\left(\frac{n\pi}{L}\right) = -p_n^2\\
+				   r^2R'' + rR' -p^2r^2R = 0\\
+				   \text{By substituting $\varrho = p\cdot r$, we get }R_{n1}(r) = A_nI_0(p_n \cdot r) + B_nK_0(p_n \cdot r)\\
+				   \text{Depending on domain, $A_n$ or $B_n$ might be set to 0}\\
+				   u_1(r,z) = \sum_{n \geq 1} R_{n1}(r) Z_{n1}(z)
+				  \end{array}\\
+Solve $u_2$ Problem		& \begin{array}[t]{ll}
+                   		  1.	& \text{Try to determine the sign which $k_1$ must have with BC $u_2(\mu,z) = 0 \Rightarrow R(\mu) = 0$}\\
+				  2.	& \text{In order to have $R(\mu) = 0$, $R$ must not be the modified Bessel function.}\\
+				  3.	& \text{Here: Choose $k_1 = p^2 > 0$}\\
+                   		  \end{array}\\
+				& \begin{array}[t]{llll}
+				  \multicolumn{4}{l}{\text{Case $k_1 = 0$}}\\
+						& rR'' + R' = 0	& \Leftrightarrow	& (rR')' = 0\\
+				  \Rightarrow 	& rR' = b	& \Leftrightarrow	& R' = \frac{b}{r}\\
+				  \Rightarrow	& R(r) = a + b \ln (r)\\
+				  \multicolumn{4}{l}{\text{It depends on the domain if this is a nontrivial result}}
+				  \end{array}
+\end{tabular}
+\subsection{Spherical coordinates}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Spherical coordinates		& \Delta u = 0\Leftrightarrow\\
+				& \frac{\partial^2 u}{\partial \rho^2} + \frac{2}{\rho}\frac{\partial u}{\partial \rho} + \frac{1}{\rho^2}\frac{\partial^2 u}{\partial \theta^2} + \frac{\cot \theta}{\rho^2} \frac{\partial u}{\partial \theta} + \frac{1}{\rho^2 \sin^2 \theta}\frac{\partial^2 u}{\partial \varphi^2} = 0\\
+Ansatz				& u(\rho,\varphi,\theta) = R(\rho) S(\varphi) T(\theta)\\
+Sep. of vars.			& \rho^2 R''ST + 2\rho R'ST + RST'' + \cot\theta RST' + \frac{1}{\sin^2 \theta} RS''T = 0 \Leftrightarrow\\
+				& \frac{\rho^2 R'' + 2\rho R'}{R} = - \frac{T'' + \cot \theta T'}{T} - \frac{1}{\sin^2 \theta} \frac{S''}{S} = k_1\\
+				& \frac{\sin^2 \theta T'' + \cos\theta \sin \theta T'}{T} + k_1 \sin^2 \theta = -\frac{S''}{S} = k_2\\
+ODE-System			& \begin{array}[t]{||ll}
+				   I 	& \rho^2R'' + 2\rho R' -k_1 R = 0\\
+				   II 	& S'' + k_2S = 0\\
+				   III 	& \sin^2 \theta T'' + \sin\theta \cos\theta T' + (k_1 \sin^2 \theta - k_2) T = 0
+             			  \end{array}\\
+Solve ODE I			& \begin{array}[t]{l}
+             			   \text{2nd order Euler eqn $\Rightarrow R(\rho) = \rho^m\quad k_1 = l(l+1), l\in\mathbb{Z}^{\geq 0}$ (because of ODE III)}\\
+				   \text{... $m = l$ or $m = -(l+1)$}\\
+				   R_l(\rho) = A_l \rho^l + B_l \rho^{-(l+1)}, l\in\mathbb{Z}^{\geq 0}
+             			  \end{array}\\
+Solve ODE II			& \begin{array}[t]{||l}
+                   		   S'' + k_2 S = 0, S(\varphi) = S(\varphi + 2\pi)\\
+ 				   \text{Nontrivial if $k_2 = m^2\quad m\in\mathbb{Z}^{\geq 0}$}\\
+ 				   S_m(\varphi) = a_m \cos(m\varphi) + b_m \sin(m\varphi)
+                    		  \end{array}\\
+Solve ODE III			& \begin{array}[t]{l}
+                   		   \text{Substitution: $w = \cos\theta \Rightarrow T'(w(\theta)) = w'(\theta) \cdot T'(w(\theta)) = -\sin\theta \cdot T'(\cos\theta)$}\\
+				   (1-w^2) \frac{d^2 T(w)}{dw^2} - 2w\frac{dT}{dw} + \left( k_1 - \frac{k_2}{1-w^2} \right) T = 0\quad -1 \leq w \leq 1 \text{General Legendre eqn}\\
+				   k_1 = l(l+1), k_2 = m^2\\
+				   T_l^m(\theta) = P_l^m(\cos\theta) \quad 0 \leq m \leq l\quad P = \text{associated Legendre Polynomials}
+                   		  \end{array}\\
+General solution		& u(\rho, \varphi, \theta) = \sum_{l=0}^{\infty} \sum_{m=0}^{l} (A_l \rho^l + B_l \rho^{-(l+1)})\cdot (a_m \cos(m\varphi) + b_m \sin(m\varphi)) \cdot P_l^m(\cos\theta)\\
+Spherical harmonics		& Y_{lm} (\theta,\varphi) = \begin{cases}
+                     		                             N_{lm} P_l^m (\cos \theta) \cos(m\varphi)		& \text{if }m > 0\\
+							     N_{lm} P_l^0 (\cos \theta)				& \text{if }m = 0\\
+							     N_{lm} P_l^{-m} (\cos \theta) \sin(m\varphi)	& \text{if }m < 0
+                     		                            \end{cases}N_{lm} = \text{Normalization constant}\\
+				& S(\varphi) \cdot T(\theta) \equiv Y_{lm} \text{ form a complete set of orthonormal functions (like Fourier-Series)}\\
+Legendre Polynomials		& \begin{array}[t]{ll}
+                      		   P_0(x) = 1				  & P_1(x) = x\\
+				   P_2(x) = \frac{1}{2} (3x^2 - 1)	  & P_3(x) = \frac{1}{2} (5x^3 - 3x)\\
+				   P_4(x) = \frac{1}{8}(35x^4-30x^2+3)	  & P_5(x) = \frac{1}{8}(63x^5-70x^3+15x)\\
+				   \multicolumn{2}{l}{P_n(x) = \frac{1}{2^n\,n!}\cdot \frac{\mathrm{d}^n}{\mathrm{d}x^n } \left[ (x^2 -1)^n \right]}
+                      		  \end{array}\\
+Associated Legendre Polynomials	& \begin{array}[t]{l}
+                               	   P_\ell^{m}(x) = (-1)^m\ (1-x^2)^{m/2}\ \frac{d^m}{dx^m}\left(P_\ell(x)\right), \quad m \geq 0\\
+				   P_l^m(x) = (-1)^m \frac{(l-m)!}{(l+m)!} P_l^m(x)
+                               	  \end{array}
+\end{tabular}

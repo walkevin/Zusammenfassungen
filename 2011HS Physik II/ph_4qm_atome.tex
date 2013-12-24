@@ -1,0 +1,121 @@
+\section{Bohr'sches Atommodell}
+\begin{tabular}{p{4cm}p{15cm}}
+Quantisierung des Bahndrehimpuls	& $L_n = m_e v r_n = n\hbar$\\
+diskrete Energiezustände		& $\Delta E = E_2 - E_1 = h\nu$\\
+Übergangsfrequenz			& $\nu = \frac{\Delta E}{h}$\\
+Absorption				& $A + h\nu \rightarrow A^{\ast}$\\
+spontane Emission			& $A^{\ast} \rightarrow A + h\nu$ (inkohärente Strahlung, zufällig in alle Rtg.)\\
+stimulierte Emission			& $A^{\ast} + h\nu \rightarrow A + 2 h\nu$ (kohärente Strahlung)\\
+Atomradien nach Bohr			& $r_n = \frac{n^2}{Z}a_0,\quad a_0 = 0.529 $\AA$,\quad n = 1,2,3,...,\quad Z = $ Kernladungszahl\\
+zugehörige Energien			& $E_n = -13.606 eV \frac{Z^2}{n^2}$\\
+Wasserstoffspektrum beim Energieniveauübergang			& $\nu = RcZ^2\left( \frac{1}{n_1^2} - \frac{1}{n_2^2} \right)Hz,\quad n_2 > n_1, Z$ = Kernladungszahl\\
+Rydberg-Konstante			& $R = 1.0973731534 \cdot 10^7 $m$^{-1}\quad Rc = 3.2899 \cdot 10^{15}$
+\end{tabular}
+\section{QM Drehimpuls}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Drehimpulsoperator	&\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}} = -i\hbar
+											\begin{pmatrix}
+											y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y}\\ 
+											z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z}\\ 
+											x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}
+											\end{pmatrix}\\
+			&\hat{L_z} = -i\hbar \left( x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) = -i\hbar\frac{\partial}{\partial\varphi}\\
+			&\hat{\mathbf{L}}^2 = \hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2 = -\hbar^2 \Delta_{\theta,\varphi}\\
+Kommutativität		&\langle L_z, \hat{\mathbf{L}}^2 \rangle = 0\qquad \langle L_z, L_x \rangle \neq 0 \neq \langle L_z, L_y \rangle \\
+			&\Rightarrow \text{In der QM sind nur eine Komponente und Betrag des Drehimpuls unabhängig.}\\
+Drehimpulsgleichungen	& \begin{array}[t]{|lrll|}
+			  \hline
+             		   \hat{\mathbf{L}}^2 ~ Y_{l,m_l}(\theta,\varphi) =	& l(l+1)\hbar^2	& Y_{l,m_l}(\theta,\varphi)	& l = 0,1,2,3,...\\
+			   \hat{L}_z  ~ Y_{l,m_l}(\theta,\varphi) =		& m_l\hbar 	& Y_{l,m_l}(\theta,\varphi)	& m_l = -l,-l+1,...,l-1,l\\\hline
+             		  \end{array}\\
+Kugelfunktionen		& \begin{array}[t]{l}
+               		   Y_{l,m_l}(\theta,\varphi) = C P_l^{|m_l|} (\cos \theta)e^{im_l\varphi}\\
+			   P_n^m(z) \equiv \text{ Legendre-Polynome}\\
+			   \text{Lösungen zu $Y_{l,m_l}$: Alonso-Finn S.134}
+               		  \end{array}\\
+Quantenzahlen		& \text{
+			     \begin{tabular}[t]{llll}
+			     Principal quantum number	& n & 1,2,3,... & unlimitiert\\
+							&   & K,L,M,... &\\
+			     Orbital quantum number	& l & 0,1,2,... n-1 & n mögliche Werte\\
+							&   & s,p,d,f,..    &\\
+			     Orbital magntic quantum number & $m_l$ & -l, l+1,..., l-1, l& 2l+1 mögliche Werte\\
+			     Spin quantum number	& $m_s$  & $-\frac{1}{2},\frac{1}{2}$	& 2 mögliche Werte\\
+			     \end{tabular}
+			   }
+\end{tabular}
+\section{QM Coulomb-Potential (Wasserstoffatom)}
+\begin{tabular}{p{4cm} p{15cm}}
+Schrödingergleichung	& $\hat{H} = -\frac{\hbar^2}{2m_K} \nabla^2_K  -\frac{\hbar^2}{2m_e} \nabla^2_e - \frac{Ze^2}{4\pi\epsilon_0 r} +$ andere Terme\\
+vereinfachte SG		& \begin{tabular}[t]{l}
+               		  $\hat{H}\Psi = \left( -\frac{\hbar^2}{2\mu} \nabla^2_r - \frac{Ze^2}{4\pi\epsilon_0 r} \right) \Psi = E\Psi$ (QM Coulomb-Potential)\\
+			  $\mu = \frac{m_e \cdot m_K}{m_e + m_K} \approx m_e$\\
+			  $Z =$ Kernladungszahl
+               		  \end{tabular}\\
+Ansatz für Eigenfkt.	& $\Psi(r,\theta,\phi) = R(r) \cdot Y_{lm}(\theta,\phi)$\\
+Lösungen		& \begin{tabular}[t]{lcll}
+			  $R_{n,l}(r)$	& = & $N_{n,l} \exp \left\lbrace -\frac{Zr}{na} \right\rbrace \left( \frac{2Zr}{na} \right)^l L^{2l+1}_{n-l-1}\left( \frac{2Zr}{na} \right)$	&$n = 1,2,...$\\
+			  \multicolumn{4}{l}{$a = \frac{m_e}{\mu}a_0;\quad a_0 = \frac{4\pi \epsilon_0 \hbar^2}{m_e e^2} = 0.0529$ nm;$\quad L:$ Laguerre-Polynome}\\
+        		  $Y_{lm}$	& = & Eigenfkt. des Drehimpulsoperators		& $l = 1,...,(n-1)$\\
+					&	&					& $m = -l,-l+1,...l$\\
+			  \multicolumn{4}{l}{Superpositionen sind natürlich auch wieder Lösungen!}
+        		  \end{tabular}\\
+Energieeigenwerte	& \begin{tabular}[t]{l}
+                 	  $E_{n,l,m} = E_n = -\frac{hcRZ^2}{n^2} = -13.606eV \frac{Z^2}{n^2}$\\
+			  $c =$ Lichtgeschwindigkeit; $R =$ Rydberg-Konstante
+                 	  \end{tabular}\\
+Entartung		& $g = \sum_{l=0}^{n-1} (2l+1) = n^2$ (Pro $l$ gibt es $2l+1$ $m$ mit gleichem Energieeigenwert)\\
+radiale WSKDichte	& \begin{tabular}[t]{ll}
+                 	  WSKDichte		&$p_{n,l}(r) dr = |R_{n,l}(r)^2| r^2 dr$\\
+			  Radius des Maximums	& $\arg\max_r p_{n,l}(r) = r_{pmax} = \frac{n^2}{Z}a$ (Bohr'scher Atomradius)\\
+			  Mittlerer Radius	& $\frac{a}{2Z} \left(3n^2-l(l+1) \right)$
+                 	  \end{tabular}
+\end{tabular}
+\section{Zeeman-Effekt}
+Unter Einfluss eines Magnetfelds offenbaren sich ungeahnte Zusatzenergien, die für die Aufspaltung von entarteten Energiezuständen sorgen.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+magnetisches Bahn-Dipolmoment	& \mu_L = -\frac{e}{2m_e}\mathbf{L}\\
+z-Komponente		& \mu_{L,z} = -\frac{e\hbar}{2m_e}m_l\\
+Bohr'sches Magneton	& \mu_B = \frac{e\hbar}{2m_e} = 9.2732 \cdot 10^{-24} = 5.6564 \cdot 10^{-5}eVT^{-1}\\
+Zusatz-Energie durch Magnetfeld	& E_B = -\mu_L \cdot B = \frac{e}{2m_e}\mathbf{L\cdot B}\\
+z-Achse parallel Rtg. Magnetfeld	& E_B = \mu_B B m_l\\
+Drehmoment Elektron	& \tau = \mu_L \times B = -\frac{e}{2m_e} \mathbf{L\times B}
+\end{tabular}
+\section{Elektronenspin}
+Motiviert z.B. durch Stern-Gerlach-Versuch oder auch Doubletts bei Wellenlängen, z.B. D-Linien von Natrium. Der Elektronenspin ist ein Zusatzspin, der sich zum Drehimpuls addiert.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Gesamtdrehimpuls	& \mathbf{J = L+S}\\
+Gesamtdrehmoment	& \mu = \mu_L + \mu_S = -\frac{e}{2m_e}(\mathbf{L}+g_S\mathbf{S})\\
+Drehimpulsgleichungen	& \begin{array}[t]{|lrll|}
+			  \hline
+             		   \hat{\mathbf{S}}^2 ~ \chi_{s,m_s} =	& s(s+1)\hbar^2	& \chi_{s,m_s}	& s = \frac{1}{2}\\
+			   \hat{S}_z  ~ \chi_{s,m_s} =		& m_s\hbar 	& \chi_{s,m_s}	& m_s = \pm \frac{1}{2}\\\hline
+			   \multicolumn{4}{l}{\text{Die genaue Gestalt von $\chi$ ist Wurst.}}
+             		  \end{array}\\
+vollständige WFkt.	& \Psi_{nlm_lm_s} = R_{nl}(r)Y_{lm_l}(\theta,\phi) \chi_{m_s}\\
+Addition von Bahndrehimpuls und Elektronenspin	& j = \left| l\pm \frac{1}{2} \right| 
+\end{tabular}
+\section{Addition von Drehimpulsen}
+Sei $\hat{\vec J} = \hat{\vec{j}}_1 + \hat{\vec{j}}_2$ der resultierende Drehimpuls.\\
+\begin{tabular}{p{4cm} p{15cm}}
+Zugehörige Quantenzahlen	& \begin{tabular}[t]{l}
+                        	  $\hat{\vec{j}}_1: |j_1,m_1\rangle$\\
+				  $\hat{\vec{j}}_2: |j_2,m_2\rangle$\\
+				  $\hat{\vec{J}}: |J,M\rangle$\\
+				  Zur Erinnerung: $m = \pm j, \pm (j-1), ...$
+                        	  \end{tabular}\\
+gekoppelte Darstellung		& $|j_1,m_1,J,M \rangle$: In der gekoppelten Darstellung setzt man die Quantenzahlen $J$ und $M$ fest. \\
+Betrag und z-Komponente		& \begin{tabular}[t]{lcl}
+				    $|\vec{J}| = \hbar \sqrt{J(J+1)}$	& $\Rightarrow $	& $|\vec{J}| = |\vec{j_1} + \vec{j_2}| = ??$\\
+				    $J_z = \hbar M$			& $\Rightarrow $	& $J_z = j_{1,z} + j_{2,z} = \hbar(m_1 + m_2)$
+				  \end{tabular}\\
+\multicolumn{2}{l}{$M$ ist immer gleich $m_1 + m_2$. Weil $|M| \leq |J|$ sein muss, können wir die möglichen Werte für $J$ aus $M$ ableiten.}\\
+Resultierende Quantenzahlen	& \begin{tabular}[t]{|l|}
+				  \hline
+                           	  $J = j_1 + j_2, j_1 + j_2 - 1,..., |j_1-j_2|$ \\
+				  $M = m_1 + m_2$\\\hline	
+                           	  \end{tabular}\\
+Bra-Ket Notation		& $|j_1,j_2,J,M\rangle$\\
+Anzahl Basisfunktionen		& $\underbrace{(j_1+j_2)}_{\text{\# J-Werte}} \cdot \underbrace{(2(j_1+j_2) + 1)}_{\text{\# M-Werte pro J-Wert}}$\\
+Addition von Elektronenspin und Bahndrehimpuls	& Sei $\vec{j}_1 = \vec{L}$ und $\vec{j}_2 = \vec{S}$. Wir wissen, dass $m_s = \pm \frac{1}{2} \Rightarrow j_2 = \frac{1}{2}$, wogegen $m_l = \pm l, \pm (l+1), ... \Rightarrow j_1 = l \quad(l = 0,1,2,...,n-1)$. Somit sind die möglichen Werte für $J$: $l+\frac{1}{2}$ und $l-\frac{1}{2}$. Dies entspricht den Fällen parallel und antiparallel. Der Elektronenspin kann relativ zum Bahndrehimpuls also nur zwei mögliche Orientierungen haben. Ausnahme: Für $j_1 = l = 0$ ist $j_1 + j_2 = |j_1 - j_2|$, somit kann $J$ nur einen Wert haben.
+\end{tabular}

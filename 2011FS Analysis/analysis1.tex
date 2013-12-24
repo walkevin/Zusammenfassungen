@@ -1,0 +1,271 @@
+\section{Allgemeine Begriffe}
+  \subsection{Funktionen}
+  Eine Funktion $f:X\rightarrow Y$ heisst:
+  \begin{align*}
+   \text{injektiv}\quad & \forall x,x' \in X: f(x) = f(x') \Rightarrow x=x'\\
+   \text{surjektiv}\quad & \forall y \in Y \ \exists\ x\in X:f(x) = y\\
+   \text{bijektiv}\quad & \text{injektiv UND surjektiv}\\
+    &\Rightarrow \forall y\in Y \ \exists !\ x\in X:f(x) = y\\\\
+   \text{gerade}\quad & \forall x\in X: f(-x) = f(x)\qquad\text{//Achsensymmetrie Bsp: $\cos(x)$}\\
+   \text{ungerade}\quad & \forall x\in X: f(-x) = -f(-x)\qquad\text{//Punktsymmetrie Bsp: $\sin(x)$}
+\end{align*}
+  \begin{tabular}{lll}
+   Definitionsbereich von $f\quad$ & $dom(f)\quad$ &//$X$\\
+   Wertebereich von $f\quad$ & $range(f)\quad$ & //$Y$\\
+   Bildmenge von $f\quad$ & $image(f)\quad$ & //$\lbrace f(x) | x\in X\rbrace\subset Y$
+  \end{tabular}
+  \subsection{Stetigkeit}
+  Eine Funktion $f:X\subset\mathbb{R}^m\rightarrow Y\subset{R}^n$ heisst stetig in $x_0\in X$, falls\\
+  \begin{itemize}
+   \item  $\forall\epsilon > 0 \exists \delta > 0 : \thinspace \forall x\in X: |x-x_0| < \delta \Rightarrow f(x)-f(x_0) < \epsilon$\\
+   \item  für jede Folge $(x_k)$ in X mit $\lim{k\to\infty} x_k = x_0$ gilt: $\lim{k\to\infty} f(x_k) = f(x_0)$\\
+   \item  $f$ ist stetig in $x_0 \Leftrightarrow f(x) = f(x_0)+o(1)$ für $x\to x_0$\\
+  \end{itemize}
+  $f$ ist stetig, falls $f$ stetig $\forall x_0\in X$ ist.\\
+  
+  \subsubsection*{Grundeigenschaften}
+  \begin{enumerate}
+   \item Die Zusammensetzung von stetigen Funktionen ist wieder stetig.
+   \item Eine vektorwertige Funktion ist stetig gdw. alle Einträge stetige Funktionen sind.
+   \item Die Grundrechenarten sind stetig.
+   \item Jede rationale Funktion ist stetig (wo definiert).
+   \item Die Umkehrfunktion einer bijektiven und stetigen Funktion ist wieder stetig.
+   \item Unstetige Funktionen sind z.B. $sgn(x)$ oder $\lfloor x\rfloor$
+  \end{enumerate}
+  
+  \subsection{Mengen}
+  Zu $x_0\in\mathbb{R}$ und $r > 0$ sei $B_r(x_0):=\lbrace x\in\mathbb{R}^n\thinspace |\thinspace |x-x_0| < r\rbrace$ der offene Ball mit Radius r um $x_0$\\
+  Sei $X\subset\mathbb{R}^n$. Dann ist:
+  \begin{enumerate}
+   \item $X^0 := \lbrace x_0\in X | \ \exists \ r>0: B_r(x_0)\subset X\rbrace$ das Innere von X\\
+   \item $\overline{X} := \lbrace y\in\mathbb{R}^n \ | \ \forall r > 0: B_r(y) \cap X \neq \emptyset \rbrace$ der Abschluss von X\\
+   \item $\partial X := \overline{X} \backslash X^0$ der Rand von X\\
+  \end{enumerate}
+  Weiter heisst $X$:
+  \begin{enumerate}
+   \item offen, falls $X=X^0$\\
+   \item abgeschlossen, falls $X=\overline{X}$\\
+   \item Eine Teilmenge $Y\subset X$ heisst dicht in X, falls ihr Abschluss ganz $X$ ist.
+  \end{enumerate}
+\section{Grenzwerte}
+  $f$ hat bei $x_0$ den Grenzwert $y_0\in\mathbb{R}^n$, falls gilt:\\
+    $\forall\epsilon >0 \ \exists \ \delta>0: \ \forall x\in X: \ 0 < |x-x_0| < \delta\Rightarrow |f(x)-y_0| < \epsilon$\\
+  Für ausführlichere Varianten siehe \url{http://www.math.ethz.ch/education/bachelor/lectures/hs2010/other/analysis1_itet/Grenzwerte.pdf}
+  \subsection{Einige Grenzwerte von Funktionen}
+  \begin{tabular}{lll}
+   $\lim_{x\to\infty}\frac{1}{x} = 0$ 		& $\lim_{x\to 0+}\frac{1}{x} = \infty$ 	& $\lim_{x\to 0-}\frac{1}{x} = -\infty$\\
+   $\lim_{x\to 0}\frac{\sin x}{x} = 1$   	& $\lim_{x\to 0}\frac{\ln(1+x)}{x} = 1$	& $\lim_{x\to 0}\frac{a^x-1}{x} = \ln a$\\
+   $\lim_{x\to\infty}\frac{e^x}{x^q} = \infty$	& $\lim_{x\to\infty}\frac{x^q}{e^x} = 0$& $\lim_{x\to\infty} \ln x = \infty$\\
+   $\lim_{x\to 0+}\ln x = \infty$		& $\lim_{x\to\infty}\frac{\ln x}{x^{\alpha}} = \lim_{x\to 0+} x^{\alpha}\cdot \ln x = 0$\\
+   $\lim_{z\to 0}\frac{e^z-1}{z} = 1, z\in\mathbb{C}$ & $\lim_{x\to 0} \frac{\ln(1+x)}{x} = 1$	& $\lim_{n\to\infty} \left(1+\tfrac{x}{n}\right)^n = \exp(x)$
+  \end{tabular}
+  \subsection{Sätze über Grenzwerte von Funktionen}
+  \begin{tabular}{ll}
+   $\lim_{x\to x_0}[f(x)+g(x)] = \lim_{x\to x_0}f(x) + \lim_{x\to x_0}g(x)$ & $\lim_{x\to x_0} cf(x) = c \lim_{x\to x_0}f(x)$\\
+   $\lim_{x\to x_0}[f(x)g(x)] = \left[\lim_{x\to x_0}f(x)\right] \left[\lim_{x\to x_0}g(x)\right]$ & $\lim_{x\to x_0}\frac{f(x)}{g(x)} = \frac{\lim_{x\to x_0}f(x)}{\lim_{x\to x_0}g(x)}$
+  \end{tabular}\\
+  Verkettung: $\lim_{x\to x_0}f(x) = u_0$ und $g(u)$ stetig in $u_0\Rightarrow\lim_{x\to x_0}g[f(x)] = g(u_0)$
+  \subsubsection*{Regel von Bernoulli-de l'Hôpital}
+  $\lim_{x\to x_0}\frac{f(x)}{g(x)} = \lim_{x\to x_0}\frac{f'(x)}{g'(x)}$, falls $\lim_{x\to x_0}f(x) = \lim_{x\to x_0}g(x) = (0\vee\infty)$\\
+  \subsubsection*{Majoranten- u. Minorantenkriterium}
+  \begin{itemize}
+   \item Ist $\lim_{x\to x_0} g(x) = 0$ und $|f(x)|\leq|g(x)|$ für alle $x$ nahe $x_0$, so gilt $\lim_{x\to x_0} f(x) = 0$\\
+   \item Ist $\lim_{x\to x_0} g(x) = \infty$ und $f(x) > g(x)$ für alle $x$ nahe $x_0$, so gilt $\lim_{x\to x_0} f(x) = \infty$
+  \end{itemize}
+  \subsubsection*{Sonstige Tricks}
+  \begin{enumerate}
+   \item Bei $\lim_{x\to x_0}\frac{P(x)}{Q(x)},P,Q$ Polynomfunktionen, durch das Polynom mit dem höchsten Grad teilen und Term damit erweitern.\\
+	 Beispiel: $\lim_{x\to \infty}\frac{2x^2+3x-1}{x^2+5x+7} = \lim_{x\to \infty}\frac{\frac{1}{x^2}}{\frac{1}{x^2}}\cdot \frac{2x^2+3x-1}{x^2+5x+7} =
+		    \lim_{x\to \infty}\frac{2+\frac{3}{x}-\frac{1}{x^2}}{1+\frac{5}{x}+\frac{7}{x^2}} = 2$\\
+   \item $a^x = e^{\ln(a)\cdot x}$\\
+  \end{enumerate}
+  \subsubsection*{Beispiel}
+  $\lim_{x\to\infty}\left(\frac{x}{x+1}\right)^x\quad   ``='' 1^{\infty}\quad\rightarrow\text{indefinit, falscher Ansatz!}\\
+   =\lim_{x\to\infty}\exp\left(\ln\left(\frac{x}{x+1}\right)\cdot x\right)\quad\text{Trick 2}\\
+   \text{Da $e^x$ überall stetig, ist die Formel der Verkettung erlaubt}\\
+   =\lim_{x\to\infty}\exp\left(\ln\left(\frac{x}{x+1}\right)\cdot x\right) = \exp\left(\lim_{x\to\infty}\left(\ln\left(\frac{x}{x+1}\right)\cdot x\right)\right)\quad\text{Verkettung}\\
+   \text{ }\qquad\lim_{x\to\infty}\left(\ln\left(\frac{x}{x+1}\right)\cdot x\right)\\
+   \text{ }\qquad = \lim_{x\to\infty} \frac{ \ln \left(\frac{x}{x+1}\right) }{\frac{1}{x}}\\
+   \text{ }\qquad = \lim_{x\to\infty} \frac{ \frac{1}{(x+1)^2} \cdot \frac{1}{\frac{x}{x+1}} }{ -\frac{1}{x^2} }\quad\text{l'Hôpital}\\
+   \text{ }\qquad = \lim_{x\to\infty} \frac{1}{(x+1)^2} \cdot \frac{x+1}{x} \cdot -x^2 = \lim_{x\to\infty} -\frac{x^2}{x^2+x}\\
+   \text{ }\qquad = \lim_{x\to\infty} -\frac{ \frac{1}{x^2} }{ \frac{1}{x^2} } \cdot \frac{x^2}{x^2+x}\quad\text{Trick 1}\\
+   \text{ }\qquad = \lim_{x\to\infty} -\frac{1}{1+\frac{1}{x}} = -1\\
+   \lim_{x\to\infty}\left(\frac{x}{x+1}\right)^x = e^{-1} = \frac{1}{e}
+$
+  \subsection{Asymptoten}
+  \begin{enumerate}
+   \item $f,g$ sind zueinander asymptotisch, falls $\lim_{x\to \infty} f(x)-g(x) = 0$\\
+   \item Der Graph von g(x) heisst Asymptote zu f, falls g(x) eine lineare Funktion $px+q$ ist.
+  \end{enumerate}
+  \begin{tabbing}
+  Beispiel: \=$f(t) = \frac{t^2-t-5}{t-3} = t+2+\frac{1}{t-3}$\\
+	    \>$\lim_{x\to \infty}f(t)-g(t) = \lim_{x\to \infty}t+2+\frac{1}{t-3}-g(t)=0$\\
+	    \>$\Rightarrow g(t) = t+2$\\   
+  \end{tabbing}
+
+
+% \end{multicols}
+\section{Folgen und Reihen}
+% \begin{multicols}{2}
+\subsection{Allgemeines über Reihen}
+$
+\begin{array}{lll}
+  \sum a_k	& \text{konvergent}		& s = \sum_{k=1}^{\infty} a_k = \lim_{n\to\infty} s_n\\
+  \sum a_k	& \text{absolut konvergent}	& \sum |a_k|\enspace\text{ist konvergent}\\
+  \sum a_k \enspace\text{konvergent}	&	& \Rightarrow (a_k) \enspace\text{ist eine Nullfolge}
+\end{array}
+$
+\subsection{Grenzwerte spezieller Zahlenfolgen}
+Die Grenzwertsätze für Funktionen sind auch für Zahlenfolgen anwendbar.\\
+$
+\begin{array}{ll}
+  \lim_{n\to\infty} \left(1+\frac{1}{n}\right)^n = e = 2.7182818284... 	& \lim_{n\to\infty} \left(1+\frac{x}{n}\right)^n = e^x\\
+  \lim_{n\to\infty} \sqrt[n]{a} = 1,\quad a > 0		       		& \lim_{n\to\infty} \sqrt[n]{n} = 1\\
+  \lim_{n\to\infty} \frac{a^n}{n!} = 0					& \lim_{n\to\infty} a^n = 0,\quad |a| < 1\\
+  \lim_{n\to\infty} n\left(\sqrt[n]{a} - 1\right) = \ln a		& \lim_{n\to\infty} \frac{\log n}{n} = 0
+\end{array}
+$
+\subsection{Spezielle Reihen}
+$
+\begin{array}{ll}
+  \sum_{k=0}^n k = \frac{n(n+1)}{2}\quad\text{Gauss'sche Summenformel}			& \sum_{k=0}^n k^2 = \frac{n(n+1)(2n+1)}{6}\\
+  \sum_{k=0}^n k^3 = \left(\frac{n(n+1)}{2}\right)^2					& \sum_{k=0}^n k^p = \frac{(n+1)^{p+1}}{p+1}\\
+  \sum_{k=0}^n q^k = \frac{q^{n+1}-1}{q-1}\quad |q| < 1\quad\text{Geometrische Reihe}	& \sum_{k=0}^{\infty} q^k = \frac{1}{1-q}\\
+  \sum_{k=1}^{\infty} \frac{1}{k} = \infty\quad\text{Harmonische Reihe}			& \sum_{k=1}^{n} \frac{1}{k} \approx \ln(n) + 0.557...\\
+  \sum_{k=1}^{\infty} \frac{1}{k^s} \text{für $s>1$ konvergent$\quad$Riemann'sche Zetafunktion}\\
+  \sum_{k=1}^{\infty} (-1)^{k-1}\frac{1}{k} = \ln 2\quad\text{alternierende harmonische Reihe}
+\end{array}
+$
+\subsection{Umordnung von Reihen}
+Jede absolut konvergente Reihe bleibt absolut konvergent nach beliebiger Umordnung. Ist die Reihe nicht absolut konvergent,
+so existiert eine Umordnung, die divergiert.\\
+\begin{align*}
+\text{Beispiel:} & \underbrace{\sum_{k=1}^{\infty} (-1)^k}_{\text{nicht abs.konv.}} = 0
+  \neq \underbrace{\sum_{k=1}^{\infty} 1^{2k}}_{=\infty} + \underbrace{\sum_{k=1}^{\infty} 1^{2k+1}}_{= -\infty}
+\end{align*}
+\subsection{Rechenregeln}
+\begin{math}
+  \sum_{k = k_0}^{\infty} a_k = \sum_{k = k_0}^{k_1-1} a_k + \sum_{k = k_1}^{\infty} a_k\\
+  \sum_{k = k_0}^{\infty} (a_k+b_k) = \sum_{k = k_0}^{\infty} a_k + \sum_{k = k_0}^{\infty} b_k\\
+  \sum_{k = k_0}^{\infty} c\cdot a_k = c\cdot \sum_{k = k_0}^{\infty} a_k\\
+  a_k \leq b_k \forall k\Rightarrow \sum_{k=k_0}^{\infty} a_k \leq \sum_{k = k_0}^{\infty} b_k\\
+  \sum_{l = l_0}^{\infty} \sum_{k = k_0}^{\infty} |a_{k,l}| < \infty \Rightarrow \text{absolut konvergent}
+\Rightarrow\sum_{l = l_0}^{\infty} \sum_{k = k_0}^{\infty} a_{k,l} = \sum_{k = k_0}^{\infty} \sum_{l = l_0}^{\infty} a_{k,l}\\
+  \left(\sum_{k = k_0}^{\infty} a_k\right)\cdot \left(\sum_{l = l_0}^{\infty} b_l\right) = \sum_{k = k_0}^{\infty} \sum_{l = l_0}^{\infty} a_kb_l
+\end{math}
+\subsection{Konvergenzkriterien}
+
+\begin{tabular}{ll}
+  Kriterium von Leibniz\\
+  $(a_k)$ alternierend und $(|a_k|)$ monotone Nullfolge			& $\Rightarrow\sum a_k$ ist konvergent\\
+  Majorantenkriterium\\
+  $(|a_k|) \leq c_k$ für fast alle $k$, $\sum c_k$ konvergent		& $\Rightarrow\sum a_k$ ist absolut konvergent\\
+  Quotientenkriterium\\
+  $\left| \frac{a_{k+1}}{a_k} \right| \leq q$ mit $0<q<1$ für fast alle k	& $\Rightarrow\sum a_k$ ist absolut konvergent\\
+  Wurzelkriterium\\
+  $\sqrt[k]{|a_k|} \leq q$ mit $0<q<1$ für fast alle k				& $\Rightarrow\sum a_k$ ist absolut konvergent\\
+\end{tabular}\\
+Bemerkungen: Ergibt das Quotientenkriterium genau 1, so sagt es nichts über die Konvergenz aus und ist nicht anwendbar.\\
+
+\section{Potenzreihen}
+Ein Ausdruck der Form $f(z) = \sum_{k=0}^{\infty} a_kz^k$ heisst Potenzreihe
+  \subsection{Konvergenzradius bei Potenzreihen}
+  \begin{tabular}{ll}
+    Quotientenkriterium	& $r = \lim_{k\to\infty} \left|\frac{a_k}{a_{k+1}}\right|$\\
+    Wurzelkriterium	& $r = \frac{1}{\limsup_{k\to\infty}\left(\sqrt[k]{|a_k|}\right)}$\\
+    geometrische Reihe	& $r = 1$ bei $\sum_{k=0}^{\infty} q^k$ falls $|q| < 1$\\
+    binomische Reihe	& $r = 1$ bei $\sum_{k=0}^{\infty} \binom{\alpha}{k}\cdot z^k$ falls $|z| < 1$
+  \end{tabular}\\
+  \begin{align*}
+    \text{Beispiel:}\quad	& \text{Konv.radius von}\enspace f(z) = \frac{1}{z-2}\\
+			  & \frac{1}{z-2} = -\frac{1}{2-z} = -\frac{1}{2(1-\tfrac{z}{2})}\\
+			  & -\frac{1}{2}\cdot\frac{1}{1-\tfrac{z}{2}} = -\frac{1}{2}\sum_{k=0}^{\infty}\left(\frac{z}{2}\right)^k\\
+			  & \left|\frac{z}{2}\right| < 1 \Leftrightarrow |z| < 2 = \text{Konvergenzradius}
+  \end{align*}
+  \subsection{Binomische Reihe}
+  $\sum_{k=0}^{\infty} \binom{\alpha}{k} \cdot z^k = (1+z)^{\alpha}$ für $|z| < 1$\\
+  $\begin{array}{ll}
+  \alpha = n\in\mathbb{Z}^{\geq 0}:	& (1+x)^n = \sum_{k=0}^{\infty} \binom{n}{k}\cdot z^k\\
+  \alpha = -n; n\in\mathbb{Z}^{\geq 0}:& \frac{1}{(1-z)^n} = \sum_{k=0}^{\infty} \binom{n+k-1}{k}\cdot z^k\\
+  \alpha = -1				& \frac{1}{1-z} = \sum_{k=0}^{\infty} z^k\\
+  \alpha = \frac{1}{2}			&\sqrt{1+z} = \sum_{k=0}^{\infty} \binom{1/2}{k}\cdot z^k
+  \end{array}
+$
+  \subsection{Potenzreihenentwicklung}
+  Die Potenzreihenentwicklung kann man bei Funktionen brauchen, die irgendwas mit $e^x$ oder sonstigen Funktionen, deren Potenzreihenentwicklung bekannt ist, verwendet werden.\\
+  \begin{align*}
+   \text{Beispiel:}\quad &\ln(1+y) = x \Leftrightarrow 1+y = e^x = 1+x+\frac{x^2}{2}+\frac{x^3}{6}+\dotsc\\
+	&y = x + \frac{x^2}{2}+\dotsc\\
+	&\text{Ansatz:}\enspace x = y+ay^2+by^3+\dotsc\\
+	&y=(y+ay^2+by^3+\dotsc)+\frac{1}{2}(y+ay^2+by^3+\dotsc)^2+\frac{1}{6}(y+ay^2+by^3+\dotsc)^3+\dotsc\\
+	&y=y + y^2(a+\tfrac{1}{2})+y^3(b+\tfrac{1}{2}\cdot 2a+\tfrac{1}{6}) + O(y^4)\\
+	&\text{Alle Terme = 0 setzen liefert:} a = -1/2, b = 1/3\\
+	&\ln(1+y) = y-\frac{y^2}{2}+\frac{y^3}{3}-\dotsc\pm\frac{y^k}{k}
+  \end{align*}
+
+\section{Differentialrechnung}
+\subsection{klein o-Gross O-Notation}
+Funktion f ist $O(g(x))$ falls $\left|\frac{f(x)}{g(x)}\right|$ beschränkt für $x\to x_0$\\
+Funktion f ist $o(g(x))$ falls $\left|\frac{f(x)}{g(x)}\right| \xrightarrow{x\to x_0} 0$
+\subsection{Sätze}
+\begin{tabular}{lp{13cm}}
+  Diffbarkeit		& $f$ ist diffbar in $x_0$ mit Ableitung $f'(x_0) \Leftrightarrow f(x) = f(x_0) + f'(x_0)\cdot(x-x_0) + o(x-x_0); x\to x_0$ \newline
+			  $f$ ist diffbar, falls diffbar in jedem $x_0 \in X$\\\hline
+  Zwischenwertsatz	& Sei $f:[a,b]\rightarrow\mathbb{R}$ stetig. Dann nimmt $f$ jeden Wert zwischen $f(a)$ und $f(b)$ an. 
+D.h: $f(a) \leq f(b) \Rightarrow [f(a),f(b)]\subset image(f)$\\\hline
+  Mittelwertsatz	& Sei $f:[a,b]$ stetig und auf $]a,b,[$ diffbar, so existiert eine Stelle t in $]a,b[$ mit $f'(t) = \frac{f(b)-f(a)}{b-a}$\\\hline
+  Potenzreihenidentitätssatz	& Stellen zwei Potenzreihen für $|x| < \epsilon$ dieselbe Funktion dar, so sind sie bereits gliedweise gleich.\\\hline
+  Hauptsatz der Infinitesimalrechnung	& $\int_a^b f(x)dx = F(b)-F(a)$\\
+\end{tabular}
+
+\subsection{Supremum,Infimum}
+\begin{tabular}{ll}
+  Supremum, $\sup(X)$	& Kleinste obere Schranke für die Menge X\\
+  Infimum, $\inf(X)$	& Grösste obere Schranke für die Menge X
+\end{tabular}\\
+\subsubsection*{Rechenregeln}
+$
+\begin{array}{ll}
+  \sup(X+b) = \sup(X) + b		& \sup(X+Y) = \sup(X)+\sup(Y); X,Y\neq\emptyset\\
+  \sup(c\cdot X) = c\cdot\sup(X); c>0	& \sup(c\cdot X) = c\cdot\inf(X); c<0\\
+  \inf(X) = -\sup(-X)
+\end{array}
+$
+\subsection{Taylorapproximation}
+$j_{x_0}^n f(x) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$ heisst das n-te Taylor-Polynom von $f$ an der Stelle $x_0$.\\
+$R_n(x) = \frac{f^{(n+1)}(t)}{(n+1)!}(x-x_0)^{n+1}$ ist dabei das n-te Restglied.\\
+Mit diesem Term lässt sich der Fehler abschätzen, denn es gilt: $f(x) = j_{x_0}^n f(x) + R_n(x)$
+\subsection{Newtonverfahren zur Nullstellenfindung}
+$x_{n+1} := x_n-\frac{f(x_n)}{f'(x_n)}\qquad \lim_{n\to\infty} x_n = \text{Nullstelle}$
+\section{Integralrechnung}
+  Partielle Integration $\int_a^b f'(x)g(x)dx = \left[ f(x)g(x)\right]_a^b - \int_a^b f(x)g'(x) dx$\\
+\subsection{Standardsubstitutionen}
+  \begin{tabular}{lll}
+  \hline
+  $\int f(x, \sqrt{ax+b})dx$		& $t = \sqrt{ax+b}$	& $dx = \frac{2t dt}{a}$\\\hline
+  $\int f(g'(x),g(x))dx$		& $t = g(x)$		& $dx = \frac{dt}{g'(x)}$\\\hline
+  $\int f(x,\sqrt{a^2-x^2})dx$		& $x = a\cdot\sin t$	& $dx = a\cdot\cos(t)dt$\\\hline
+  $\int f(x,\sqrt{x^2+a^2})dx$		& $x = a\cdot\sinh t$	& $dx = a\cdot\cosh(t)dt$\\\hline
+  $\int f(x,\sqrt{x^2-a^2})dx$		& $x = a\cdot\cosh t$	& $dx = a\cdot\sinh(t)dt$\\\hline
+  $\int f(x, \sqrt{ax^2+bx+c})dx$	& \multicolumn{2}{l}{durch quad.Ergänzung auf obere Formen bringen}\\\hline
+  $\int f(e^x,\sinh x,\cosh x) dx$	& $t = e^x$		& $dx = \frac{dt}{t}$\\\hline
+  $\int f(\sin x,\cos x)dx$		& $t = \tan\frac{x}{2}$	& $dx = \frac{2 dt}{1+t^2}$\\\hline
+  \end{tabular}
+\subsection{Lösungen einiger Integrale}
+$
+  \begin{array}{ll}
+   \int \frac{dx}{ax+b} = \frac{1}{a}\ln|ax+b|+c	& \int (ax+b)^n dx = \frac{1}{a}\cdot\frac{1}{n+1}\cdot (ax+b)^{n+1}\\
+   \int \sin^2(ax+b) dx = \frac{x}{2}-\frac{1}{4a}\cdot\sin(2as+2b)+c	& \int \cos^2(ax+b) dx = \frac{x}{2}+\frac{1}{4a}\cdot\sin(2as+2b)+c\\
+   \int \frac{f'(x)}{f(x)} dx = \ln |f(x)|+c		& \int [f'(x)]^n\cdot f(x) dx = \frac{1}{n+1}\cdot[f(x)]^{n+1}+c\\
+  \end{array}
+$
+
+\subsection{Konvergenzkriterien für uneigentliches Integral}
+\begin{itemize}
+ \item Für $f$ stetig auf $[a,\infty[$\\
+	Majorentenkriterium: $\int_a^{\infty}f(x) dx$ konvergiert, falls $|f(x)| \leq \frac{c}{x^s}, s>1$\\
+	Minorantenkriterium: $\int_a^{\infty}f(x) dx$ divergiert, falls $f(x) \geq \frac{c}{x^s}, s\leq 1$\\
+ \item Für $f$ stetig auf $]a,b]$, auf $[a,b[$ integrierbar.\\
+	Majorentenkriterium: $\int_a^b f(x) dx$ konvergiert, falls $|f(x)| \leq \frac{c}{(x-a)^s}, s<1$\\
+	Minorantenkriterium: $\int_a^b f(x) dx$ divergiert, falls $f(x) \geq \frac{c}{(x-a)^s}, s\geq 1$ und $c>0$\\
+\end{itemize}

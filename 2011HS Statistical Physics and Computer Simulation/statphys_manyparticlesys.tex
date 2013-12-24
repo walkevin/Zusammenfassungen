@@ -1,0 +1,96 @@
+\section{Non interacting Many-particle systems}
+\subsection{Distinguishable particles}
+\begin{tabular}{p{4cm} p{15cm}}
+Canonical partition function for N distinguishable particles	& $Z(N,V,T) = \sum_j e^{-\beta E_j} = ... = [z(V,T)]^N\quad$ all particles with same energy state\\
+Examples for dist. particles	& Atoms in a solid, Atoms in a macromolecule
+\end{tabular}
+\subsection{Indistinguishable particles}
+\begin{tabular}{p{4cm} p{15cm}}
+Examples for indist.part.	& Gas molecules, electrons in a atom, photons,...\\
+Fermions	& \begin{tabular}[t]{l}
+         	   All particles with spin $\frac{1}{2}$: Protons,Neutrons,Electrons,...\\
+		   Wave function $\Psi$ must be anti-symmetric\\
+		   $\Psi(1,2) = \frac{1}{\sqrt{2}} \left( \Psi_{k1}(1) \Psi_{k2}(2) - \Psi_{k1}(2) \Psi_{k2}(1) \right)$\\
+		   $k_1 = k_2 \Rightarrow \Psi(1,2) = 0$\quad Two particles cannot occupy the same state (Pauli)
+         	  \end{tabular}\\
+Bosons		& \begin{tabular}[t]{l}
+      		   All particles with integer spin: Photons,phonons,mesons\\
+		   Wave function $\Psi$ must be symmetric\\
+		   $\Psi(1,2) = \frac{1}{\sqrt{2}} \left( \Psi_{k1}(1) \Psi_{k2}(2) + \Psi_{k1}(2) \Psi_{k2}(1) \right)$\\
+		   Many particles may occupy the same state\\
+      		  \end{tabular}\\
+Indistinguishability	& No set of particles may be a permutation of another one\\
+Boltzmann Limit	& \begin{tabular}[t]{p{14cm}}
+		    If all N particles are in different states with different energies, we can sum the CPF as for indist. particles and divided by $N!$\\
+		    Boltzmann Limit is valid if the number of energy-levels is vastly larger than the number of particles\\
+		    Then it's unlikely that two particles (bosons) occupy the same energy-level
+		  \end{tabular}
+\end{tabular}
+\subsection{Boltzmann Statistics}
+\begin{tabular}{p{4cm} p{15cm}}
+CPF in Boltzmann Limit	& $Z(N,V,T) = \frac{1}{N!} [z(V,T)]^N$\\
+Number of particle states with energies $\leq \epsilon$	& $n(\epsilon) = \frac{1}{8}\frac{4}{3} \pi R^3 = \frac{1}{6} \pi \left( \frac{2ma^2}{\pi^2\hbar^2}\epsilon \right)^\frac{3}{2}\quad \epsilon = \frac{3}{2}k_BT\quad R^2 = n_x^2+n_y^2+n_z^2$\\
+Boltzmann Statistics	& $Z(N,V,T) = \frac{1}{N!} [z(V,T)]^N$  applicable if  $n(\epsilon) \gg N$\\
+			& $\Leftrightarrow \frac{\pi}{6} \left( \frac{12 mk_BT}{h^2} \right)^{\frac{3}{2}} >> \frac{N}{a^3} = \frac{N}{V} = \rho$\\
+			& B.Stats valid for: large mass $m$, high temperatur $T$, low density $\rho$\\
+Examples		& Liquid Neon at 27K, liq. Argon at 86K; not Boltzmann: Electrons in a metal at 300K\\
+Energy of N-particle system	& $\langle E \rangle = -\left( \frac{\partial \ln Z(N,V,T)}{\partial \beta} \right)_{N,F} = ... = N \langle \epsilon \rangle$\\
+Average energy of a particle	& $\langle \epsilon \rangle = \frac{ \sum_k \epsilon_k e^{-\beta \epsilon_k}}{\sum_k e^{-\beta \epsilon_k}} = \frac{ \sum_k \epsilon_k e^{-\beta \epsilon_k}}{z(V,T)}$\\
+Probability of a particle for being in state $k$	& $\pi_k = \frac{e^{-\beta\epsilon_k} }{\sum_k e^{-\beta \epsilon_k}}$
+\end{tabular}
+\subsection{Fermi-Dirac, Bose-Einstein partition functions}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+System			& \text{
+			    \begin{tabular}{l}
+			      Volume: $V$\\
+			      Number of particles: $N$\\
+			      Energy levels: $E_j$\\
+			      1-particle energy levels: $\epsilon_k$\\
+			      Number of particles in a quantum state $\Psi_k: m_k$\\
+			    \end{tabular}
+			  }\\
+			& E_j = \sum_k m_k\epsilon_k; N = \sum_k m_k\\
+Grand-canonical partition function	& Z(\mu,V,T) = \sum_{N=0}^{\infty}\sum_j e^{-\beta (E_j-\mu N)} = ... = \prod_k\sum_{m_k} \left( e^{-\beta(\epsilon_k-\mu)}\right)^{m_k}\\
+Fermi-Dirac partition function	& m_k = 0 \vee 1 \Rightarrow Z_{FD} (\mu,V,T) = \prod_k \left[ 1+e^{-\beta(\epsilon_k-\mu)} \right]\\
+Bose-Einstein partition function	& m_k = 0,1,2,... \Rightarrow Z_{BE} (\mu,V,T) = \prod_k \left[ 1-e^{-\beta(\epsilon_k-\mu)} \right]^{-1}\\
+Combined partition function		& Z_{FD/BE}(\mu,V,T) = \prod_k \left[ 1\pm e^{-\beta(\epsilon_k-\mu)} \right]^{\pm 1}
+\end{tabular}\\
+\subsection{Fermi-Dirac Statistics}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Avg. Number of particles	& \langle N \rangle = \frac{1}{\beta} \left( \frac{\partial \ln Z_{FD}(\mu,V,T) }{\partial \mu} \right)_{V,T} = ... = \sum_k \left(e^{+\beta(\epsilon_k-\mu)} + 1 \right)^{-1} = \sum_k \langle m_k \rangle\\
+$\langle m_k \rangle$		& \langle m_k \rangle \approx e^{-\beta(\epsilon_k-\mu)}\quad \langle m_k \rangle << 1 \text{ (Boltzmann Limit) }\\
+Avg. Energy			& \langle E \rangle = \sum_k \langle m_k \rangle \epsilon_k = \sum_k \frac{\epsilon_k}{e^{+\beta(\epsilon_k-\mu)} + 1}\\
+Pressure			& pV = k_BT\ln Z_{FD}(\mu,V,T) = k_BT \sum_k \ln \left( 1 + e^{-(\epsilon_k-\mu)/k_BT} \right)
+\end{tabular}
+\subsection{Bose-Einstein Statistics}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Avg. Number of particles	& \langle N \rangle = \frac{1}{\beta} \left( \frac{\partial \ln Z_{BE}(\mu,V,T) }{\partial \mu} \right)_{V,T} = ... = \sum_k \left(e^{+\beta(\epsilon_k-\mu)} - 1 \right)^{-1} = \sum_k \langle m_k \rangle\\
+$\langle m_k \rangle$		& \langle m_k \rangle \approx e^{-\beta(\epsilon_k-\mu)}\\
+Avg. Energy			& \langle E \rangle = \sum_k \langle m_k \rangle \epsilon_k = \sum_k \frac{\epsilon_k}{e^{+\beta(\epsilon_k-\mu)} - 1}\\
+Pressure			& pV = k_BT\ln Z_{BE}(\mu,V,T) = -k_BT \sum_k \ln \left( 1 - e^{-(\epsilon_k-\mu)/k_BT} \right)
+\end{tabular}
+\subsection{Maxwell distribution}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Avg. kinetic energy	& \langle \epsilon \rangle = \frac{3}{2}k_BT\\
+Avg. size of velocity	& \langle v \rangle = \left( \frac{8k_BT}{m\pi} \right)^\frac{1}{2}\\
+Root mean square	& \langle v^2 \rangle^\frac{1}{2} = \left( \frac{3k_BT}{m} \right)^\frac{1}{2}\\
+Ideal Gas		&\\
+Avg. kinetic energy	& \langle E \rangle = N \frac{3}{2} k_BT\\
+Heat capacity		& \frac{dE}{dT} = \frac{3}{2} Nk_B\\
+Free energy		& F = -Nk_BT \left( \frac{3}{2} \ln \left(\frac{2\pi mk_BT}{h^2} \right) - \ln \left( \frac{N}{V} \right) + 1 \right)\\
+Entropy			& S = Nk_B \left( \frac{3}{2} \ln \left(\frac{2\pi mk_BT}{\hbar^2} \right) - \ln \left( \frac{N}{V} \right) + \frac{5}{2} \right)
+\end{tabular}
+\subsection{Distinguishable vs. indistinguishable particles}
+\begin{tabular}{p{4cm} >{$}p{8cm}<{$} >{$}p{8cm}<{$}}
+Ideal Gas	& Z_d(N,V,T) = [z(V,T)]^N	& Z_i(N,V,T) = \frac{1}{N!} [z(V,T)]^N\\
+Free Energy	& F_d = -Nk_BT (\ln z(V,T))	& F_i = -Nk_BT (\ln z(V,T)-\ln N+1)\\
+Entropy		& S_d = Nk_B (\ln z(V,T) + \frac{3}{2}) & S_i = Nk_B (\ln z(V,T) + \frac{3}{2} -\ln N+1)\\
+Pressure	& P_d = Nk_BT/V			& P_i = Nk_BT/V
+\end{tabular}
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+\section{Grundlagen der QM}
+\subsection{Wichtige Theoreme für die QM}
+\begin{tabular}{p{4cm} p{15cm}}
+Theorem 1	& Selbstadjungierte, lineare Operatoren haben {\bfseries reelle Eigenwerte}. (Selbstadjungiert: $A_{ij} = A_{ji}^{\ast}$)\\
+Theorem 2	& Eigenfunktionen von selbstadjungierten Operatoren sind {\bfseries orthogonal}, wenn sie verschiedene Eigenwerte haben. Eigenfkt. mit gleichen Eigenwerten können orthogonalisiert werden (z.B. mit Gram-Schmidt).\\
+Theorem 3	& Wenn zwei Operatoren $\hat{A}$ und $\hat{B}$ eine gemeinsame Basis von Eigenfkt. $\varphi_i$ haben, dann {\bfseries vertauschen} $\hat{A}$ und $\hat{B}$.\\
+Theorem 4	& Wenn zwei Operatoren vertauschen, dann kann man eine vollständige, {\bfseries gemeinsame Basis von Eigenfkt.} der beiden Operatoren ermitteln.
+\end{tabular}
+\subsection{Postulate der QM}
+\begin{tabular}{p{4cm} p{15cm}}
+Postulat 1		& Ein abgeschlossenes System wird durch seinen Operator $\hat{H}$ strukturell vollständig charakterisiert.\\
+Postulat 2		& $\varphi_n$ sind Eigenfunktionen des Hamilton-Operators $\hat{H}$. $\Psi$ ist ein Element (sog. Zustandsvektor) des Vektorraums, der durch $\varphi_n$ aufgespannt wird, d.h. $\boxed{\Psi = \sum_n c_n \varphi_n}$\\
+Skalarprodukt		& $\int \varphi_n^{\ast} \varphi_m d\tau := \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \varphi_n^{\ast} (x_1,x_2,...,x_N) \varphi_m(x_1,x_2,...,x_N)dx_1 dx_2 \cdots dx_N$\\
+Postulat 3		& Eine Observable entspricht einem selbstadjungiertem, linearem Operator $\hat{A}$. Ein Observable ist genau dann (klassisch) messbar, falls $\boxed{\Psi = \varphi_n$ und $\hat{A}\varphi_n = a_n\varphi_n}$. Ist die Observable nicht messbar, können nur Aussagen über die Erwartungswerte gemacht werden.\\
+Postulat 4 (Erwartungswerte)	& Falls $\Psi$ normiert: $\langle \hat{A} \rangle = \int \Psi^{\ast} \hat{A} \Psi d\tau$\\
+				& Sonst: $\langle \hat{A} \rangle =\frac{ \int \Psi^{\ast} \hat{A} \Psi d\tau}{ \int \Psi^{\ast} \Psi d\tau}$\\
+				& $\boxed{\int \Psi^{\ast} \hat{A} \Psi d\tau = \sum_n |c_n|^2 a_n}\quad |c_n|^2$ ist die WSK, dass die Observable im Zustand $a_n$ ist.\\
+QM Messung		& Direkt nach der Messung einer Observablen ist das System in einem Eigenzustand $\varphi_n$ des Messoperators $\hat{A}$. Damit führen weitere, identische Messungen am System immer zum selben Ergebnis $a_n$\\
+Postulat 5		& \begin{tabular}[t]{ll}
+          		  Zeitabhängige SG:	& $i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi$\\
+			  Zeitunabhängige SG:	& $\hat{H} \Psi = E \Psi$
+          		  \end{tabular}\\
+Postulat 6		& \begin{tabular}[t]{l}
+          		  Zusammenfassung zweier unabhängiger Hilberträume $H_1$ und $H_2$\\
+			  $H = H_1 \bigotimes H_2\quad \bigotimes \equiv \mathrm{kron}$\\
+			  $H = H_1 \bigoplus H_2\quad = H_1 \bigotimes 1 + 1 \bigotimes H_2\quad \text{falls $H_1, H_2$ wechselwirkungsfrei}$
+          		  \end{tabular}\\
+Separabilität der SG (vgl. Bsp. S.3-8)	& \begin{tabular}[t]{l}
+			    Falls $H = H_1 \bigoplus H_2$, dann\\
+			    $E_{{n_a},{n_b}} = E_{a,{n_a}} + E_{b,{n_b}}$, und\\
+			    $\Psi_{{n_a},{n_b}}(\vec{q_i}) = \Psi_{a,{n_a}}(\vec{q_j}) \cdot \Psi_{b,{n_b}}(\vec{q_k})$
+			  \end{tabular}\\
+Postulat 7		& QM-Systeme mit gleicher Masse, Spin, emag. Momenten sind strikte identisch. Gegenüber Vertauschung zweier Teilchenkoordinaten ist die Zustandsfkt. entweder symmetrisch (+, Bosonen (ganzzahliger Spin)) oder antisymmetrisch (-, Fermionen (halbganzzahliger Spin, Protonen, Elektronen, etc.))
+$\boxed{\Psi(\vec{r_1},m_1,..., \vec{r_k},m_k,..., \vec{r_j},m_j,..., \vec{r_N},m_N) = \pm \Psi(\vec{r_1},m_1,...,\vec{r_j},m_j,...,\vec{r_k},m_k,...,\vec{r_N},m_N)}$\\
+\end{tabular}\\
+\begin{tabular}{p{4cm} p{15cm}}
+Bra-Ket-Notation	& \begin{tabular}[t]{l}
+			    $\int \varphi_m^{\ast} \varphi_n d\tau =: \langle \varphi_m | \varphi_n \rangle =: \langle m | n \rangle$\\
+			    $\quad\langle m | n \rangle = \delta_{mn}$, falls $\varphi$ orthonormiert.\\
+			    $\int \varphi_m^{\ast} \hat{A} \varphi_n d\tau =: \langle \varphi_m | \hat{A}\varphi_n \rangle =: \langle m | A | n \rangle$\\
+			    $| n \rangle = \varphi_n \Rightarrow c_n | n \rangle = c_n \varphi_n$\\
+			    $\langle m | = \varphi_m^{\ast} \Rightarrow c_m^{\ast} \langle m | = c_m^{\ast} \varphi_m^{\ast}$
+			  \end{tabular}\\
+Matrixdarstellung	& $A_{nm} = \int \varphi_m^{\ast} \hat{A} \varphi_n d\tau = \langle m | A | n \rangle$\\
+AufenthaltsWSK		& $P = \iiint_V |\Psi(x,y,z)|^2 dV\quad V \in \Omega$\\
+Normierungsbedinung	& $\iiint_{\Omega} |\Psi(x,y,z)|^2 dV = 1$\\
+Akzeptable Wellenfkt.	& \begin{tabular}[t]{ll}\\
+                     	  1.	& $\int_{-\infty}^{\infty} \Psi^{\ast} (x) \Psi(x) dx < \infty$\\
+			  2.	& $\Psi(x)$ muss eindeutig definiert sein.\\
+			  3.	& $\Psi(x) \in C^2$\\
+			  4.	& $\Psi(x)$ muss stetig sein.\\
+                     	  \end{tabular}\\
+Heisenberg'sche Unschärferelation	& $\Delta A \Delta B \geq \frac{1}{2} \left| \left\langle \left[ \hat{A}, \hat{B} \right] \right\rangle \right| = \frac{1}{2} \int \Psi^{\ast} \langle \hat{A}, \hat{B} \rangle \Psi d\tau$\\
+					& {\itshape Bsp: } $\Delta x \Delta p_x \geq \frac{\hbar}{2}$\\
+Ritz'sches Variationsverfahren		& \begin{tabular}[t]{p{14cm}}
+                              		  $\frac{\langle \Psi | \hat{H} | \Psi \rangle}{\langle \Psi | \Psi \rangle} \geq E_1$\\
+					  $\frac{d}{db} \left( \frac{\langle \Psi | \hat{H} | \Psi \rangle}{\langle \Psi | \Psi \rangle} \right) = 0$, wobei $\Psi$ eine Versuchsfunktion ist mit adjustierbarem Parameter $b$, für die gilt: $\lim_{x \to\infty} \Psi(x) = 0$\\
+					  Bsp. Versuchsfunktion: $\Psi(x) = e^{-bx^2}$
+                              		  \end{tabular}
+\end{tabular}
+\subsection{Erhaltungssätze}
+\begin{tabular}{p{4cm} p{15cm}}
+Erhaltungsgrösse	& Hat eine Observable $\hat{A}$ einen konstanten Erwartungswert, d.h. $\frac{d}{dt} \langle \hat{A} \rangle = 0$, dann ist sie eine Erhaltungsgrösse.\\
+Zeitabhängigkeit von $ \langle \hat{A} \rangle$	& $\frac{d}{dt} \langle \hat{A} \rangle = \frac{i}{\hbar} \left\langle \left[ \hat{H}, \hat{A} \right] \right\rangle$\\
+			& $\Rightarrow$ Nur wenn $\hat{A}$ und $\hat{H}$ vertauschen, bleibt $\hat{A}$ über die Zeit erhalten.\\
+			& Dies gilt unter der Annahme, dass $\frac{d}{dt} \hat{A} = 0$.
+\end{tabular}
+\begin{tabular}{p{4cm}p{4cm}p{5cm}p{5cm}}
+\toprule
+Erhaltungsgrösse	& Bedingung				& Invarianz von $\hat{H}$						& Eigenschaft des freien Raums\\\midrule
+\textbf{Impuls} \cr $\hat{\vec{p}} = (\hat{p}_x,\hat{p}_y,\hat{p}_z)$		& $\hat{H}(x_i) = \hat{H}(x_i+a)$						& Beliebige Translation der Koordinaten aller Teilchen des Systems	& Homogenität des Potentials ($\frac{dV}{dq} = 0\quad q = (x,y,z)$)\\\midrule
+\textbf{Gesamtdrehimpuls} \cr $\hat{\vec{J}} = (\hat{J}_x,\hat{J}_y,\hat{J}_z)$	& $\hat{H}(\theta_i,\phi_i,\chi_i) = \hat{H}(\hat{R}(\theta_i,\phi_i,\chi_i))$	& Beliebige Rotation der Koordinaten aller Teilchen des Systems		& Isotropie des Potentials ($\frac{dV}{d\eta} = 0\quad \eta = (\theta,\phi,\chi)$\\\midrule
+\textbf{Parität}								& $\hat{H}(q_i) = \hat{H}(-q_i)$						& Inversion der Koordinaten aller Teilchen des Systems		& Inversionssymmetrie\\\bottomrule
+\end{tabular}
+\subsection{Entartung}
+\begin{tabular}{p{4cm}p{15cm}}
+Entartung			& Mehrere Lösungen liefern gleichen Eigenwert\\
+Entartungsfaktor $g_i$		& Anzahl dieser Lösungen\\
+Satz über entartete Zustände	& Seien $\varphi_1$ und $\varphi_2$ zwei Eigenfkt eines Hamilton-Operator zum selben Eigenwert $E_1 = E_2 = E$. Dann ist eine beliebige Linearkombination $\Psi = c_1\varphi_1 \pm c_2\varphi_2$ auch eine Eigenfkt von $\hat{H}$ zum selben Eigenwert $E$. Dieser Satz gilt allgemein für $g$ entartete Zustände.
+\end{tabular}

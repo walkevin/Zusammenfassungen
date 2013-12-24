@@ -1,0 +1,42 @@
+\section{Klassische Mechanik}
+\subsection{Newton'scher Formalismus}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Newton BGL	& m\ddot{\vec{x}} = \sum_{i=1}^{N} F_i\\
+ pot. Energie	& \vec F_i = -\vec{\nabla_i} E_{pot} (\vec r_1, \vec r_2, ... , \vec r_N)\\
+ kinet. Energie	& E_{kin} = \sum_{i=1}^{N} \frac{1}{2} m_i \dot{\vec{r_i}}^2 = \sum_{i=1}^{N} \frac{\vec {p_i}^2}{2m_i}\\
+ \multicolumn{2}{l}{\text{Obige Gleichungen nur in kartesischen Koordinaten erfüllt!}}
+\end{tabular}
+\subsection{Lagrange'scher Formalismus}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ \multicolumn{2}{l}{\text{Unabhängig vom Koordinatensystem!}}\\
+ verallgemeinerte Ortskoordinaten	& \vec{q}^M = \lbrace q_1,q_2,...,q_M \rbrace\\
+ verallgemeinerte Geschwindigkeiten	& \dot{\vec{q}}^M = \lbrace \dot q_1, \dot q_2, ... ,\dot q_M \rbrace\\
+ Lagrangefunktion			& L\left( \vec {q}^M, \dot{\vec{q}}^M \right) := E_{kin} \left( \vec {q}^M, \dot{\vec{q}}^M \right) - E_{pot} \left( \vec {q}^M, \dot\vec {q}^M \right)\\
+ Lagrange BGL				& \frac{d}{dt} \left( \frac{\partial L}{\partial \dot q_i} \right) = \frac{\partial L}{\partial q_i}\\
+\end{tabular}
+\subsection{Hamilton'scher Formalismus}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ konjugiert verallgemeinerter Impuls	& \vec p_i \equiv \frac{\partial L \left( \vec{q}^M, \dot{\vec{q}}^M \right)}{\partial \dot q_i}\\
+ Hamiltonfunktion			& H \left( \vec{q}^M, \vec{p}^M \right) := \sum_{i=1}^M p_i \dot{q}_i - L\left(\vec{q}^M, \dot{\vec{q}}^M \right) = E_{kin} \left( \vec{q}^M, \vec{p}^M \right) + E_{pot} \left( \vec{q}^M, \vec{p}^M \right) = E_{Tot}\\
+ Hamilton BGL				& \dot q_i = \frac{\partial H}{\partial p_i} \quad \dot p_i = -\frac{\partial H}{\partial q_i}\\
+\end{tabular}
+\subsection{Zwangsbedingungen}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Holonom	& C\left(\vec{q}^M\right) = 0\text{ Die Zwangsbedingung ist nur von Ortskoordinaten und Zeit abhängig.}\\
+ Nicht-holonom	& \text{Die Zwangsbedingung ist zusätzlich abhängig von $\dot{\vec{q}}^M$}\\
+ Implizite Bedingung	& \text{Sei z.B. $\dot R = 0$ (Kreisbahn). Dann ist } E_{kin} = \frac{1}{2} m \left[0 + R^2\dot\varTheta^2 \right]\quad\text{s. Skript 2.Woche S.10}\\
+ Lagrange-Multipliaktoren	& \begin{array}[t]{ll}
+                         	   \text{Explizite Zwangsbedingung}	& C\left(\vec{q}^M \right) = 0\\
+				   \text{neue Lagrangefunktion}		& L_{cons} \left(\vec{q}^M,\dot{\vec{q}}^M\right) = L \left(\vec{q}^M,\dot{\vec{q}}^M\right) + \lambda C\left(\vec{q}^M \right)\\
+				   \text{Kraft der Zwangsbedingung}	& \frac{d^2}{dt^2} C\left(\vec{q}^M \right) = 0\\
+				   \multicolumn{2}{l}{\Rightarrow \text{Lösung durch Anwendung der L-BGL auf $L_{cons}$ und Einsetzen der Kraft der Zwangsbedingung}}
+                         	  \end{array}\\
+ Gauss-Prinzip		& \begin{array}[t]{l}
+              		  \sum_{i=1}^M \frac{{F_C}_i^2}{2m_i} = MIN\\
+			  \sum_{i=1}^M \frac{{F_C}_i \delta {F_C}_i}{m_i} = 0\\
+			  \text{1. Aus Zwangsbedingung Gleichung für $\ddot\vec r$ herleiten.}\\
+			  \text{2. In $m\ddot\vec r = F_C = F_C + \delta F_C$ einsetzen.}\\
+			  \text{3. Mit Lagrange-Multipliaktor auf etwas in der Form $F_C = \lambda \vec r$ kommen.}
+              		  \end{array}
+\end{tabular}
+

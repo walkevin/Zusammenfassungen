@@ -1,0 +1,50 @@
+\section{Thermodynamic Boundary Conditions}
+Coupling to an external temperature or pressure bath. (Measure T and P rather than E and V)\\
+\begin{tabular}{p{4cm} p{16cm}}
+Coupling	&  \begin{tabular}[t]{lll}
+		   temperature	& by scaling	& velocities\\
+		   pressure	& by scaling	& positions
+		  \end{tabular}\\
+Intensive vs. extensive variables	& \begin{tabular}[t]{ll}
+					   Intensive variable	& Extensive variable\\\hline
+					   independent of system size\\
+                                 	   \textbf{T}emperature		& \textbf{E}nergy\\
+					   \textbf{P}ressure		& \textbf{V}olume\\
+					   Chemical Potential ($\boldsymbol\mu$)	& Particle \textbf{N}umber
+                                 	  \end{tabular}\\
+Keeping intensive variables constant	& \begin{tabular}[t]{ll}
+					  1. & Weak coupling methods\\
+					  2. & Extended system methods\\
+					  3. & Stochastic methods
+					  \end{tabular}\\
+\end{tabular}\\
+\subsection{Constant Temperature}
+\subsubsection{Weak coupling method (Heat bath)}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Coupling equation	& \frac{dT(t)}{dt} = \frac{1}{\tau_T} [T_0-T(t)]\\
+Relation $T\leftrightarrow v_i$	& E_{kin}(t) = \sum_{i=1}^N \frac{1}{2} m_iv_i^2(t) = \frac{1}{2} N_{df}k_BT(t)\\
+Velocity scaling	& v_{new} = \lambda v_{old}\\
+Modified eqn of motion	& m_i \frac{dv_i(t)}{dt} = m_i \lambda(t) v_i(t)\\
+			& \lambda = 1 + \frac{c_V^{df}}{k_B} \frac{\Delta t}{\tau_T} \left[ \frac{T_0}{T(t)}-1 \right]\\
+			& \tau > 0.1 \text{ should be o.k.}\\
+Energy distribution in L-J Fluid	& \sigma_{E_tot}^2 = k_BT^2 C_VN^{-2}
+\end{tabular}
+\subsubsection{Stochastic method}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Collision model	& \langle T \rangle = T_0\\
+Langevin model	& m_i\frac{d v_i (t)}{dt} = f_i(t) -m_i\gamma_i v_i(t) + f_i^{st}(t)
+\end{tabular}
+\subsection{Constant Pressure}
+\subsubsection{Weak coupling method}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Coupling equation	& \frac{dP(t)}{dt} = \frac{1}{\tau_P} [P_0-P(t)]\\
+Virial			& W \equiv -\frac{1}{2} \sum_{i<j}^N \vec r_{ij}\cdot \vec f_{ij}\\
+Relation $P\leftrightarrow x_i,V$	& P(t) = \frac{2}{3V} [\langle E_{kin} \rangle - \langle W \rangle ]\quad \text{(Virial theorem)}\\
+Velocity scaling	& x_{new} = \mu x_{old}\\
+Modified eqn of motion	& \frac{dx_i(t)}{dt} = m_i \mu(t) x_i(t)\\
+			& \mu(t) = \left[ 1-\frac{\beta_T \Delta t}{\tau_P} [P_0-P(t)] \right]^{1/3}
+\end{tabular}
+\section{Biased Sampling}
+
+
+

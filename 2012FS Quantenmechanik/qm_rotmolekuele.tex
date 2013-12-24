@@ -1,0 +1,60 @@
+\section{Rotation starrer Moleküle}
+\begin{tabular}{p{4cm} p{15cm}}
+Trägheitsmoment			& $I = \sum_i m_ir_i^2$\\
+Trägheitsmoment für 2-atomiges Molekül	& $I = \mu R^2 \quad \mu = \frac{m_1m_2}{m_1+m_2}\quad R:$ Molekülabstand\\
+Drehimpulse			& \begin{tabular}{ll}
+				  in raumfesten Koordinaten	& $\hat{J}_x, \hat{J}_y, \hat{J}_z$\\
+				  in körperfesten Koordinaten	& $\hat{J}_X, \hat{J}_Y, \hat{J}_Z$
+           			  \end{tabular}\\
+Klassische Definition	& \begin{tabular}{l}
+				$E_{rot} = \frac{1}{2} I \vec{\omega}^2 = \frac{\vec{J}^2}{2I}$\\
+				$\quad I$: Trägheitsmoment um Drehachse $\omega$\\
+				$\quad J = I\vec\omega$: Drehimpulsvektor des Körpers.
+			\end{tabular}\\
+Andere Schreibweise		& $E_{rot} = \frac{1}{2} \vec\omega^T \boldsymbol{I} \vec\omega = \frac{1}{2} \left( \frac{J_X^2}{I_X} + \frac{J_Y^2}{I_Y} + \frac{J_Z^2}{I_Z} \right)$\\
+QM Definition		& \begin{tabular}{rcl}
+			    $\hat{H}_{rot} \Psi_{rot}$ & = & $E_{rot} \Psi_{rot}$, wobei\\
+			    $\hat{H}_{rot}$		&= & $\frac{1}{2} \left( \frac{J_X^2}{I_X} + \frac{J_Y^2}{I_Y} + \frac{J_Z^2}{I_Z} \right)$
+			  \end{tabular}\\
+Anomale Vertauschungsrelationen	& $[\hat{J}_x, \hat{J}_y] = -i\hbar \hat{J}_z, \quad [\hat{J}_x, \hat{J}_z] = -i\hbar \hat{J}_y, \quad[\hat{J}_y, \hat{J}_z] = -i\hbar \hat{J}_x$\\
+				& $[\hat{J}^2, \hat{J}_x] = 0, \quad [\hat{J}^2, \hat{J}_y] = 0, \quad [\hat{J}^2, \hat{J}_z] = 0$\\
+Gelöste Eigenwertgleichungen	& \begin{tabular}[t]{|lll|}
+				    \hline
+				    $\hat{J}^2 \Psi = \hbar^2 J(J+1)  \Psi$	& $J = 0,\frac{1}{2},2,\frac{3}{2},...$	& $J$: Drehimpulsquantenzahl\\
+                                    $\hat{J}_z \Psi = \hbar M \Psi$		& $M = -J, -J+1,...,J-1,J$		& $M$: magnetische Quantenzahl\\
+                                    $\hat{J}_Z \Psi = \hbar K \Psi$		& $K = -J, -J+1,...,J-1,J$		&\\\hline
+                                  \end{tabular}\\
+Bra-Ket Notation		& $\Psi_{rot; J,K,M} = |J,K,M \rangle$\\
+Rotationskonstanten		& \begin{tabular}[t]{l}
+				    $\tilde{A} = \frac{\hbar}{4\pi c I_a} = \frac{A}{c}$\\
+				    $\tilde{B} = \frac{\hbar}{4\pi c I_a} = \frac{B}{c}$\\
+				    $\tilde{C} = \frac{\hbar}{4\pi c I_a} = \frac{C}{c}$\\
+				    wobei $\tilde{X}$ in Wellenzahleinheiten, $X$ in Frequenzeinheiten
+				  \end{tabular}
+\end{tabular}
+\subsection{Beispiel 1: sphärischer Kreisel}
+\begin{tabular}{p{4cm} p{15cm}}
+Trägheitsmomente	& $I_X = I_Y = I_Z = I$\\
+Hamilton-Operator	& $\hat{H}_{rot} = \frac{1}{2I} \left( \hat{J}_X^2 + \hat{J}_Y^2 + \hat{J}_Z^2 \right) = \frac{1}{2I} \hat{J}^2$\\
+Energieeigenwerte	& $E_{J,K,M} = E_J = \frac{\hbar^2}{2I} J(J+1) = hc\tilde{B} J(J+1)$\\
+Entartung		& $g_J = (2J+1)^2$ (volle Entartung durch M und K)\\
+\end{tabular}
+\subsection{Beispiel 2: symmetrischer Kreisel}
+\begin{tabular}{p{4cm} p{15cm}}
+Trägheitsmomente	& $I_X = I_Y \neq I_Z$\\
+Hamilton-Operator	& $\hat{H}_{rot} = \frac{\hat{J}_X^2 + \hat{J}_Y^2}{2I_X} + \frac{\hat{J}_Z^2}{2I_Z} =  \frac{\hat{J}^2 - \hat{J}_Z^2}{2I_X} + \frac{\hat{J}_Z^2}{2I_Z}$\\
+Energieeigenwerte	& \begin{tabular}[t]{ll}
+			    $E_{J,K,M} = E_{J,K} = \frac{\hbar^2}{2I_X} J(J+1) + \left(\frac{\hbar^2}{2I_Z} - \frac{\hbar^2}{2I_X}\right)K^2$\\
+			    $ = hc\tilde{B} J(J+1) + hc (\tilde{A} - \tilde{B})K^2$	& (spindelförmiger Kreisel)\\
+			    $ = hc\tilde{B} J(J+1) + hc (\tilde{C} - \tilde{B})K^2$	& (tellerförmiger Kreisel)\\
+			  \end{tabular}\\
+Entartung		& $g_{J,K} = \begin{cases}
+         		             (2J+1) \cdot 2 & K \neq 0\\
+				     2J+1	    & K = 0
+         		             \end{cases}$
+\end{tabular}
+\subsection{Beispiel 3: zweiatomige Moleküle}
+Spezialfall von symmetrischem Kreisel mit $I_Z = 0 \Rightarrow K = 0$
+
+
+

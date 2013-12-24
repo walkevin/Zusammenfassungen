@@ -1,0 +1,50 @@
+\section{Logik}
+\begin{tabular}{l >{$}l<{$}}
+ semantische Äquivalenz		& \text{verschiedene Syntax, aber Wahrheitstabelle gleich}\\
+ DNF, KNF			& \begin{array}[t]{l|l||l}
+         			   A	& B \\\hline
+				   1	& 0 & 1\\
+				   1	& 1 & 1\\
+				   0	& 0 & 0\\
+				   0	& 1 & 0
+         			  \end{array}\enspace
+				  \begin{array}[t]{l}
+				   \text{DNF: } (A \wedge B) \vee (A \wedge ¬B)\quad \text{1-Zeilen}\\
+				   \text{KNF: } (A \vee B) \wedge (A \vee ¬B)\quad \text{0-Zeilen}
+				  \end{array}\\\hline
+ Resolution (KNF)		& \begin{array}[t]{llll}
+                 		   A \vee B, 	& A \rightarrow B, 		& B \rightarrow C		& \vDash C\quad \equiv \\
+				   (A \vee B)	& \wedge (A \rightarrow B) 	& \wedge (B \rightarrow C) 	& \wedge ¬C \equiv \\
+				   (A \vee B)	& \wedge (¬A \vee B) 		& \wedge (¬B \vee C) 		& \wedge ¬C \\
+				   \{A,B\}	& \{¬A,C\}			& \{¬B,C\} 			& \{ ¬C\}\\\\\\\\\\   
+                 		  \end{array}\\\hline
+ Hornformeln			& \begin{array}[t]{l}
+				   \text{Eine Hornformel hat höchstens ein positives Literal}\\
+				   \text{DB}\left\lbrace
+				    \begin{array}{l}
+				      \begin{array}{ll}
+				      \multicolumn{2}{l}{\text{Fakten}}\\
+				      A 	& \{A\}\\
+				      B		& \{B\}\\\hline
+				      \multicolumn{2}{l}{\text{Regeln}}\\
+				      A \wedge B \rightarrow C	& \{¬A,¬B,C)\\
+				      B \wedge C \rightarrow D	& \{¬B,¬C,D)
+				      \end{array}
+				     \end{array}
+				    \right.\\
+				   \text{Abfrage: Gilt E? } ¬E \cup DB \text{ unerfüllbar (Resolution)}
+				    \end{array}\\\hline
+ Quantoren			& \begin{array}[t]{lll}
+          			   ¬\forall x(P(x)) 		&\equiv	& \exists x(¬P(x))\\
+				   ¬\forall x(P(x) \wedge Q(x))	&\equiv & \forall x (P(x)) \wedge \forall y (Q(y))\\
+				   ¬\exists(P(x) \vee Q(x))	&\equiv & \exists x(P(x)) \vee \exists y (Q(y))\\
+				  \multicolumn{3}{l}{\text{ABER:}}\\
+				   \forall x(P(x) \vee Q(x)) 	&\nequiv & \forall x (P(x)) \vee \forall y (Q(y))\\
+				  \multicolumn{3}{l}{\text{Bsp: P = gerade Zahlen; Q = ungerade Zahlen}}\\
+				   \exists x (P(x) \wedge Q(x))	&\nequiv & \exists x(P(x)) \wedge \exists y (Q(y))\\\hline
+				   \forall x\forall y P(x,y)	&\equiv	& \forall y\forall x P(x,y)\\
+				   \exists x\exists y P(x,y)	&\equiv	& \exists y\exists x P(x,y)\\
+				  \multicolumn{3}{l}{\text{ABER:}}\\
+				   \forall x \exists y P(x,y) 	&\nequiv & \exists y \forall x P(x,y)\quad \text{ausser $x=y$}
+          			  \end{array}\\
+\end{tabular}

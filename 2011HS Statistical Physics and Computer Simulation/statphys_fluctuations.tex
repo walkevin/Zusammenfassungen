@@ -1,0 +1,27 @@
+\subsection{Fluctuations}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Average of a distribution of a quantity Q	& \langle Q \rangle = \sum_i P_iQ_i\\
+Variance		& \sigma^2_Q = \langle Q^2 \rangle - \langle Q \rangle^2\\
+Standard deviation	& \sigma_Q = \sqrt{\sigma^2_Q}\\
+Canonical Ensemble	& \begin{array}[t]{l}
+			   \text{Fluctuation of E}\\
+			   \frac{\partial Z(N,V,T)}{\partial \beta} = ... = -\langle E \rangle Z(N,V,T)\\
+			   \frac{\partial \ln Z(N,V,T)}{\partial \beta} = ... = -\langle E \rangle\\
+			   \frac{\partial^2 \ln Z(N,V,T)}{\partial \beta^2} = ... = \langle E^2 \rangle - \langle E \rangle^2 = k_BT^2 \left(\frac{\partial E}{\partial T} \right)_V = k_BT^2 C_V\\
+			   C_V: \text{ Heat capacity of system at constant volume}\\
+                  	  \end{array}\\
+Isothermal-isobaric Ensemble	& \begin{array}[t]{l}
+			   \text{Fluctuation of V}\\
+			   \frac{\partial Z(N,p,T)}{\partial p} = ... = -\beta \langle V \rangle Z(N,p,T)\\
+			   \frac{\partial \ln Z(N,p,T)}{\partial \beta} = ... = -\beta\langle V \rangle\\
+			   \frac{\partial^2 \ln Z(N,p,T)}{\partial \beta^2} = ... = \beta\langle V^2 \rangle - \beta\langle V \rangle^2 = -k_BT \left(\frac{\partial V}{\partial p} \right)_T = k_BT V \kappa_T\\
+			   \kappa_T: \text{ Isothermal compressibility}\\
+                  	  \end{array}\\
+Grand Canonical Ensemble	& \begin{array}[t]{l}
+			   \text{Fluctuation of N}\\
+			   \frac{\partial Z(\mu,V,T)}{\partial \mu} = ... = -\beta \langle N \rangle Z(\mu,V,T)\\
+			   \frac{\partial \ln Z(\mu,V,T)}{\partial \mu} = ... = -\beta\langle N \rangle\\
+			   \frac{\partial^2 \ln Z(\mu,V,T)}{\partial \mu^2} = ... = \beta\langle N^2 \rangle - \beta\langle N \rangle^2 = N \rho k_BT \kappa_T\\
+			   \rho = N/V: \text{ Particle Density}\\
+                  	  \end{array}
+\end{tabular}

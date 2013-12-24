@@ -1,0 +1,16 @@
+\begin{tabular}{l >{$}l<{$}}
+ Rekursionsgleichung &
+\begin{array}[t]{l}
+ f_n = f_{n-1} + f_{n-2}\quad f_0 = 0; f_1 = 1\\
+\text{Ansatz: } f_n = \lambda^n \Rightarrow \lambda^n = \lambda^{n-1}+\lambda^{n-2}\\
+\underbrace{(\lambda^2-\lambda-1)}_{char. Polynom}\cdot \lambda^{n-2} = 0 \Rightarrow \lambda_{1,2} = \frac{1 \pm \sqrt{5}}{2}\\
+f_n = a\cdot \lambda_1^n + b\cdot \lambda_2^n\\
+\text{Lsg. bei mehrfachen Nst: }f_n = a\cdot \lambda_1^n + b\cdot n \cdot \lambda_1^n + c\cdot n^2\cdot \lambda_1^n\\
+\text{Anfangsbedingungen einsetzen: }\\
+0 = a\cdot 1 + b \cdot \Rightarrow a= -b\\
+1 = a\cdot \lambda_1 - a \cdot \lambda_2 \Rightarrow 1 = a(\lambda_1 - \lambda_2)\\
+a = \frac{1}{\sqrt{5}}; b = -\frac{1}{\sqrt{5}}\\
+f_n = \frac{1}{\sqrt{5}}\cdot \left( \left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n \right)
+\end{array}
+
+\end{tabular}

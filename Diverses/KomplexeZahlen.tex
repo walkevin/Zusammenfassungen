@@ -1,0 +1,52 @@
+\documentclass[a4paper,10pt,fleqn,landscape]{article}
+
+\usepackage{templateZsf}
+\usepackage{color,colortbl}
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+\begin{multicols}{2}
+ \section*{Komplexe Zahlen}
+ \subsection*{Umrechnungsformeln}
+ Normal $\Rightarrow$ Polar\\
+Polarform: $z = re^{i\varphi}$\\
+$\varphi = \arg(z) = \begin{cases}
+		      \arctan (\tfrac{y}{x}) & x > 0\\
+                      \arctan (\tfrac{y}{x} + \pi) & x < 0, y \geq 0\\
+		      \arctan (\tfrac{y}{x} - \pi) & x < 0, y < 0\\
+		      \pi / 2 & x = 0, y > 0\\
+		      -\pi / 2 & x = 0,y < 0\\
+		      \text{unbestimmt} & x=y=0
+                     \end{cases}\\
+r = |z| = \sqrt{x^2+y^2} = \sqrt{z\cdot\overline{z}}
+$
+
+ Polar $\Rightarrow$ Normal\\
+Normalform: $z = x+iy$\\
+$x = \Re(z) = r\cdot \cos(\varphi)\\
+y = \Im(z) = r\cdot \sin(\varphi)$
+
+ \subsection*{n-te Wurzel}
+$\sqrt[n]{re^{i\varphi}} = \sqrt[n]{r} e^{i\left(\tfrac{\varphi}{n} + k \tfrac{2\pi}{n} \right)}, k = {0,1,...,n-1}$
+
+ \subsection*{Diverse Rechenregeln}
+$
+\begin{array}{lll}
+\multicolumn{2}{l}{z = x+iy \Rightarrow \overline{z} = x-iy} 	& z = re^{i\varphi} \Rightarrow \overline{z} = re^{-i\varphi}\\
+|z\cdot z'| = |z|\cdot|z'|	& |z+z'| \leq |z| + |z'| & |z|^2 = |z^2|\\
+\overline{z+w} = \overline{z}+\overline{w}	& \overline{zw} = \overline{z}\overline{w}	& \overline{z/w} = \overline{z} / \overline{w}\\
+z+\overline{z} = 2\Re(z)		& z-\overline{z} = 2i \Im(z) &
+\end{array}
+$
+ \subsection*{Quadratwurzel in der Normalform}
+Wurzeln aus komplexen Zahlen berechnet man am besten in der Exponentialform mit obiger Formel. Quadratwurzel können in der Normalform jedoch mit Ansatz gelöst werden.\\
+$(x+iy)^2 = x^2+2xyi-y^2 = x^2-y^2+i\cdot 2xy\Rightarrow\\
+x+iy = \sqrt{x^2-y^2+i\cdot 2xy}$\\
+Für eine Quadratwurzel aus einer beliebigen komplexen Zahl $u+iv$ ergibt sich:\\
+$\sqrt{u+iv} = x+iy = \sqrt{x^2-y^2+i\cdot 2xy}\Rightarrow\\
+u+iv = x^2-y^2+i\cdot 2xy$\\
+Es ergibt sich folgendes Gleichungssystem\\
+$\begin{vmatrix} u = x^2-y^2\\ v = 2xy \end{vmatrix}$
+
+\end{multicols}
+\end{document}

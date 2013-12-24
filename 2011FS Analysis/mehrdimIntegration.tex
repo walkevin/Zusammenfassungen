@@ -1,0 +1,85 @@
+\section{Mehrdimensionale Integration}
+\subsection{Grundeigenschaften}
+Notation: $\mu(z)$ entspricht dem eindimensionalen dx,dy,... und bezeichnet das Differential.\\
+$\mu(B)$ wiederum bezeichnet das Volumen von B.
+\begin{enumerate}
+  \item $\int_{A\cup B} f(z) \mu(z) = \int_{A} + \int_{B} - \int_{A\cap B}\quad\text{vgl. Inklusion-Exklusion}$\\
+  \item $\int_{B} f(z)\mu(z) = 0\quad\text{,falls $\mu(B)$ = 0}$\\
+  \item $\int_{B} 1 \mu(z) = \mu(B)\quad\text{Volumen}$\\
+  \item $\int_{B} f(z) + g(z)\mu(z) = \int_{B} f(z)\mu(z) + \int_{B} g(z)\mu(z)\quad\text{Regel der Linearität}$\\
+  \item $\int_{B} \lambda\cdot f(z)\mu(z) = \lambda\cdot \int_{B} f(z)\mu(z)\quad\text{Regel der Konstanten}$\\
+  \item $f(z) \leq g(z) \forall z\in B\Rightarrow \int_{B} f(z)\mu(z) \leq \int_{B} g(z)\mu(z)$\\
+  \item $\left|\int_{B} f(z)\mu(z)\right|\leq \int_{B} |f(z)|\mu(z)$\\
+  \item $f(x) \leq g(x) \forall x\in B, f,g:B\rightarrow\mathbb{R} \enspace\text{stetig}\\
+	\int_{B} g(x)-f(x)\mu(z) = \mu\left(\left\lbrace\left.\begin{pmatrix}x\\\vdots\\x_{n+1}\end{pmatrix}\right| x\in B, f(x) \leq x_{n+1} \leq g(x)\right\rbrace\right)
+	\\\text{Berechnung des n+1 dimensionalen Volumens}$
+\end{enumerate}
+\subsection{Satz von Fubini}
+$\int_{I\times J}f(x,y) d(x,y) = \int_{I}\int_{J}f(x,y) dx dy = \int_{J}\int_{I}f(x,y) dy dx$
+\subsection{Substitution}
+\begin{align*}
+\text{Formel:}\quad &\int_{B}f(x)\mu(x) = \int_{\tilde{B}}f\bigl(\varphi(\tilde{x})\bigr)\cdot |\nabla\varphi(\tilde{x})| \cdot \mu(\tilde{x})\\
+\text{Beispiel:}\quad &\text{Berechne die Fläche von }B = \left\lbrace\left.\binom{x}{y}\right| x^2+y^2 \leq R^2\right\rbrace\\
+&\text{Polarkoordinaten:}\enspace \binom{x}{y} = \varphi\binom{r}{\psi} = \binom{r\cos\psi}{r\sin\psi},\quad|\nabla\varphi| = r\\
+&\tilde{B} = \left\lbrace\left.\binom{r}{\varphi}\right| \begin{matrix}0\leq r\leq R\\-\pi\leq\psi\leq\pi\end{matrix}\right\rbrace\\
+&\int_B 1\cdot\mu\binom{x}{y} = \int_0^R\int_{-\pi}^{\pi} r \ d\varphi \ dr = \left[\frac{r^2}{2}\right]_{r=0}^{r=R}\cdot 2\pi = R^2\pi
+\end{align*}
+\subsection{Masse}
+\begin{align*}
+  \text{Diskret:}\quad & M = \sum m_i\\
+  \text{Kontinuierlich:}\quad & M = \int_B \rho(x)\mu(x)\\
+  &\text{``Dichte $\cdot$ Volumen''}
+\end{align*}
+\subsection{Schwerpunkt}
+\begin{align*}
+  \text{Diskret:}\quad & S = \frac{\sum m_i x_i}{\sum m_i}\\
+  \text{Kontinuierlich:}\quad & S = \frac{\int_B \rho(x)\cdot\vec{x}\mu(x)}{\int_B \rho(x)\mu(x)}\\
+\end{align*}
+\subsection{Trägheitsmoment}
+\begin{align*}
+  \text{Formel:}\quad & J = \int_B \rho(\vec{r})\cdot |\vec{r_{\bot}}|^2 dB\\
+  &\text{$|\vec{e}\times\vec{r}| = |\vec{r_{\bot}}|$ ist der Abstand vom Punkt $\vec{r}$ zur Drehachse $\vec{e}$}
+\end{align*}
+\subsection{Potentiale}
+Ist $K(x) = (\nabla f)^T$ dann ist $f$ ein Potential von $K$ (Verallgemeinerung von Stammfunktion)\\
+Bsp: $K$ Kraftfeld, $f$ zugehörige potentielle Energie\\
+Ein $C^1$ Vektorfeld $K = (K_1 \dotsc K_n)^T$ hat lokal ein Potential gdw. $\forall i \forall j: \frac{\partial K_i}{\partial x_j} = \frac{\partial K_j}{\partial x_i}$\\
+\subsubsection*{explizite Berechnung}
+im $\mathbb{R}^2$ gilt: $(\nabla f)^T = K\binom{x}{y} = \binom{P}{Q}\quad\text{für}\ f:\mathbb{R}^2\rightarrow\mathbb{R}\\
+\Rightarrow \text{2 DGL:}\qquad P\binom{x}{y} = \frac{\partial f}{\partial x}\quad Q\binom{x}{y} = \frac{\partial f}{\partial y}$\\
+\begin{enumerate}
+ \item Berechne $f_1\binom{x}{y} = \int P\binom{x}{y}dx\\
+       \Rightarrow \text{Allg.Lösung der 1.DGL:}\enspace f = f_1+g(y)\quad\text{$g(y)$ muss von $x$ unabhängig sein!}$\\
+ \item $f$ in 2.DGL einsetzen: $Q = \frac{\partial f_1}{\partial y} + g'(y) \Leftrightarrow g = \int Q-\frac{\partial f_1}{\partial y}dy\\
+\Rightarrow$ Falls $Q-\frac{\partial f_1}{\partial y}$ nicht unabhängig von x ist, existiert kein Potential!
+\end{enumerate}
+\begin{align*}
+  \text{Beispiel:}\quad &K\binom{x}{y} = \binom{x^3+xy^2}{x^2y-y^5}\\
+  \text{1.}\enspace& f_1\binom{x}{y} = \int x^3+xy^2 dx = \frac{x^4}{4} + \frac{x^2y^2}{2}\\
+  &\Rightarrow \text{Allg.Lösung der 1.DGL:}\enspace f = f_1+g(y)\\
+  \text{2.}\enspace& x^2y-y^5 = x^2y + g'(y) \Leftrightarrow g = \int y^5 dy = \frac{y^6}{6}+c\\
+  &\Rightarrow f = \frac{x^4}{4} + \frac{x^2y^2}{2} + \frac{y^6}{6}+c
+\end{align*}
+\subsection{skalares Linienintegral}
+$\varphi:[a,b]\rightarrow C\subset\mathbb{R}^n$
+\begin{align*}
+  \text{Formel:}\quad&\int_C f(x)|d\vec{x}| := \int_a^b f(\varphi(x))\cdot |\varphi'(t)| dt\quad f:C\rightarrow\mathbb{R}\\
+  \text{Hauptsatz:}\quad&\int_C \grad f(x) \cdot dx = f(q)-f(p),\quad\text{C ist der Weg von p nach q}\\
+  \text{Länge einer Kurve:}\quad&\int_C 1|dx| = \int_a^b |\varphi'(t)| dt\\
+  \text{Länge eines Graph:}\quad&\int_a^b\sqrt{1+\psi'(t)^2}dt\quad\varphi:[a,b]\rightarrow\mathbb{R}^2,t\mapsto\binom{t}{\psi(t)}
+\end{align*}
+\subsection{skalares Flächenintegral}
+$\delta$ bezeichnet die Fläche (wie $\mu$ das Volumen)\\
+$\mathbb{R}^2 \supset B \xrightarrow{\varphi} F\subset\mathbb{R}^3$
+\begin{align*}
+   \text{Formel:}\quad&\int_F f(x)\delta(x) := \int_B f\left(\varphi\binom{u}{v}\right)\cdot
+     \left|\frac{\partial\varphi}{\partial u}\times\frac{\partial\varphi}{\partial v}\right|\ du\thinspace dv\\
+   \text{Fläche:}\quad&\int_C 1\delta x = \int_B \left|\frac{\partial\varphi}{\partial u}\times\frac{\partial\varphi}{\partial v}\right| du\thinspace dv\\
+   \text{Fläche eines Graphs:}\quad&\int_B \sqrt{1+\psi_u^2+\psi_v^2} du\thinspace dv\quad\varphi\binom{u}{v} = \begin{pmatrix}u\\v\\\psi(u,v)\end{pmatrix}
+\end{align*}
+\subsection{Formeln für Rotationskörper}
+\begin{align*}
+  \text{Masse o.Ä.:}\quad& \int_a^b\int_0^{r(z)}f\binom{\rho}{z}2\pi\rho\ d\rho\thinspace dz\\
+  \text{Volumen:}\quad& \int_a^b \pi\cdot r(z)^2 dz\\
+  \text{Fläche:}\quad& \int_a^b 2\pi\cdot r(z)\sqrt{1+r'(z)^2} dz
+\end{align*}

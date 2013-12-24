@@ -1,0 +1,78 @@
+\section{Lineare Differentialgleichungen}
+\subsection{Separierbare DGL 1. Ordnung}
+\begin{align*}
+  \text{Form:}\quad & y' = g(x) \cdot K(y) = \frac{dy}{dx}\\
+  \text{Lösung:}\quad & \int \frac{dy}{K(y)} = \int g(x)dx\\
+  \text{Beispiel:}\quad & \frac{dy}{dx} = 1+y^2\\
+  &\int \frac{dy}{1+y^2} = \int dx\\
+  &\arctan{y} = x+c\\
+  &y = \tan{x+c}
+\end{align*}
+\subsection{Homogene DGL 1. Ordnung (Substitution)}
+\begin{align*}
+  \text{Beispiel:}\quad & y' = \frac{y+\sqrt{x^2+y^2}}{x} = \frac{y}{x} + \sqrt{1+\tfrac{y}{x}^2}\\
+  &\text{Setze}\enspace u := \frac{y}{x}\\
+  &\frac{du}{dx} = \frac{\frac{dy}{dx}}{x}-\frac{y}{x^2}, \enspace\frac{dy}{dx} = u + \sqrt{1+u^2}\\
+  &\frac{du}{dx} = \frac{u+\sqrt{1+u^2}-u}{x}\\
+  &\int \frac{du}{\sqrt{1+u^2}} = \int \frac{dx}{x}\\
+  \text{Beispiel:}\quad & \frac{dy}{dx} = (x+y(x))^2\\
+  &\text{Setze}\enspace u:=x+y\\
+  &\frac{du}{dx} = 1 + \frac{dy}{dx}, \enspace\frac{dy}{dx} = u^2\\
+  &\frac{du}{dx} = 1 + u^2\\
+  &\int \frac{du}{u^2+1} = \int dx\\
+  &\arctan(u) = x+c\\
+  &u = x+y = \tan(x+c)\\
+  &y = \tan(x+c) -x
+\end{align*}
+\subsection{Allgemeine lineare DGL 1. Ordnung}
+\subsubsection*{Homogener Fall}
+  \begin{align*} 
+  \text{Form:}\quad &y' = p(x) \cdot y\\  
+  \text{Ansatz:}\quad & \frac{dy}{dx} = p(x) \cdot y \enspace \text{ist separierbar}\\
+    &\int\frac{dy}{y} = \int p(x)dx\\
+    &\ln|y| = P(x) + c\\
+  \text{Lösung:}\quad &y_{hom} = e^{P(x)} \cdot C
+  \end{align*}
+\subsubsection*{Inhomogener Fall (Variation der Konstanten)}
+  \begin{align*}
+    \text{Form:}\quad  &y' = p(x) \cdot y + q(x)\\
+    \text{Ansatz:}\quad & y = y_{hom} \cdot c(x)\\
+    &y' = y_{hom}' \cdot c(x) + y_{hom} \cdot c'(x)\\
+    &\text{Dies in allgemeine Form einsetzen:}\\
+    &y_{hom}' \cdot c(x) + y_{hom} \cdot c'(x) = p(x) \cdot y_{hom} \cdot c(x) + q(x)\\
+    &\text{wobei $y_{hom}' = p(x) \cdot y_{hom}$ ist (homogener Fall)}\\
+    &c'(x) = \frac{q(x)}{y_{hom}}\\
+    &c(x) = \int \frac{q(x)}{y_{hom}}dx + k\\
+    \text{Lösung:}\quad &y = y_{hom} \cdot \left(\int \frac{q(x)}{y_{hom}}dx + k \right)
+  \end{align*}
+\subsection{Lineare DGL mit konstanten Koeffizienten}
+\subsubsection*{Homogener Fall}
+  \begin{align*}
+    \text{Form:}\quad &Ly = y^{(n)} + f_{n-1} \cdot y^{(n-1)} + \dotsb + f_0 \cdot y^{(0)} = 0\\
+    \text{Ansatz:}\quad &y = e^{\lambda x}\\
+    &\left(\frac{d}{dx}\right)^k \cdot e^{\lambda x} = \lambda^k\cdot e^{\lambda x}\\
+    &L e^{\lambda x} = \underbrace{\left(\lambda^n+a_{n-1}\cdot\lambda^{n-1}+\dotsb+a_1\lambda+a_0 \right)}_{\text{char.Polynom, $ch_L$}}\cdot e^{\lambda x}\\
+    &\lambda_{1...n} \text{sind Nullstellen von} ch_L\\
+    \text{Lösung:}\quad &y_{hom} = ae^{\lambda_1 x}+be^{\lambda_2 x}+\dotsb+ne^{\lambda_n x}\\
+    \text{\ding{43}\quad}&\text{Eine k-fache Nst. liefert k Fundamentallösungen}\\
+    & e^{\lambda x}, x e^{\lambda x}, \dotsc, x^{k-1}e^{\lambda x}\\
+    \text{\ding{43}\quad}&\text{Reelle Fundlsg. bei komplexen Nst.}\enspace\lambda = \mu+i\nu\\
+    & e^{\mu x}\cos(\nu x), e^{\mu x}\sin(\nu x), \dotsc ,\\
+    &x^{k-1}e^{\mu x}\cos(\nu x), x^{k-1}e^{\mu x}\sin(\nu x)\\
+  \end{align*}
+\subsubsection*{Inhomogener Fall}
+  \begin{align*}
+    \text{Form:}\quad &Ly = y^{(n)} + f_{n-1} \cdot y^{(n-1)} + \dotsb + f_0 \cdot y^{(0)} = P(x) e^{\lambda x}\\
+    \text{Ansatz:}\quad &y = y_{hom} + y_{par}\\
+    \text{Lösung:}\quad &y_{hom} \text{siehe oben}\\
+    &y_{par} = Q(x)\cdot e^{\lambda x}, \text{($Q(x)$ Polynom vom Grad $m+l$)}\\
+    &\quad m = \text{Multiplizität der (Nst.) $\lambda$ (darf 0 sein)}\\
+    &\quad l = \text{Grad von $P(x)$}\\
+    \text{Beispiel:}\quad &y^{(5)} + y = xe^x \Rightarrow\text{ $l$ = 1}\\
+    &ch_L(\lambda) = \lambda^5 + 1 \Rightarrow \lambda = 1 \text{ nicht Nst. ($m$ = 0)}\\
+    &y = (ax+b)e^x = ae^x+bxe^x\\
+    &y^{(5)} = ae^x+b(e^x(x+5))\\
+    &\text{Koeffizientenvergleich}\\
+    &\underbrace{y^{(5)} + y}_{= xe^x} = \underbrace{(a+a+5b)}_{= 0}e^x + \underbrace{(b+b)}_{= 1}xe^x\\
+    &y_{par} = \left(-\tfrac{5}{4} + \tfrac{1}{2}x \right) e^x
+  \end{align*}

@@ -1,0 +1,154 @@
+\section{Thermodynamik}
+\begin{tabular}{p{4cm} p{15cm}}
+Spezifische Grössen	& $x = \frac{X}{m}$ \begin{tabular}{|ll}
+                  	                         x:	& spezifische Zustandsgrösse\\
+						 X:	& Zustandsgrösse\\
+						 m:	& Masse $[kg]$
+                  	                        \end{tabular}\\
+Molare Grössen	& $X_m = \frac{X}{m}M$ \begin{tabular}{|ll}
+                  	                         $X_m$:	& molare Zustandsgrösse\\
+						 X:	& Zustandsgrösse\\
+						 M:	& Molmasse $[kg/mol]$
+                  	                        \end{tabular}\\
+Masse vs. molare Masse	& $m = n\cdot M$\\
+Konstanten	& \begin{tabular}[t]{ll}
+          	   universelle Gaskonstante	& $R = 8.314 \frac{J}{mol K}$\\
+		   Avogadro-Konstante		& $N_A = 6.022 \cdot 10^{23} \frac{1}{mol}$\\
+		   Boltzmann-Konstante		& $k_B = \frac{R}{N_A} = 1.38 \cdot 10^{-23}\frac{J}{K}$\\
+						& $k_BT|_{T=300K} = 25.8 meV$
+		  \end{tabular}\\
+Molmasse etc.	& \begin{tabular}[t]{ll}
+		   Molmasse einer Substanz A	& $M = N_Am_A$\\
+		   Atom- oder Molekülmasse einer Substanz A	& $m_A$\\
+		   Total Anzahl Moleküle	& $N$\\
+		   Anzahl Mole einer Substanz	& $n$\\
+          	  \end{tabular}\\
+Kelvin-Celsius	& $T[K] = \vartheta[^\circ C] + 273.15$\\
+Zustandsgleichung ideales Gas	& $\boxed{pV = nRT = \frac{N}{N_A}RT = Nk_BT}$\\
+Thermische Ausdehnung	& \begin{tabular}[t]{ll}
+                     	   Festkörper	& 1D: $\frac{\Delta l}{l} = \alpha \Delta T$\\
+					& 3D: $\frac{\Delta V}{V} = \gamma \Delta T$ Isotrop $\Rightarrow \gamma = 3\alpha\quad\gamma\approx 10^{-5}K^{-1}$\\
+			   Flüssigkeiten	& $\frac{\Delta V}{V} = \gamma\Delta T \quad\gamma\approx 10^{-3}K^{-1}$\\
+						& $\rho = \frac{m}{V} = \frac{m}{V_0(1+\gamma\Delta T)} \approx \rho_0(1-\gamma\Delta T)$
+                     	  \end{tabular}\\
+\end{tabular}
+\subsection{1.Hauptsatz (Energieerhaltung)}
+\begin{tabular}{p{4cm} p{15cm}}
+\textbf{1.Hauptsatz}	& $\boxed{dU = \partial Q + \partial W}\quad [Q] = J, [T] = K$\\
+		& $U$: innere Energie, $W$: Arbeit, $Q$: Wärme. $U$ ist eine Zustandsgrösse, während $W$ und $Q$ vom Weg abhängen (deshalb das $\partial$-Zeichen).\\
+Äquipartitionsgesetz ideales Gas	& $U = N\cdot \frac{f}{2} k_BT$\\
+\textbf{Wärme} $Q$	& $\boxed{\partial Q = CdT}\quad C$: Wärmekapazität des Systems $\quad [C] = \frac{J}{K}$\\
+			& Wärme ist eine Energie aufgrund von Temperaturunterschieden. Die Energieübertragung ist dabei irreversibel.\\
+spezifische Wärmekapazität	& $c = \frac{C}{m}\quad [c] = \frac{J}{kg\cdot K}$\\
+molare Wärmekapazität		& $C_m = M\cdot c \quad[C_m] = \frac{J}{mol\cdot K}$\\
+elektr. Wärmeäquivalent		& $cm\Delta T = Q = W_{el} = VI\Delta t\quad V:$ Spannung, $I:$ Stromstärke\\
+isobare Wärmekapazität	& $C_p = \left(\frac{\partial Q}{dT} \right)_p$\\
+isochore Wärmekapazität	& $C_V = \left(\frac{\partial Q}{dT} \right)_V$\\
+Für ideales Gas	& \begin{tabular}[t]{|l}
+               	  $C_{mp} = C_{mV} + R\quad C_{mX}$: molare Wärmekapazität bei konstantem X\\
+		  $C_{mp} = \left(\frac{f}{2} + 1 \right) R,\quad C_{mv} = \frac{f}{2} R,\quad R =$ Gaskonstante\\
+		  $\kappa = \frac{C_{mp}}{C_{mV}} = 1 + \frac{2}{f}$
+               	  \end{tabular}\\
+Erwartungswert der Energie eines harm.Osz.	& $\langle E \rangle = \sum_{n=0}^{\infty}W_nE_n = \frac{1}{2}\hbar\omega + \frac{\hbar\omega}{e^{\hbar\omega/k_BT}-1}, \quad W_n = \frac{e^{-E_n/k_BT}}{\sum_n e^{-E_n/k_BT}}$\\
+Für kristalline Festkörper	& \begin{tabular}[t]{l}
+                          	   $U_{osz} = 3N\langle E \rangle = 3N\left(\frac{1}{2} \hbar \omega + \frac{\hbar \omega}{e^{\hbar\omega/k_BT}-1} \right)$\\
+				   $C_V = \left(\frac{\partial Q}{dT}\right)_V \xrightarrow{dU = \partial Q-pdV}= \frac{dU_{osz}}{dT} = 3N\frac{d}{dT}\langle E \rangle$\\
+				   $C_V = 3Nk_B \left[ \left( \frac{\hbar\omega}{k_BT} \right)^2 \frac{e^{\hbar\omega/k_BT}}{(e^{\hbar/k_BT}-1)^2} \right]\quad$ Einsteinmodell
+                          	  \end{tabular}\\
+\textbf{Arbeit} $W$	& $\boxed{\partial W = -pdV}$\\
+			& $W_{12} = \int_{V1}^{V2} pAds = \int_{V1}^{V2} pdV$
+\end{tabular}
+\subsubsection{Zustandsänderungen (Spezialfälle der Zustandsgleichung)}
+Zustandsgleichung ideales Gas: $pV = nRT = Nk_BT$\\
+\begin{tabular}{m{1cm}p{2cm}p{3cm}p{3cm}p{4cm}p{4cm}}
+				& Bedingung	& thermische Zustandsgrössen	& erster Hauptsatz	& Wärme		& Volumenänderungsarbeit\\\midrule
+\rotatebox{90}{isotherm}	& $dT = 0$ \newline $T$ = konst.	& $pV =$ konst.			& $\partial Q + \partial W = 0$ \newline $Q_{12} + W_{12} = 0$	& $\partial Q = -\partial W$ \newline $Q_{12} = nRT \ln \frac{V_2}{V_1}$		& $\partial W = -p dV$ \newline $W_{12} = nRT\ln\frac{V_1}{V_2}$\\\midrule
+\rotatebox{90}{isochor}		& $dV = 0$ \newline $V$ = konst.	& $\frac{p}{T} =$ konst. 	& $dU = \partial Q$ \newline $U_2-U_1 = Q_{12}$					& $\partial Q = nC_{mV} dT$ \newline $Q_{12} = nC_{mV}(T_2-T_1)$				& $\partial W = 0$ \newline $W_{12} = 0$\\\midrule
+\rotatebox{90}{isobar}		& $dp = 0$ \newline $p$ = konst.	& $\frac{V}{T} =$ konst. 	& $dU = \partial Q + \partial W$ \newline $U_2-U_1 = \newline Q_{12} + W_{12}$		& $\partial Q = nC_{mp}dT$ \newline $Q_{12} = nC_{mp}(T_2-T_1)$		& $\partial W = p dV$ \newline $W_{12} = p(V_1-V_2)$\\\midrule
+\rotatebox{90}{isentrop (Adiabate)}	& $dS = 0$ \newline $\partial Q = 0$ \newline $S$ = konst.	& $pV^{\kappa} =$ konst. \newline $TV^{\kappa -1} = $konst. \newline $p^{1-\kappa}T^{\kappa}$ = konst.	& $dU = \partial W$ \newline $U_2-U_1 = W_{12}$		& $\partial Q = 0$ \newline $Q_{12} = 0$		& $\partial W = nC_{mV} dT$ \newline $W_{12} = nC_{mV}(T_2-T_1) \newline = \frac{p_2V_2 - p_1V_1}{\kappa -1}$\\\midrule
+\end{tabular}\\
+\\ Merke: $\boxed{nC_{mV} = mC_V\qquad
+1 $l$ = 1 $dm$^3$ = $10^{-3} $m$^3}$
+\subsection{2.Hauptsatz}
+\begin{tabular}{p{4cm} p{15cm}}
+Entropie $S$	& $S = k_B \ln P$\\
+Prozesse	& \begin{tabular}[t]{ll}
+        	   $dS > 0$	& irreversibel\\
+		   $dS = 0$	& reversibel
+        	  \end{tabular}\\
+reversibel	& System zu jedem Zeitpunkt im statistischen Gleichgewicht, also $dP = 0$ (most probable distribution)\\
+		& Für reversible Prozesse gilt: $dS = \frac{\partial Q}{T} \Leftrightarrow \boxed{Q = \oint TdS}$
+\end{tabular}
+\subsubsection{Entropie für Maxwell-Boltzmann-Statistik}
+\begin{tabular}{p{4cm}p{15cm}}
+$\ln P$		& $\ln P ~\propto~ \sum_i n_i\ln g_i - \sum_i \ln (n_i!)$\\
+		& $\ln P \approx N- \sum_i n_i \ln \frac{n_i}{g_i}\quad$, wobei $\ln(x!) = x\ln x -x$\\
+Entropie für Maxwell-Boltzmann-Statistik & \begin{tabular}[t]{l}
+                                            $S = k_B \ln P = k_BN - k_B \sum_i n_i \ln \frac{n_i}{g_i}$\\
+					    $\qquad$ Aus M-B-Stat bekannt: $\frac{n_i}{g_i} = \frac{N}{Z} e^{-E_i/k_BT}$\\
+					    $\Rightarrow S = k_BN + \sum_i n_i \left(\frac{E_i}{T} + k_B \ln \frac{Z}{N} \right)$\\
+					    $\qquad N = \sum_i n_i, U = \sum_i n_iE_i$\\
+					    $\boxed{S = k_BN + \frac{U}{T} + k_BN \ln \frac{Z}{N}}$
+                                           \end{tabular}\\
+innere Energie	& $dU = \underbrace{\sum_i E_i dn_i}_{\partial Q} + \underbrace{\sum_i n_idE_i}_{\partial W}$\\
+Beispiel ideales Gas	& \begin{tabular}[t]{l}
+			    $Z = \frac{V(2\pi mk_BT)^{\frac{3}{2}}}{h^3}$\\
+			    $U = \frac{3}{2} k_BNT$\\
+			    $\Rightarrow S = k_BN + k_BN \ln \left(\frac{V(2\pi mk_BT)^{\frac{3}{2}}}{h^3N}\right)$
+			  \end{tabular}\\
+Beispiel irreversibler Prozess	& \begin{tabular}[t]{l}
+				   Isotherme ($T$ = konst.) Expansion eines idealen Gases ($N$ = konst.)\\
+				   $\Delta S = S_2 - S_1 = k_BN \ln \frac{V_2}{V_1} > 0$\\
+				  \end{tabular}
+\end{tabular}
+\subsubsection{Kreisprozesse}
+\begin{tabular}{p{4cm} p{15cm}}
+Kreisprozess	& \includegraphics[width = 7cm]{ph_kreisprozess.png}\\
+Arbeit		& $W_{Kreis} = \oint pdV\quad$ Fläche unter (1) - Fläche unter (2)\\
+Wirkungsgrad	& $\eta = \frac{\text{Nutzen (abgegebene Wärme)}}{\text{Aufwand (zugeführte Wärme)}} = \frac{|W|}{Q_{zu}}$\\
+Leistung	& $P = \frac{\text{Arbeit}}{\text{Zeit}}$
+\end{tabular}
+\subsubsection{Carnot-Prozess}
+\begin{tabular}{p{4cm}p{15cm}}
+Prinzip		& \begin{tabular}[t]{p{6cm}p{8cm}}
+		    \multicolumn{2}{p{14cm}}{theoretischer, reversibler und optimaler (bzgl. Wirkungsgrad) Kreisprozess mit 2 Isotherme und 2 Isentrope}\\
+		    \includegraphics[width = 7.5cm]{ph_carnotprozess_pV.png}	& \includegraphics[width = 7.5cm]{ph_carnotprozess_TS.png}\\
+		    \multicolumn{2}{l}{1 $\rightarrow$ 2: isotherme Kompression (Gas mit Wärmebad der Temperatur $T_1$ verbunden)}\\
+		    $W_{12} = nRT_1 \ln \frac{V_1}{V_2} > 0$	& $Q_{12} = \int_{S_1}^{S_2}TdS = T_3(S_2-S_1) < 0 = -W_{12} $\\\midrule
+		    \multicolumn{2}{l}{2 $\rightarrow$ 3: isentrope Kompression (Gas wird vom Wärmebad getrennt)}\\
+		    $W_{23} = nC_{mV}(T_3 - T_1) < 0$		& $Q_{23} = 0$\\\midrule
+		    \multicolumn{2}{l}{3 $\rightarrow$ 4: isotherme Expansion (Gas mit Wärmebad der Temperatur $T_3$ verbunden)}\\
+		    $W_{34} = nRT_3 \ln \frac{V_3}{V_4}$	& $Q_{34} = \int_{S_1}^{S_2}TdS = T_1(S_1-S_2) > 0 = -W_{34}$\\\midrule
+		    \multicolumn{2}{l}{4 $\rightarrow$ 1: isentrope Expansion (Gas wird vom Wärmebad getrennt)}\\
+		    $W_{41} = nC_{mV}(T_1-T_3) < 0$		& $Q_{41} = 0$\\\bottomrule
+		  \end{tabular}\\
+Arbeit (Nutzen)	& \begin{tabular}[t]{p{14cm}}
+		    $W_{Carnot} = \oint dW = W_{12} + W_{23} + W_{34} + W_{41} = -nR\ln\left(\frac{V_4}{V_3}\right)(T_3-T_1)$\\
+		    $\qquad $ weil: $W_{23} = -W_{41}$, für die isentropen ZÄ gilt zudem $V_2 = V_3$ und $V_4 = V_1$, also gilt auch $\frac{V_4}{V_3} = \frac{V_1}{V_2}$
+		  \end{tabular}\\
+zugeführte Wärme	& $Q_{zu} = Q_{34} = nRT_3\ln \frac{V_4}{V_3}$\\
+Wirkungsgrad		& $\eta = \frac{W_{Carnot}}{Q_{zu}} = \frac{T_3-T_1}{T_3} = 1-\frac{T_1}{T_3},\quad T_3 > T_1$\\
+Energiebilanz	& \begin{tabular}[t]{l}
+		    $dU = \partial Q + \partial W$\\
+		    $\boxed{W = Q_{zu} - Q_{ab}}$\\
+		    $Q_{12} = Q_{ab}: $ abgeführte (``verlorene'') Wärme ans Wärmebad $T_1$
+		  \end{tabular}
+\end{tabular}
+\subsubsection{Stirling-Prozess}
+\begin{tabular}{p{4cm}p{15cm}}
+Prinzip		& Zwei Isochore, zwei Isotherme\\
+		& \includegraphics[width = 13cm]{ph_stirlingprozess.png}\\
+		& \includegraphics[width = 13cm]{ph_stirlingschema.png}\\
+Wirkungsgrad	& $\eta = 1-\frac{T_1}{T_3}$
+\end{tabular}\\
+\subsubsection{Weitere Prozesse}
+\includegraphics[width = 19cm]{ph_kreisprozesse.png}
+\subsubsection{Umgekehrter Kreisprozess}
+Aus mechanischer Arbeit wird Wärme oder Kälte gewonnen.\\
+\begin{tabular}{p{4cm}p{15cm}}
+Leistungszahl	& $\epsilon = \frac{\text{Nutzen}}{\text{Aufwand}}$\\
+Kältemaschine	& $\epsilon_K = \frac{|Q_{zu}|}{W} = \frac{T_1}{T_3 - T_1}$\\
+Wärmepumpe	& $\epsilon_W = \frac{|Q_{ab}|}{W} = \frac{T_3}{T_3 - T_1}$
+\end{tabular}
+\subsection{3. Hauptsatz}
+$S$ = 0 oder $T = 0$ lässt sich nicht erreichen.

@@ -1,0 +1,58 @@
+\section{Lineare Abbildungen}
+\begin{tabular}{lp{15cm}}
+ Def.		& Abb. $F: x\in V \mapsto y = F(x) \in W$ lin. Abb. von endlichdim. VR $V$ nach endl. VR $W$, falls
+		  \begin{itemize}
+		   \item $F(x+y) = F(x) + F(y)\quad \forall x,y \in V$
+		   \item $F(\alpha x) = \alpha F(x)\quad \forall \alpha\in\mathbb{R}, x\in V$
+		  \end{itemize}\\
+ Def.		& Kern $A := \{x\in V^n | Ax = 0\}\quad \dim(Kern) = n-r$\\
+		& Bild $A := \{y\in V^m | \exists x\in V^n : Ax = y\}\quad \dim(Bild) = r$ Vgl. Bildmenge aus Analysis\\
+
+ Satz 6.1	& Sei $A = (a^{(1)} ... a^{(n)})$ eine $m\times n$-Matrix und $r$ die Anzahl Pivotzeilen. Dann gilt
+		  \begin{itemize}
+		   \item Bild $A$ = span $\{a^{(1)},a^{(2)}, ..., a^{(n)}\}$ (Basis Bild: Wähle daraus $\dim(Bild A)$ lin.unabh. Spaltenvektoren)
+		   \item Kern $A$: $Ax = 0$ und Gaussalgorithmus anwenden
+		   \item Kern $A$ ist ein Unterraum von $V^n$, Bild $A$ ist ein UR von $V^m$
+		   \item $\dim(\text{Kern }A) + \dim(\text{Bild }A) = n = \dim V^n$
+		   \item $\dim(\text{Bild }A) = \dim(\text{Bild }A^T)$
+		  \end{itemize}\\
+
+ Korollar 6.2	& Sei $A$ eine $m\times n$-Matrix, $B_1$ reguläre $m\times m$-M, $B_2$ reg. $n\times n$-M.
+		   \begin{itemize}
+		    \item Rang $A$ = Rang $A^T$
+		    \item Rang $B_1 A$ = Rang $A$
+		    \item Rang $A B_2$ = Rang $A$
+		   \end{itemize}\\
+
+ Satz 6.3	& Weniger als $n$ linear unabhängige Vektoren können mit Hilfe des Gaussverfahrens zu einer Basis ergänzt werden.\\
+ Satz 6.4	& Zusammengesetzte lin.Abb. sind wieder linear.\\
+		&  \begin{array}[t]{rl}
+			  \text{Sei }F:x\in V^n & \mapsto Ax = y \in V^m\\
+			  \text{Sei }G:y\in V^m & \mapsto By = z \in V^p\\
+			  \text{Dann }H:= G\circ F = H: x\in V^n & \mapsto BAx = z\in V^p
+		   \end{array}\\
+ Satz 6.7	& \begin{itemize}
+         	   \item Lin.Abb. $F: x\in V^n \mapsto Ax = x' \in V^n$ umkehrbar $\Leftrightarrow$ $A$ regulär
+		   \item $F^{-1} \circ F = F \circ F^{-1} = I$
+         	  \end{itemize}\\
+ Satz 6.8	& {\bfseries Koordinatentransformation}\newline
+		   \begin{array}[t]{rll}
+         	   F:x\in V^n & \mapsto Ax = x' \in V^n		&\text{$F$ lin.Abb.}\\
+		   S:y\in W^n & \mapsto Ty = x \in V^n		&\text{$S$ Koord.transf., $T$ neue Basisvektoren}\\
+		   G = S^{-1} \circ F \circ S: y \in W^n & \mapsto T^{-1}ATy = y' \in W^n\\
+		   \multicolumn{3}{l}{\text{$V^n$ und $W^n$ sind exakte Kopien, somit sind $F$ und $G$ äquivalent}}
+         	  \end{array}\\
+\end{tabular}\\
+\begin{tabular}{lp{15cm}}
+ Def.		& $B$ heisst {\bfseries ähnlich} zu $A$ et vice versa, falls $\exists$ reguläres $T$, sodass $B = T^{-1}AT$ ($B,A,T$ sind $n\times n$-M.) vgl. Satz 7.2\\
+ Satz 6.9	& Eigenschaften der Matrixnorm
+		  \begin{itemize}
+		   \item $||A||_* \geq 0, ||A||_* \Rightarrow A = 0$
+		   \item $||\alpha A||_*  |\alpha| ||A||_*$
+		   \item $||A+B||_* \leq ||A||_* + ||B||_*$
+		   \item $||Ax||_* \leq ||A||_*||x||_*$
+		   \item $||AB||_* \leq ||A||_*||B||_*$
+		  \end{itemize}\\
+ Def.		& $F: x\in \mathbb{R}^n \mapsto Ax \in \mathbb{R}^n$ heisst {\bfseries orthogonal}, falls $\langle Ax,Ay \rangle = \langle x,y \rangle \enspace\forall x,y \in\mathbb{R}^n$\\
+		& $F: x\in \mathbb{R}^n \mapsto Ax \in \mathbb{R}^n$ heisst {\bfseries längentreu}, falls $||Ax|| = ||x|| \enspace\forall x\in\mathbb{R}^n$\\
+\end{tabular}

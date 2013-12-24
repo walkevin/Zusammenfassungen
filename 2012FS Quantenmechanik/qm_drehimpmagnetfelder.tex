@@ -1,0 +1,47 @@
+\section{Drehimpulssysteme in Magnetfelder}
+\subsection{Klassische Behandlung}
+\begin{tabular}{p{4cm} p{15cm}}
+magnetisches Moment	& $\vec\mu = IA\vec n\quad $I = Stromstärke, A = Fläche, n = Normalenvektor auf A\\
+externes Magnetfeld	& $\vec B$\\
+potentielle Energie	& $E_{pot} = -|\mu||B| \cos \theta = -\vec\mu \cdot \vec B$\\
+magnetisches Moment	& $\vec\mu = \gamma_l \vec l \quad \gamma_l = -\frac{e}{2m_e} = g_l \frac{\mu_B}{\hbar}$\\
+			& $\vec l$: Bahndrehimpuls, $\mu_B$: Bohr'sches Magneton, $g_l$: Proportionalitätsfaktor\\
+			& $\Rightarrow E_{pot} = -\vec\mu \cdot \vec B = -\gamma_l \vec l \cdot \vec B = -\gamma_l (l_xB_x + l_yB_y + l_zB_z)$
+\end{tabular}
+\subsection{QM Behandlung (Korrespondenzprinzip)}
+\begin{tabular}{p{4cm} p{15cm}}
+Hamilton-Operator (Kern-Zeeman)	& $\hat{H}_N = -\gamma_N \left( \hat{I}_xB_x + \hat{I}_yB_y + \hat{I}_zB_z \right)\quad$ wobei $\hat{I}$ ein Drehimpulsoperator ist (vgl.Pauli-Matrix)
+\end{tabular}
+
+\section{Addition von Drehimpulsen}
+Sei $\hat{\vec J} = \hat{\vec{j}}_1 + \hat{\vec{j}}_2$ der resultierende Drehimpuls.\\
+\begin{tabular}{p{4cm} p{15cm}}
+Zugehörige Quantenzahlen	& \begin{tabular}[t]{l}
+                        	  $\hat{\vec{j}}_1: |j_1,m_1\rangle$\\
+				  $\hat{\vec{j}}_2: |j_2,m_2\rangle$\\
+				  $\hat{\vec{J}}: |J,M\rangle$
+                        	  \end{tabular}\\
+gekoppelte Darstellung (gD)	& $|j_1,m_1,J,M \rangle$: In der gekoppelten Darstellung setzt man die Quantenzahlen $J$ und $M$ fest. \\
+ungekoppelte Darstellung (uD)	& $|j_1,m_1,j_2,m_2 \rangle$: In der ungekoppelten Darstellung setzt man $j_1,m_1,j_2,m_2$ fest.\\
+\multicolumn{2}{l}{gD und uD spannen denselben Vektorraum auf. Sie sind lediglich verschiedene Sätze von Basisfunktionen.}\\
+Betrag und z-Komponente (gD)	& \begin{tabular}[t]{lcl}
+				    $|\vec{J}| = \hbar \sqrt{J(J+1)}$	& $\Rightarrow $	& $|\vec{J}| = |\vec{j_1} + \vec{j_2}| = ??$\\
+				    $J_z = \hbar M$			& $\Rightarrow $	& $J_z = j_{1,z} + j_{2,z} = \hbar(m_1 + m_2)$
+				  \end{tabular}\\
+\multicolumn{2}{l}{$M$ ist immer gleich $m_1 + m_2$. Weil $|M| \leq |J|$ sein muss, können wir die möglichen Werte für $J$ aus $M$ ableiten.}\\
+Resultierende Quantenzahlen (gD)	& \begin{tabular}[t]{|l|}
+				  \hline
+                           	  $J = j_1 + j_2, j_1 + j_2 - 1,..., |j_1-j_2|$ \\
+				  $M = m_1 + m_2$\\\hline	
+                           	  \end{tabular}\\
+Bra-Ket Notation (gD)		& $|j_1,j_2,J,M\rangle$\\
+Anzahl Basisfunktionen (gD,uD)	& $\underbrace{(j_1+j_2)}_{\text{\# J-Werte}} \cdot \underbrace{(2(j_1+j_2) + 1)}_{\text{\# M-Werte pro J-Wert}}$\\
+Umrechnung gD - uD		& \begin{tabular}[t]{lcl}
+                        	  $|j_1,m_1,j_2,m_2\rangle$	& = &	$|j_1,m_1\rangle |j_2,m_2\rangle$\\
+				  $|j_1,j_2,J,M \rangle$	& = &	$\sum_{j_1,m_1,j_2,m_2} \underbrace{c(j_1,m_1,j_2,m_2,J,M)}_{\text{Clebsch-Gordan Koeffizienten}}|j_1,m_1,j_2,m_2\rangle$
+                        	  \end{tabular}
+\end{tabular}
+
+
+
+

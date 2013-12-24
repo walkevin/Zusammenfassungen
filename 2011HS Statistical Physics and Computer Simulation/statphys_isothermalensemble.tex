@@ -1,0 +1,40 @@
+\subsection{Isothermal-isobaric Ensemble}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Constants	& N,P,T\\
+Fluctuations	& E,V\\
+System characterisation	    & \text{
+				 \begin{tabular}[t]{ll}
+				  Various Volumes	& $V_k$\\
+				  each with states	& $\Psi_{ki}$\\
+				  and energies		& $E_{ki}$\\
+				 \end{tabular}
+			      }\\
+Probability		& P_{ki} = \text{probability that system is in state $\Psi_{ki}$}\\
+Most probable distribution	& \begin{array}[t]{l}
+                                	 -\sum_k\sum_i P_{ki} \ln (P_{ki}) = MAX;\\
+					  \sum_k\sum_i P_{ki} = 1\\
+					  \sum_k\sum_i P_{ki}E_{ki} = \langle E \rangle\\
+					  \sum_k\sum_i P_{ki}V_k = \langle V \rangle\\
+					   \boxed{P_{ki} = \frac{1}{Z(N,p,T)} e^{-\beta E_{ki} -\gamma V_k}}
+                                	  \end{array}\\
+Isothermal-isobaric Partition Function	& Z(N,p,T) = \sum_k\sum_i e^{-\beta E_{ki} -\gamma V_k} = \sum_k Z(N,V_k,T)e^{-\gamma V_k}\\
+$\beta, \gamma$			& \beta = \frac{1}{k_BT}\quad \gamma = \frac{p}{k_BT}\\
+				& \boxed{ Z(N,p,T) = \int_0^{\infty} \sum_i e^{-[E_i(V) + pV]/k_BT} dV = \int_0^{\infty} \sum_i e^{-H_i(V)/k_BT} dV}\\
+Enthalpy			& H = E + pV\\
+				& \langle H \rangle = - \left( \frac{\partial \ln Z(N,p,T)}{\partial \beta} \right)_{N,p}\\
+Volume				& V_i = \frac{\partial H_i}{\partial p}\quad \langle V \rangle = -\frac{1}{\beta} \left( \frac{\partial \ln Z(N,p,T)}{\partial p} \right)_{N,\beta}\\
+\end{tabular}
+\subsection{Thermodynamical quantities and relations}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Entropy	& \begin{array}[t]{l}
+        	   S = -k_B \int_0^{\infty} \sum_i P_i(V) \ln P_i(V) dV\\
+        	   S = \frac{H}{T} + k_B \ln Z(N,p,T)\\
+        	  \end{array}\\
+Free Enthalpy	 & G = H-TS = -k_BT\ln Z(N,p,T)\\
+Other relations		& \begin{array}[t]{l}
+               		   H = \langle H \rangle = -T \left(\frac{\partial G}{\partial T} \right)_p + G\\
+			   S = -\left( \frac{\partial G}{\partial T} \right)_p\\
+			   V = \langle V \rangle = \left(\frac{\partial G}{\partial p} \right)_T\\
+			   dG = -SdT + Vdp
+               		  \end{array}
+\end{tabular}

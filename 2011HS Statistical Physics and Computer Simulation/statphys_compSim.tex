@@ -1,0 +1,91 @@
+\section{Computer Simulation}
+Generally, we want to solve the many-particle problem for a {\bfseries liquid state of macromolecules by using classical mechanics.}\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Van der Waals interaction between atoms	& \text{
+				    \begin{tabular}[t]{ll}
+				      1. & Short range repulsion due to electron overlap.\\
+				      2. & Long range attraction due induced dipoles.
+				    \end{tabular}
+				  }\\
+Lennard-Jones (6,12) potential	& \begin{array}[t]{l}
+                              	   \text{A good approximation for van der Waals interaction is the L-J 12-6 function}\\
+				  V(r) = 4\epsilon \left[ \left(\frac{\sigma}{r} \right)^{12} - \left( \frac{\sigma}{r} \right)^6 \right]\\
+				  V(r_{ij}) = 4\epsilon_{ij} \left[ \left(\frac{\sigma_{ij}}{r_{ij}} \right)^{12} - \left( \frac{\sigma_{ij}}{r_{ij}} \right)^6 \right]\\
+				  \sigma = \text{ Collision diameter}\quad \epsilon = \text{ well depth}\\
+				  r_{ij} = \sqrt{(x_i-x_j)^2+(y_i-y_j)^2+(z_i-z_j)^2}
+                              	  \end{array}\\
+Force on atom $i$ due to atom $j$	& f_{x_i}(r_{ij}) = -\frac{ \partial}{\partial x_i} V(r_{ij}) = -4\epsilon \left[ -12\left(\frac{\sigma}{r_{ij}} \right)^{12} +6\left( \frac{\sigma}{r_{ij}} \right)^6 \right]\frac{x_{ij}}{r_{ij}^2}\\
+Covalent bond interaction	& \begin{array}[t]{l}
+                         	   \text{Approximation is harmonic function:}\\
+				   V(\vec r(t), K_n^b, b_n^0) = \sum_n \frac{1}{2} K_n^b(b_n(t)-b_n^0)^2\\
+				   b_n = r_{ij}
+                         	  \end{array}\\
+Newton's equation of motion	& \begin{array}[t]{l}
+				    m \frac{dv(t)}{dt} = f(x(t)) = -\frac{\partial}{\partial x} V(x(t))\\
+				    \frac{dx(t)}{dt} = v(t)\\                           	   
+                           	  \end{array}\\
+Leap-Frog integration		& \begin{array}[t]{l}
+                     		   \text{Integration of Newton's equation of motion}\\
+				    v \left(t_n + \Delta \frac{t}{2} \right) = v \left(t_n - \Delta \frac{t}{2} \right) + \frac{f(x(t_n))}{m} \Delta t + O((\Delta t)^3)\\
+				    x(t_n + \Delta t) = x(t_n) + v \left(t_n + \Delta \frac{t}{2} \right) \Delta t + O( (\Delta t)^3 )
+                     		  \end{array}\\
+Periodic boundary conditions	&\\
+\end{tabular}
+\subsection{Metropolis Monte-Carlo Method}
+Metropolis Monte-Carlo method can be used to evaluate multidimensional integrals.\\
+Häufig ist der Raum $\Omega$ so groß, dass die Summation nicht vollständig durchgeführt werden kann. Stattdessen erzeugt man nun eine Markow-Kette $x_1,x_2,x_3,\ldots$ von Zuständen in $\Omega$, deren Häufigkeit wie das vorgegebene Gewicht $P(x)$ verteilt ist. Bereiche des Raumes $\Omega$ mit hohem Gewicht sollen also häufiger in der Markow-Kette vertreten sein als Bereiche mit niedrigem Gewicht. (Importance Sampling) Gelingt dies, so lassen sich die Erwartungswerte einfach als arithmetisches Mittel der Größe $\mathcal{A}$ zu diesen Zuständen der Markow-Kette berechnen, also als\\
+
+$\left\langle\mathcal{A}\right\rangle \approx \frac{1}{N}\sum_{i=1}^N \mathcal{A}(x_i).$\\
+
+Man muss sicherstellen, dass die Markow-Kette tatsächlich den gesamten Raum $\Omega$ bedeckt und nicht nur einen Teil des Raumes abtastet. Man sagt, der Algorithmus muss ergodisch sein.
+
+\subsubsection*{Algorithm}
+For large number of steps, do\\
+\begin{enumerate}
+ \item Make a step $\Delta \vec r$ in configuration space: $\vec r_{n+1}^N = \vec r_n^N + \Delta \vec r$ (This is the Markov-Chain)\\
+ \item Calculate the change in energy $\Delta E = E_{n+1} - E_n$\\
+ \item \begin{algorithmic}
+       	\If {$\Delta E \leq 0$}
+	    \State Accept new configuration $\vec r_{n+1}^N$
+	\ElsIf {$\exp \left(\frac{-\Delta E}{k_BT} \right) > $ random number $\in [0,1]$}
+	    \State Accept $\vec r_{n+1}^N$
+	\Else
+	    \State $\vec r_{n+1}^N$ = $\vec r_{n}^N$
+	\EndIf
+       \end{algorithmic}
+\end{enumerate}
+\subsubsection*{Remarks}
+\begin{itemize}
+ \item It is better to perform N 1-particle moves rather than 1 N-particle move.\\
+ \item If $T\to\infty$ then $\exp \left(\frac{-\Delta E}{k_BT} \right) \to 1$ (For high temperature, change of configuration is more likely)\\
+\end{itemize}
+\subsection{Replica-exchange simulation}
+Replica-exchange is done to improve metropolis method. You get a very robust ensemble.\\
+Essentially, one runs N copies of the system, randomly initialized, at different\\
+a ) temperatures\\
+b ) Hamiltonians\\
+Then, based on the Metropolis criterion one exchanges configurations at different temperatures or Hamiltonians.\\
+$\Delta_T  = \frac{H(\vec r_{s2}) - H(\vec r_{s1})}{\tfrac{1}{k_BT_{s1}} - \tfrac{1}{k_BT_{s2}}}$ for a)\\
+$\Delta_H  = \frac{ \big( H(\vec r_{s2}; \lambda_{s1}) - H(\vec r_{s1}; \lambda_{s1}) \big) - \big( H(\vec r_{s2}; \lambda_{s2}) - H(\vec r_{s1}; \lambda_{s2}) \big) }{k_BT}$ for b)
+\subsection{Stochastic Dynamics}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Langevin-Equation	& \begin{array}[t]{l}
+                  	   m_i\dot v_i (t) = f_i(t) -m_i\gamma_i v_i(t) + f_i^{st}(t)\\
+			   \gamma_i = \text{Friction coefficient (of solvent)}\\
+			   f_i^{st} = \text{Stochastic force (random punches of solvent)}\\
+			   \langle f^{st}(t) \rangle = 0\\
+			   P(f_i^{st}) \text{ ist standard-normalverteilt.}
+                  	  \end{array}\\
+Solution of Langevin-Eq	& v(t) = v_0 e^{-\gamma t} + e^{-\gamma t} \int_0^t e^{\gamma t'} \frac{f^{st}(t')}{m} dt'\\
+Average velocity	& \langle v(t) \rangle = v_0 e^{-\gamma t}\quad \lim_{t\to \infty} \langle v(t) \rangle = 0\\
+Average squared velocity	& \langle v^2(t) \rangle = \frac{3k_BT}{m} + \left(v_0^2-\frac{3k_BT}{m}\right) e^{-2\gamma t}\quad \lim_{t\to \infty} \langle v^2(t) \rangle = \frac{3k_BT}{m}\\
+Average $E_{kin}$	& \langle \frac{1}{2}m v^2(t) \rangle = \frac{3k_BT}{2} + \left(\frac{1}{2}m v_0^2-\frac{3k_BT}{2}\right) e^{-2\gamma t}\\
+Probability distribution	& Gaussian\\
+Average displacement	& \langle r(t) - r_0 \rangle = v_0 \frac{1}{\gamma} (1-e^{-\gamma t})\\
+Average square displacement	& \lim_{t\to 0} \langle (r(t)-r_0)^2 \rangle \Rightarrow r(t) = r_0 + v_0t\\
+				& \lim_{t\to \infty} \langle (r(t)-r_0)^2 \rangle = \lim_{t \to \infty} 6Dt\quad D = \frac{k_BT}{m\gamma}\quad\text{Diffusion constant}
+\end{tabular}
+
+
+
+

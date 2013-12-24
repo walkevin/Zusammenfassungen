@@ -1,0 +1,69 @@
+\section{Distributions}
+A distribution $T$ is defined by its value on test functions $\varphi$.\\
+$\varphi$ must be infinitely differentiable and must have compact support, i.e. $\varphi(\infty) = \varphi(-\infty) = 0$\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Mathematical definition		& T(\varphi) := \int_{\mathrm{R}^n} f(x) \varphi(x) \equiv \langle f, \varphi \rangle\\
+Example for test function	& \varphi(x) = \begin{cases}
+                         	               	\exp\left( \frac{1}{x^2-1} \right)	& |x| < 1\\
+						0					& |x| \geq 1
+                         	               \end{cases}\\
+Dirac Delta distribution	& \begin{array}[t]{rl}
+                        	  \delta(x-\xi) & 				= \begin{cases}
+										\infty	& x = \xi\\
+										0	& x \neq \xi
+										\end{cases}\\
+				  \int_{-\infty}^{\infty} \delta(x-\xi) \varphi(x) dx	& = \varphi(\xi)\\
+				  \multicolumn{2}{l}{\text{Notation: } \delta_{\xi}(x) \equiv \delta(x-\xi)}
+                        	  \end{array}\\
+Heaviside distribution		& \begin{array}[t]{rl}
+                      		  h(x - \xi) & = \begin{cases}
+                      		         1	& x > \xi\\
+					 0	& x \leq \xi
+                      		         \end{cases}\\
+				  H(x - \xi) := \int_{-\infty}^{\infty} h(x-\xi) \varphi(x) dx	& = \int_{0}^{\infty} \varphi(x) dx\\
+				  \multicolumn{2}{l}{\text{Notation: } H_{\xi}(x) \equiv H(x-\xi)}\\
+				  \multicolumn{2}{l}{\boxed{H'_{\xi} = \delta_{\xi}}}
+                      		  \end{array}\\
+Derivatives			& \int_{-\infty}^{\infty} T'(x) \varphi(x) dx = \underbrace{\int_{-\infty}^{\infty} (T \varphi)' (x) dx}_{ = 0} - \int_{-\infty}^{\infty} T(x) \varphi'(x) dx\\
+n = 1				& \langle T', \varphi \rangle = - \langle T, \varphi' \rangle\\
+n = 2				& \left\langle \frac{\partial^{k+l} T}{\partial x^k \partial y^l}, \varphi \right\rangle = (-1)^{k+l} \left\langle T, \frac{\partial^{k+l}}{\partial x^k \partial y^l} \varphi \right\rangle\\
+Laplace				& \langle \Delta T, \varphi \rangle = \langle T, \Delta \varphi \rangle
+\end{tabular}
+\section{Green's functions}
+A Green's function for the laplacian $\Delta$ on a region $D$ is a family of functions $G_D(x,y; \xi,\eta)$ defined for $(x,y) \neq (\xi, \eta)$ and satisfying
+\begin{enumerate}
+	\item $\Delta G(\vec x; \vec \xi) = \delta(\vec x - \vec \xi)$
+	\item $G(\vec x; \vec \xi) = 0\quad\text{ for }\vec x \in \partial D$
+\end{enumerate}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Green's 2nd identity	& \int\int_D v\Delta u - u\Delta v = \int_{\partial D} v \frac{\partial u}{\partial n} - u \frac{\partial v}{\partial n}\\
+Fundamental solution of $\Delta$ on $\mathbb{R}^2$	& \Gamma (\underbrace{x,y}_{\text{Vars}}; \underbrace{\xi, \eta}_{\text{Params}}) = \frac{1}{4\pi} \ln \big( \underbrace{(x-\xi)^2 + (y-\eta)^2}_{= r^2} \big)\\
+{\bfseries Green's functions}	&\\
+Trick 1				&\begin{array}[t]{ll}
+       				\multicolumn{2}{l}{G_D(x,y; \xi, \eta) = \Gamma(x,y; \xi, \eta) + g(x,y; \xi, \eta)}\\
+				\text{where}		& \Delta \Gamma = \delta(\vec x - \vec \xi)\\
+							& \Delta g = 0 \text{ on } D\\
+							& g = -\Gamma \text{ on }\partial D
+       				\end{array}\\
+Trick 2 ({\itshape Reflection Principle})	& \begin{array}[t]{l}
+				  \text{Take } g(x,y; \xi, \eta) = -\Gamma(x,y, \underbrace{ \xi^{\asterisk}, \eta^{\asterisk} }_{\notin D}) + c
+       				  \end{array}\\
+$D_1 = $ upper half plane	& \begin{array}[t]{ll}
+                               	  G_{D_1}(x,y;\xi,\eta)	& = \Gamma (x,y;\xi,\eta) - \Gamma (x,y;\xi,-\eta)\\
+							& = \frac{1}{4\pi} \ln \left(\frac{(x-\xi)^2 + (y-\eta)^2}{(x-\xi)^2 + (y+\eta)^2 }\right)
+                               	  \end{array}\\
+$D_2 = \text{disk }B_R$		& \begin{array}[t]{ll}
+                       		  G_{D_2}(x,y;\xi,\eta)	& = \Gamma(x,y; \xi,\eta) - \Gamma\left(x,y; \frac{R^2}{r} \xi, \frac{R^2}{r} \eta \right) + \frac{1}{4\pi} \ln \left(\frac{R^2}{r^2} \right)\\
+							& = \frac{1}{4\pi} \ln \left( \frac{R^2}{r^2} \cdot \frac{(x-\xi)^2 + (y-\eta)^2 }{(x- \frac{R^2}{r}\xi)^2 + (y- \frac{R^2}{r}\eta)^2} \right)\\
+				  G_{D_3}(\rho, \theta; r, \varphi)	& = \frac{1}{4\pi} \ln \left( \frac{\rho^2}{r^2} \cdot \frac{ \rho^2 + r^2 - 2\rho r \cos (\theta- \varphi)}{ \rho^2 + \frac{R^4}{r^2} - 2\rho \frac{R^2}{r} \cos (\theta - \varphi)} \right)\\
+				  \multicolumn{2}{l}{\text{where }x = \rho \cos \theta, y = \rho \sin \theta; \xi = r \cos \varphi, \eta = r \sin \varphi}
+                       		  \end{array}\\
+Poisson equation	& \begin{array}[t]{|ll|}\hline
+			    \Delta u = f	& \text{on } D\\
+			    u = g		& \text{on } \partial D\\\hline
+			  \end{array}\\
+Solution for Poisson eqn	& u(\vec \xi) = \int \int_D G(\vec x, \vec \xi) f(\vec x) d\vec x + \int_{\partial D} g(\vec x) \frac{\partial G}{\partial n} (\vec x; \vec \xi)\\
+			& \text{Tips: For a circle, the normal derivative is just the derivative w.r.t $r$.}\\
+			& \text{Don't forget the Jacobian determinant when using the polar form of a Green's fn.}\\
+Maxwell's reciprocity	& G_D(\vec x; \vec \xi) = G_D(\vec \xi; \vec x)\\
+\end{tabular}

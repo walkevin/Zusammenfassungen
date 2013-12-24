@@ -1,0 +1,36 @@
+\section{Transportphänomene}
+\begin{tabular}[t]{p{4cm}p{15cm}}
+mikroskopischer Stossquerschnitt	& $\sigma = 4\pi r^2$\\
+mittlere freie Weglänge			& $\Lambda = \frac{1}{n\sigma}\quad n:$ Teilchendichte\\
+``Teilchenintensität''			& $W(L) = ae^{-L/\Lambda}$\\
+Absorptionslänge			& $l_a \equiv \Lambda_a = \frac{1}{n\sigma_a}$\\
+Absorptionskoeffizient			& $\alpha = n\sigma_a\quad$ Anzahl absorbierte Photonen pro Längeneinheit\\
+Intensität des Lichts			& $I(z) = I_0e^{-\alpha z}$
+\end{tabular}
+\subsection{Diffusion und Wärmeleitung}
+\begin{tabular}{p{9.5cm}p{9.5cm}}
+\textbf{Diffusion}						& \textbf{Wärmeleitung}\\\midrule
+Fick'sches Gesetz (Diffusionsstromdichte)			& Fourier'sches Gesetz (Wärmestromdichte)\\
+$\mathbf{j(r)} = -D \textrm{~grad~} n(\boldsymbol{r})$		& $\boldsymbol{j_Q(r)} = -K \textrm{~grad~} T(\boldsymbol{r})$\\\midrule
+Diffusionskonstante $[D] = \frac{m^2}{s}$			& Wärmeleitfähigkeit $[K] = \frac{J}{m\cdot s \cdot K} = \frac{W}{m\cdot K}$\\\midrule
+für Gase und Flüssigkeiten					& für Gase und Flüssigkeiten\\
+$D = \frac{1}{3}\langle v \rangle \Lambda$			& $K = D\left( \frac{3}{2}nk_B \right) = \frac{1}{2}nk_B \langle v \rangle \Lambda$\\
+$\langle v \rangle = \sqrt{\frac{8 k_BT}{\pi m}}$		& \\\midrule
+stationärer Zustand: $j(x) =$ konst.				& stationärer Zustand: $j_Q(x) =$ konst.\\
+$n(x) = -\frac{j}{D}x + n_0$					& $T(x) = -\frac{j_Q}{K}x + T_0$\\\midrule
+Kontinuitätsgleichung: Teilchenerhaltung			& Kontinuitätsgleichung: Energieerhaltung\\
+$\frac{\partial n}{\partial t} + \textrm{~div~} \boldsymbol{j} = 0$	& $\frac{\partial \rho_Q}{\partial t} + \textrm{~div~} \boldsymbol{j_Q} = 0$\\\midrule
+\textbf{Diffusionsgleichung}					& \textbf{Wärmeleitungsgleichung}\\
+$\frac{\partial n(x,t)}{\partial t}-D \nabla^2 n(x,t) = 0$	& $\frac{\partial T(x,t)}{\partial t}-D_W \nabla^2 T(x,t) = 0$\\
+								& $D_W \equiv \frac{K}{\rho c}, \rho:$ Massendichte, $c$: spez. Wärmekapazität\\\midrule
+\multicolumn{2}{l}{Driftstromdichte: $j = n\cdot v_d \cdot f$\quad $f:$ ``generische'' Teilcheneigenschaft, z.B. $f = q$ für Ladung}\\
+Teilchenstromdichte: $\boldsymbol{j(r)}$ 			& Wärmestromdichte: $\boldsymbol{j_Q(r)}\quad [\boldsymbol{j_Q(r)}] = \frac{J}{m^2\cdot s}$\\
+Teilchenstrom: $I = \int_A \boldsymbol{j(r)}dA$			& Wärmestrom: $I_Q = \int_A \boldsymbol{j}_Q(\boldsymbol{r})dA$\\
+Teilchendichte: $n(r,t)$					& Wärmedichte: $\rho_Q$
+\end{tabular}
+\subsection*{Beispiel stationärer Zustand}
+Wärmestromdichte in 1D: $j_Q = -K \frac{\partial T(x)}{\partial x}$\\
+$dT = -\frac{j_Q}{K}dx \Rightarrow \int_{T_1}^{T(x)}dT = -\frac{j_Q}{K}\int_{x_1}^{x}dx,$ falls $j_Q(r)$ konst.\\
+Randbedingungen: $T(x_1) = T_1, T(x_2) = T_2$\\
+Wärmestromdichte: $j_Q = -K \frac{T_2-T_1}{x_2-x_1}$\\
+Temperaturprofil: $T(x) = T_1 -\frac{j_Q}{K}(x-x_1)$

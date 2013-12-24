@@ -1,0 +1,39 @@
+\section{Wahrscheinlichkeitsverteilung}
+\begin{tabular}{p{4cm} >{$}p{7.5cm}<{$} || >{$}p{7.5cm}<{$}}
+kumulative Verteilungsfkt.	& \text{diskret}			& \text{stetig}\\
+\cline{2-3}
+                              	& \multicolumn{2}{c}{$F(b) = \P(X \leq b)$}\\
+				& F(b) = \sum_{x \leq b} p(x)		& F(b) = \int_{-\infty}^b f(x) dx\\
+				& p(x) = \text{WSK für Ereignis $x$}	& f(x) = \text{Dichtefunktion}\\
+				& \multicolumn{2}{l}{$F(\infty) = 1;\quad p(x), f(x) \geq 0 \forall x$}\\
+\cline{2-3}
+Erwartungswert		& \mu_X := \E (X) := \sum x p(x)	& \mu_X := \E (X) := \int_{-\infty}^{\infty} x f(x) dx\\
+			& \E(Y) = E(g(X)) = \sum g(x) p(x)	& \E(Y) = \E(g(X)) = \int_{-\infty}^{\infty} g(x) f(x) dx\\
+			& \multicolumn{2}{c}{$\E(a + bX) = a + b \E(X)$}\\
+			& \multicolumn{2}{c}{$\E(X+Y) = \E(X) + \E(Y)$}\\
+\cline{2-3}
+\end{tabular}\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Varianz			& \begin{array}[t]{l}
+			  \V(X) = \E(X^2) - \E(X) ^2\\
+			  \V(a + bX) = b^2 \V(X)\\
+       			  \end{array}\\
+Standardabweichung	& \sigma_X := \sqrt{\V(X)}\\
+Quantil			& q_{\alpha} := q(\alpha) := \min \{ x\in \mathbb{R} | F(x) \geq \alpha \}\\
+			& F(q_{\alpha}) = \alpha\quad q_{1/2} := \text{``Median''}\\
+\end{tabular}
+\begin{tabular}{p{4cm} >{$}l<{$} >{$}l<{$} >{$}l<{$} >{$}l<{$} >{$}l<{$}}
+diskrete Verteilungen	& \text{Verteilung}	& p(x)					& W_X			& \E(X)		& \V(x)\\
+\cline{2-6}
+			& \mathrm{Bin} (n,p)	& \binom{n}{x} p^x (1-p)^{n-x}		& \{0,...,n\}		& np		& np(1-p)\\
+			& \mathrm{Poi}(\lambda)	& e^{-\lambda} \frac{\lambda^x}{x!}	& \{0,1,...\}		& \lambda	& \lambda\\
+			& \mathrm{Geo}(p)	& p(1-p)^{x-1}				& \{1,2,...\}		& \frac{1}{p}	& \frac{1-p}{p^2}\\
+stetige Verteilungen	& \mathrm{Uni} [a,b]	& \frac{1}{b-a}				& [a,b]			& \frac{a+b}{2}	& \frac{(b-a)^2}{12}\\
+			& \mathrm{Exp}(\lambda)	& \lambda e^{-\lambda x}		& \mathbb{R}^{\geq 0}	& \frac{1}{\lambda}	& \frac{1}{\lambda^2}\\
+			& \mathrm{N}(\mu, \sigma^2)	& \frac{1}{\sqrt{2\pi} \sigma} \exp \left( -\frac{1}{2} \left(\frac{x-\mu}{\sigma} \right)^2 \right)	& \mathbb{R}	& \mu		& \sigma^2\\
+\cline{2-6}
+\end{tabular}\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Normalverteilungsfkt.	& F_{N(\mu, \sigma^2)}(x) = \Phi \left( \frac{x-\mu}{\sigma} \right)\quad \Phi \rightarrow \text{Tabelle}\\
+Transformation		& Y = g(X) \Rightarrow f_Y(y) = f_X \Big(g^{-1}(y) \Big) \cdot \frac{1}{g'\Big(g^{-1}(y) \Big)}
+\end{tabular}

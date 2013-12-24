@@ -1,0 +1,118 @@
+\section{Kombinatorik}
+\begin{tabular}{l >{$}l<{$}}
+ Urnenmodell		& \begin{array}[t]{l|l|l}
+					& \text{geordnet}	& \text{ungeordnet}\\\hline
+		\text{mit Zurückl.}	& \begin{array}{llll}
+					 A &(1,1)&(1,2)&(1,3)\\
+					   &(2,1)&(2,2)&(2,3)\\
+					   &(3,1)&(3,2)&(3,3)
+					  \end{array}		& \begin{array}{llll}
+								 B &(1,1)&(1,2)&(1,3)\\
+								   &     &(2,2)&(2,3)\\
+								   &     &     &(3,3)\\
+								 \end{array}\\\hline
+		\text{ohne Zurückl.}	& \begin{array}{llll}
+					 C&     &(1,2)&(1,3)\\
+					  &(2,1)&     &(2,3)\\
+					  &(3,1)&(3,2)&
+					  \end{array}		& \begin{array}{llll}
+								  D&   &(1,2)&(1,3)\\
+								   &   &     &(2,3)\\
+								   &   &     &     \\
+								 \end{array} 
+            		  \end{array}\\
+			&
+			  \begin{array}[t]{llll}
+			   \multicolumn{4}{l}{\text{n Kugeln, k Ziehungen}}\\
+			   A: n^k		&   B: \binom{n+k-1}{k}	   & C: \frac{n!}{(n-k)!} &   D: \binom{n}{k}
+			  \end{array}\\\hline
+ Inklusion-Exklusion	& \begin{array}[t]{l}
+                    	   |A \cup B| = |A| + |B| - |A \cap B|\\
+			   |A \cup B \cup C | = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\\
+			   |A_1 \cup ... \cup A_n| = \sum |A_i| - \sum |A_i \cap A_j| + - ...+(-1)^{n+1}|A_1\cap ... \cap A_n|
+                    	  \end{array}\\\hline
+ Schubfachprinzip	& \text{Werden $n$ Objekte auf $k<n$ Schubfächer verteilt,}\\
+			& \text{so gibt es ein Schubfach, das mind. 2, resp. $\left\lceil \frac{n}{k} \right\rceil$ Objekte enthält}\\
+			& \text{Bsp: Von 100 Leuten sind mind. $\left\lceil \frac{100}{12} \right\rceil = 9$ im gleichen Monat geboren.}\\\hline
+ Doppeltes Abzählen	& |S| = \sum_{a\in A} m_a = \sum_{b\in B} n_b\qquad S = A \times B\\
+			&  \begin{array}[t]{ll|l|l|l}
+			       & & \multicolumn{3}{l}{\text{Airport}}\\
+			       &   & 1 & 2 & 3\\\hline
+\multirow{2}{*}{\text{Airline}}& a & 1 & 1 & 0\\
+			       & b & 0 & 1 & 1
+                   	  \end{array}\\
+			& \begin{array}[t]{l}
+			   \text{$m_a$ Summe der Zeilen = Summe der angeflogenen Airports einer Airline}\\
+			   \text{$n_b$ Summe der Spalten = Summe anfliegenden Airlines eines Airports}\\
+			   \text{$S$ = Flugverbindungen}\\
+			   \text{$a$ fliegt zum Airport 1 und 2; Airport 2 wird von $a$ und $b$ angeflogen}   
+			  \end{array}\\\hline
+ Binomialkoeffizient	& \binom{n}{k} = \frac{n!}{k!(n-k)!} = \binom{n}{n-k} = \binom{n-1}{k-1} + \binom{n-1}{k}\quad\text{Pascal-$\bigtriangleup$}\\
+			& (x+y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k}y^k\quad\text{Spez.fälle: x=y=1; x=-1, y=1}\\\hline
+ Vandermonde-Identität	& \text{Kugeln in Gruppen unterteilen}\\
+			& \binom{n}{k} = \sum_{t=0}^k\binom{r}{t}\cdot\binom{n-r}{k-t}\qquad\text{Bsp: }\binom{2n}{n} = \sum_{k=0}^n \binom{n}{k}\cdot\binom{n}{n-k}\\
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+ Permutationen		& \begin{pmatrix}
+              		   1 & 2 & 3 & 4 & 5\\
+			   3 & 4 & 5 & 2 & 1
+              		  \end{pmatrix}
+			  \begin{pmatrix}
+              		   1 & 2 & 3 & 4 & 5\\
+			   3 & 4 & 5 & 2 & 1
+              		  \end{pmatrix}^{-1} = 
+			  \begin{pmatrix}
+              		   3 & 4 & 5 & 2 & 1\\
+			   1 & 2 & 3 & 4 & 5
+              		  \end{pmatrix}\\
+			& \text{Zyklendarstellung: } (1,3,5) \circ (2,4)\\
+			& \text{\# benötigte Perm. bis zur Identität} = \mathrm{kgV} (\text{Einzelzyklen}) \\
+			& \text{\# Perm. einer n-Menge} = n!\\
+			& \text{\# fixpunktfreie Perm.} = \frac{n!}{e}\\\hline
+ Stirling $\bigtriangleup$ 1.Art & S1_{n,k} = S1_{n-1,k-1} + (n-1)\cdot S1_{n-1,k}\\
+			    & \text{$S1_{n,k} = $\# Permutationen von n Elementen mit genau k Zyklen}\\
+			    & \begin{array}{rccccccccc}
+				n=0:&    &    &    &    &  1\\\noalign{\smallskip\smallskip}
+				n=1:&    &    &    &  0 &    &  1\\\noalign{\smallskip\smallskip}
+				n=2:&    &    &  0 &    &  1 &    &  1\\\noalign{\smallskip\smallskip}
+				n=3:&    &  0 &    &  2 &    &  3 &    &  1\\\noalign{\smallskip\smallskip}
+				n=4:&  0 &    &  6 &    &  11&    &  6 &    &  1\\\noalign{\smallskip\smallskip}
+				\end{array}\\\hline
+ Stirling $\bigtriangleup$ 2.Art & S2_{n,k} = S2_{n-1,k-1} + k\cdot S2_{n-1,k}\\
+			    & \text{$S2_{n,k} = $\# Partitionen einer n-Menge in k-Mengen}\\
+			    & \begin{array}{rccccccccc}
+				n=0:&    &    &    &    &  1\\\noalign{\smallskip\smallskip}
+				n=1:&    &    &    &  0 &    &  1\\\noalign{\smallskip\smallskip}
+				n=2:&    &    &  0 &    &  1 &    &  1\\\noalign{\smallskip\smallskip}
+				n=3:&    &  0 &    &  1 &    &  3 &    &  1\\\noalign{\smallskip\smallskip}
+				n=4:&  0 &    &  1 &    &  7 &    &  6 &    &  1\\\noalign{\smallskip\smallskip}
+				\end{array}\\\hline
+ Bell-Zahlen		& B_n = \sum_{k=0}^n S_{n,k}\quad\text{Summe einer Zeile des Stirling $\bigtriangleup$ 2.Art}\\
+			& \text{$B_n = $\# Äq.rel auf einer n-Menge}\\\hline
+ $P_{n,k}$		    & P_{n,k} = \sum_{i=1}^k P_{n-k,i}\\
+			    & \text{$P_{n,k} =$\# ungeordnete Partitionen von $n\in\mathbb{N}$ durch $k$ positive Summanden}\\
+			    & \text{Bsp: n = 4, k = 2: 4 = 1+3 = 2+2 $\Rightarrow P_{4,2} = 2$}\\
+			    & \begin{array}{rccccccccc}
+				n=0:&    &    &    &    &  1 &    &  0 &    &  0\\\noalign{\smallskip\smallskip}
+				n=1:&    &    &    &  1 &    &  0 &    &  0 &   \\\noalign{\smallskip\smallskip}
+				n=2:&    &    &  1 &    &  1 &    &  0 &    &  0\\\noalign{\smallskip\smallskip}
+				n=3:&    &  1 &    &  1 &    &  1 &    &   0&   \\\noalign{\smallskip\smallskip}
+				n=4:&  1 &    &  2 &    &  1 &    &  1 &    &  0\\\noalign{\smallskip\smallskip}
+				\end{array}\\
+			    & \text{\# geordnete Partitionen von $n\in\mathbb{N}$ durch $k$ positive Summanden = $\binom{n-1}{k-1}$}
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+ Rekursionsgleichung &
+\begin{array}[t]{l}
+ f_n = f_{n-1} + f_{n-2}\quad f_0 = 0; f_1 = 1\\
+\text{Ansatz: } f_n = \lambda^n \Rightarrow \lambda^n = \lambda^{n-1}+\lambda^{n-2}\\
+\underbrace{(\lambda^2-\lambda-1)}_{\text{char. Polynom}}\cdot \lambda^{n-2} = 0 \Rightarrow \lambda_{1,2} = \tfrac{1 \pm \sqrt{5}}{2}\\
+\text{Lsg: }f_n = a\cdot \lambda_1^n + b\cdot \lambda_2^n\\
+\text{Lsg. bei mehrfachen Nst: }f_n = a\cdot \lambda_1^n + b\cdot n \cdot \lambda_1^n + c\cdot n^2\cdot \lambda_1^n\\
+\text{Anfangsbedingungen einsetzen: }\\
+0 = a\cdot 1 + b \cdot \Rightarrow a= -b\\
+1 = a\cdot \lambda_1 - a \cdot \lambda_2 \Rightarrow 1 = a(\lambda_1 - \lambda_2)\\
+a = \tfrac{1}{\sqrt{5}}; b = -\tfrac{1}{\sqrt{5}}\\
+f_n = \frac{1}{\sqrt{5}}\cdot \left( \left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n \right)
+\end{array}
+\end{tabular}

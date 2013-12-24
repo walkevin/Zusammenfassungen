@@ -1,0 +1,50 @@
+\section{Heat equation on a solid ball}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+General form		& \frac{ \partial u}{\partial t} = c^2 \Delta u\\
+Symmetry		& u(x,y,z,t) = u(r,t)\quad r = \sqrt{x^2+y^2+z^2}\\
+Laplacian		& \Delta u(x,y,z) = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2} + \frac{\partial^2u}{\partial z^2}\\
+			& \Delta u(r)	= \frac{\partial^2 u}{\partial r^2} + \frac{\partial u}{\partial r} \cdot \frac{2}{r}\\
+Concrete form		& \frac{ \partial u}{\partial t} = c^2 \left( \frac{\partial^2 u}{\partial r^2} + \frac{\partial u}{\partial r} \cdot \frac{2}{r} \right)\\
+Boundary Conditions	& u(L,t) = 0, t > 0, x^2+y^2+z^2 = r^2 = L^2\\
+Initial Conditions	& u(r,0) = U_0, 0\leq r \leq L\\
+\end{tabular}
+\subsection{Solution}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Ansatz (Sep. of vars)		& \begin{array}[t]{l}
+       		   \mathbf{u(r,t)= R(r)T(t)}\\
+		   R(r)T'(t) = c^2 \left(R''(r) + R'(r) \frac{2}{r} \right) T(t)\\
+		   \Leftrightarrow \frac{T'}{c^2T} \frac{R'' + \frac{2}{r} R'}{R} = k
+       		  \end{array}\\
+ODE-System	& \begin{array}[t]{l||l}
+          	   I	& R''(x) + \frac{2}{r} R' - kR = 0\quad\text{(Bessel equation)}\\
+		   II	& T'(t) - kc^2T(t) = 0
+          	  \end{array}\\
+Impose BC	& u(L,t) = R(L)T(t) = 0 \quad\forall t \quad\Rightarrow R(L) = 0\\
+Solve ODE I	& \begin{array}[t]{lll}
+           	  \multicolumn{3}{l}{\text{Substitution: }}\\
+		  G(r) := rR(r)			& \Rightarrow	& R(r) = \frac{G(r)}{r}\\
+		  G'(r) = R(r) + rR'(r)		& \Rightarrow	& R'(r) = \frac{1}{r}G'(r) - \frac{1}{r^2}G(r)\\
+		  G''(r) = 2R'(r) + rR''(r)	& \Rightarrow	& R''(r) = \frac{1}{r}G''(r) - \frac{2}{r^2}G'(r) + \frac{2}{r^3}G(r)
+           	  \end{array}\\
+		& \begin{array}[t]{lccccccc}
+		  \multicolumn{5}{l}{\text{Rewrite ODE I:}}\\
+					& R''		& +	& \frac{2}{r}R'	&-	& kR	& = 0\\
+		  \Leftrightarrow	&\frac{1}{r}G''(r) - \frac{2}{r^2}G'(r) + \frac{2}{r^3}G(r) & +
+								& \frac{2}{r^2}G'(r) - \frac{2}{r^3}G(r)	& -
+											& \frac{k}{r}G	& = 0\\
+		  \Leftrightarrow	& \multicolumn{7}{l}{G'' - kG = 0}
+		  \end{array}\\
+		& \begin{array}[t]{lll}
+		  \multicolumn{3}{l}{\text{Solve rewritten ODE and get well-defined solution for $R$:}}\\
+		  k = -p^2 < 0				& \Rightarrow	& G(r) = A \cos pr + B \sin pr\\
+		  R(L) = 0 = \frac{G(L)}{L}		& \Rightarrow	& \frac{A \cos pL + B \sin pL}{L} = 0\\
+		  \exists \lim_{r\to 0} R(r) \forall r	& \Rightarrow	& A = 0
+		  \end{array}\\
+		& \Rightarrow \boxed{ R_n(r) = \frac{1}{r} \sin \left(\frac{n\pi r}{L} \right)} \quad k = -\left(\frac{n\pi}{L} \right)^2\\
+Solve ODE II	& \Rightarrow \boxed{ T_n(t) = B_n e^{-\lambda_n^2 t} }\quad \lambda = \frac{n\pi c}{L}\\
+General solution	& u_n(r,t) = \frac{1}{r}\sin\left( \frac{n\pi r}{L} \right) \cdot B_n e^{-\lambda_n^2 t} \quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{n\pi c}{L}\\
+Superposition	& u(r,t) = \sum_{n=1}^{\infty} u_n(x,t)\\
+		& u(r,t) = \sum_{n=1}^{\infty} \frac{1}{r}\sin\left( \frac{n\pi r}{L} \right) \cdot B_n e^{-\lambda_n^2 t}\quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Imposing IC	& u(r,0) = \sum_{n=1}^{\infty} B_n\frac{1}{r}\sin\left( \frac{n\pi r}{L} \right)  = U_0\\
+Fourier-Coefficients	& B_n = \frac{2}{L} \int_0^L \frac{U_0}{r} \sin \frac{n\pi r}{L} dr\\
+\end{tabular}

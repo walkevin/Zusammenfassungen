@@ -1,0 +1,66 @@
+\section{Graphentheorie}
+\begin{tabular}{l >{$}l<{$}}
+Graph		& G = (V,E)\quad\text{V = Knoten, E = Kanten}\\
+		& \sum_i \deg(v_i) = 2|E|\\
+Kreis		& \text{Sei $(v_i,...,v_l)$ paarweise verschiedene Knoten, $l\geq 3$}\\
+		& \text{$G$ Kreis :}\forall i = 1,...,l-1: (v_i,v_{i+1})\in E \wedge (v_l,v_1)\in E\\
+zsh.		& \text{$G$ zusammenhängend. :}\forall u,v \in V \exists \text{u-v-Pfad}\\
+		& \text{$G=(V,E)$ hat mind. $|V|-|E|$ Zsh.komp.}\\
+		& \text{$G$ zsh. $\Rightarrow |V|-|E| \leq 1$}\\
+Teilgraph	& \text{$H = (V',E')$ Teilgraph von $G = (V,E)$}: V'\subset V \wedge E'\subset E \wedge E' \subset V'\times V'\\
+Brücke		& e \in E \text{ Brücke: $G' = (V,E\smallsetminus{e})$ hat eine Zsh.komp. mehr als $G = (V,E,)$}\\
+Baum		& \begin{array}[t]{ll}
+		        &\text{kreislos, zsh., $|V| \geq 2$, mind. 2 Blätter}\\
+			& \text{$G$ ist ein Baum}\\
+\Leftrightarrow		& \text{$G$ ist zsh. $\wedge |V| = |E| + 1$}\\
+\Leftrightarrow		& \text{$G$ ist kreislos $\wedge |V| = |E| + 1$}\\
+\Leftrightarrow		& \text{$G$ ist zsh. $\wedge$ jede Kante ist Brücke}\\
+\Leftrightarrow		& \text{$G$ ist maximal kreislos (zusätzl. Kante ergibt Kreis)}\\
+\Leftrightarrow		& \text{$\forall u,v \in V \exists!$ u-v-Pfad$\qquad \exists:$ zsh., !: Kreislosigkeit}
+    		  \end{array}\\
+Spannbaum	& \text{Sei $G=(V,E)$ Baum. $H=(V,E')$ Spannbaum: $H$ Baum $\wedge E'\subset E$}\\
+		& \text{\# Kanten im Spannbaum = $|V|-1$}\\
+$K_n$		& \text{$K_n$: vollständiger Graph~~~~\# Kanten im $K_n = \binom{n}{2} = \frac{n(n-1)}{2}$}\\
+Cayley		& \text{\# Spannbäume im }K_n = n^{n-2}\\
+$C_n$		& \text{$C_n$: Kreis(Zyklen) der Länge $n, n\geq 3$}\\
+$M_{m,n}$	& \text{$M_{m,n}$: Gittergraph, Meshgraph}\\
+$K_{m,n}$	& \text{$K_{m,n}$: vollst. bipartiter (zweifärbbarer) Graph}\\
+$Q_d$		& \text{$Q_d$: d-dim. Hyperkubus}\\
+		& V = {0,1}^d\quad {u,v} \in E:\Leftrightarrow d_H(u,v) = 1\quad\text{$d_H$: Hammingdistanz}\\
+		& |E| = 2^{d-1}\cdot d\quad |V| = 2^d\\
+\end{tabular}\\
+\begin{tabular}{l >{$}l<{$}}
+Eulertour	& \text{Kreis, der jede Kante genau einmal enthält}\\
+		& \text{Ein zsh. Graph hat eine {\itshape geschlossene} Eulertour gdw. alle Knotengrade gerade sind.}\\
+		& \text{~~Bsp: $K_n$ für $n$ ungerade, $Q_d$ für $d$ gerade}\\
+		& \text{Ein zsh. Graph hat eine {\itshape offene} Eulertour gdw. zwei Knotengrade ungerade sind}\\\hline
+Hamiltonkreis	& \text{Kreis, der jeden Knoten genau einmal enthält}\\
+		& \text{$M_{m,n}$ hamiltonsch, falls $m\cdot n$ gerade und $n\geq 2$}\\
+		& \text{$Q_d$ hamiltonsch für $d\geq 2$}\\
+		& \text{$G=(V,E)$ mit $\deg(V) \geq \frac{|V|}{2} \forall v \wedge |V| \geq 3\Rightarrow G$ hamiltonsch}\\\hline
+Planare Graphen & \text{$G=(V,E)$ planar, wenn er ohne Kantenüberschneidung gezeichnet werden kann.}\\
+		& \begin{array}[t]{ll}
+		   \text{$G$ planar, zsh.}	& \Rightarrow |V| + f - |E| = 2\\
+		   \multicolumn{2}{l}{\text{$\quad G$ teilt die Ebene in $f$ Gebiete}}\\
+		   \text{$G$ planar, $|V| \geq 3$}	& \Rightarrow |E| \leq 3|V|-6 \wedge \overline{\deg(v)} < 6\\
+		   \text{$G$ planar, bipartit}		& \Rightarrow |E| \leq 2|V|-4 \wedge \overline{\deg(v)} < 4\\
+		   \multicolumn{2}{l}{\text{Achtung: Die Umkehrrichtung gilt jeweils nicht!}}
+		  \end{array}\\
+		& \begin{array}[t]{l}
+		   \text{Nicht planar sind (vollständige Liste nach Kuratowski):}\\
+		   K_5, K_{3,3}	\qquad K_6, K_{3,4}, K_{4,4},...\\
+		   \text{Graphen, die den $K_5$ oder $K_{3,3}$ als Teilgraph enthalten}\\
+		   \text{Unterteilte Graphen von $K_5$ oder $K_{3,3}$}\\
+		   \text{Graphen, die diese unterteilte Graphen als Teilgraph enthalten}
+		  \end{array}\\\hline
+Knotenfärbbarkeit & \text{$G=(V,E)$ zsh. $|V| \geq 2$, zweifärbbar = bipartit ($\chi(G) = 2)$}\\
+		  & \text{gdw er keinen Kreis ungerader Länge enthält}\\
+		  & G=(V,E) \text{planar} \Rightarrow \chi(G) \leq 4\\
+		  & \begin{array}[t]{lll}
+		     \chi(K_n) = n	& \chi(K_{m,n}) = 2	& \chi(M_{m,n}) = 2\\
+		     \chi(Q_d) = 2	& \chi(\text{Baum}) = 2	& \chi(C_n) = \begin{cases}
+		                  	                	               2	& n \text{ gerade}\\
+		                  	                	               3	& n \text{ ungerade}\\
+		                  	                	              \end{cases}
+		    \end{array}
+\end{tabular}

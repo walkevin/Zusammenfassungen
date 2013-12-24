@@ -1,0 +1,140 @@
+\section{Schrödingergleichung}
+\subsection{Allgemeines}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+``Herleitung'' der SG			& \begin{array}[t]{rl}
+						& \Psi(x,t) = \Psi_0 \exp \left( \frac{i}{\hbar} (p_x x-Et) \right) \quad \text{(de Broglie)}\\
+				\Rightarrow	& p_x \Psi(x,t) = -i\hbar \frac{\partial}{\partial x} \Psi(x,t)\\
+				\Rightarrow	& E \Psi(x,t) = i\hbar \frac{\partial}{\partial t} \Psi(x,t)\\
+						& \text{Via Korrespondenzprinzip gilt: $E = \frac{\hat{p}^2}{2m}$}\\
+				\Rightarrow	& E \Psi(x,t) = \underbrace{i\hbar \frac{\partial}{\partial t}}_{E} \Psi(x,t) = \underbrace{\frac{-\hbar^2}{2m} \frac{\partial^2}{\partial x^2}}_{H} \Psi(x,t) = \frac{\hat{p}^2}{2m}\Psi(x,t)\\
+						& \text{Lösungsansatz (Separation der Variablen): $\Psi(x,t) = \psi(x) \cdot \chi(t)$}\\
+				\Leftrightarrow	& \psi(x) i\hbar \frac{\partial \chi(t)}{\partial t} = \chi(t) \cdot \frac{-\hbar^2}{2m} \frac{\partial^2}{\partial x^2} \psi(x)\\
+				\Leftrightarrow	& \frac{i \hbar \dot{\chi(t)}}{\chi(t)} = \frac{-\hbar^2}{2m} \frac{\psi''(x)}{\psi(x)} = E\\
+				\Rightarrow	& \text{ODE 1: } i\hbar \dot{\chi(t)} = E \chi(t) \Rightarrow \chi(t) = \exp(\frac{-i}{\hbar} Et)\\
+						& \text{ODE 2: } \frac{-\hbar^2}{2m} \psi''(x) = E \psi(x)
+                 			  \end{array}\\
+allgemeine SG				& \hat{H} \Psi = \hat{E} \Psi\\
+allg. zeitabhängige Lösung		& \psi(\mathbf{r},t) = \psi(\mathbf{r}) e^{-i\frac{E}{\hbar}t} = \psi(\mathbf{r})e^{-i\omega t}\\
+Normierungsbedingung			& \int_{-\infty}^{\infty} |\Psi(x)|^2 dx = 1\\
+Aufenthalts wahrscheinlichkeitsdichte	& P(x) = |\Psi(x)|^2\\
+Delokalisation				& \text{vollständige Delokalisation eines Teilchens, falls $P(x) = konst.$}\\
+Heisenberg'sche Unschärferelation	& \Delta x \Delta p \geq \tfrac{1}{2} \hbar\\
+Kommutator				& \left[\hat{A},\hat{B}\right] \equiv \hat{A}\cdot \hat{B} - \hat{B} \cdot \hat{A}\quad \text{Falls} \left[\hat{A},\hat{B}\right] = 0\Rightarrow \text{A und B gleichzeitig messbar}\\
+Operatoren				& \begin{array}[t]{lll}
+          				   \hat{r}	& \text{Orts-Operator}	& \hat{r} = (x,y,z)^T \\
+					   \hat{p}	& \text{Impuls-Operator}	& \hat{p} = -i\hbar\nabla = -i\hbar (\partial / \partial x, \partial / \partial y , \partial / \partial z)^T\\
+					   \hat{H}	& \text{Hamilton-Operator*}	& \hat{H} = \frac{\hat{p}^2}{2m} + E_p(\hat{r}) = -\frac{\hbar^2}{2m}\nabla^2 + E_p(\hat{r})\\
+					   \multicolumn{3}{l}{\text{* für ein freies Teilchen im Potentialfeld}}
+          				  \end{array}\\
+\end{tabular}
+\subsection{allgemeine Lösung für SG mit Potential}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+zeitunabhängige Schrödingergleichung (1-dim)	& -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} + E_{pot}(x)\psi(x) = E\psi(x)\\
+Lösung der zeitunabhängigen SG		& \begin{array}[t]{ll}
+						& \underbrace{\frac{-\hbar^2}{2m}}_{=: -C} \frac{\partial^2}{\partial x^2} \psi(x) = (E-E_{pot}) \psi(x)\\
+						& \text{Ansatz: $\psi(x) = e^{ikx}$}\\
+				\Rightarrow	&  Ck^2\cdot e^{ikx} = (E-E_{pot}) \cdot e^{ikx}\\
+				\Leftrightarrow	& k = \pm\sqrt{\frac{E-E_{pot}}{C}} = \pm\sqrt{\frac{(E-E_{pot})\cdot 2m}{\hbar^2}}\\
+				\Rightarrow	& \psi_k(x) = A_k e^{ikx} + B_k e^{-ikx}
+                                      	  \end{array}\\
+Lösung für $E_{pot} = 0$		& \psi_1(x) = Ae^{ikx} + Be^{-ikx}\quad k^2 = \frac{2mE}{\hbar^2}\\
+Lösung für $E < E_{pot}$		& \psi_2(x) = Ce^{-\alpha x} + De^{\alpha x}\quad \alpha^2 = \frac{2m}{\hbar^2}(E_{pot}-E)\\
+Lösung für $E > E_{pot}$		& \psi_3(x) = Ee^{i\alpha'x} + Fe^{-i\alpha' x}\quad \alpha'^2 = \frac{2m}{\hbar^2}(E-E_{pot})\\
+Stetigkeitsbedingungen			& \psi_i = \psi_j \quad\text{und}\quad \frac{\partial \psi_i}{\partial x} = \frac{\partial \psi_j}{\partial x} \text{ für $x=0$}\\
+Teilchenstromdichte			& v |A|^2\quad v = \frac{p}{m} = \frac{\hbar k}{m}\\
+Transmissionskoeffizient		& \frac{k_C|C|^2}{k_A|A|^2}\\
+Reflexionskoeffizient			& \frac{k_B|B|^2}{k_A|A|^2}\quad \text{ Bedeutung von A,B,C wie unten Bsp. Potentialstufe}\\
+					& R + T = 1\\
+
+\end{tabular}
+\subsection{Spezifische Probleme}
+\subsubsection{Potentialstufe}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+$E_{pot}$	& E_{pot} = \begin{cases} 0 & x < 0 \text{ (Bereich I)}\\ E_0 & x \geq 0 \text{ (Bereich II)}\end{cases}\\\midrule
+allg. Lösung ($E < E_{pot}$)	& \begin{array}[t]{l}
+      		  \psi_I(x) = Ae^{ikx} + Be^{-ikx}\quad k^2 = \frac{2mE}{\hbar^2}\\
+		  \psi_{II}(x) = Ce^{-\alpha x} + De^{\alpha x}\quad \alpha^2 = \frac{2m}{\hbar^2}(E_{pot}-E)
+      		  \end{array}\\
+Stetigkeitsbedingungen	& \left.\psi_I\right|_{x=0} = \left.\psi_{II}\right|_{x=0} \quad\text{und}\quad \left.\frac{\partial \psi_I}{\partial x}\right|_{x=0} = \left.\frac{\partial \psi_{II}}{\partial x}\right|_{x=0}\\
+Randbedingungen	& \lim_{x\to\infty} \psi_{II} < \infty \text{ (vgl. Normierungsbedingung)}\\
+spez. Lösung	& \begin{array}[t]{ll}
+            	  D = 0 \text{ (aus RB)}	&\\
+		  B = \frac{(ik+\alpha)A}{ik-\alpha}	& C = \frac{2ikA}{ik-\alpha}
+            	  \end{array}\\\midrule
+allg. Lösung ($E > E_{pot}$)	& \begin{array}[t]{l}
+      		  \psi_I(x) = Ae^{ikx} + Be^{-ikx}\quad k^2 = \frac{2mE}{\hbar^2}\\
+		  \psi_{II}(x) = Ee^{i\alpha'x} + Fe^{-i\alpha' x}\quad \alpha'^2 = \frac{2m}{\hbar^2}(E-E_{pot})
+      		  \end{array}\\
+spez.Lösung	& \begin{array}[t]{ll}
+            	  F = 0 \text{ (aus RB)}	&\\
+		  B = \frac{(k-\alpha')A}{k+\alpha'}	& E = \frac{2kA}{k+\alpha'}
+            	  \end{array}\\
+Transmissionskoeffizient	& \frac{v_{II} |E|^2}{v_I |A|^2} = \frac{\alpha'}{k} \left(\frac{2k}{k+\alpha'}\right)^2\\
+Reflexionskoeffizient		& \frac{v_I |B|^2}{v_I |A|^2} = \left(\frac{k-\alpha'}{k+\alpha'}\right)^2
+\end{tabular}
+\subsubsection{Potentialtopf (1D)}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+$E_{pot}$	& E_{pot} = \begin{cases} 0 & 0 < x < a \text{ Bereich I}\\ \infty & \text{ sonst (Bereich II)}\end{cases}\\
+allg. Lösung	& \begin{array}[t]{l}
+            	  \psi_I(x) = Ae^{ikx} + Be^{-ikx}\quad k^2 = \frac{2mE}{\hbar^2}\\
+		  \psi_{II}(x) = 0
+            	  \end{array}\\
+Randbedigungen	& \psi_I(x=0) = \psi_I(x=a) = 0\\
+spez. Lösung	& \psi_I(x) = \sqrt{\frac{2}{a}} \sin(kx)\quad k = \frac{n\pi}{a}\quad \Rightarrow \lambda = \frac{2\pi}{k}\\
+Energieeigenwert	& E = \frac{\hbar^2 k^2}{2m} = \frac{n^2\pi^2\hbar^2}{2ma^2}
+\end{tabular}
+\subsubsection{Potentialtopf (3D)}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+SG in 3 Dimensionen			& \psi(x,y,z) = \psi_1(x)\psi_2(y)\psi_3(z)\quad\text{$\psi_{1,2,3}$ sind Wellenfkt. im 1-dim. Kasten}\\
+Particle in a cube			& \begin{array}[t]{l}
+                 			   \psi(x,y,z) = \sqrt{\frac{8}{a^3}} \sin(\tfrac{n_1\pi}{a} x) \sin(\tfrac{n_2\pi}{a} y) \sin(\tfrac{n_3\pi}{a} z)\\
+					   E = \frac{\hbar^2 \pi^2}{2ma^2}(n_1^2+n_2^2+n_3^2)\\
+                 			  \end{array}
+\end{tabular}
+\subsubsection{Der Tunneleffekt}
+\begin{tabular}{p{4cm} p{15cm}}
+Potentialstufe		& $V(x) = \begin{cases}
+              		          0	& x < 0 \quad\text{Bereich A}\\
+				  V	& 0 \leq x \leq D \quad\text{Bereich B}\\
+				  0	& D < x \quad\text{Bereich C}
+              		          \end{cases}$\\
+SG			& \begin{tabular}[t]{l}
+			    $\hat{H} \Psi_A(x) = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \Psi_A(x) = E \Psi_A(x)$\\
+			    $\hat{H} \Psi_B(x) = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \Psi_B(x) + V \Psi_B(x) = E \Psi_B(x)$\\
+			    $\hat{H} \Psi_C(x) = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \Psi_C(x) = E \Psi_C(x)$
+			  \end{tabular}\\
+Lösungen		& \begin{tabular}[t]{ll}
+			    $\Psi_A(x) = Ae^{ikx} + Be^{-ikx}$		& $k = \sqrt{\frac{2mE}{\hbar^2}}$\\
+			    $\Psi_B(x) = A'e^{ik'x} + B'e^{-ik'x}$	& $k' = \sqrt{\frac{2m(E-V)}{\hbar^2}} = i\kappa$\\
+			    $\Psi_C(x) = A''e^{ikx} + B''e^{-ikx}$
+        		  \end{tabular}\\
+Randbedingungen		& \begin{tabular}[t]{l}
+			    $\Psi_A(0) = \Psi_B(0)$\\
+			    $\frac{d}{dx} \Psi_A(0) = \frac{d}{dx} \Psi_B(0)$\\
+			    $\Psi_B(D) = \Psi_C(D)$\\
+			    $\frac{d}{dx} \Psi_B(D) = \frac{d}{dx} \Psi_C(D)$\\
+			    $B'' = 0$ (keine reflektierte Komponente rechts der Barriere erlaubt)
+			  \end{tabular}
+\end{tabular}
+Letztlich hat man nur 5 Randbedingungen für 6 Unbekannte. Man kann also lediglich die Tunnelwahrscheinlichkeit $P_T = \frac{|A''|^2}{|A|^2}$ angeben, indem man $A''$ durch $A$ ausdrückt. $P_T = \frac{4E(V-E)}{4E(V-E) + V^2\sinh^2(\kappa D)}$ Grundsätzlich wird die Tunnelwahrscheinlichkeit klein für breite Barrieren ($D\to\infty$), hohe Barrieren ($V\to\infty$) und grosse Massen $m$
+
+\subsubsection{QM harmonischer Oszillator}
+Der QM harmonische Oszillator wird verwendet, um bspw. molekulare Vibrationsbewegungen zu modellieren.
+\begin{tabular}{p{4cm} p{15cm}}
+SG		& $\hat{H} \Psi = \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} + \frac{1}{2}kx^2 \right) \Psi = E\Psi$\\
+Eigenwerte	& $E_n = (n + \frac{1}{2})\hbar\omega$\\
+Eigenfunktionen	& $\Psi_n = N_nH_n(\sqrt{\alpha}x) e^{-\alpha x^2/2 }\quad \alpha = \frac{\sqrt{mk}}{\hbar}\quad H_n:$  Hermite-Polynome
+\end{tabular}
+\subsubsection{3D QM harm. Osz.}
+\begin{tabular}{p{4cm} p{15cm}}
+Eigenwerte	& $E_n = (n_x + n_y + n_z + \frac{3}{2})\hbar\omega$\\
+Eigenfunktionen	& $\Psi_n = \Psi_{n_x} \cdot \Psi_{n_y} \cdot \Psi_{n_z}$
+\end{tabular}
+\subsection{Weiteres}
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+Postulat \# 2 der QM			& \text{Einzig mögliches Messresult einer physik. Grösse $A(\mathbf{r,p})$ ist ein Eigenwert $a_n$}\\
+					& \text{von Operator $\hat{A}(\hat{\mathbf{r}},\hat{\mathbf{p}}) \Rightarrow \hat{A} \psi_n = a_n \psi_n$}\\
+Postulat \# 3 der QM			& \text{WSK dass $a_n$ Messresultat ist,ist $|c_n|^2$, falls Zustand des Systems: $\Phi = \sum_n c_n\psi_n$}\\
+Erwartungswert				& \langle A \rangle = \int \Psi^{\asterisk} \hat{A} \Psi dxdydz\\
+Beispiel				& \text{(1-dim) Energieerwartungswert: } \langle E_{kin} \rangle = \int \Psi^{\ast} \hat{H} \Psi dx
+\end{tabular}

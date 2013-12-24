@@ -1,0 +1,70 @@
+\section{Eigenwertproblem}
+\begin{tabular}{lp{15cm}}
+ Def.		& Sei $x = (x_1,...,x_n)^T \in \mathbb{C}^n$, dann heisst $\bar{x} = (\bar{x}_1,...,\bar{x}_n)^T \in \mathbb{C}^n$ {\bfseries konjugiert komplexer Vektor}\\
+		& {\bfseries Eigenwert} : $Ax = \uuline{\lambda} x, \quad\lambda \in \mathbb{C}$\\
+		& {\bfseries Eigenvektor} der Matrix $A$ zum Eigenwert $\lambda$: $A\uuline{x} = \lambda\uuline{x},\quad x\in\mathbb{C}^n$\\
+\end{tabular}\\
+\subsection*{Eigenwerte}
+\begin{tabular}{lp{15cm}}
+ Satz 7.1	& $\lambda$ = EW von $A \Rightarrow \det(A-\lambda I_n) = 0$\\
+		& \begin{itemize}
+		   \item $\lambda$ = EW von $A$ mit EV $x\Rightarrow -\lambda$ = EW von $-A$ mit EV $x$
+		   \item $\lambda$ = EW von $A$ $\Rightarrow\lambda^2$ = EW von $A^2$
+		   \item $det(A-\lambda I_n)$ ist ein Polynom n-ten Grades für jede $n\times n$-M und heisst {\bfseries charakteristisches Polynom} der Matrix $A$. Es wird mit $P_A(\lambda)$ bezeichnet.
+		   \item Für $P_A(\lambda) = c_n\lambda^n + c_{n-1}\lambda^{n-1}+...+ c_1\lambda +c_0$ der $n\times n$-M. $A$ gilt:
+$c_n = (-1)^n, c_{n-1} = (-1)^{n-1}(a_{11}+a_{22}+...+a_{nn}) =:(-1)^{n-1}\mathrm{Spur}A, c_0 = \det A$
+		   \item Jede quadratische Matrix hat mind. 1 und max. n EW
+		   \item Die Gesamtheit aller EW heisst {\bfseries Spektrum}
+		   \item Ist $\lambda$ ein $k$-facher EW von $A$, so ist die {\bfseries algebraische Vielfachheit (aV)} von $\lambda = k$
+		   \item Für jeden EW ist 1$\leq$ aV $\leq$ n
+		   \item Jede $n\times n$-M. hat genau $n$ EW, wenn jeder EW mit seiner aV gezählt wird.
+		   \item EW (und deren EV)sind reell oder sie treten in konjugiert komplexen Paaren auf.
+          	  \end{itemize}\\
+ Satz 7.2	& \begin{itemize}
+         	   \item Ähnliche Matrizen haben das gleiche char.Polynom $\Rightarrow$ Sie haben die gleichen EW mit den gleichen aV.
+		   \item Sei $B = T^{-1}AT, x$ EV von $A$ zum EW $\lambda$ \newline Dann: $y= T^{-1}x$ ist EV von $A$ zum selben EW $\lambda$
+         	  \end{itemize}
+\end{tabular}
+\subsection*{Eigenvektoren}
+\begin{tabular}{lp{15cm}}
+		& $x$ EV von $A \Leftrightarrow (A-\lambda I_n)x = 0 \Leftrightarrow Kern(A-\lambda I_n)$\\
+		& Der von den EV aufgespannte Raum heisst {\bfseries Eigenraum}\\
+Def.		& {\bfseries geometrische Vielfachheit} (gV) des EW $\lambda$ := $\dim$(Eigenraum)\\
+Satz 7.3	& Sei $\lambda$ EW von $A$. Dann: $1\leq \mathrm{gV}(\lambda) \leq \mathrm{aV}(\lambda)$\\
+Satz 7.4	& Seien $\lambda_1 ... \lambda_k$ verschiedene EW von $A$ mit den EV $u^{(1)}...u^{(n)}$\newline Dann: $u^{(1)}...u^{(n)}$ lin.unabh. $\rightarrow$ {\bfseries Eigenbasis} zu $A$.\\
+Satz 7.5	& Seien $g_1,...,g_k$ die gV der verschiedenen EW \newline Dann: $g_1+g_2+...+g_k$ Vektoren sind lin.unabh.\\
+Korollar	& Falls Summe aV = n (immer) = Summe gV $\Leftrightarrow$ aV = gV $\forall$ EW $\Rightarrow \exists$ Eigenbasis in quadr.Matrix\\
+Def.		& \begin{tabular}[t]{ll}
+    		   \multicolumn{2}{l}{Eine $n\times n$ Matrix heisst}\\
+		   {\bfseries einfach}		& falls $\forall$ EW: aV = gV = 1\\
+		   {\bfseries halbeinfach}	& falls $\forall$ EW: aV = gV\\
+		   {\bfseries diagonalisierbar}	& falls $\exists$ reguläre Matrix $T$: $T^{-1}AT$ = diag($\lambda_1,\lambda_2,\lambda_3$)
+    		  \end{tabular}\\
+Satz 7.6	& Für jede quadratische Matrix $A$ sind folgende Aussagen äquivalent\newline A ist halbeinfach $\Leftrightarrow$ A hat Eigenbasis $\Leftrightarrow$ A ist diagonalisierbar\\
+Korollar(1)	& Bildeten $u^{(1)},u^{(2)},...,u^{(n)}$ eine Eigenbasis zu $A$\newline
+		  $\Rightarrow T=(u^{(1)}u^{(2)}...u^{(n)})$ diagonalisiert $A$\newline
+		  $\Rightarrow D = T^{-1}AT$ ist diagonal und in der Diagonalen von $D$ stehen die entsprechenden EW von $A$\\
+Korollar(2)	& Sei $T$ regulär und $D$ eine Diagonalmatrix\newline
+		  Falls $T^{-1}AT = D$, dann bilden die Spalten von $T$ eine Eigenbasis zu A und $D$ = diag(EW($A$))
+\end{tabular}
+\subsubsection*{Eigenwertproblem symmetrischer Matrizen ($A^T = A$)}
+\begin{tabular}{lp{15cm}}
+ Satz 7.7	& Sei $A$ reell, symmetrisch. Dann
+		  \begin{itemize}
+		   \item Alle EW von $A$ sind reell
+		   \item EV zu verschiedenen EW sind zueinander orthogonal (Orthonormaleigenbasis)
+		  \end{itemize}\\
+ Satz 7.8	& Sei $A$ reell, symmetrisch. Dann
+		  \begin{itemize}
+		   \item $A$ ist halbeinfach $\Rightarrow$ diagonalisierbar $\Rightarrow \exists$ Eigenbasis
+		   \item $\exists$ orthonormale Eigenbasis zu $A$
+		   \item $\exists ~T: T^T AT =: D = \mathrm{diag}(\text{EW})$, Spalten von $T$ sind entsprechende EV von $A$
+		  \end{itemize}
+\end{tabular}
+\subsection*{Algorithmus zur Berechnung von $y = A^k x$}
+\begin{enumerate}
+ \item Löse das EW-Problem für $A$. D.h. Bestimme Matrizen $D$(EW) und $T$(dazugehörige EV), so dass $T^{-1}AT = D$ gilt.
+ \item Löse das lin. Glgsys. $Tz = x$ nach $z$ auf.
+ \item Berechne $D^k$, dann $w:= D^k z (w_i = d_i^k\cdot z_i = \lambda_i^k z_i)$
+ \item Berechne $y = Tw$
+\end{enumerate}

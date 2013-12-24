@@ -1,0 +1,45 @@
+\section{Vergleich zweier Stichproben}
+\subsection{Randomisierung (Ungepaarte Vergleiche)}
+Bsp: $X_i:$ 60 Probanden getestet mit Medikament, $Y_i:$ 40 Probanden getestet mit Placebo. (Verschiedene Testbedingungen)
+\subsubsection{Zwei-Stichproben t-Test}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Annahme		& X_1,...,X_N \sim^{iid} N(\mu_X,\sigma^2)\\
+		& Y_1,...,Y_N \sim^{iid} N(\mu_Y,\sigma^2)\\
+Nullhypothese	& \begin{array}[t]{l|l}
+    		  H_0: \mu_X = \mu_Y	& H_A: \mu_X > \mu_Y\\
+		  H_0: \mu_X = \mu_Y	& H_A: \mu_X < \mu_Y\\
+		  H_0: \mu_X = \mu_Y	& H_A: \mu_X \neq \mu_Y
+    		  \end{array}\\
+Teststatistik	& t:= \frac{\widebar{X}_n - \widebar{Y}_m}{S_{pool}\sqrt{\frac{1}{n} + \frac{1}{m}}}\\
+		& \text{wobei } S_{pool} = \frac{1}{n+m-2} \left( \sum_{i=1}^n (X_i - \widebar{X}_n)^2 + \sum_{i=1}^m (Y_i - \widebar{Y}_m)^2 \right)\\
+		& \text{Verwerfe $H_0$ auf Niveau $\alpha$, falls}\\
+		& \begin{array}[t]{lcl|l|l}
+		  t_{n-1}	& \geq	& T_{n+m-2}(1-\alpha)				& VB_{\alpha} = [T_{n+m-2}(1-\alpha), \infty[	& \text{für }H_A: \mu_X > \mu_Y\\
+		  t_{n-1}	& \leq	& T_{n+m-2}(\alpha)				& VB_{\alpha} = ]-\infty, T_{n+m-2}(\alpha)]	& \text{für }H_A: \mu_X < \mu_Y\\
+		  |t_{n-1}|	& \geq	& T_{n+m-2}\left(1-\frac{\alpha}{2} \right)	& VB_{\alpha} = ]-\infty, T_{n+m-2}(\tfrac{\alpha}{2})] \cup 	& \text{für }H_A: \mu_X \neq \mu_Y\\
+				&	&						& [T_{n-1}(1-\tfrac{\alpha}{2}), \infty[
+		  \end{array}\\
+\end{tabular}
+\subsection{Blockbildung (Gepaarte Vergleiche)}
+Bsp: $X_i:$ Reifentyp 1, getestet unter Bedingung A, $Y_i:$ Reifentype 2, getestet unter gleichen Bedingungen A\\
+Neue Zufallsvariable: $\boxed{U_i = X_i - Y_i}$\\
+\subsubsection{t-Test}
+Anwenden, falls $U_i$ normalverteilt.
+\subsubsection{Vorzeichentest}
+Ausser i.i.d keine Voraussetzungen.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Teststatistik		& V = \sum_{i=1}^n I_{u_i > 0}\quad \text{Anzahl positive $u_i$ für $i=1,...,n$}\\
+			& V \sim BIN (n,p), p = \P(U_i > 0)\\
+Nullhypothese		& H_0: p = \frac{1}{2}\\
+Test			& \text{Binomialtest}
+\end{tabular}
+\subsubsection{Wilcoxontest}
+\begin{tabular}{p{4cm} p{15cm}}
+Teststatistik		& $W = \sum_{i=1}^n \mathrm{Rang}(|U_i|) \cdot I_{U_i > 0}$\\
+Rang			& Die $U_i$ werden aufsteigend nach Absolutwert geordnet. Das absolut kleinste $U_i$ erhält Rang 1, dann Rang 2 usw.\\
+			& Bsp: $U = \{-4,0,5\}: \quad |U_2| = 0 < |U_1| = 4 < |U_3| = 5 \Rightarrow W = 2 \cdot 0 + 1 \cdot 1 + 3 \cdot 1 = 4$\\
+Nullhypothese		& Median $(U_i) = 0$\\
+Test			& Für gegebenes $n, \alpha, H_A$ schaue in Wilcoxon-Tabelle. Falls $W \in $ Intervall, verwerfe $H_0$
+\end{tabular}
+
+

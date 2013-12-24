@@ -1,0 +1,48 @@
+\section{2D Laplace-Equation: Complex Analysis}
+Idea: We might have a solution for a problem in an easy domain, like a stripe. What if the boundaries of that stripe are not straight, but bent? We can try a conformal mapping. If we apply this mapping to our solution in the easy domain, we will get a solution for the complicated domain.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+$u$ harmonic	& \Delta u = 0\\
+$f$ analytic	&  \begin{array}[t]{l}
+            	    f(x+iy) = u(x,y)+iv(x,y)\quad x,y\in\mathbb{R}\\
+            	    f \text{ analytic } \Leftrightarrow u_x = v_y \wedge u_y = -v_x\\
+		    \text{$v$ is {\itshape conjugate harmonic} of $u$}
+		   \end{array}\\
+Orthogonality	& \left \langle \mathrm{grad}~u, \mathrm{grad}~v \right \rangle = 0\\
+Equipotential lines	& \text{Example: Eq.Lines of $u(x) = x^2-y^2$ are the lines $x^2-y^2 = c$ for constant $c$}\\
+Conformal Mapping	&
+			  \xymatrix@C=100pt@R=10pt{
+			    *++[F-:<3pt>]{D \subset \mathbb{C}} \ar@/^/@{3>}[r]^{\textstyle g(z) = w}   	& *++[F-:<3pt>]{D^{\asterisk} \subset g(D)} \ar@/^/@{3>}[l]^{\textstyle z = g^{-1}(w)}\\
+			    z = x+iy							& w = s+it\\
+			    f(z) \ar@{2{>|}}[d]						& f^{\asterisk} (g(z)) \ar@{3>}[l]_{\textstyle =}\\
+			    u(x,y) = \mathrm{Re}(f(z)) \ar@{{*}-3>}[d]			& u^{\ast}(s,t) = \mathrm{Re} (f^{\ast}(w)) \ar@{{*}-3>}[u]\\
+			    f \left(g^{-1}(w) \right) \ar@{3>}[r]^{\textstyle =}	& f^{\asterisk} (w) \ar@{2{>|}}[u]\\
+			  }\\
+			& g(z) = s(x,y) + it(x,y)\quad \text{analytic (thus invertible) in $D$}\\
+Ellipse			& \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\quad \text{$a$ = Abstand Ursprung Brennpunkt, $b$ = Abstand Ursprung y-Achsenschnittpunkt}\\
+Hyperbola		& \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\quad \text{$a$ = Abstand Ursprung x-Achsenschnittpunkt}\\
+Example			& \begin{array}[t]{ll}
+       			  g(z) 	& = \sin z = w\\
+				& = \underbrace{\sin x \cosh y}_{=s(x,y)} + i \underbrace{\cos x \sinh y}_{=t(x,y)}
+       			  \end{array}\\
+			& \begin{array}[t]{ll}
+			  \multicolumn{2}{l}{\text{A straight line $z = x_0 + iy$ will be transformed as follows:}}\\
+			  g \binom{x =x_0}{y=y}	 & = \binom{s = \sin x_0 \cosh y}{t = \cos x_0 \sinh y}\\
+						 & \Leftrightarrow \frac{s^2}{\sin^2 x_0} - \frac{t^2}{\cos^2 x_0} = \cosh^2 y - \sinh^2 y = 1\quad\text{(Hyperbola)}
+			  \end{array}\\
+Maximum Principle	& \begin{array}[t]{rl}
+			   \multicolumn{2}{l}{\text{Let $u(x,y)$ be a potential in a bounded region with domain $D$ and boundary $\partial D$}}\\
+                 	   1.	& \text{If $u(x,y)$ is not constant, then it cannot have any max or min point inside $D$}\\
+			   2.	& \text{Max \& Min of $u(x,y)$ must be attained in $\partial D$}\\
+			   3.	& \text{If $u(x,y)$ constant on $\partial D$ then it must be constant in $D$}
+                 	  \end{array}
+\end{tabular}\\
+\subsection{Poisson Integral Formula}
+Usable for Laplace equations on disks. In the following,\\
+$R = \text{Radius of domain}\quad r,\varphi = \text{Coordinates of evaluation point}, \theta = \text{Integration variable}\\$
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Dirichlet problem	& \Delta u = 0 \text{ on } B_R\\
+			& \boxed{u(r,\varphi) = \frac{1}{2\pi} \int_0^{2\pi} u(R,\theta) \frac{R^2-r^2}{R^2+r^2-2Rr\cos(\varphi-\theta)} d\theta}\\
+Neumann problem		& \Delta u = 0 \text{ on } B_R, \frac{\partial u}{\partial n} = h \text{ on } \partial B_R\\
+			& u(r,\varphi) = A_0 + \frac{R}{\pi} \int_0^{2\pi} -\frac{1}{2} \ln \left(1-2\frac{r}{R} \cos(\varphi - \theta) + \left(\frac{r}{R} \right)^2 \right) h(\theta) d\theta
+\end{tabular}
+

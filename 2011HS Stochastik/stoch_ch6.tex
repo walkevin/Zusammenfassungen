@@ -1,0 +1,52 @@
+\section{Statistik bei normalverteilten Daten}
+\subsection{Schätzer}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Mittelwert	& \hat{\mu} := \widebar{X}_n := \frac{1}{n} \sum_{i=1}^n X_i\\
+Varianz		& \hat{\sigma}^2 := S_n^2 := \frac{1}{n-1} \sum_{i=1}^n (X_i - \hat{u})^2
+\end{tabular}
+\subsection{z-Test ($\sigma$ bekannt)}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Nullhypothese	& \begin{array}[t]{l|l}
+    		  H_0: \mu = \mu_0	& H_A: \mu > \mu_0\\
+		  H_0: \mu = \mu_0	& H_A: \mu < \mu_0\\
+		  H_0: \mu = \mu_0	& H_A: \mu \neq \mu_0
+    		  \end{array}\\
+Teststatistik	& z:= \sqrt{n} \cdot \frac{\widebar{X}_n - \mu_0}{\sigma} \in \mathbb{R}\\
+		& \text{Verwerfe $H_0$ auf Niveau $\alpha$, falls}\\
+		& \begin{array}[t]{lcll|l}
+		  z	& \geq	& \Phi^{-1}(1-\alpha)				& VB_{\alpha} = [\Phi^{-1}(1-\alpha), \infty[	& \text{für }H_A: \mu > \mu_0\\
+		  z	& \leq	& \Phi^{-1}(\alpha)				& VB_{\alpha} = ]-\infty, \Phi^{-1}(\alpha)]	& \text{für }H_A: \mu < \mu_0\\
+		  |z|	& \geq	& \Phi^{-1}\left(1-\frac{\alpha}{2} \right)	& VB_{\alpha} = ]-\infty, \Phi^{-1}(\tfrac{\alpha}{2})] \cup [\Phi^{-1}(1-\tfrac{\alpha}{2}), \infty[	& \text{für }H_A: \mu \neq \mu_0	
+		  \end{array}\\
+P-Wert		& \text{Bei gegebenem $z$, berechne $\alpha$ neu.}\\
+		& \text{P-Wert}\begin{cases}
+		               	< \alpha	& \Rightarrow \text{Verwerfe $H_0$}\\
+				> \alpha	& \Rightarrow \text{Verwerfe $H_0$ nicht.}
+		               \end{cases}\\
+Vertrauensintervall	& \text{Falls $\mu_0 \in$ VI, verwerfe $H_0$ nicht.}\\
+			& \widebar{X}_n \pm \Phi^{-1} \left(1- \frac{\alpha}{2} \right) \frac{\sigma_0}{\sqrt{n}}
+\end{tabular}
+\subsection{t-Test ($\sigma$ unbekannt)}
+Idee: Ersetze $\sigma$ durch dessen Schätzer $\hat{\sigma}$ und verwende eine angepasste Tabelle.\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Nullhypothese	& \begin{array}[t]{l|l}
+    		  H_0: \mu = \mu_0	& H_A: \mu > \mu_0\\
+		  H_0: \mu = \mu_0	& H_A: \mu < \mu_0\\
+		  H_0: \mu = \mu_0	& H_A: \mu \neq \mu_0
+    		  \end{array}\\
+Teststatistik	& t_{n-1}:= \sqrt{n} \cdot \frac{\widebar{X}_n - \mu_0}{\boldsymbol{\hat{\sigma}}} \in \mathbb{R}\\
+		& \text{Verwerfe $H_0$ auf Niveau $\alpha$, falls}\\
+		& \begin{array}[t]{lcll|l}
+		  t_{n-1}	& \geq	& \mathbf{T_{n-1}}(1-\alpha)				& VB_{\alpha} = [T_{n-1}(1-\alpha), \infty[	& \text{für }H_A: \mu > \mu_0\\
+		  t_{n-1}	& \leq	& \mathbf{T_{n-1}}(\alpha)				& VB_{\alpha} = ]-\infty, T_{n-1}(\alpha)]	& \text{für }H_A: \mu < \mu_0\\
+		  |t_{n-1}|	& \geq	& \mathbf{T_{n-1}}\left(1-\frac{\alpha}{2} \right)	& VB_{\alpha} = ]-\infty, T_{n-1}(\tfrac{\alpha}{2})] \cup [T_{n-1}(1-\tfrac{\alpha}{2}), \infty[	& \text{für }H_A: \mu \neq \mu_0	
+		  \end{array}\\
+		& T_{n-1} \text{ steht für die Student-$T_{n-1}$ Tabelle.~~Bsp: }T_9(0.975) = 2.262\\
+P-Wert		& \text{Bei gegebenem $t_{n-1}$, berechne $\alpha$ neu.}\\
+		& \text{P-Wert}\begin{cases}
+		               	< \alpha	& \Rightarrow \text{Verwerfe $H_0$}\\
+				> \alpha	& \Rightarrow \text{Verwerfe $H_0$ nicht.}
+		               \end{cases}\\
+Vertrauensintervall	& \text{Falls $\mu_0 \in$ VI, verwerfe $H_0$ nicht.}\\
+			& \widebar{X}_n \pm T_{n-1} \left(1- \frac{\alpha}{2} \right) \frac{\boldsymbol{\hat{\sigma}}}{\sqrt{n}}
+\end{tabular}

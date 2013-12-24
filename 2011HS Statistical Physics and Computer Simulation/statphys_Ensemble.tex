@@ -1,0 +1,39 @@
+\section{Statistical Mechanics}
+\subsection{Canonical Ensemble}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Constants	& N,V,T\\
+Fluctuations	& E\\
+Distribution	    & \text{A distribution of $m_i$ systems in quantum states $\psi_i$ with Energy $E_i$ is denoted as:}\\
+		    & (m_1,m_2,...) \equiv \lbrace m \rbrace\\
+		    & \sum_i m_i = M\quad \sum_i m_iE_i = E_{tot}\\
+\# Distributions (Permutations)	& \Omega(\{m\}) = \frac{M!}{\prod_i m_i!}\\
+Probability of quantum state $\psi_i$	& P_i = \frac{m_i}{M}\\
+Most probable distribution $m^*$	& \begin{array}[t]{l}
+                                	   \lim_{M\to\infty} \ln \left(\Omega(\{m^*\}) \right) = \ln \left( \sum_{\{m\}} \Omega(\{m\}) \right)\\
+                                	   -\sum_i P_i \ln (P_i) = MAX;\\
+					    \sum_i P_i = 1;\\
+					    \sum_i P_iE_i = \frac{E_{tot}}{M} = \langle E \rangle\\
+					   \boxed{P_i = \frac{1}{Z(N,V,T)} e^{-\beta E_j}}
+                                	  \end{array}\\
+Canonical Partition Function	& \boxed{Z(N,V,T) = \sum_j e^{-\beta E_j}}\\
+$\beta$ in an ideal gas		& \beta = \frac{1}{k_BT}\quad\text{$k_B$ is Boltzmann's Constant}\\
+Energy				& \langle E \rangle = - \left( \frac{\partial \ln Z(N,V,T)}{\partial \beta} \right)_{N,V}\\
+Pressure			& \langle p \rangle = \frac{1}{\beta} \left( \frac{\partial \ln Z(N,V,T)}{\partial V} \right)_{N,\beta}\\
+Uncertainty Principle		& \begin{array}[t]{l}
+                     		   \text{Shannon's information theory says, that $-\sum_i P_i \log P_i$ is the value for uncertainty}\\
+                     		   \text{If observer knows nothing about a system but the average energy, then his uncertainty is maximal}
+                     		  \end{array}\\
+Ideal Gas Partition Function	& Z_{id} = V\left( \frac{m}{2\beta\pi\hbar^2} \right)^{\tfrac{3}{2}}\\
+\end{tabular}
+\subsection{Thermodynamical quantities and relations}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ Entropy	& \begin{array}[t]{l}
+        	   S = -k_B \sum_i P_i \ln P_i\\
+        	   S = \frac{E}{T} + k_B \ln Z(N,V,T)\\
+		   S = -\left(\frac{\partial F}{\partial T} \right)_V
+        	  \end{array}\\
+Helmholtz Free Energy & F = E-TS = -k_BT\ln Z(N,V,T)\\
+Energy		& E = \langle E \rangle = -T \left(\frac{\partial F}{\partial T} \right)_V + F\\
+Gibbs Free Energy	& G = F + pV
+\end{tabular}
+

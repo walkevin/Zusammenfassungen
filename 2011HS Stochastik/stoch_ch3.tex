@@ -1,0 +1,34 @@
+\section{Mehrere Zufallsvariablen und Fkt. davon}
+\begin{tabular}{p{4cm} p{16cm}}
+Mehrere Zufallsvariablen	& $X_i$ ist die $i$-te Wdh. eines Zufallsexperiments $X$, $A_i$ ist das $i$-te Ereignis.\\
+i.i.d Annahme		& \begin{itemize}
+             		  \item $A_1,...,A_n$ sind unabhängig.
+			  \item $\P(A_1) = ... = \P(A_n) = \P(A)$
+			  \item $X_1,...,X_n$ sind unabhängig.
+			  \item alle $X_i$ haben dieselbe Verteilung.
+             		  \end{itemize}
+\end{tabular}\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Fkt. von Zufallsvariablen	& \begin{array}[t]{l|l}
+				  \text{Summe $S_n$}		& \text{arithm. Mittel $\widebar{X_n}$}\\\hline
+				  S_n = X_1 + ... + X_n		& \widebar{X_n} = \frac{S_n}{n}\\
+				  \E(S_n) = n \E(X_i)		& \E(\widebar{X_n}) = \E(X_i)\\
+				  \V(S_n) = n \V(X_i)		& \V (\widebar{X_n}) = \frac{1}{n} \V(X_i)\\
+				  \sigma_{S_n} = \sqrt{n} \sigma_{X_i}	& \sigma_{\widebar{X_n}} = \frac{1}{\sqrt{n}} \sigma_{X_i}
+				  \end{array}\\
+Verteilungen von $S_n$		&\begin{array}[t]{l|l}
+				  \text{Wenn $X_i$ ... verteilt ist,}		&\text{dann ist $S_n$ ... verteilt}\\\hline
+				  X_i \in \{0,1\} (\text{d.h. }\sim Ber(p))	& S_n \sim Bin(n,p)\\
+				  X_i \sim Poi(\lambda)				& S_n \sim Poi(n\lambda)\\
+				  X_i \sim N(\mu,\sigma^2)			& S_n \sim N(n\mu, n\sigma^2)
+                      		 \end{array}\\
+Gesetz der grossen Zahlen	& \begin{array}[t]{l}
+                         	  \text{Von oben gilt:} \E (\widebar{X_n}) = \E(X_i), \lim_{n\to\infty} \V(\widebar{X_n}) = 0\\
+				  \Longrightarrow \lim_{n\to\infty} \widebar{X_n} = \mu \quad (X_i \text{ i.i.d})
+                         	  \end{array}\\
+Zentraler Grenzwertsatz		& \begin{array}[t]{l}
+                       		  X_1,...,X_n \text{ i.i.d}, \E(X) = \mu, \V(X) = \sigma^2\\
+				  \Longrightarrow S_n \approx N(n\mu, n\sigma^2)\quad \widebar{X_n} \approx N \left(\mu, \frac{\sigma^2}{n} \right)\quad\text{$n$ gross}
+                       		  \end{array}\\
+Chebychev-Ungleichung		& \P(|\widebar{X_n} - \mu| > c) \leq \frac{\sigma^2}{nc^2}
+\end{tabular}

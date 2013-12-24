@@ -1,0 +1,81 @@
+\section{Other types of boundary conditions}
+\subsection{Nonzero BC}
+Solution: ``Homogen-partikulär``-Ansatz\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Particular Solution	& \begin{array}[t]{||lll}
+			   \multicolumn{3}{l}{\text{1. Find solution $u_P(x)$ of:}}\\
+                    	   \frac{ d^2 u_P}{ dx^2} = 0	& ~\Rightarrow	& u_P(x) = ax+b\\
+			   u_P(0) = U_0			& ~\Rightarrow	& b = U_0\\
+			   u_P(L) = U_L			& ~\Rightarrow	& a = \frac{U_L - U_0}{L}
+                    	  \end{array}\\
+Homogeneous Solution	& \begin{array}[t]{||l}
+			   \multicolumn{1}{l}{\text{2. Find solution $u_H(x,t)$ of:}}\\
+                    	   \frac{ \partial u_H}{ \partial t} = c^2 \frac{ \partial^2 u_H}{ \partial x^2}\\
+			   u_H(0,t) = u_H(L,t) = 0\\
+			   u_H(x,0) = f(x) - u_P(x)
+                    	  \end{array}\\
+Final solution		& u(x,t) = u_H(x,t) + u_P(x)\\
+			& \begin{array}[t]{lll}
+			  \multicolumn{1}{l}{\text{$u(x,t)$ satisfies:}}\\
+			  \frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2}	& \Leftrightarrow	& 0 + \frac{\partial u_H}{\partial t} = 0 +  c^2 \frac{\partial^2 u_H}{\partial x^2}\\
+			  u(0,t) = U_0, u(L,t) = U_L			& \Leftrightarrow	& 0 + U_0, 0 + U_L\\
+			  u(x,0) = f(x)					& \Leftrightarrow	& f(x) - u_P(x) + u_P(x)
+			  \end{array}
+\end{tabular}
+\subsection{Adiabatic Conditions (Insulated ends)}
+$\frac{ \partial u}{\partial x} (0,t) = \frac{ \partial u}{ \partial x}(L,t) = 0$\\
+$\Rightarrow$ Do separation of variables! This yields:\\
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ODE-System	& \begin{array}[t]{l||l}
+          	   I	& X''(x)-kX(x) = 0\\
+		   II	& T'(t) - kc^2T(t) = 0
+          	  \end{array}\\
+Imposing BC	& \frac{ \partial u}{\partial x} (0,t) = \frac{ \partial u}{ \partial x}(L,t) = 0\\
+		& X'(0)T(t) = X'(L)T(t) = 0\quad\forall t\\
+		&\Rightarrow
+		  \begin{array}[t]{||l}
+		  X''-kX = 0\\
+		  X'(0) = 0\\
+		  X'(L) = 0
+		  \end{array}
+		  \quad k = -p^2 < 0\\
+		& \Rightarrow \boxed{ X_n(x) = \cos\left(\frac{n\pi}{L} x \right) } \quad n\in\mathbb{Z}^{\geq 0}\quad k = -\left( \frac{n\pi}{L} \right)^2\\
+		& \Rightarrow \boxed{ T_n(t) = A_n e^{-\lambda_n^2 t} }\quad \lambda = \frac{n\pi c}{L}\\
+Superposition	& u(x,t) = \sum_{n=0}^{\infty} \cos\left( \frac{n\pi x}{L} \right) \cdot A_n e^{-\lambda_n^2 t}\quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Imposing IC	& u(x,0) = \sum_{n=0}^{\infty} A_n\cos\left( \frac{n\pi x}{L} \right) = f(x)\\
+Fourier-Coefficients	& A_n = \frac{2}{L} \int_0^L f(x) \cos \frac{n\pi x}{L} dx\\
+$t\to\infty$	& \lim_{t\to\infty} u(x,t) = A_0 = \frac{1}{L} \int_0^L f(x) dx
+\end{tabular}
+\subsection{No BC (infinite bar)}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Form			& \frac{ \partial u}{\partial t} = c^2 \frac{ \partial^2 u}{\partial x^2}\\
+Boundary Conditions	& None\\
+Initial Conditions	& u(x,0) = f(x)\\
+\end{tabular}
+\subsection{Solution}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+ODE-System	& \begin{array}[t]{l||l}
+          	   I	& X''(x)-kX(x) = 0\\
+		   II	& T'(t) - kc^2T(t) = 0
+          	  \end{array}\\
+Discussing $k$	& k > 0: T(t) = De^{kc^2T} \Rightarrow \text{ Exponentially increasing temperature. No physical interest}\\
+		& k = -p^2 \leq 0\\
+		& \begin{array}[t]{||ll}
+		   T(t) = De^{-p^2c^2T}\\
+		   X(x) = A \cos(px) + B \sin(px) & \text{$X(x) = Ax+B$ is physically uninteresting ($k = 0$)}\\
+		  \end{array}\\
+General solution	& u_p(x,t) = \left( A_p\cos(px) + B_p \sin(px) \right) \cdot e^{-p^2c^2T} \quad\forall p \geq 0\\
+Integration	& u(x,t) = \int u_p(x,t) dp\\
+		& u(x,t) = \int_0^{\infty} \left( A_p\cos(px) + B_p \sin(px) \right) \cdot e^{-p^2c^2T} dp\\
+Imposing IC	& u(x,0) = \int_0^{\infty} \left( A_p\cos(px) + B_p \sin(px) \right) dp = f(x)\\
+Fourier-Coefficients	& \begin{array}[t]{l}
+                    	   A_p = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \cos(pv) dv\\
+                    	   B_p = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \sin(pv) dv\\
+                    	  \end{array}\\
+Imposing FC		& \begin{array}[t]{l}
+           		   u(x,t) = \frac{1}{\pi} \int_{-\infty}^{\infty} f(v) \int_0^{\infty} \cos(px-pv) e^{-p^2c^2T} dp dv\\
+			   \int_0^{\infty} \cos(px-pv) e^{-p^2c^2T} dp = \frac{1}{c\sqrt{t}}\frac{\sqrt{\pi}}{2} e^{-\frac{(x-v)^2}{4c^2T}}\\
+			   \boxed{ u(x,t) = \frac{1}{2c\sqrt{t\pi}} \int_{-\infty}^{\infty} f(v) \exp\left(-\frac{(x-v)^2}{4c^2T}\right) dv }
+           		  \end{array}
+\end{tabular}
+

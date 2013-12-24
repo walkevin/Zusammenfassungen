@@ -1,0 +1,45 @@
+\section{Solve PDE by Fouriertransformation}
+Trick: By Fouriertransformation, turn the PDE into a easily solvable ODE in Fourier-Space.\\
+Here, the Fouriertransform of $u(x,t)$ is $\hat{u}(k,t)$,i.e. FT in $x$\\
+$
+\begin{array}{lll}
+\text{PDE}		&			&\text{\textbf{O}DE in Fourier-Space}\\
+u_{tt} + u_{xxxx} = 0	& \xrightarrow{FT}	& \hat{u}_{tt}+ k^4\hat{u} = 0\\
+u(x,0) = e^{-x^2}	& \xrightarrow{FT}	& \hat{u}(k,0) = \sqrt{\pi}e^{\frac{-k^2}{4}}\\
+u_t(x,0) = 0		& \xrightarrow{FT}	& \hat{u}_t(k,0) = 0
+\end{array}\\
+$
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Solve ODE		& \hat{u}_{tt}+ k^4\hat{u} = 0\\
+Ansatz			& \hat{u}(k,t) = e^{\lambda t}\\
+General solution	& \hat{u}(k,t) = Ae^{ik^2t} + Be^{-ik^2t}\\
+Impose conditions	& ... \Rightarrow A = B = \frac{\sqrt{\pi}}{2}e^{-\frac{k^2}{4}}\\
+Solution		& \hat{u}(k,t) = \frac{\sqrt{\pi}}{2}e^{-\frac{k^2}{4}} \left(e^{ik^2t}+e^{-ik^2t} \right)\\
+\end{tabular}\\
+{\bfseries Getting Inverse Fourier Transform}\\
+$\hat{u}_1 := \frac{\sqrt{\pi}}{2}e^{-\frac{k^2}{4}}\cdot (e^{ik^2t} = \frac{\sqrt{\pi}}{2}\exp\left( -k^2(\tfrac{1}{4}-it) \right)\\$
+We seek to rearrange $\hat{u}_1$ such, that we can apply a known inverse Fouriertransform on it.\\
+$
+\frac{\sqrt{\pi}}{2}\exp\left(-k^2(\tfrac{1}{4}-it)\right) = 
+\frac{\sqrt{\pi}}{2} \exp\left(- \left(k\sqrt{\tfrac{1}{4}-it} \right)^\mathbf{2} \right) = 
+\frac{\sqrt{\pi}}{2} \exp\left(-\frac{ \left( \mathbf{4}\cdot k\sqrt{\tfrac{1}{4}-it} \right)^2}{\mathbf{16}} \right) =\\
+%
+= \frac{1}{\mathbf{4\sqrt{\tfrac{1}{4} -it}}} \cdot \underbrace{\mathbf{4\sqrt{\tfrac{1}{4} -it}}}_{\textstyle{b}} \cdot \underbrace{\frac{\sqrt{\pi}}{2} \exp\left(-\frac{ \left(4 \sqrt{\tfrac{1}{4}-it} \cdot k \right)^2}{16} \right)}_{\textstyle{\hat{f}(b\cdot k)}}\\
+$
+Now we can apply our knowledge about Fourierbacktransformations.\\
+$
+\begin{array}[t]{llll}
+\hat{f}(k) = \sqrt{\frac{2\pi}{a}}\exp \left(-\frac{k^2}{2a} \right)	& \xrightarrow{InvFT}	& f(x) = \exp \left(\frac{-ax^2}{2} \right)\\
+\hat{g}(k) = b\cdot \hat{f}(b\cdot k)					& \xrightarrow{InvFT}	& g(x) = f \left(\frac{x}{b} \right)	& \text{Skalierungssatz}\\
+c \cdot \hat{h}(k)							& \xrightarrow{InvFT}	& c \cdot h(x)				& \text{Konstante}
+\end{array}\\
+$
+In our case, we have\\
+$
+\begin{array}{lll}
+a = 8					& \Rightarrow	& f(x) = \exp \left(-4x^2 \right)\\
+b = 4\sqrt{\tfrac{1}{4} -it}		& \Rightarrow	& g(x) = \exp \left( -4 \left( \frac{x}{4\sqrt{\tfrac{1}{4}-it}} \right)^2 \right) = \exp \left(- \frac{x^2}{1-4it} \right)\\
+c = \frac{1}{4\sqrt{\tfrac{1}{4} -it}}	& \Rightarrow	& h(x) = u_1(x,t) = \frac{1}{2\sqrt{1 -4it}} \cdot g(x)
+\end{array}
+$
+

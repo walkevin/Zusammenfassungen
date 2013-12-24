@@ -1,0 +1,22 @@
+\section{Fouriertransformationen (FT)}
+ \subsection{Definition}
+Sei f(t) ``integrabel'', d.h.  $\int_{-\infty}^{\infty} |f(t)| dt < \infty$\\
+Dann ist die Fouriertransformierte (FT) von $f(t)$
+\begin{align*}
+ \text{FT} := &\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t)e^{-i\omega t} dt\quad \omega\in\mathbb{R}\\
+	  &f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t} d\omega
+\end{align*}
+
+\subsection{Eigenschaften von FT}
+$
+\begin{array}{lll}
+ \text{Linearität:} 	&h(t) = af(t) + bg(t)			&\Rightarrow \hat{h}(t) = a\hat{f}(t) + b\hat{g}(t)\\
+ \text{Verschiebung:}	&g(t) = f(t-a)				&\Rightarrow \hat{g}(\omega) = e^{-ia\omega} \hat{f}(\omega)\\
+ 			&g(t) = e^{iat}f(t)			&\Rightarrow \hat{g}(\omega) = \hat{f}(\omega-a)\\
+ \text{Skalierung:}	&g(t) = f\left(\frac{t}{a}\right) (a>0)	&\Rightarrow \hat{g}(\omega) = a\hat{f}(a\omega)\\
+ \text{Ableitung:} 	&g(t) = f'(t)				&\Rightarrow \hat{g}(\omega) = i\omega\hat{f}(\omega)\\
+ \text{Faltungsprodukt:}& \multicolumn{2}{l}{\text{Definition im ``Fourierraum'':} \Bigl( f\ast g\Bigr)(t) := \int_{-\infty}^{\infty} f(t-s)g(s) ds}\\
+			&\Bigl(f\ast g\Bigr)(t)			&\Rightarrow \widehat{f\ast g} (\omega) = \hat{f}(\omega)\cdot \hat{g}(\omega)\\
+ \text{Standard-FT:}	&f(t) = e^{-\frac{at^2}{2}}\quad a>0	&\Rightarrow \hat{f}(\omega) = \sqrt{\frac{2\pi}{a}} e^{\frac{-\omega^2}{2a}}
+\end{array}
+$

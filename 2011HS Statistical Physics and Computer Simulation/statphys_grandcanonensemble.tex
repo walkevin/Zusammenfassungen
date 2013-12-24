@@ -1,0 +1,31 @@
+\subsection{Grand-Canonical Ensemble}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Constants	& \mu,V,T\quad\mu = \text{Chemisches Potential}\\
+Fluctuations	& E,N\\
+System characterisation	    & \text{
+				 \begin{tabular}[t]{ll}
+				  Various particle Numbers	& $N$\\
+				  each with states	& $\Psi_{Ni}$\\
+				  and energies		& $E_{Ni}$\\
+				 \end{tabular}
+			      }\\
+Probability		& P_{Ni} = \text{probability that system is in state $\Psi_{Ni}$}\\
+Most probable distribution	& \begin{array}[t]{l}
+                                	 -\sum_N\sum_i P_{Ni} \ln (P_{Ni}) = MAX;\\
+					  \sum_N\sum_i P_{N} = 1\\
+					  \sum_N\sum_i P_{Ni}E_{Ni} = \langle E \rangle\\
+					  \sum_N\sum_i P_{Ni}N = \langle N \rangle\\
+					   \boxed{P_{Ni} = \frac{1}{Z(\mu,V,T)} e^{-\beta E_{Ni} -\gamma N}}
+                                	  \end{array}\\
+Grand Canonical Partition Function	& Z(\mu,V,T) = \sum_N\sum_i e^{-\beta E_{Ni} -\gamma N} = \sum_N Z(N,V,T)e^{-\gamma N}\\
+$\beta, \gamma$			& \beta = \frac{1}{k_BT}\quad \gamma = \frac{-\mu}{k_BT}\\
+				& \boxed{ Z(\mu,V,T) = \sum_N \sum_i e^{-[E_{Ni} -\mu N]/k_BT} = \sum_N e^{\beta\mu N} Z(N,V,T)}\\
+Particle Number			& \langle N \rangle = k_BT \left( \frac{\partial \ln Z(\mu,V,T)}{\partial \mu} \right)_{\beta,V}\\
+\end{tabular}
+\subsection{Thermodynamical quantities and relations}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Entropy	& \begin{array}[t]{l}
+        	   S = -k_B \sum_N \sum_i P_{Ni} \ln P_{Ni}\\
+        	   S = \frac{E-\mu N}{T} + k_B \ln Z(\mu,V,T) = \frac{E-\mu N + pV}{T}\\
+        	  \end{array}
+\end{tabular}

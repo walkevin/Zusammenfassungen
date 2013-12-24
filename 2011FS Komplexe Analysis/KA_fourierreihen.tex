@@ -1,0 +1,42 @@
+\section{Fourierreihen (FR)}
+\subsection{Definition}
+ Lipstetige T-periodische Funktionen $( f(t) = f(t+T) )$ lassen sich als trigonometrische Reihe darstellen
+\begin{equation*}
+ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left(a_n \cos\left(\frac{2\pi}{T} nt \right) + b_n \sin\left(\frac{2\pi}{T} nt \right) \right)
+\end{equation*}
+mit reellen Koeffizienten $a_n, b_n$ oder wie folgt:
+\begin{equation*}
+ f(t) = \sum_{n=-\infty}^{\infty} c_n e^{\frac{2\pi i}{T} nt},\quad c_n\in\mathbb{C}
+\end{equation*}
+mit komplexen Koeffizienten $c_n$\\
+
+\subsection{Definition an Sprungstellen}
+Sei $S_N(t)$ die Partialsumme der FR von $f(t)$. Dann gilt $\forall t$ keine Sprungstellen: $\lim_{N\to\infty} S_N(t) = f(t)$\\
+Für $t_0$ eine Sprungstelle gilt: $\lim_{N\to\infty} S_N(t_0) = \frac{1}{2} \left( \lim_{t\to t_0-} f(t) + \lim_{t\to t_0+}f(t) \right)$
+
+\subsection{Bestimmung der Koeffizienten}
+$c_n = \frac{1}{2} (a_n -ib_n)\\
+c_{-n} = \frac{1}{2} (a_n +ib_n) = \overline{c_n}\\
+c_0 = \frac{1}{2} a_0\\\\
+c_n = \frac{1}{T} \int_{-T/2}^{T/2} f(t)\cdot e^{\frac{-2\pi i}{T}nt} dt\\
+a_n = \left(c_n + c_{-n}\right) = \frac{2}{T} \int_{-T/2}^{T/2} f(t) \cos\left(\frac{2\pi}{T}nt \right) dt\\
+b_n = \left(\frac{c_n - c_{-n}}{i}\right) =  \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin\left(\frac{2\pi}{T}nt \right) dt$\\\\
+Falls $f$ gerade $\Leftrightarrow f(t) = f(-t)$, dann $b_n = 0 \forall n$\\
+Falls $f$ ungerade $\Leftrightarrow f(-t) = -f(t)$, dann $a_n = 0 \forall n$\\
+
+\subsection{Parseval-Identität}
+$\frac{1}{T} \int_{-T/2}^{T/2} |f(t)|^2 dt = \sum_{n=-\infty}^{\infty} |c_n|^2$
+
+\subsection*{Beispiel}
+FR einer nicht-stetigen Funktion.\\
+$f(t) = \begin{cases}1&0\leq t\leq T/2 \\ -1&-T/2\leq t\leq 0\end{cases}$ ;$f(t)$ ungerade\\
+$f(t)$ ungerade $\Rightarrow$ $a_n = 0 \forall n$\\
+FR von $f(t): \sum_{n=1}^{\infty}b_n \sin\left(\frac{2\pi}{T} nt\right)\\
+b_n = \frac{2}{T} \int_{-T/2}^{T/2} f(t) \sin\left(\frac{2\pi}{T}nt \right) dt$\\
+$f(t)$ und $\sin$ sind ungerade. Produkt zweier ungeraden Funktionen ist gerade, also gilt:\\
+$b_n = \frac{2}{T} 2\cdot \int_0^{T/2} 1\cdot \sin \left(\frac{2\pi}{T} nt \right) dt\\
+= \frac{4}{T} \left[ -\frac{T}{2\pi n} \cdot \cos\left(\frac{2\pi}{T} nt \right) \right]_0^{T/2}\\
+= \frac{-2}{\pi n} \left( \cos(\pi n) -1 \right)\\
+= \frac{-2}{\pi n} \left( (-1)^n -1 \right) = \begin{cases}0, & \text{falls $n$ gerade} \\ \frac{4\pi}{n}, & \text{falls $n$ ungerade}\end{cases}\\
+S_N(t) = \frac{4}{\pi} \left( \sin\left(\frac{2\pi}{T}t \right) + \frac{1}{3} \sin\left( \frac{2\pi}{T}3t\right) +
+\frac{1}{5} \sin\left(\frac{2\pi}{T}5t\right) + \dotsc + \frac{1}{N}\sin\left(\frac{2\pi}{T}Nt\right) \right)$

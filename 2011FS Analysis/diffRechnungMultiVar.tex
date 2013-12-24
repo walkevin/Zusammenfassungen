@@ -1,0 +1,181 @@
+\section{Differentialrechnung in mehreren Variablen}
+
+\subsection{Differenzierbarkeit}
+\begin{itemize}
+  \item stetig $\Leftarrow$ total diffbar $\Rightarrow$ in jede Richtung diffbar $\Rightarrow$ partiell diffbar\\
+Die umgekehrten Implikationen gelten nicht.\\
+
+  \item $f$ partiell diffbar $\Leftrightarrow \forall i: f\left(\left(\begin{smallmatrix}x_1\\.\\x_i\\.\\x_n\end{smallmatrix}\right)
+    + h\cdot\left(\begin{smallmatrix}0\\.\\1\\.\\0\end{smallmatrix}\right) \right) = f(x) + \frac{\partial f}{\partial x_i}\cdot h + o(|h|)$\\
+  \item $f$ in Rtg. e diffbar $\Leftrightarrow f\left(\left(\begin{smallmatrix}x_1\\\vdots\\x_n\end{smallmatrix}\right)
+    + t\cdot\left(\begin{smallmatrix}e_1\\\vdots\\e_n\end{smallmatrix}\right) \right) = f(x) + D_ef(x)\cdot t + o(t)$\\
+  \item $f$ total diffbar $\Leftrightarrow f\left(\left(\begin{smallmatrix}x_1\\\vdots\\x_n\end{smallmatrix}\right)
+    + \left(\begin{smallmatrix}h_1\\\vdots\\h_n\end{smallmatrix}\right) \right) = f(x) + \left\langle\nabla f , h\right\rangle+o(|h|)$\\               
+  \item Falls f total diffbar, dann Rtg.ableitung $D_ef = \langle \nabla f, e\rangle$
+\end{itemize}
+
+\subsubsection*{Diffbarkeitstest}
+\begin{itemize}
+  \item f heisst partiell diffbar, falls $\forall 1 \leq i \leq n$ die partielle Ableitung (der Grenzwert)\\
+$\frac{\partial f}{\partial x_i} = \lim_{h \to 0}
+  \frac{f\left(\begin{smallmatrix}x_1\\\vdots\\x_i+h\\x_n\end{smallmatrix}\right) -f\left(\begin{smallmatrix}x_1\\\vdots\\x_i\\x_n\end{smallmatrix}\right)}{h}$
+existiert.
+  \item f ist in jede Richtung diffbar, falls $f\left(\left(\begin{smallmatrix}x_1\\\vdots\\x_n\end{smallmatrix}\right)
+    + t\cdot\left(\begin{smallmatrix}e_1\\\vdots\\e_n\end{smallmatrix}\right) \right) - f(x) \xrightarrow{t \to 0} \text{obiger Grenzwert}$
+\end{itemize}
+
+\subsubsection*{Tangentialebene}
+\begin{align*}
+  &\text{Beispiel: Tangentialebene für }f\begin{pmatrix}x\\y\end{pmatrix} = \frac{1}{xy} \text{ im Punkt } P = \begin{pmatrix}1\\2\end{pmatrix}\\
+  &\nabla f = \left(-\frac{1}{x^2y}, -\frac{1}{xy^2}\right)\\
+  &f\left(\begin{pmatrix}x\\y\end{pmatrix}\right) = f\left(\begin{pmatrix}1\\2\end{pmatrix}+\begin{pmatrix}x-1\\y-2\end{pmatrix}\right) =
+    f\left(\begin{pmatrix}x\\y\end{pmatrix}\right) + \left\langle\nabla f\begin{pmatrix}1\\2\end{pmatrix},\begin{pmatrix}x-1\\y-2\end{pmatrix}\right\rangle
+    +o \left(\begin{vmatrix}x-1\\y-2\end{vmatrix}\right)\\
+  & = \frac{1}{2} + \left\langle\left(-\frac{1}{2},-\frac{1}{4}\right),\begin{pmatrix}x-1\\y-2\end{pmatrix}\right\rangle +o(\dotsc)\\
+  & = \frac{3}{2} - \frac{x}{2} - \frac{y}{4} + o (\dotsc)\\
+  &\text{Tangentialebene:}\enspace z = \frac{3}{2} - \frac{x}{2} - \frac{y}{4}
+\end{align*}
+
+\subsection{Mehrdimensionale Kettenregel}
+\begin{align*}
+  \text{Formel:}\quad&\frac{d}{dt} f\bigl( g(t)\bigr) = \langle\nabla f \bigl(g(t)\bigr), g'(t)\rangle = \\
+  = &\frac{\partial f}{\partial x_1}\bigl(g(t)\bigr)\cdot g_1'(t) +\dotsb+ \frac{\partial f}{\partial x_n}\bigl(g(t)\bigr)\cdot g_n'(t)\\
+  \text{Beispiel:}\quad& f \begin{pmatrix}x\\y\end{pmatrix} = x^2+y^2,\enspace g(t) = \begin{pmatrix}\cos(t)\\\sin(t)\end{pmatrix}\\
+  &\Rightarrow \nabla f = (2x,2y),\enspace g'(t) = \begin{pmatrix}-\sin(t)\\cos(t)\end{pmatrix}\\
+  &\frac{d}{dt}f\bigl(g(t)\bigr) = \left\langle\bigl(2\cos(t),2\sin(t)\bigr),\begin{pmatrix}-\sin(t)\\cos(t)\end{pmatrix}\right\rangle = 0
+\end{align*}
+
+\subsection{Leibniz-Regel}
+\begin{align*}
+  \text{Formel:}\quad&\text{Sei }G\left(\begin{pmatrix}a\\b\\c\end{pmatrix}\right) := \int_a^b f(x,c)dx\text{ diffbar}\\
+  &\Rightarrow\enspace\nabla G = \left(-f(a,c), f(b,c), \int_a^b \frac{\partial f}{\partial c}(x,c) dx \right)\\
+  \text{Formel 2:}\quad&\text{Sei }F(t) := \int_{a(t)}^{b(t)} f(x,t)dx\text{ diffbar}\\
+  &\Rightarrow\enspace\frac{dF}{dt} = \int_{a(t)}^{b(t)} \frac{\partial f}{\partial t}(x,t)dx + f\bigl(b(t),t\bigr)\cdot b'(t) - f\bigl(a(t),t)\bigr)\cdot a'(t)\\
+  & = \int_a^b \frac{\partial f}{\partial t}(x,t)dx, \text{ falls $a,b$ konstant}\\
+ \text{Bsp1:}\quad & I(t) = \int_{\sin(t)}^{\cos(t)} \frac{e^{tx^2}}{x}dx\\
+		   & I'(t) = \int_{\sin(t)}^{\cos(t)} \frac{d}{dt}\frac{e^{tx^2}}{x}dx + \left.\frac{e^{tx^2}}{x}\right|_{x=\cos t} \cdot (-\sin t) - \left.\frac{e^{tx^2}}{x}\right|_{x=\sin t}\cdot \cos t\\
+		   & = \int_{\sin t}^{\cos t} x\cdot e^{tx^2} dx + \frac{e^{t\cos^2(t)}}{\cos(t)}\cdot (-\sin t) - \frac{e^{t\sin^2(t)}}{\sin(t)}\\
+		   & = \left.\frac{e^{tx^2}}{2t}\right|_{\sin(t)}^{\cos(t)} + ...\\
+ \text{Bsp2:}\quad & F'(t) = \frac{d}{dt} \int_1^2 \frac{e^{tx}\sqrt{1+t^2 x}}{x(x+1)}dx\quad F'(0)?\\
+		   & = \int_1^2 \frac{x\cdot e^{tx} \sqrt{1+t^2 x} + e^{tx} \frac{tx}{\sqrt{1+t^2 x}}}{x(x+1)}dx\\
+		   & F'(0) = \int_1^2 \frac{x}{x(x+1)}dx = \int_1^2 \frac{1}{x+1} = \left[\ln|x+1|\right]_1^2 = \ln\left|\frac{3}{2}\right|
+\end{align*}
+
+\subsection{Taylor-Entwicklung}
+\begin{align*}
+  \text{Formel:}\quad&f\begin{pmatrix}x\\y\end{pmatrix} = f\begin{pmatrix}x_0\\y_0\end{pmatrix} + f_x\Delta x + f_y\Delta y\\
+  &+\frac{1}{2}\left(f_{xx}(\Delta x)^2 + 2f_{xy}\Delta x \Delta y + f_{yy}(\Delta y)^2\right)+\dotsc+\\
+  &+\frac{1}{N!}\left(\binom{N}{0}f_{x^N}\Delta x^N + \binom{N}{1}f_{x^{N-1}y}(\Delta x)^{N-1})\Delta y + \dotsc\right)\\
+  &+o \left(\begin{vmatrix}\Delta x\\\Delta y\end{vmatrix}^m\right)\\
+  &\text{Die partiellen Ableitung sind immer an der Stelle $(x_0,y_0)$ auszuwerten.}\\
+  &\Delta x = (x-x_0)\enspace\Delta y = (y-y_0)\\
+  \text{Beispiel:}\quad &\text{Berechne näherungsweise $\alpha := \sqrt{3.03^2 + 3.95^2}$}\\
+  &f \begin{pmatrix}x\\y\end{pmatrix} = \sqrt{x^2+y^2} \text{diffbar für }\enspace\begin{pmatrix}x\\y\end{pmatrix} \neq \begin{pmatrix}0\\0\end{pmatrix}\\
+  &x_0 = 3\quad y_0=4\quad x = 3.03\quad y = -3.95\\
+  &\Rightarrow\enspace \Delta x = 0.03\quad \Delta y = -0.05\\
+  &f_x = \frac{x}{\sqrt{x^2+y^2}}\quad f_y = \frac{y}{x^2+y^2}\\
+  &f_{xx} = \frac{y^2}{(x^2+y^2)^{3/2}}\quad f_{xy} = \frac{-xy}{(x^2+y^2)^{3/2}}\quad f_{yy} = \frac{x^2}{(x^2+y^2)^{3/2}}\\
+  &\text{Alles gemäss obiger Formel einsetzen}\\
+  &\sqrt{9+16} + \frac{3}{\sqrt{3^2+4^2}}\cdot 0.03 + \frac{4}{3^2+4^2}\cdot -0.05\\
+  &+\frac{1}{2}\left(\frac{4^2}{(3^2+4^2)^{3/2}}\cdot 0.03^2 + 2\cdot\frac{-3\cdot 4}{(3^2+4^2)^{3/2}}\cdot 0.03\cdot -0.05 + \frac{3^2}{(3^2+4^2)^{3/2}}\cdot(-0.05)^2 \right) = \\
+  &5 + \frac{0.03\cdot 3}{5} + \frac{-0.05\cdot 4}{5} + \frac{1}{2}\left(\frac{0.03^2\cdot 16}{125} + \frac{-0.0015\cdot -24}{125} + \frac{-0.05^2 \cdot 9}{125}\right) = 4.9781116\\
+  \text{Tipp:}\quad & e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb+\frac{x^n}{n!}
+\end{align*}
+
+\subsection{Extrema}
+\subsubsection*{Hesse-Matrix}
+Die Hesse Matrix ist die ``2.Ableitung'' in höherer Dimension.\\
+$H_f := \nabla^2 f = \begin{pmatrix}f_{x_1x_1} & f_{x_1x_2} & \dotsb & f_{x_1x_n}\\
+		      f_{x_2x_1} & f_{x_2x_2} & \dotsb & f_{x_2x_n}\\
+		      \vdots	 &\vdots      & \ddots & \vdots\\
+		      f_{x_nx_1} & f_{x_nx_2} & \dotsb & f_{x_nx_n}
+       \end{pmatrix}$
+,wobei $f_{x_jx_k} = f_{x_kx_j} \forall j,k$
+
+\subsubsection*{Kritische Punkte}
+Bei einem kritischen Punkt $x_0$ ist $\nabla f(x_0) = (0,\dotsc,0)$\\
+Jede lokale Extremalstelle ist ein kritischer Punkt, aber nicht umgekehrt.
+\begin{enumerate}
+  \item partielle Ableitungen gleich 0 setzen.
+  \item Daraus entstehende Lineare Gleichungssysteme lösen.
+  \item So erhaltene kritische Punkt auf Typ prüfen mittels $\nabla ^2f$\\
+	\begin{tabbing}
+	 Falls $\nabla ^2f(x_0)$ \= pos. oder neg. semidefinit \=$\Rightarrow$ entartet\\
+	 \> negativ definit \>$\Rightarrow$ lokales Maximum\\
+	 \> positiv definit \>$\Rightarrow$ lokales Minimum\\
+	 \> indefinit \>$\Rightarrow$ Sattelpunkt\\
+	\end{tabbing}
+	Bei entarteten Punkten muss die Umgebung des Punktes untersucht werden, um festzustellen, ob es sich um ein Extrema, Sattelpunkt oder Mischung handelt.
+\end{enumerate}
+\subsubsection*{Definitheit von symmetrischen Matrizen}
+Eine symmetrische Matrix A mit Eigenwerten $\lambda_i$  ist:\\
+\begin{math}
+\begin{array}{ll}
+ \text{pos. definit, falls:} 	& \lambda_i(A) > 0 \enspace\forall i\\
+ \text{pos. semidefinit, falls:} & \lambda_i(A) \geq 0 \enspace\forall i\\
+ \text{neg. definit, falls:} 	& \lambda_i(A) < 0 \enspace\forall i\\
+ \text{neg. semidefinit, falls:} & \lambda_i(A) \leq 0 \enspace\forall i\\
+ \text{indefinit, falls:} 	& \lambda_i(A) > 0 \wedge\lambda_i(A) < 0\\
+\end{array}
+\\\text{Für}\enspace H_f = \begin{pmatrix}f_{xx} & f_{xy}\\f_{xy} & f_{yy}\end{pmatrix} \enspace\text{geht die Bestimmung auch direkt:}\\
+\begin{array}{ll}
+ \text{pos. definit, falls:} 	& \det(H_f) > 0 \wedge f_{xx} > 0\\
+ \text{pos. semidefinit, falls:} & \det(H_f) = 0 \wedge f_{xx} > 0\\
+ \text{neg. definit, falls:} 	& \det(H_f) > 0 \wedge f_{xx} < 0\\
+ \text{neg. semidefinit, falls:} & \det(H_f) = 0 \wedge f_{xx} < 0\\
+ \text{indefinit, falls:} 	& \det(H_f) < 0\\
+\end{array}
+\end{math}
+
+\subsubsection*{Globale Extrema}
+Sei $f:B\rightarrow\mathbb{R}$ stetig, $B\subset\mathbb{R}^n$ kompakt\\
+\begin{enumerate}
+  \item Teile $B$ in offene Teilmengen $B^*$ auf.\\
+  \item Finde alle lokalen Extrema in $B^*$ UND separat auf den Rändern und Eckpunkten.\\
+  \item Vergleiche alle erhaltenen Kandidaten.
+\end{enumerate}
+
+\subsubsection*{Extrema mit Nebenbedinungen (Lagrange-Ansatz)}
+Sei nun $f:B = \lbrace x\in U | g(x) = 0\rbrace$\\
+Dann sind bedingt kritische Punkte von f bzgl. g:\\
+\begin{enumerate}
+  \item $\nabla g(x_0) = 0$ (Nebenbedingung singulär)\\
+  \item $\nabla f(x_0) = \lambda\cdot\nabla g(x_0),\quad\lambda\in\mathbb{R}$
+\end{enumerate}
+\begin{align*}
+  \text{Lagrange-Ansatz:}\quad &L:\begin{pmatrix}x_1 \\\vdots \\x_n\\\lambda\end{pmatrix}\mapsto f\begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}-\lambda\cdot g\begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}\\
+  &\nabla L = (\nabla f-\lambda\nabla g, -g)\\
+  &\text{Kritische Punkte von L sind kritische Punkte vom Typ 2}\\
+  \text{Beispiel:}\quad &\text{Bestimme die Extrema von }f\begin{pmatrix}x \\ y\\z\end{pmatrix} := -\sqrt{3}x+3y+2z \\
+    &\text{auf der Einheitssphäre} B:=\left\lbrace\begin{pmatrix}x \\ y\\z\end{pmatrix}\in\mathbb{R}^3 | x^2+y^2+z^2 = 1\right\rbrace\\
+  &g(x,y,z) = x^2+y^2+z^2-1,\text{$B$ kompakt, $f$ stetig $\Rightarrow\exists$ Extrema}\\
+  &\nabla g(x,y,z) = (2x,2y,2z) \enspace\text{ist überall}\neq (0,0,0)\enspace\text{auf $B$}\\
+  &\Rightarrow\text{Jede Extremalstelle ist bedingt kritischer Punkt vom Typ 2}\\
+  &L:(x,y,z,\lambda) = -\sqrt{3}x+3y+3z-\lambda(x^2+y^2+z^2-1)\\
+  &\text{Krit. Punkte von L:}\\
+  &\begin{array}{ll}
+  \frac{\partial L}{\partial x} = -\sqrt{3} - \lambda 2x & = 0 \Leftrightarrow x = \frac{-\sqrt{3}}{2\lambda}\\
+  \frac{\partial L}{\partial y} = 3 - \lambda 2y 	 & = 0 \Leftrightarrow y = \frac{3}{2\lambda}\\
+  \frac{\partial L}{\partial z} = 3 - \lambda 2z 	 & = 0 \Leftrightarrow z = \frac{1}{2\lambda}\\
+  \frac{\partial L}{\partial \lambda} = -(x^2+y^2+z^2-1) & = 0 \Leftrightarrow 1 = \frac{3}{4\lambda^2}+\frac{9}{4\lambda^2}+\frac{1}{\lambda^2}\Rightarrow\lambda = \pm2\\
+  \end{array}
+  \\&\text{$\lambda$ in $x,y,z$ einsetzen:}\\
+  &(x,y,z) = \pm\left(\frac{-\sqrt{3}}{4}, \frac{3}{4}, \frac{1}{2}\right)\\
+  &f(x,y,z) = \pm 4
+\end{align*}
+
+\subsubsection*{Mehrere Nebenbedingungen}
+$
+\text{Lagrange-Ansatz:}\quad L:\begin{pmatrix}x_1 \\\vdots \\x_n\\\lambda\\\mu\end{pmatrix}\mapsto f\begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}
+  -\lambda\cdot g\begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} - \mu\cdot h\begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}\\
+$
+
+\subsection{Implizite Funktionen}
+Sei $U\in\mathbb{R}^2$ offen und $f:U\rightarrow\mathbb{R}$ eine $C^1$-Fkt. und  $L := \left\lbrace(x,y)\in U | f(x,y) = 0\right\rbrace \\$
+Sei $\nabla f(x_0,y_0)\neq (0,0)$ (sonst ist $L$ singulär)\\
+Sei $I\times J\subset U$ und $\phi: I\rightarrow J,\quad x\mapsto y = \phi(x)$\\
+Sei $(x_0,y_0)$ ein Punkt in $I\times J$\\
+\begin{align*}
+\text{Dann ist}\quad& \phi'(x_0) = -\frac{f_x}{f_y}\binom{x_0}{y_0}\\
+&\phi''(x_0) = -\frac{f_x}{f_y} + 2\frac{f_{xy}f_x}{f_{y^2}}-\frac{f_{y^2}f_{x^2}}{f_{y^3}}\binom{x_0}{y_0}
+\end{align*}

@@ -1,0 +1,38 @@
+\section{Heat equation}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Form			& \frac{ \partial u}{\partial t} = c^2 \frac{ \partial^2 u}{\partial x^2}\\
+Boundary Conditions	& u(0,t) = 0 = u(L,t)\\
+Initial Conditions	& u(x,0) = f(x)\\
+\end{tabular}
+\subsection{Solution}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Ansatz (Sep. of vars)		& \begin{array}[t]{l}
+       		   \mathbf{u(x,t)= X(x)T(t)}\\
+		   \frac{ \partial u}{\partial t} = X(x) T'(t);\quad \frac{ \partial^2 u}{\partial x^2} = X''(x)T(t)\\
+		   \Rightarrow \frac{ \partial u}{\partial t} = c^2 \frac{ \partial^2 u}{\partial x^2} \Leftrightarrow X(x)T'(t) = c^2X''(x)T(t)\\
+		   \Leftrightarrow \frac{1}{c^2} \frac{T'(t)}{T(t)} = \frac{X''(x)}{X(x)} = k
+       		  \end{array}\\
+ODE-System	& \begin{array}[t]{l||l}
+          	   I	& X''(x)-kX(x) = 0\\
+		   II	& T'(t) - kc^2T(t) = 0
+          	  \end{array}\\
+Imposing BC	& \begin{array}[t]{||l}
+           	   u(0,t) = X(0)T(t) = 0\\
+		   u(L,t) = X(L)T(t) = 0
+           	  \end{array}
+		  \quad\forall t\\
+		& \Rightarrow
+		  \begin{array}[t]{||l}
+		  X''-kX = 0\\
+		  X(0) = 0\\
+		  X(L) = 0
+		  \end{array}
+		  \quad k = -p^2 < 0\\
+		& \Rightarrow \boxed{ X_n(x) = \sin\left(\frac{n\pi}{L} x \right) } \quad n\in\mathbb{Z}^{>0}\quad k = -\left( \frac{n\pi}{L} \right)^2\\
+		& \Rightarrow \boxed{ T_n(t) = B_n e^{-\lambda_n^2 t} }\quad \lambda = \frac{n\pi c}{L}\\
+General solution	& u_n(x,t) = \sin\left( \frac{n\pi x}{L} \right) \cdot B_n e^{-\lambda_n^2 t} \quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Superposition	& u(x,t) = \sum_{n=1}^{\infty} u_n(x,t)\\
+		& u(x,t) = \sum_{n=1}^{\infty} \sin\left( \frac{n\pi x}{L} \right) \cdot B_n e^{-\lambda_n^2 t}\quad n\in \mathbb{Z}^{>0}, \lambda_n = \frac{cn\pi}{L}\\
+Imposing IC	& u(x,0) = \sum_{n=1}^{\infty} B_n\sin\left( \frac{n\pi x}{L} \right) = f(x)\\
+Fourier-Coefficients	& B_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n\pi x}{L} dx\\
+\end{tabular}

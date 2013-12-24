@@ -1,0 +1,105 @@
+\section{Atmosphäre: Begriffe}
+\subsection{Kapitel 1: Die Atmosphäre}
+
+\begin{tabular}{p{4cm}p{15cm}}
+Bestandteile der Atmosphäre	& 
+    \begin{itemize}
+	  \item $N_2 (78\%), O_2 (21\%), Ar(1\%)$
+	  \item div. Spurengase, z.B. $O_3, CO_2, CH_4, SO_2$
+	  \item Wasserdampf (0-4\%)
+	  \item Aerosole (in Luft schwebende flüssige oder feste Partikel)
+    \end{itemize}\\
+Schichten der Atmosphäre	& Troposphäre, Stratosphäre, Mesosphäre, Thermosphäre (vgl. Abbildung 1.2 im Skript)\\
+				& \begin{tabular}[t]{ll}
+				    Tropopause		& ca. 8 - 16km: Knick im vertikalen Temperaturverlauf\\
+				    Stratopause		& ca. 50km: (Lokales) Temperaturmaximum der Atmosphäre\\
+				    Mesopause		& ca. 80km: Temperaturminimum der Atmosphäre
+				  \end{tabular}\\
+polare Stratosphärewolken	& \begin{itemize}
+                         	  	\item Braucht $< -78 ^{\circ}$C $\Rightarrow$ Tritt vor allem in Polregionen und in Stratosphäre auf
+					\item Bestehen aus Kristallen aus Schwefel- oder Salpetersäure.
+                         	  \end{itemize}\\
+leuchtende Nachtwolken		& \begin{itemize}
+                      		  	\item Entstehen an der Mesopause.
+					\item Kondensationskeime kommen vermutlich von verglühenden Meteoriten.
+					\item Durch die grosse Höhe werden sie noch von der Sonne beleuchtet, wenn die Erdoberfläche schon längst abgedunkelt ist.
+                      		  \end{itemize}\\
+Polarlichter			& \begin{itemize}
+            			  	\item Entstehen in etwa 90-100 km Höhe (Thermosphäre) vor allem in den Polregionen.
+					\item Elektrisch geladene Teilchen (z.B. Sonnenwind) regen Luftteilchen (v.a. $O$) an, die sich kurz danach wieder abregen und dabei Photonen emittieren.
+					\item Elektrisch geladene Teilchen werden durch das Magnetfeld der Erde vor allem an die Polarregionen gelenkt.
+            			  \end{itemize}
+\end{tabular}
+
+\subsection{Kapitel 2: Thermodynamik}
+\subsubsection{Grundsätzliches}
+\begin{tabular}{p{4cm} |lll}
+Spezifische Grössen	& $x = \frac{X}{m}$	& x:	& spezifische Zustandsgrösse\\
+			&			& X:	& Zustandsgrösse\\
+			&			& m:	& Masse [kg]\\
+Molare Grössen	& $X_m = \frac{X}{m}M$		&$X_m$:	& molare Zustandsgrösse\\
+		&				& X:	& Zustandsgrösse\\
+		&				& M:	& Molmasse [kg mol$^{-1}$]\\
+\end{tabular}\\
+\begin{tabular}{lll}
+Anzahle Mole einer Substanz	& $n$\\
+Molare Masse	& $m = n\cdot M$\\
+Totale Anzahl Moleküle	& $N = N_A\cdot n$
+\end{tabular}\\
+\subsubsection{Grundgleichungen}
+\begin{tabular}{p{4cm}p{15cm}}
+Ideale Gasgleichung	& $pV = nRT$\\
+- für trockene Luft	& $p = \varrho_d R_d T$\\
+hydrostatische Grundgleichung	& $dp = -g \varrho dz$\\
+barometrische Höhenformel	& 
+    \begin{tabular}[t]{l}
+      Annahmen: isotherme und trockene Atmosphäre\\
+      $p(z) = p_0 \exp\left(-\frac{z}{H_s}\right)\quad p_0 = 1013.25$ hPa\\
+    \end{tabular}\\
+\textbf{Skalenhöhe $\boldsymbol{H_s}$}	& $H_s := \frac{R_dT}{g} \approx 8000$ m\\
+1. Hauptsatz der Thermodynamik	& $dQ = dU + dW$\\
+adiabatisch			& $dQ = 0$\\
+Arbeit				& $W = \int_{V_1}^{V_2} pdV$\\
+\textbf{dry lapse rate }$\boldsymbol{\Gamma_d}$		& \begin{tabular}[t]{p{14cm}}
+				    Annahmen: Atmosphäre trocken, adiabatische Zustandsänderung (keine Kondensation!)\\
+				    $-\frac{dT}{dz} = \frac{g}{c_p} =: \Gamma_d \approx \frac{1 \mathrm{K}}{100 \mathrm{m}}$\\
+				    Gibt den Temperaturunterschied eines Luftpakets an, wenn es angehoben ($dz > 0$) oder abgesenkt ($dz < 0$) wird.\\
+				  \end{tabular}\\
+\textbf{potentielle Temperatur $\boldsymbol{\theta}$}	& $\theta$ ist die Temperatur, die ein Luftpaket hätte, wenn man es adiabatisch vom Druck $p$ und der Temperatur $T$ auf einen Standarddruck $p_0 = 1000$ hPa bringen würde.\\
+						& $\theta = T \left(\frac{p_0}{p}\right)^{\frac{c_p}{R_d}}\quad \frac{c_p}{R_d} =: \kappa = 0.286$\\
+\textbf{Statische Stabilität}	& Siehe Abbildung 2.1 im Skript\\
+				& \begin{tabular}[t]{lclcl}
+				    stabil	& $\Leftrightarrow$	& $\Gamma < \Gamma_d$	& $\Leftrightarrow$	& $\frac{d\theta}{dz} > 0$\\
+				    instabil	& $\Leftrightarrow$	& $\Gamma > \Gamma_d$	& $\Leftrightarrow$	& $\frac{d\theta}{dz} < 0$\\
+				    neutral	& $\Leftrightarrow$	& $\Gamma = \Gamma_d$	& $\Leftrightarrow$	& $\frac{d\theta}{dz} = 0$
+				  \end{tabular}\\
+				& $\Gamma = -dT_{real} / dz$ bezeichnet den tatsächlichen, gemessenen Temperaturabfall\\
+\end{tabular}
+\subsubsection{Feuchte Luft}
+\begin{tabular}{p{4cm}p{15cm}}
+Dampfdruck $e$			& Partialdruck des in der Luft vorhandenen Wasserdampfs.\\
+%Siehe Abbildung 2.4 im Skript
+\textbf{Sättigungsdampfdruck $e_s$}	& maximaler Dampfdruck. Wenn dieser Punkt erreicht ist, verflüssigt sich genau so viel Dampf wie flüssiges Wasser verdampft. Dynamisches Gleichgewicht.\\
+				& $e_s = e_{s,0} \cdot \exp \left( C \left( \frac{1}{T_0}-\frac{1}{T} \right) \right)\quad C = \frac{M_W L}{R} = 5412$\\
+				& Gültig unter den Annahmen: 1. spezifische Verdampfungswärme von Wasser sei konstant. 2. $1/\varrho_W$ = 0\\
+relative Feuchtigkeit		& $RH = 100 \frac{e}{e_s}$\\
+Taupunkt $T_d$			& Bis zu welcher Temperatur kann ein Luftpaket bei fixer Luftfeuchtigkeit abgekühlt werden bevor es kondensiert?\\
+				& math. Bedingung: $e_s(T_d) = e$\\
+Sättigungsdampfdruck über Eis	& $e_{s,Wasser} > e_{s,Eis}$\quad Wasser = flüssiges Wasser\\
+				& Über Wasser kann die Luft also feuchter sein als über Eis. Macht Sinn: Der Phasenübergang Gasförmig $\rightarrow$ Fest ist energetisch noch günstiger als der Phasenübergang Gasförmig $\rightarrow$ Flüssig.\\
+Ungefähre Wertepaare		& \begin{tabular}[t]{ll}
+					100 hPa		& 320 K\\
+					400 hPa		& 350 K\\
+					800 hPa		& 360 K
+                    		  \end{tabular}\\
+Bergeron's Beobachtung		& Falls ein Luftpaket den Dampfdruck $e_{s,Wasser} < e < e_{s,Eis}$ hat, so ``konkurrieren'' Wasser (Nebel) und Eis (Eiskristalle an Nadeln von Bäumen) um Wasserdampf. In diesem Fall wird der Dampf zu Eis und nicht zu Wasser. Gleiche Begründung wie oben.\\
+\textbf{saturated lapse rate }$\boldsymbol{\Gamma_s}$	& kleiner als $\Gamma_d$. $\Gamma_d$: Ein Prozess: Abkühlung durch Druckabnahme. $\Gamma_s$ Zwei Prozesse: Abkühlung durch Druckabnahme, aber Erwärmung durch Kondensation. Kondensation findet statt, da bei tieferer Temperatur $e_s$ niedriger ist und somit Wasserdampf kondensiert.\\
+Stabilitätsbetrachtungen	& siehe ppt vom 9. Okt.\\
+				& \begin{tabular}[t]{p{3cm}p{5cm}p{5cm}}
+				  Temperaturgradient			& \multicolumn{2}{c}{Stabilität}\\
+									& trockenes Luftpaket	& feuchtes Luftpaket\\\toprule
+				  $\Gamma < \Gamma_s < \Gamma_d$	& \multicolumn{2}{c}{absolut stabil}\\
+				  $\Gamma_s < \Gamma < \Gamma_d$	& stabil		& Kann mit zunehmender Höhe gesättigt werden. Dann ist die Feuchtadiabate relevant und somit ist die Schichtung instabil.\\
+				  $\Gamma_s < \Gamma_d < \Gamma$	& \multicolumn{2}{c}{absolut instabil}
+				  \end{tabular}				  
+\end{tabular}

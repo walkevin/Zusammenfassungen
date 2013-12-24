@@ -1,0 +1,269 @@
+\section{LP Basics II}
+Omitted in this overview.
+\section{LP Algorithms}
+{\itshape Ref. P.31}\\
+A system of inequalities can be converted into a system of equalities by introducing so called slack (dt: Schlupf) variables\\
+$
+\begin{array}[t]{lrcrr}
+		& a_{11}x_1	& + & a_{12}x_2 & \leq b_1\\
+		& a_{21}x_1	& + & a_{22}x_2 & \leq b_2\\
+		& x_1 		& \geq 0 & x_2 & \geq 0
+\end{array}
+\xLeftrightarrow{~~~~~}
+\begin{array}[t]{lrcrcrcrr}
+		& a_{11}x_1	& + & a_{12}x_2		& + & x_3 	&   &		&= b_1\\
+		& a_{21}x_1	& + & a_{22}x_2		&   &	  	& + & x_4	&= b_2\\
+		& x_1 		&\geq 0 & x_2 		&\geq 0 & x_3 	&\geq 0 & x_4 	&\geq 0
+\end{array}
+$\\
+We can also introduce a slack variable for the objective function, simply by\\
+\begin{equation*}
+c_1x_1 + c_2x_2 = x_f
+\end{equation*}
+By solving the above system of equalitites for $x$, we can rewrite the LP problem:\\
+$
+\begin{array}{lrcrcrcr}
+\max		& x_f & = & 0\cdot x_g   & + & c_1x_1	& + & c_2x_2\\
+\text{s.t.}	& x_3 & = & b_1\cdot x_g & - & a_{11}x_1	& - & a_{12}x_2\\
+		& x_4 & = & b_2\cdot x_g & - & a_{21}x_1	& - & a_{22}x_2\\
+		&     &   & x_g		 & = 1\\
+		& \multicolumn{6}{l}{x_i \geq 0, ~~i = \{1,2,3,4\}}
+\end{array}
+$\\
+This can be written in short as $\mathbf{x_B = Dx_N}$, where $\begin{array}[t]{l}
+                                                      B = \{f,3,4\} = \{f\} \cup B_0,\\
+						      N = \{g,1,2\} = \{g\} \cup N_0,\\
+						      D = \begin{bmatrix}0 & c^T\\b & -A\end{bmatrix}
+                                                     \end{array}$
+\subsection{Transformation from canonical into dictionary form}
+{\itshape Ref. P.32-33}\\
+$
+\begin{array}{lll}
+		& \text{Canonical\qquad\qquad\qquad\qquad\qquad}& \text{Dictionary}\\
+\text{Primal}	& \begin{array}[t]{ll}
+		   \text{max}	& c^Tx\\
+		   \text{s.t.}	& Ax \leq b\\
+				& x \geq 0
+		  \end{array}					& \begin{array}[t]{lrclll}
+								  \text{max}		& x_f &&&&\\
+								  \text{s.t.}		& x_B & = & Dx_N\\
+											  & x_g & = & 1 &&\\
+											  & x_j & \geq & 0 & \multicolumn{2}{l}{\text{ $\forall j \smallsetminus \{f,g\}$}}\\
+								  \end{array}\\
+\multicolumn{3}{l}{\text{The original $x$ is replaced by $x_{N_0}$, while the new vector $x$ has indices from $B \cup N$}}\\\\
+\text{Dual}	& \begin{array}[t]{ll}
+		   \text{min}	& b^Ty\\
+		   \text{s.t.}	& A^Ty \geq c\\
+				& y \geq 0
+		  \end{array}					& \begin{array}[t]{lrclll}
+								  \text{max}		& y_g &&&&\\
+								  \text{s.t.}		& y_N & = & -D^Ty_B\\
+											  & y_f & = & 1 &&\\
+											  & y_j & \geq & 0 & \multicolumn{2}{l}{\text{ $\forall j \smallsetminus \{f,g\}$}} \\
+								  \end{array}
+\end{array}\\
+$
+Proof for the latter is given by replacing $y_f$ with 1 and removing $y_{N_0}$, i.e. replace the equality by a inequality, and finally by setting $B_0 = \{1,2,...,n\}$
+
+\subsection{Basic solutions and basic directions}
+{\itshape Ref. P.35}\\
+For any primal and dual feasible solutions $x$ and $y$\\
+\begin{equation*}
+ x^Ty = x_B^Ty_B + x_N^Ty_N = 0
+\end{equation*}
+{\itshape Proof:} Impose $x_B = Dx_N$ and $y_N = -D^Ty_B$\\
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+\multicolumn{2}{l}{\text{Insert handwritten images on P.35}}\\
+Basic Vector		& \begin{array}[t]{l}
+			  \text{The basic vector $x(B,j)$ for $j\in N$ is the unique solution $\bar{x}$ to $x_B = Dx_N$ such that}\\
+			   \bar{x}_j = 1\\
+			   \bar{x}_{N-j} = \mathbf{0}\\
+			   \bar{x}_B = D._j
+              		  \end{array}\\
+Basic Solution		& x(B,g)\\
+Basic Directions	& x(B,j), j\in N-g\\
+Dual Basic Vector	& \begin{array}[t]{l}
+              		   \text{The Dual basic vector $y(B,i)$ for $i\in B$ is the unique solution $\bar{y}$ to $y_N= -D^Ty_B$ s.t.}\\
+			   \bar{y}_i = 1\\
+			   \bar{y}_{B-i} = \mathbf{0}\\
+			   \bar{y}_N = -(D_i)^T
+              		  \end{array}\\
+Dual Basic Solution	& y(B,f)\\
+Basic Directions	& y(B,i), i\in B-f\\
+\end{tabular}\\
+
+\subsection{LP Weak and Strong Duality}
+{\itshape Ref. P.35, 36}\\
+\begin{tabular}{p{4cm} >{$}p{15cm}<{$}}
+\textbf{LP Weak Duality}	& \text{For any LP in dictionary form and for any primal and dual feasible solutions $x$ and $y$}\\
+				& x_f + y_g \leq 0\\
+{\itshape Proof}		& \begin{array}[t]{ll}
+     				   x_f + y_g 	&= x_fy_f + x_gy_g\quad x_g = y_f = 1\\
+						&= x^Ty - \sum_j \smallsetminus \{f,g\} x_jy_j\quad x^Ty = 0 \text{ (see subsection before)}\\
+						&= - \sum_{j \smallsetminus \{f,g\}} x_jy_j \leq 0\quad x_j,y_j \geq 0\text{ by definition of LP}
+     				  \end{array}\\
+{\itshape Corollary}		& \exists x,y : x_f + y_g = 0 \Rightarrow x,y \text{ are optimal}\\
+{\itshape Proof}		& \text{If not, }\exists c > 0 : x_f + y_g = -c < 0\\
+				& \text{Then, one can always find a better $x_f$, namely $x_f + c$}
+\end{tabular}\\
+\begin{tabular}{p{4cm} p{15cm}}
+\textbf{LP Strong Duality}	& For any LP in dictionary form\\
+				& a. If the primal and dual LPs are both feasible then both have optimal solutions $x_f, y_g$ and $x_f + y_g = 0$\\
+				& b. If either the primal or dual LP is infeasible, then neither of the LPs has an optimal solution. If the dual (primal) LP is infeasible, the primal (dual) LP is either infeasible or unbounded.\\
+\end{tabular}
+\subsection{Types of Dictionaries}
+{\itshape Ref. P.37, Figures 4.1 and 4.2}\\
+\textbf{Proposition 4.4}\\
+For any LP in dictionary form,
+\begin{enumerate}[label={\alph*)}]
+ \item If the dictionary is feasible then the associated basic solution is feasible.
+ \item If the dictionary is dual feasible then the associated dual solution is feasible.
+ \item If the dictionary is both primal and dual feasible then the associated basic solution $\bar{x}$ and the associated dual basic solution $\bar{y}$ are optimal, and furthermore $\bar{x}_f + \bar{y}_g = 0$
+\end{enumerate}
+{\itshape Proof}
+\begin{enumerate}[label={\alph*)}]
+ \item If the dictionary is feasible, the basic solution $x(B,g)$ satisfies all the nonnegativity conditions and thus is feasible.
+ \item If the dictionary is dual feasible, the dual basic solution $y(B,f)$ satisfies all the nonnegativity conditions and thus is dual feasible.
+ \item Assume the dictionary is both primal and dual feasible. Since $x(B,g)_f = d_{fg}$ and $y(B,f)_g = -d_{fg}$, they add up to zero. By the LP Weak Duality, they are both optimal solutions.
+\end{enumerate}
+\textbf{Proposition 4.5}\\
+For any LP in dictionary form,
+\begin{enumerate}[label={\alph*)}]
+ \item If the dictionary is \textbf{inconsistent} then the LP is infeasible and the \textbf{dual} LP is \textbf{unbounded}.
+ \item If the dictionary is \textbf{dual inconsistent} then the LP is infeasible and the \textbf{primal} LP is \textbf{unbounded}.
+\end{enumerate}
+
+\subsection{Pivot Operation}
+{\itshape Ref. P.40}\\
+$
+\begin{array}{cl}
+D = \begin{array}{l|ccccc|}
+	& 	& j 		& 	& s &\\\hline
+	&	& \vdots	& 	& \vdots &\\
+i 	&\cdots	& d_{ij}	& \cdots & d_{is} & \cdots\\
+	& 	& \vdots	&	& \vdots &\\
+r	&\cdots	& d_{rj}	& \cdots & d_{rs} & \cdots\\
+	& 	& \vdots	&	& \vdots &\\\hline
+\end{array}
+& i \in B-r, j\in N-s\\\\
+\text{Pivot on (r,s): \begin{tabular}{l}Update basis: $B' = B-r+s$,\\ Update nonbasis: $N' = N+r-s$,\\ Update Dictionary: $\Downarrow$ \end{tabular}}\\\\
+D' = \begin{array}{l|ccccc|}
+        & 	& j 		& 	& r &\\\hline
+	&	& \vdots	& 	& \vdots &\\
+i	&\cdots	& d_{ij}-\frac{d_{is} \cdot d_{rj}}{d_{rs}}	& \cdots & \frac{d_{is}}{d_{rs}} & \cdots\\
+	& 	& \vdots	&	& \vdots &\\
+s	&\cdots	& -\frac{d_{rj}}{d_{rs}}	& \cdots & \frac{1}{d_{rs}} & \cdots\\
+	& 	& \vdots	&	& \vdots &\\\hline
+\end{array}
+& i \in B-s, j\in N-r\\
+\end{array}
+$\\\\
+\textbf{Proposition 4.6}\\
+Suppose $D'$ is obtained by a pivot operation on D on the position (r,s)
+
+\begin{enumerate}[label={\alph*)}]
+  \item (Reversibility) The result of a pivot operation of $D'$ on $(s,r)$ is $D$
+  \item (Equivalence) The associated equation systems are equivalent $\Rightarrow V(D) = V(D')$, V denotes the set of solutions
+  \item (Dual equivalence) The associated dual equation systems are equivalent $\Rightarrow V(-D^T) = V(-D'^T)$
+\end{enumerate}
+
+\subsection{Criss Cross Method}
+{\itshape Ref. Figure on P.72 and Pseudocode on P.43}\\
+Theorem 4.7, Corollary 4.8, Lemma 4.9 are from pages 43 to 46. There is nothing to summarize, it is already quite compact.\\
+Most important results: Criss Cross Method is finite and ends in optimal, inconsistent or dual inconsistent state. Once a state is achieved, no other state can be achieved. Thus, the strong duality holds.
+
+\subsection{Simplex Method}
+{\itshape Ref. Figure on P.71 and Pseudocode P.49}\\
+\textbf{Simplex Pivot}\\
+A Simplex Pivot is a Criss Cross Pivot with the following additional constraints.
+\begin{enumerate}[label={\alph*)}] 
+ \item $d_{rs} < 0$
+ \item $-\frac{d_{rg}}{d_{rs}} = \min\left\lbrace -\frac{d_{ig}}{d_{is}} : i\in B-f, d_{is} < 0\right\rbrace$
+\end{enumerate}
+
+Additionally, it should be chosen following the smallest index rule, as with the Criss Cross pivot.\\
+Choosing the pivot like this preserves feasibility for a basic solution (i.e. $d_{ig}$ stays positive after a pivot operation)\\
+{\itshape Proof}: Let (r,s) the Simplex pivot with the above constraints.\\
+$
+\begin{array}{lll}
+\text{Pivot Operation for} 	& d_{ig}, i\neq r:	& d_{ig} - \frac{d_{rg}}{d_{rs}}\cdot d_{is} \geq^? 0\\
+				&			& \Leftrightarrow - \frac{d_{rg}}{d_{rs}}\cdot d_{is} \geq^? -d_{ig}\\
+				&			& \begin{array}[t]{r|l}
+				 			    d_{is} > 0 \swarrow	& \searrow d_{is} < 0\\
+\underbrace{- \frac{d_{rg}}{d_{rs}}}_{\geq 0} \geq \underbrace{- \frac{d_{ig}}{d_{is}}}_{\leq 0} ~\checkmark
+& - \frac{d_{rg}}{d_{rs}} \leq - \frac{d_{ig}}{d_{is}} ~\checkmark \text{ b.) LHS is most negative}
+				 			  \end{array}\\\\
+\text{Pivot Operation for}	& d_{rg}:		& -\frac{d_{rg}}{d_{rs}} \geq^? 0 ~\checkmark \text{ a.) $d_{rs} < 0$}
+\end{array}
+$\\
+Input handwritten Simplex Method Phase I
+
+\subsection{Implementing Pivot Operations}
+{\itshape Ref. P.51}\\
+Consider a LP $\max c^Tx,~~$s.t. $Ax = b,~~x \geq 0$, i.e. with slack variables (See P.31). The large $m \times E$ Matrix $A$ can be seen as follows:
+A =  \begin{tabular}[t]{|p{1.5cm}|p{4cm}|}
+ 	$\scriptstyle{B}$	& $\scriptstyle{N = E\smallsetminus B}$\\\hline
+	$A._B$			& $A._N$\\[1cm]\hline
+      \end{tabular}\\\\
+Note that $A._B$ is quadratic and invertible. Essentially, we split everything in terms of basic and nonbasic parts. Therefore,\\
+$
+\begin{array}{rcrcl}
+ Ax = b	& \Leftrightarrow	& A._B x_B + A._N x_N			& = & b\\
+	& \Leftrightarrow	& A._B^{-1} (A._B x_B + A._N x_N)	& = & A._B^{-1} b\\
+	& \Leftrightarrow	& x_B					& = & A._B^{-1}b - A._B^{-1}A._N x_N
+\end{array}$\\\\
+Plugging in $x_B$ in the objective function yields:\\
+$
+\begin{array}{rcl}
+ c^Tx	& =	& c_B^T x_B + c_N^T x_N\\
+	& =	& c_B^T (A._B^{-1}b - A._B^{-1}A._N x_N) + c_N^T x_N\\
+	& =	& c_B^T A._B^{-1}b + (c_N^T - c_B^T\cdot A._B^{-1}A._N) x_N
+\end{array}\\\\
+$
+As a consequence, a dictionary can be rewritten as follows:\\
+$
+D = \bordermatrix{
+	~		& \scriptstyle{g}	& \scriptstyle{N-g}\cr
+     \scriptstyle{f}	& c_B^T A._B^{-1} b	& c_N^T - c_B^T A._B^{-1} A._N\cr
+     \scriptstyle{B-f}	& A._B^{-1}b		& -A._B^{-1}A._N
+    }
+$\\\\
+For $B-f$, $D$ can be read as $\begin{array}[t]{lrcl}
+						& x_B 				& = & A._B^{-1} b - A._B^{-1}A._N x_N\\
+				\Leftrightarrow	& x_B + A._B^{-1}A._N x_N	& = & A._B^{-1} b\\
+				\Leftrightarrow	& ( I \mid A ) \binom{x_B}{x_N}	& = & A._B^{-1} b
+                               \end{array}$\\\\
+Recall the pivot operation: It means to swap a certain basic variable (r) with a certain nonbasic variable (s), i.e. basis and nonbasis get updated as follows: $B' = B-r+s, N' = N+r-s$. Here, we don't need to look at the operations defined by the pivot operation for the actual dictionary values, as we have decomposed the dictionary in terms of $b,c, A._B^{-1}$ and $A._N$.\\
+So, the only difficulty is to get the updated basis inverse $A._{B'}^{-1}$. Note that $A._{B'} = A._{B-r+s}$, i.e. this is only a column swap. Luckily, there is a matrix T, which performs the update of the basis inverse, i.e. $T\cdot A._B^{-1} = A._{B'}^{-1}$\\
+$T = \begin{pmatrix}
+1	&	&	& -\frac{d_{1s}}{d_{rs}}\\
+	&\ddots	&	& \vdots\\
+	&	&1	& -\frac{d_{(r-1)s}}{d_{rs}}\\
+	&	&	& \frac{1}{d_{rs}}\\
+	&	&	& -\frac{d_{(r+1)s}}{d_{rs}} 	&1\\
+	&	&	& \vdots			&	& \ddots\\
+	&	&	& -\frac{d_{ms}}{d_{rs}}	&	&	&1
+\end{pmatrix}
+$
+(Caution! This is wrongly stated in the Musterlösung of Ex.6)
+
+\subsection{Computing Sensitivity}
+{\itshape Ref. P.53}\\
+Thanks to the above gained alternative writing of $D$, feasibility certificates can also be reexpressed.\\
+\begin{tabular}{ll}
+{\bfseries Primal feasibility}	& $A._B^{-1} b \geq \mathbf{0}$\\
+{\bfseries Dual feasibility}	& $c_N^T - c_B^T A._B^{-1} A._N \leq \mathbf{0}$
+\end{tabular}\\
+Having these certificates, we can easily compute the sensitivity of a certain $b_i$ (supply) or $c_i$ (price)\\
+Insert Example (Ex.6 No.2)\\
+
+\subsection{Geometry of Pivots}
+{\itshape Ref. P.57ff.}\\
+\begin{tabular}{p{4cm} p{15cm}}
+{\bfseries Combinatorial Diameter}	& $\Omega$: Maximum of the lengths (in terms of edges) of all shortest pathes between any pair of vertices\\
+{\bfseries Hirsch conjecture}		& For bounded polyhedra, $\Omega$ is at most $n-d$, where $n$ = \# inequalities, $d$ = dimension\\
+Corollary				& If you can choose between computation of primal or dual, always take the one with the higher dimension, as pivot algorithms have to check all vertices in worst-case.\\
+{\bfseries Convexity of feasible region}& The feasible region $\Omega$ is convex.\\
+					& {\itshape Proof:} Let $x_1, x_2 \in \Omega$ and let $x$ be a convex combination of $x_1,x_2$. We want to show, that $Ax \leq b$\\
+					& $Ax = A(\lambda x_1 + (1-\lambda)x_2) = \lambda Ax_1 + (1-\lambda)Ax_2 \leq \lambda b + (1-\lambda)b = b$
+\end{tabular}

@@ -1,0 +1,42 @@
+\section{Deskriptive Statistik}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+arithm. Mittel		& \bar{x} = \frac{1}{n} (x_1 + ... + x_n)\\
+empirische Varianz	& s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2\\
+empirische Kovarianz	& s^2_{x_1,x_2} = \frac{1}{n-1} \sum_{i=1}^n (x_{1i} - \widebar{x_1})(x_{2i} - \widebar{x_2} )\\
+empirische Korrelation	& r_{x_1,x_2} = \frac{s^2_{x_1,x_2}}{s_{x_1}s_{x_2}}
+\end{tabular}
+\section{Schliessende Statistik}
+\begin{tabular}{p{4cm} >{$}p{16cm}<{$}}
+Fehlerarten	& \begin{tabular}[t]{l|ll}
+		  \backslashbox{gegeben}{Entscheidung}	& $H_0$		& $H_A$\\\hline
+		  $H_0$					& $1-\alpha$	& $\alpha$~~ Fehler 1.Art\\
+		  $H_A$					& $\beta$~~ Fehler 2.Art	& $1-\beta$ ~~Macht
+		  \end{tabular}\\
+Test		& \begin{array}[t]{l|l|l|l}
+				&		& \text{Fehler 1. Art}			& \text{Verwerfungsbereich}\\
+    		  H_0: p = p_0	& H_A: p > p_0	& \P(X \geq c | H_0) = \alpha	& V = [c,\infty[\\
+		  H_0: p = p_0	& H_A: p < p_0	& \P(X \leq c | H_0) = \alpha	& V = ]-\infty,c]\\
+		  H_0: p = p_0	& H_A: p \neq p_0	& \P(X \leq c_1) = \P(X \geq c_2) = \frac{\alpha}{2}	& V = ]-\infty,c_1] \cup [c_2,\infty[
+    		  \end{array}\\
+Binomialtest $(X \sim BIN)$	& \P(X \geq c | H_0) = \sum_{k=c}^n \binom{n}{k} p_0^k (1-p_0)^{n-k} \leq \alpha\\
+				& \P(X \leq c | H_0) = \sum_{k=0}^{c} \binom{n}{k} p_0^k (1-p_0)^{n-k} \leq \alpha\\
+Normalapproximation $(X \sim BIN)$	& \P(X \geq c | H_0) = \P \left( \frac{X - np_0}{\sqrt{np_0(1-p_0)}} \geq \frac{c-np_0}{\sqrt{np_0(1-p_0)}} \right) = 1-\Phi \left(\frac{c-np_0}{\sqrt{np_0(1-p_0)}} \right) \leq \alpha\\
+				& \P(X \leq c | H_0) = \P \left( \frac{X - np_0}{\sqrt{np_0(1-p_0)}} \leq \frac{c-np_0}{\sqrt{np_0(1-p_0)}} \right) = \Phi \left(\frac{c-np_0}{\sqrt{np_0(1-p_0)}} \right) \leq \alpha\\
+P-Wert		& \text{Das kleinste Signifikanzniveau, wo $H_0$ verworfen wird.}\\
+		& \text{(Bei gegebenen $c$, berechne $\alpha$ neu)}\\
+		& \text{P-Wert}\begin{cases}
+		               	< \alpha	& \Rightarrow \text{Verwerfe $H_0$}\\
+				> \alpha	& \Rightarrow \text{Verwerfe $H_0$ nicht.}
+		               \end{cases}\\
+Vertrauensintervall	& \begin{array}[t]{ll}
+			  \multicolumn{2}{l}{\text{Falls $p_0 \in$ VI, verwerfe $H_0$ nicht.}}\\
+                   	  X \sim BIN(n,p):		& \frac{x}{n} \pm \Phi^{-1}\left(1-\frac{\alpha}{2} \right) \sqrt{\frac{x}{n} \left(1-\frac{x}{n} \right) \frac{1}{n} }\\
+			  X \sim POIS (\lambda):	& x \pm \Phi^{-1}\left(1-\frac{\alpha}{2} \right)\sqrt{x}
+                   	  \end{array}\\
+Fehler 2. Art	& \P(X \notin V |H_A) \quad\text{WSK, dass $H_0$ nicht verworfen wird, obwohl $H_A$ korrekt ist.}\\
+Beispiel	& \text{Sei: }V = ]-\infty,c_1] \cup [c_2,\infty[;\quad H_A: \mu = \mu_{H_A},~ \sigma = \sigma_{H_A}\\
+		& \P(X \notin V |H_A) = \P(c_1 \leq X \leq c_2 | H_A) = \Phi \left( \frac{c_2 - \mu_{H_A}}{\sigma_{H_A}} \right) - \Phi \left(\frac{c_1 - \mu_{H_A}}{\sigma_{H_A}} \right)\\
+		& \text{$V$ wird zuerst mittels $H_0$ und entsprechend $\mu_{H_0},\sigma_{H_0}$ berechnet.}
+\end{tabular}
+
+

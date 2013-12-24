@@ -1,0 +1,48 @@
+\section{Vektoranalysis}
+\subsection{Differentialoperatoren}
+\begin{tabular}{ll}
+$\grad f := \nabla f = \begin{pmatrix} \partial_1 f\\ \partial_2 f\\ \partial_3 f\end{pmatrix}$	& Richtung und Betrag des grössten Anstiegs von $f$\\
+$\rot K := \nabla\times K = \begin{pmatrix} \partial_2 K_3 - \partial_3 K_2\\ \partial_3 K_1 - \partial_1 K_3 \\ \partial_1 K_2 - \partial_2 K_1\end{pmatrix}$	& lokale Zirkulationsrate von $K$\\
+$\dgz K := \nabla\cdot K = \partial_1 K_1 + \partial_2 K_2 + \partial_3 K_3$	& lokale Produktionsrate von $K$\\
+$\bigtriangleup f:= \dgz\grad f = \partial_1^2 f + \partial_2^2 f + \partial_3^2 f$	& lokale Diffusionsrate von $f$
+\end{tabular}
+\subsection{Lokale Eigenschaften}
+$
+ \rot\grad f = 0 \qquad \dgz\rot K = 0\\
+ \rot K = 0 \Leftrightarrow \text{lokal $\exists f$ mit $\grad f = K$}\\
+ \dgz K = 0 \Leftrightarrow \text{lokal $\exists L$ mit $\rot L = K$}
+$
+
+\subsection*{Globale Eigenschaften}
+Folgende Eigenschaften eines Vektorfelds $K$ sind äquivalent:
+\begin{itemize}
+ \item $K$ besitzt ein Potential, d.h., ein Skalarfeld $f$ mit $\grad f = K$\\
+ \item Das Integral von $K$ über jeden Weg hängt nur von Anfangs- und Endpunkt ab.\\
+ \item Das Integral über jeden geschlossenen Weg ist Null.\\
+ \item $K$ heisst konservativ.
+\end{itemize}
+
+\subsection*{Vektorielles Linienintegral}
+$\varphi:[a,b]\rightarrow C\subset\mathbb{R}^3$
+\begin{align*}
+  \text{Formel:}\quad&\int_C K(x)\cdot dx := \int_a^b K(\varphi(x))\cdot |\varphi'(t)| dt\\
+  \text{Satz von Stokes:}\quad & \int_C K(x)\cdot dx = \int_F \langle\rot K, n\rangle dF\quad F = \text{Fläche in}\ \mathbb{R}^3, C = \partial F, \text{Kurve}\\
+  \text{Satz von Green:}\quad & \int_{\partial B} \left\langle K\tbinom{x}{y},d\tbinom{x}{y}\right\rangle = \int_B (Q_x-P_y) dx dy
+\quad K = \begin{pmatrix}P\\Q\\0\end{pmatrix}, n = \begin{pmatrix}0\\0\\1\end{pmatrix}\\
+\end{align*}
+$n =$ Einheitsnormalenvektor\\
+Die Kurve heisst Feldlinie von $K$, falls gilt $\varphi'(t) = K(\varphi(t))$\\
+Zur Flächenberechnung im $\mathbb{R}^2$ wählt man $K\binom{x}{y} = \binom{0}{x}, \binom{-y}{0},\binom{-y/2}{x/2} \Rightarrow\rot K = 1$\\
+Interpretation: Arbeit oder Zirkulation von $K$ entlang $C$
+
+\subsection*{Vektorielles Flächenintegral}
+\begin{align*}
+  \text{Formel $\mathbb{R}^2$:}\quad& \int_{\gamma} \langle K,n \rangle |dx| = \int_a^b K(\gamma(t))\cdot n(\gamma(t))\cdot |\gamma^(t)| dt\\
+  \text{Formel $\mathbb{R}^3$:}\quad& \int_{\partial B} \langle K,n \rangle d\partial B := \int_D \left\langle K\left( \varphi\binom{u}{v}\right), (\varphi_u\times\varphi_v) \right\rangle du dv\\
+  \text{Satz von Gauss:}\quad& \int_{\partial B} \langle K,n \rangle = \int_B \div K d\mu(\vec(x))\\
+\end{align*}
+
+Die Randkurve $\gamma$ wird so orientiert, dass die Fläche stets links liegt, wenn man entlang $\gamma$ läuft.\\
+Der Einheitsnormalenvektor $n$ ist gleich $\frac{\varphi_u\times\varphi_v}{|\varphi_u\times\varphi_v|}$\\
+Die Richtung von $n$ ist immer nach rechts von $\gamma$ aus gesehen.
+Die Oberfläche eines Körpers im $\mathbb{R}^3$ wird stets nach aussen orientiert.

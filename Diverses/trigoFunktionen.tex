@@ -1,0 +1,63 @@
+\documentclass[a4paper,10pt,fleqn,landscape]{article}
+
+\usepackage{templateZsf}
+\usepackage{color,colortbl}
+\setlength{\arraycolsep}{10pt}
+\renewcommand{\arraystretch}{2.5}
+\begin{document}
+
+
+\section*{Trigonometrische und Hyperbolische Funktionen}
+\begin{multicols}{2}
+\subsection*{Beziehung zur Exponentialfunktion}
+$
+\begin{array}{lll}
+  \cos(x) = \frac{e^{ix}+e^{-ix}}{2}	& \cosh(x) = \frac{e^{x}+e^{-x}}{2}	& \arcosh(y) = \ln\left(y+\sqrt{y^2-1}\right)\\
+  \sin(x) = \frac{e^{ix}-e^{-ix}}{2i}	& \sinh(x) = \frac{e^{x}-e^{-x}}{2}	& \arsinh(y) = \ln\left(y+\sqrt{y^2+1}\right)\\
+  \tan(x) = \frac{e^{ix}-e^{-ix}}{e^{ix}+e^{-ix}}\cdot \frac{1}{i}	& \tanh(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
+& \artanh(y) = \frac{1}{2}\ln\left(\frac{1+y}{1-y}\right)\\
+
+\end{array}
+$
+
+\subsection*{Reihenentwicklungen}
+
+\begin{align*}
+e^x &= 1+x+\frac{x^2}{2}+\frac{x^3}{6}+\frac{x^4}{24}+\dotsc 	&&= \sum_{k=0}^{\infty} \frac{x^k}{k!}\\
+\cos x &= 1-\frac{x^2}{2}+\frac{x^4}{24}-+\dotsc 		&&= \sum_{k=0}^{\infty} (-1)^k \cdot\frac{x^{2k}}{(2k)!}\\
+\sin x &= x-\frac{x^3}{6}+\frac{x^5}{120}-+\dotsc		&&= \sum_{k=0}^{\infty} (-1)^k \cdot\frac{x^{2k+1}}{(2k+1)!}\\
+\cosh x &= 1+\frac{x^2}{2}+\frac{x^4}{24}+\dotsc		&&= \sum_{k=0}^{\infty} \frac{x^{2k}}{(2k)!}\\
+\sinh x &= x+\frac{x^3}{6}+\frac{x^5}{120}+\dotsc		&&= \sum_{k=0}^{\infty} \frac{x^{2k+1}}{(2k+1)!}\\
+\ln(1+x) &= x-\frac{x}{2}+\frac{x^2}{3}-+\dotsc			&&= \sum_{k=0}^{\infty} (-1)^{k-1}\cdot\frac{x^k}{k}\\
+\ln(x) &= (x-1)-\frac{(x-1)}{2}+\frac{(x-1)^2}{3}-+\dotsc	&&= \sum_{k=0}^{\infty} (-1)^{k-1}\cdot\frac{(x-1)^k}{k}\\
+\arctan x &= x-\frac{x^3}{3}+\frac{x^5}{5}-+\dotsc		&&= \sum_{k=0}^{\infty} (-1)^k\cdot\frac{x^{2k+1}}{2k+1}\\
+\artanh x &= x+\frac{x^3}{3}+\frac{x^5}{5}+\dotsc		&&= \sum_{k=0}^{\infty} \frac{x^{2k+1}}{2k+1}
+\end{align*}
+
+\subsection*{Additionstheoreme}
+$
+\begin{array}{ll}
+e^{x+y} = e^x\cdot e^y				& \ln(xy) = \ln(x) + \ln(y)\\
+\sin(x+y) = \sin(x) \cos(y) + \cos(x) \sin(y)	& \sinh(x+y) = \sinh(x) \cosh(y) + \cosh(x) \sinh(y)\\
+\cos(x+y) = \cos(x) \cos(y) - \sin(x) \sin(y)	& \cosh(x+y) = \cosh(x) \cosh(y) + \sinh(x) \sinh(y)\\
+\sin(2x) = 2\sin(x) \cos(x)			& \sinh(2x) = 2 \sinh(x)\cosh(x)\\
+\cos(2x) = \cos^2(x)-\sin^2(x)			& \cosh(2x) = \cosh^2(x) + \sinh^2(x)\\
+\cos^2(x) + \sin^2(x) = 1			& \cosh^2(x) - \sinh^2(x) = 1\\
+\sin^2(x) = -\frac{\cos(2x)}{2} + \frac{1}{2}	& \sinh^2(x) = \frac{\cosh(2x)}{2}-\frac{1}{2}\\
+\cos^2(x) = \frac{\cos(2x)}{2} + \frac{1}{2}	& \cosh^2(x) = \frac{\cosh(2x)}{2}+\frac{1}{2}
+\end{array}
+$
+
+\subsection*{Genaue Funktionswerte}
+$
+\begin{array}{l|ccccccccc}
+ \alpha		& 0	& \frac{\pi}{6}		& \frac{\pi}{4}		& \frac{\pi}{3}		& \frac{\pi}{2}	& \frac{2\pi}{3}	& \frac{3\pi}{4}	& \frac{5\pi}{6}	& \pi\\\hline
+ \sin\alpha	& 0	& \frac{1}{2}		& \frac{\sqrt{2}}{2}	& \frac{\sqrt{3}}{2}	& 1		& \frac{\sqrt{3}}{2}	& \frac{\sqrt{2}}{2}	& \frac{1}{2}		& 0\\
+ \cos\alpha	& 1	& \frac{\sqrt{3}}{2}	& \frac{\sqrt{2}}{2}	& \frac{1}{2}		& 0		& -\frac{1}{2}		& -\frac{\sqrt{2}}{2}	& -\frac{\sqrt{3}}{2}	& -1\\
+ \tan\alpha	& 0	& \frac{\sqrt{3}}{3}	& 1			& \sqrt{3}		& -		& -\sqrt{3}		& -1			& -\frac{\sqrt{3}}{3}	& 0\\
+\end{array}\\
+$
+Die Umkehrfunktion $\arcsin$ lässt sich ablesen, indem man zuerst den Eingabewert in der Zeile $\sin\alpha$ sucht, der Funktionswert ist dann der zugehörige Wert in der
+$\alpha$-Zeile. $\arcsin(1/2)$ ist z.B. $\pi/6$. Analog mit $\arccos, \arctan$
+\end{multicols}
+\end{document}

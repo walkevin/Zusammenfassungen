@@ -1,0 +1,28 @@
+\subsection{Kommutatoren}
+\subsubsection{Rechenregeln}
+$
+\begin{array}{rcl}
+
+\left[ \hat{A}, \hat{B} \right]			& := 	&\hat{A}\hat{B} - \hat{B}\hat{A}\\\\
+\left[ \hat{A}\hat{B}, \hat{C}\right]		& = 	&\hat{A} \left[\hat{B}, \hat{C} \right] + \left[ \hat{A},\hat{C} \right] \hat{B}\\
+\left[ \hat{A}, \hat{B}\hat{C}\right]		& =	&\left[\hat{A},\hat{B} \right] \hat{C} + \hat{B} \left[\hat{A},\hat{C}\right]\\
+\left[ \hat{A}\hat{B},\hat{C}\hat{D} \right]	& = 	&\hat{A} \left[\hat{B},\hat{C} \right] \hat{D} + \hat{A}\hat{C} \left[\hat{B},\hat{D} \right] + \left[\hat{A},\hat{C} \right] \hat{D}\hat{B} + \hat{C} \left[\hat{A},\hat{D} \right] \hat{B}
+
+\end{array}
+$
+\begin{itemize}
+	\item Wenn A und B vertauschen, sind sie gleichzeitig messbar und entsprechen klassischen Observablen.
+	\item Wenn A und B vertauschen, haben sie eine gemeinsame Basis von Eigenfunktionen.
+\end{itemize}
+
+\subsubsection{Beispiele}
+$
+\begin{array}{rclrcl}
+\left[\hat{x},\hat{p_x} \right]	& =	& -i\hbar	& \left[\hat{x},\hat{p_y} \right]	& =	& 0\\
+\left[\hat{l}_x, \hat{l}_y\right] 		& = 	& i\hbar \hat{l}_z	& \left[\hat{l}_x, \hat{l}_z\right]	& =	& i\hbar \hat{l}_y\\
+\left[\hat{l}_y, \hat{l}_z\right]		& =	& i\hbar \hat{l}_x	& \left[\hat{l}^2, \hat{l}_x \right]	& =	& 0\\
+\left[\hat{l}^2, \hat{l}_y\right]		& =	& 0			& \left[\hat{l}^2, \hat{l}_z\right]	& =	& 0\\
+\left[\hat{H},t \right] = \left[i\hbar \frac{\partial}{\partial t}, t\right]	& =	& i\hbar	&
+\left[\hat{H},\hat{x}\right]	& = 	& -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}(1-x)
+\end{array}
+$
