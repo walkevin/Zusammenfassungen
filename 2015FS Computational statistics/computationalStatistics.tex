@@ -1,0 +1,58 @@
+%Define toggles for environments.
+\newif\ifshowApplication
+\newif\ifshowTheory
+\newif\ifshowCode
+
+%Switch on or off environments.
+\showApplicationfalse
+\showTheorytrue
+\showCodetrue
+
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{environ}
+
+\setlength{\hoffset}{-1.5cm}
+\setlength{\voffset}{-1.5cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\textwidth}{19cm}
+\setlength{\textheight}{25.9cm}
+\setlength{\columnseprule}{0.5pt}
+\setlength{\parindent}{0cm}
+
+\title{Summary Computational Statistics}
+\author{Kevin Wallimann}
+
+\begin{document}
+% Define environments
+\NewEnviron{application}{
+    \ifshowApplication
+        \BODY
+    \fi
+}
+\NewEnviron{theory}{
+    \ifshowTheory
+        \BODY
+    \fi
+}
+\NewEnviron{code}{
+    \ifshowCode
+        \BODY
+    \fi
+}
+
+% Opening
+\maketitle
+
+% 1. Multiple Linear Regression
+\input{chapter1.tex}
+\end{document}
