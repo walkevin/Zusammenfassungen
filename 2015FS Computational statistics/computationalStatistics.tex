@@ -4,16 +4,19 @@
 \newif\ifshowCode
 
 %Switch on or off environments.
-\showApplicationfalse
+\showApplicationtrue
 \showTheorytrue
 \showCodetrue
 
 \documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{dingbat} % Include this before amssymb
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{tabularx}
 \usepackage{environ}
+\usepackage{xcolor}
+\usepackage{textcomp}
 
 \setlength{\hoffset}{-1.5cm}
 \setlength{\voffset}{-1.5cm}
@@ -28,6 +31,19 @@
 \setlength{\textheight}{25.9cm}
 \setlength{\columnseprule}{0.5pt}
 \setlength{\parindent}{0cm}
+
+\DeclareMathOperator{\argmin}{arg min}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\tr}{tr}
+
+% Prepare listings
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{beramono} % nicer font
+\usepackage{listings}
+\definecolor{darkgreen}{rgb}{0,.5,0}
+\definecolor{gray}{gray}{.3}
+\definecolor{verylightgray}{gray}{.9}
 
 \title{Summary Computational Statistics}
 \author{Kevin Wallimann}
@@ -44,15 +60,37 @@
         \BODY
     \fi
 }
-\NewEnviron{code}{
-    \ifshowCode
-        \BODY
-    \fi
-}
+
+\ifshowCode
+\lstnewenvironment{code}
+    {\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    frame=leftline,
+    xleftmargin=15pt,
+    backgroundcolor=\color{verylightgray},
+    breaklines=true,    
+%   
+    numbers=left,
+    numberstyle=\footnotesize\ttfamily,
+    numbersep=6pt,
+%   
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{darkgreen},
+%    
+    literate={\\$}{\$}1, %Syntax highlighting in Kile gets messed up otherwise
+    }}
+    {}
+\else
+    \NewEnviron{code}{}
+\fi
 
 % Opening
 \maketitle
 
 % 1. Multiple Linear Regression
 \input{chapter1.tex}
+
+% 3. Nonparametric Regression
+\input{chapter3.tex}
 \end{document}
