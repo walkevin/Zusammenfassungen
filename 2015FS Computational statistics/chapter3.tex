@@ -31,7 +31,7 @@
  
  # Output values
  m <- result\$y # Fitted values
- mx <- result\$x # Points where smoothed fit is evaluated. (See range.x, x.points)
+ mx <- result\$x # Points where smoothed fit is evaluated. (See x.points)
 \end{code}
 
 \subsection{Local polynomial regression estimator}
@@ -137,6 +137,16 @@ If the estimator is linear in $Y$, it can be viewed as a matrix-multiplication.
  \hat{\mathbf{y}} = \mathcal{S}\mathbf{y}
 \end{equation*}
 
+The estimator can be written as follows
+\begin{equation*}
+ \hat{m}(x) = \sum_{i=1}^n \omega_i(x)y_i
+\end{equation*}
+
+Then, the hat matrix is defined as
+\begin{equation*}
+ [\mathcal{S}]_{r,s} = \omega_s(x_r)\quad r,s \in {1, ..., n}
+\end{equation*}
+
 Covariance matrix
 \begin{subequations}
  \begin{gather*}
@@ -156,6 +166,23 @@ Degrees of freedom
 \end{equation*}
 
 \end{theory}
+
+\begin{code}
+ # Computing the hat matrix ``by hand''
+ n <- nrow(datasrc)
+ Id <- diag(n)
+ hatMatrix <- matrix(0, n, n)
+ for (j in 1:n)
+   hatMatrix[, j] <- estimator(datasrc\$x, Id[,j]) # estimator could be ksmooth, loess, smooth.spline, etc. Arguments are x and y
+
+ # Computing the hat matrix with sfsmisc
+ library(sfsmisc)
+ hatMatrix = hatMat(datasrc\$x, trace = FALSE,
+             pred.sm = function(x,y) estimator(x, y)\$y # depending on the estimator fitted instead of y has to be used
+ )
+\end{code}
+
+
 \subsection{General functions for estimators}
 \begin{code}
  predict.lm
