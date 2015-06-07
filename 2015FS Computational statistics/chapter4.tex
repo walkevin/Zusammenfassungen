@@ -1,9 +1,66 @@
 \section{Cross-Validation}
-Cross-Validation measures the predictive power of a learning method on new, out-sample data.
+Cross-Validation measures the predictive power of a learning method on new, out-sample data (test data).
 \subsection{Leave-one-out CV}
 \begin{theory}
- 
+ Idea: Use ith sample point as test data, remaining points as training data.
+ \begin{enumerate}
+  \item Eliminate $i$th sample point from training data
+  \item Compute an estimate based on this reduced training data
+  \item Evaluate (predict) estimate on $i$th sample point. (The predicted value is denoted by $\hat{m}_{n-1}^{(-i)}(X_i)$)
+  \item After this has been done for all $i$, compute CV score (see below)
+ \end{enumerate}
+ The estimator based on the sample without the $i$th observation is denoted by
+ \begin{equation*}
+  \hat{m}_{n-1}^{(-i)}
+ \end{equation*}
+
+ \begin{equation}
+  CV = \frac{1}{n} \sum_{i=1}^n\varrho \left( Y_i, \hat{m}_{n-1}^{(-i)}(X_i)  \right)
+  \label{eq:leave_one_out_cv}
+ \end{equation}
+ where $\varrho(u) = u^2$ (for example)
 \end{theory}
+\begin{code}
+loocv <- function(reg.data, reg.fcn)
+{
+  ## Help function to calculate leave-one-out regression values
+  loo.reg.value <- function(i, reg.data, reg.fcn)
+    return(reg.fcn(reg.data\$x[-i], reg.data\$y[-i], reg.data\$x[i]))
+  
+  ## Calculate LOO regression values using the help function above
+  n <- nrow(reg.data)
+  loo.values <- sapply((1:n), loo.reg.value, reg.data, reg.fcn)
+  
+  ## Calculate and return MSE
+  mse <- sum(sapply(reg.data\$y - loo.values, function(a) return (a*a))) / nrow(reg.data)
+  return(mse)
+}
+\end{code}
+
 \subsection{K-fold CV}
+\begin{theory}
+ Idea: Instead of excluding just one sample point at a time, exclude a group of $k$ sample points as test data.
+ \begin{equation*}
+  K^{-1} \sum_{k=1}^K |\mathcal{B}_k|^{-1} \sum_{i\in\mathcal{B}_k} \varrho \left( Y_i, \hat{m}_{n-|\mathcal{B}_k|}^{-\mathcal{B}_k} (X_i) \right)
+ \end{equation*}
+ $\hat{m}$ has the analogous meaning as for leave-one-out CV.
+\end{theory}
+
+%TODO: Leave-d-out CV with code? Page 35 in script.
 \subsection{Leave-d-out CV}
+
 \subsection{GCV}
+\begin{theory}
+ For the cubic smoothing spline (section \ref{subsec:smoothing_splines}) and the least squares parametric estimator,
+ the leave-on-out CV \eqref{eq:leave_one_out_cv} can be written as
+\begin{equation*}
+ GCV = \frac{n^{-1}\sum_{i=1}^n(Y_i - \hat{m}(X_i))^2}{(1-n^{-1} \tr(\mathcal{S}))^2}
+\end{equation*}
+\end{theory}
+
+\begin{code}
+ # Computing GCV using hat matrix
+ yfit <- estimatorFn(x, y)
+ hatMat <- hatMat(x,trace=FALSE,pred.sm=estimatorFn\$y) %TODO: Somehow insert this reference. # See section \ref{subsec:hatMatrix}
+ gcv <- mean(((y - yfit)/(1 - diag(hatMat)))^2))
+\end{code}
