@@ -29,6 +29,7 @@
         The quantiles are just the empirical quantiles of $\hat{\theta}_1^{\ast}, \cdots, \hat{\theta}_n^B$
  \end{enumerate}
 \end{theory}
+%TODO: insert boot package code
 \begin{code}
  # Define estimator
  g <- function(ind, data){ # ind: n x 1 matrix
@@ -52,5 +53,52 @@
 
  # Caution! The quantiles do not coincide with the confidence interval.
  \end{code}
-
+ \subsection{Bootstrap confidence interval}
  
+ \subsection{Double bootstrap}
+ 
+ \subsection{Bootstrap estimate of the generalization error}
+ 
+ \subsection{Model-based bootstrap}
+ \begin{application}
+ \begin{itemize}
+  \item[\leftthumbsup] If parametric model is very good, then it yields more accurate variance estimates or confidence intervals.
+  \item[\leftthumbsdown] Nonparametric bootstrap is less sensitive to model misspecification.
+ \end{itemize}
+ \end{application}
+ 
+ \begin{theory}
+  Given: a (linear) model with fixed predictors $\mathbf{x}_i \in \mathbb{R}^p$
+  \begin{gather*}
+      Y_i = \boldsymbol{\beta}^T \mathbf{x}_i + \epsilon_i \quad (i = 1, \cdots, n) \\
+     \epsilon_1, \cdots, \epsilon_n \text{ i.i.d} \sim \mathcal{N}(0, \sigma^2), \theta = (\beta, \sigma^2)
+  \end{gather*}
+
+  The bootstrap sample is constructed as follows:
+  \begin{enumerate}
+   \item Estimate $\hat{\sigma}^2$ from original data.
+   \item Simulate $\epsilon_1^{\ast}, \cdots, \epsilon_n^{\ast}$ i.i.d $\sim \mathcal{N}(0, \hat{\sigma}^2)$
+   \item Estimate $\boldsymbol{\hat{\beta}}$ from original data.
+   \item Construct
+         \begin{equation*}
+             Y_i^{\ast} = \boldsymbol{\hat{\beta}}^T \mathbf{x}_i + \epsilon^{\ast}_i \quad (i = 1, \cdots, n)
+         \end{equation*}
+         The bootstrap samples are then
+         \begin{equation*}
+          Z_1, \cdots, Z_n = (\mathbf{x}_1, Y_1^{\ast}, \cdots, \mathbf{x}_n, Y_n^{\ast})
+         \end{equation*}
+  \end{enumerate}
+ \end{theory}
+ 
+ \begin{code}
+  # Given: Y, x1 (intercept), x2, x3 all n x 1 matrices
+  dat <- data.frame(Y, x2, x3)
+  
+  empiricalSd <- sd(Y)
+  eps <- rnorm(n, mean=0, sd=empiricalSd)
+  beta <- coef(lm.fit(Y~x2+x3, dat))
+  Y_2 <- t(beta) %*% cbind(x1, x2, x3)
+  
+  # Get bootstrap samples
+  bst.samples <- cbind(x2, x3, Y_2)
+ \end{code}
