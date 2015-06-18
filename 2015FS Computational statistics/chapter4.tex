@@ -54,7 +54,7 @@ loocv <- function(reg.data, reg.fcn)
  For the cubic smoothing spline (section \ref{subsec:smoothing_splines}) and the least squares parametric estimator,
  the leave-on-out CV \eqref{eq:leave_one_out_cv} can be written as
 \begin{equation*}
- GCV = \frac{n^{-1}\sum_{i=1}^n(Y_i - \hat{m}(X_i))^2}{(1-n^{-1} \tr(\mathcal{S}))^2}
+ \text{GCV} = \frac{n^{-1}\sum_{i=1}^n(Y_i - \hat{m}(X_i))^2}{(1-n^{-1} \tr(\mathcal{S}))^2}
 \end{equation*}
 \end{theory}
 
@@ -62,5 +62,5 @@ loocv <- function(reg.data, reg.fcn)
  # Computing GCV using hat matrix
  yfit <- estimatorFn(x, y)
  hatMat <- hatMat(x,trace=FALSE,pred.sm=estimatorFn\$y) %TODO: Somehow insert this reference. # See section \ref{subsec:hatMatrix}
- gcv <- mean(((y - yfit)/(1 - diag(hatMat)))^2))
+ gcv <- mean((y - yfit)/(1 - diag(hatMat)))^2)
 \end{code}
