@@ -1,0 +1,56 @@
+\section{Bootstrap}
+\subsection{Bootstrap algorithm}
+\begin{application}
+\begin{itemize}
+ \item Useful for making statistical inference (confidence intervals, mean, variance, etc.)
+ \item[\leftthumbsup] Bootstrap not only valid for large $n$, as opposed to central limit theorem.
+\end{itemize}
+\end{application}
+\begin{theory}
+ Given: data set $\{Z_1, \cdots, Z_n\} \text{ i.i.d.} \sim P$, $P$ unknown. $Z_i$ may be a vector.
+ \begin{enumerate}
+  \item Draw $n$ uniform random samples with replacement (dt. mit Zur{\"u}cklegen) from data set to yield bootstrap sample
+        \begin{equation*}
+         \{Z_1^*, \cdots, Z_n^*\}
+        \end{equation*} 
+  \item Compute bootstrapped estimator (e.g. mean)
+        \begin{equation*}
+         \hat{\theta}_n^{\ast} = g(Z_1^*, \cdots, Z_n^{\ast})
+        \end{equation*}
+  \item Repeat steps 1 \& 2 $B$ times to get
+        \begin{equation*}
+         \hat{\theta}_1^{\ast}, \cdots, \hat{\theta}_n^B
+        \end{equation*}
+  \item Compute approximate bootstrap expectation, variance and quantiles for the estimator
+        \begin{align*}
+        \mathbb{E}[\hat{\theta}^{\ast}_n] & \approx \frac{1}{B} \sum_{i=1}^B \hat{\theta}_n^{\ast i}\\
+        \Var^{\ast}                       & \approx \frac{1}{B-1} \sum_{i=1}^B \left( \hat{\theta}_n^{\ast i} - \mathbb{E}[\hat{\theta}^{\ast}_n] \right)^2
+        \end{align*}  
+        The quantiles are just the empirical quantiles of $\hat{\theta}_1^{\ast}, \cdots, \hat{\theta}_n^B$
+ \end{enumerate}
+\end{theory}
+\begin{code}
+ # Define estimator
+ g <- function(ind, data){ # ind: n x 1 matrix
+    bst.smp <- data[ind,] # Draw a bootstrap sample
+    # Do anything with the sample, e.g. mean(bst.smp)
+    # Return a p x 1 matrix
+ }
+ 
+ # Create a n x B matrix of random indices
+ n <- nrow(data) # Assume one row corresponds to one datapoint Z_i
+ ind <- replicate(B, sample.int(n, replace = TRUE)) # n x B matrix
+ 
+ # Compute bootstrapped estimators (of dimension p)
+ bst.est <- apply(ind, 2, g, data = data) # p x B matrix
+ 
+ # Compute expectation, variance, quantiles
+ bst.ex  <- apply(bst.est, 1, mean) # p x 1 matrix
+ bst.var <- apply(bst.est, 1, var)  # p x 1 matrix
+ alpha <- 0.1
+ bst.qt  <- apply(bst.est, 1, quantile, probs=c(alpha/2, 1-alpha/2)) # p x 2 matrix
+
+ # Caution! The quantiles do not coincide with the confidence interval.
+ \end{code}
+
+ 
