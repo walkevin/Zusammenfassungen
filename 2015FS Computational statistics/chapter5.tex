@@ -1,5 +1,6 @@
 \section{Bootstrap}
 \subsection{Bootstrap algorithm}
+\label{subsec:bootstrap_algorithm}
 \begin{application}
 \begin{itemize}
  \item Useful for making statistical inference (confidence intervals, mean, variance, etc.)
@@ -58,7 +59,42 @@
  \subsection{Double bootstrap}
  
  \subsection{Bootstrap estimate of the generalization error}
- 
+ \begin{theory}
+  The practical algorithm is:
+  \begin{enumerate}
+   \item Generate the usual bootstrap sample $(X_1^{\ast}, Y_1^{\ast}), \cdots, (X_n^{\ast}, Y_n^{\ast})$
+   \item Compute a bootstrapped estimator $\hat{m}^{\ast}$
+   \item Evaluate $\text{err}^{\ast} = \frac{1}{n} \sum_{i=1}^n \varrho(Y_i, \hat{m}^{\ast}(X_i))$
+   \item Repeat steps 1-3 $B$ times and take the mean.
+  \end{enumerate}
+  \begin{itemize}
+   \item This algorithm fits nicely into the general framework from \ref{subsec:bootstrap_algorithm}. Only $g$ has to be changed (see code)
+   \item The \textbf{out-of-bootstrap sample} variant doesn't evaluate $\hat{m}^{\ast}$ at points, which have already been used to construct the estimator.
+  \end{itemize}
+ \end{theory}
+
+ \begin{code}
+  # Bootstrap estimate of generalization error
+  g <- function(ind, data){# ind: m x 1 matrix, data: n x p matrix, 1.col response, other cols predictors
+    bst.sample <- data[ind, ] # m x p matrix
+    m <- someEstimatorFn(bst.sample)
+    # Evaluate m at sample points
+    mx <- predict(m, bst.sample[,-1]) # n x 1 matrix
+    # Compute L1 error norm
+    mean(abs(data[``y''] - mx))
+  }
+  
+  # Out-of-bootstrap sample
+  g2 <- function(ind, data){# ind: m x 1 matrix, data: n x p matrix
+    m.sample <- data[ind, ] # m x p matrix
+    m <- someEstimatorFn(m.sample)
+    # Evaluate m at out-of-sample points
+    mx <- predict(m, data[-ind,-1]) # n x 1 matrix
+    # Compute L1 error norm
+    mean(abs(data[``y''] - mx))
+  }
+ \end{code}
+
  \subsection{Model-based bootstrap}
  \begin{application}
  \begin{itemize}
@@ -97,7 +133,7 @@
   empiricalSd <- sd(Y)
   eps <- rnorm(n, mean=0, sd=empiricalSd)
   beta <- coef(lm.fit(Y~x2+x3, dat))
-  Y_2 <- t(beta) %*% cbind(x1, x2, x3)
+  Y_2 <- cbind(x1, x2, x3) %*% beta
   
   # Get bootstrap samples
   bst.samples <- cbind(x2, x3, Y_2)
