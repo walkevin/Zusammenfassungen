@@ -57,7 +57,72 @@
  \subsection{Bootstrap confidence interval}
  
  \subsection{Double bootstrap}
+ \begin{code}
+  g <- function(ind, data){
+    bst.smp <- data[ind,]
+    # someEstimatorFn(bst.smp)
+    # someResult
+  }
  
+  confidenceInterval <- function(ind2, data, bst.est, alpha){
+    bst2.est <- apply(ind2, 2, g, data = data) #\hat{\theta}^{\ast\ast}
+    bst2.qt <- apply(bst2.est - bst.est, probs=c(alpha/2, 1-alpha/2))
+    c(bst.est - bst2.qt[1], bst.est - bst2.qt[2])
+  }
+ 
+  coverages <- function(ind, data, est, alpha){ # ind: n x 1 matrix
+    # Estimate theta
+    bst.est <- apply(ind, 2, g, data = data) #\hat{\theta}^{\ast}
+    
+    # Create B 2nd level bootstrap indices
+    ind2 <- replicate(B, sample(ind, n, replace = TRUE)) # n x B matrix
+    ci <- apply(ind2, 2, confidenceInterval, data = data, bst.est = bst.est, alpha = alpha) # 2 x B matrix
+    
+    # Compute coverages
+    coverages <- est >= ci[1] & ci < ci[2]
+  }
+ 
+  # Compute estimate of original data
+  est <- g(1:nrow(data), data)
+  alpha_prime <- 0.5
+  a <- 0
+  b <- 1
+  tol <- 1e-04
+  maxIter <- 20
+  i <- 0
+  converged <- FALSE
+  while(i < maxIter){ # Search for right alpha_prime with bisection
+    alpha_prime <- (a+b)/2
+    # Get first level bootstrap random indices
+    ind <- replicate(M, sample.int(n, replace = TRUE)) # n x M matrix
+    # Get M bootstrapped estimates of coverage
+    cover <- apply(ind, 2, coverages, data = data, est = est, alpha = alpha_prime)
+    # Probability that est is in confidence interval
+    pa <- mean(cover)
+    
+    if(abs(pa - alpha) < tol){
+        converged <- TRUE
+        break;
+    }
+    else{
+        if(pa < alpha){
+            a <- a+(b-a)/2
+        }
+        else{
+            b <- b-(b-a)/2
+        }
+    }
+    i <- i+1
+  }
+  
+  if(!converged){
+    cat(``Not converged.'')
+  }
+  
+  # Return corrected confidence interval level
+  alpha_prime
+ \end{code}
+
  \subsection{Bootstrap estimate of the generalization error}
  \begin{theory}
   The practical algorithm is:
