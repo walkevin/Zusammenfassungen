@@ -55,8 +55,21 @@
  # Caution! The quantiles do not coincide with the confidence interval.
  \end{code}
  \subsection{Bootstrap confidence interval}
- 
+ \begin{theory}
+  \begin{equation*}
+   [2\hat{\theta}_n - q^{\ast}_{1-\alpha/2}, 2\hat{\theta}_n - q^{\ast}_{\alpha/2}]
+  \end{equation*}
+  where $\hat{q}_{\alpha} = q_{\alpha}^{\ast} - \hat{\theta}_n$, with $q^{\ast}_{\alpha}$ = $\alpha$-bootstrap quantile of $\hat{\theta}^{\ast}_n$  
+ \end{theory}
+
  \subsection{Double bootstrap}
+ \begin{application}
+  \begin{itemize}
+   \item[\leftthumbsup] Better accuracy than simple confidence interval above
+  \end{itemize}
+
+ \end{application}
+
  \begin{code}
   g <- function(ind, data){
     bst.smp <- data[ind,]
