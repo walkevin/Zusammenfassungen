@@ -1,4 +1,85 @@
 \section{Classification}
-\subsection{Linear discriminant analysis}
-\subsection{Quadratic discriminant analysis}
+\begin{theory}
+ \begin{itemize}
+  \item Response variable $Y$ is element of a discrete set $\{0, \cdots, J-1\}$
+  \item The discrete version of an estimator $\hat{m}$ is the probability function
+        \begin{equation*}
+         \pi_j(x) = \mathbb{P}[Y=j|X=x]\quad(j=0,1,\cdots,J-1)
+        \end{equation*}
+  \item A \textbf{classifier} is the function
+        \begin{equation*}
+         \mathcal{C}: \mathbb{R}^p \rightarrow \{0, \cdots, J-1\}
+        \end{equation*}
+  \item The \textbf{Bayes classifier} is
+        \begin{equation*}
+         \mathcal{C}_{\text{Bayes}}(x) = \argmax_{0\leq j<J-1} \pi_j(x)
+        \end{equation*}
+  \item A discrete version of the loss function is
+        \begin{equation*}
+         \varrho(x, x') = \begin{cases}
+                           0 & \text{if }x = x'\\
+                           1 & \text{else}
+                          \end{cases}
+        \end{equation*}
+  \end{itemize}
+\end{theory}
+\subsection{Linear discriminant analysis (LDA)}
+\begin{theory}
+ LDA is based on the following model
+ \begin{align*}
+  (X|Y=j) & \sim \mathcal{N}_p(\mu_j, \boldsymbol{\Sigma}),\\
+  P[Y=j]  & = p_j, \quad \sum_j^{J-1}p_j=1
+ \end{align*}
+ \begin{itemize}
+  \item Especially, the covariance $\boldsymbol{\Sigma}$ is the same for each group.
+  \item Decision boundaries (boundaries between different classes) are hyperplanes.
+ \end{itemize} 
+\end{theory}
+\begin{code}
+ data <- iris[,c("Petal.Length","Petal.Width")] # A data set
+ classes <- as.integer(Iris[,"Species"]) # These are the classes
+ library(MASS)
+ # Train the LDA estimator
+ class_lda <- lda(x=data[,c("Petal.Length", "Petal.Width")], grouping=classes)
+
+ # Use it to predict
+ n <- 10
+ xp <- seq(min(data[,1]), max(data[,1]), length = n)
+ yp <- seq(min(data[,2]), max(data[,2]), length = n)
+ grid <- cbind(rep(xp, n), rep(yp, each=n))
+ 
+ z <- predict(class_lda, data.frame(grid))
+ 
+ # Plot classes
+ plot(grid[,1], grid[,2], col=as.numeric(z\$class), pch=as.numeric(z\$class))
+ 
+ # Plot contours (Use z\$post values for smoother contours)
+ nLevels = length(unique(classes))
+ contour(grid[,1], grid[,2], as.numeric(z\$class), levels=1:nLevels, add=TRUE)
+ 
+ # Overoptimistic error estimate
+ fit_lda <- predict(class_lda)
+ error_lda <- mean(as.numeric(classes) != fit_lda)
+\end{code}
+
+
+\subsection{Quadratic discriminant analysis (QDA)}
+\begin{theory}
+ QDA is based on the following model
+ \begin{align*}
+  (X|Y=j) & \sim \mathcal{N}_p(\mu_j, \boldsymbol{\Sigma}_j),\\
+  P[Y=j]  & = p_j, \quad \sum_j^{J-1}p_j=1
+ \end{align*}
+ \begin{itemize}
+  \item Covariance $\boldsymbol{\sigma}$ varies for each group.
+  \item[\leftthumbsup] More flexible and general than LDA
+  \item[\leftthumbsdown] Typically overfits for large $p$ (dimension)
+ \end{itemize} 
+\end{theory}
+\begin{code}
+ # See LDA Example
+ library(MASS)
+ qda(x, grouping, ...)
+\end{code}
+
 \subsection{Logistic regression}
