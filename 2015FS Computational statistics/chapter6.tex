@@ -83,3 +83,51 @@
 \end{code}
 
 \subsection{Logistic regression}
+\subsubsection{Binary classification}
+\begin{theory}
+ \begin{itemize}
+  \item Logistic model for $\pi(\cdot)$
+        \begin{align*}
+                         & \log\left( \frac{\pi(x)}{1-\pi(x)} \right) = g(x)\\
+         \Leftrightarrow & \pi(x) = \frac{e^{g(x)}}{1+e^{g(x)}}\\
+                         & g: \mathbb{R}^p \rightarrow \mathbb{R}
+        \end{align*}
+  \item A simple model for $g(\cdot)$ is
+        \begin{equation*}
+         g(x) = \sum_{j=1}^p \beta_jx_j
+        \end{equation*}
+  \item The parameters $\beta_j$ can be fitted using maximum-likelihood.
+  \item Recap: Max-likelihood
+        \begin{gather*}
+         Y_1, \cdots, Y_n \text{ i.i.d., } Y_i \sim f_{\pi, \cdots}(Y_i)\\
+         L(\pi, \cdots; \vec{Y}) = \prod_{i=1}^n f_{\pi, \cdots}(Y_i)\\
+         \ell := \log(L) = \sum_{i=1}^n \log f_{\pi, \cdots}(Y_i)
+        \end{gather*}\\
+        Example: $Y_i \sim \text{Bernoulli}(\pi(x_i))$. Then, $f = f_{\pi(x_i)}(Y_i) = \pi(x_i)^{Y_i} (1-\pi(x_i))^{1-Y_i}$
+ \end{itemize}
+\end{theory}
+
+\begin{code}
+ ## Manual max likelihood
+ neg.logL <- function(beta, dat){
+  g <- beta[1] + beta[2] * dat\$x;
+  -sum(g - log(1 + exp(g)))
+ }
+ 
+ # Compute minimizer
+ opt.beta <- optim(c(0,0), neg.logL, dat = someData)
+ 
+ # Predict some new values
+ new.X <- 10:100
+ g2 <- opt.beta[1] + opt.beta[2] * new.X
+ new.Y <- exp(g2) / (1+exp(g2))
+ 
+ ## Do the same using glm()
+ fit <- glm(Y ~ X, data = someData, family=``binomial'')
+ new.Y_glm <- predict(fit, newdata=data.frame(X=new.X))
+ 
+ # See family in R-help for details about binomial etc.
+ |%# glm(formula = cbind(N, m-N) ~ age , family=``binomial'') for Bin(n,p) distribution|
+\end{code}
+
+
