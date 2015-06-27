@@ -17,8 +17,8 @@
 \begin{code}
  library(mgcv) # for gam
  library(sfsmisc) # for wrapFormula
- data(ozone, package=``gss'')
- form <- as.formula(``upo3 ~.'')
+ data(ozone, package="gss")
+ form <- as.formula("upo3 ~.")
  
  # Do the GAM fit
  gamForm <- wrapFormula(formula = form, data = ozone, wrapString = "s(*)") #s is part of mgcv

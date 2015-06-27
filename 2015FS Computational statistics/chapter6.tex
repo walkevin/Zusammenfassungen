@@ -123,11 +123,11 @@
  new.Y <- exp(g2) / (1+exp(g2))
  
  ## Do the same using glm()
- fit <- glm(Y ~ X, data = someData, family=``binomial'')
+ fit <- glm(Y ~ X, data = someData, family="binomial")
  new.Y_glm <- predict(fit, newdata=data.frame(X=new.X))
  
  # See family in R-help for details about binomial etc.
- |%# glm(formula = cbind(N, m-N) ~ age , family=``binomial'') for Bin(n,p) distribution|
+ |%# glm(formula = cbind(N, m-N) ~ age , family="binomial") for Bin(n,p) distribution|
 \end{code}
 
 

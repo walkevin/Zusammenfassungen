@@ -129,7 +129,7 @@
   }
   
   if(!converged){
-    cat(``Not converged.'')
+    cat("Not converged.")
   }
   
   # Return corrected confidence interval level
@@ -159,7 +159,7 @@
     # Evaluate m at sample points
     mx <- predict(m, bst.sample[,-1]) # n x 1 matrix
     # Compute L1 error norm
-    mean(abs(data[``y''] - mx))
+    mean(abs(data["y"] - mx))
   }
   
   # Out-of-bootstrap sample
@@ -169,7 +169,7 @@
     # Evaluate m at out-of-sample points
     mx <- predict(m, data[-ind,-1]) # n x 1 matrix
     # Compute L1 error norm
-    mean(abs(data[``y''] - mx))
+    mean(abs(data["y"] - mx))
   }
  \end{code}
 
