@@ -85,7 +85,7 @@
  
   coverages <- function(ind, data, est, alpha){ # ind: n x 1 matrix
     # Estimate theta
-    bst.est <- apply(ind, 2, g, data = data) #\hat{\theta}^{\ast}
+    bst.est <- apply(ind, 2, g, data = data) #|$\hat{\theta}^{\ast}$|
     
     # Create B 2nd level bootstrap indices
     ind2 <- replicate(B, sample(ind, n, replace = TRUE)) # n x B matrix

@@ -61,6 +61,6 @@ loocv <- function(reg.data, reg.fcn)
 \begin{code}
  # Computing GCV using hat matrix
  yfit <- estimatorFn(x, y)
- hatMat <- hatMat(x,trace=FALSE,pred.sm=estimatorFn\$y) %TODO: Somehow insert this reference. # See section \ref{subsec:hatMatrix}
+ hatMat <- hatMat(x,trace=FALSE,pred.sm=estimatorFn\$y) # See section |\ref{subsec:hatMatrix}|
  gcv <- mean((y - yfit)/(1 - diag(hatMat)))^2)
 \end{code}
