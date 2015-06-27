@@ -1,2 +1,27 @@
 \section{Flexible regression and classification methods}
 \subsection{Additve models}
+\begin{theory}
+\begin{itemize}
+ \item Let a regression function $\mathbb{E}[Y|X = x]$ or a binary classification problem $\log(\pi(x)/(1-\pi(x))$ be denoted by 
+ \begin{equation*}
+  g(\cdot):\mathbb{R}^p\rightarrow\mathbb{R}
+ \end{equation*}
+ \item The model is
+ \begin{gather*}
+  g_{\text{add}}(x) = \mu + \sum_{j=1}^p g_j(x_j), \quad\mu\in\mathbb{R}\\
+  g_j(\cdot): \mathbb{R}\rightarrow\mathbb{R},\quad\mathbb{E}[g_j(X_j)] = 0\quad (j=1,\cdots,p)
+ \end{gather*}
+ \item No curse of dimensionality, because the individual $g_j$ only depend on a 1-dimensional variable.
+\end{itemize}
+\end{theory}
+\begin{code}
+ library(mgcv) # for gam
+ library(sfsmisc) # for wrapFormula
+ data(ozone, package=``gss'')
+ form <- as.formula(``upo3 ~.'')
+ 
+ # Do the GAM fit
+ gamForm <- wrapFormula(formula = form, data = ozone, wrapString = "s(*)") #s is part of mgcv
+ fit <- gam(gamForm, data = ozone) 
+ summary(fit)
+\end{code}
