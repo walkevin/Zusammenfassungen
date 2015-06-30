@@ -1,4 +1,11 @@
 \section{Flexible regression and classification methods}
+\begin{application}
+ \begin{itemize}
+  \item Fully nonparametric models are very expensive due to the curse of dimensionality.
+  \item All of the following models are of nonparametric nature.
+  \item They all have some structural assumptions to mitigate the curse of dimensionality.
+ \end{itemize}
+\end{application}
 \subsection{Additve models}
 \begin{theory}
 \begin{itemize}
@@ -14,6 +21,13 @@
  \item No curse of dimensionality, because the individual $g_j$ only depend on a 1-dimensional variable.
 \end{itemize}
 \end{theory}
+\begin{application}
+\begin{itemize}
+ \item[\leftthumbsup] Additve model doesn't suffer from curse of dimensionality.
+ \item[\leftthumbsdown] No interaction terms such as $g_{j,k}(x_j, x_k)$ 
+\end{itemize}
+\end{application}
+
 \begin{code}
  library(mgcv) # for gam
  library(sfsmisc) # for wrapFormula
@@ -24,4 +38,113 @@
  gamForm <- wrapFormula(formula = form, data = ozone, wrapString = "s(*)") #s is part of mgcv
  fit <- gam(gamForm, data = ozone) 
  summary(fit)
+\end{code}
+
+\subsection{Multivariate adaptive regression splines (MARS)}
+\begin{application}
+\begin{itemize}
+ \item[\leftthumbsup] Often useful for high-dimensional problems with many predictor variables.
+ \item MARS with interaction degree = 1 yields an additive model.
+\end{itemize}
+\end{application}
+
+\begin{theory}
+ The model is
+ \begin{equation*}
+  g(x) = \mu + \sum_{m=1}^M \beta_m h_m(x)
+ \end{equation*}
+ where $\beta_m \in \mathbb{R}$ and each $h_m(x)$ is a function (or a product of functions) from the basis $\mathcal{B}$.
+ The basis $\mathcal{B}$ consists of so called \textit{hinge functions}.
+ \begin{equation*}
+  \mathcal{B} = \{x_j - d)_+, (d - x_j)_+;\quad d \in \{x_{1,j}, x_{2,j},\cdots, x_{n,j}, j \in \{1,\cdots,p\}
+ \end{equation*}
+ A hinge function is defined as
+ \begin{equation*}
+  (x_j - d)_+ = \begin{cases}
+                 x_j - d & \text{if} x_j > d\\
+                 0       & \text{otherwise}
+                \end{cases}
+ \end{equation*}
+ A sample output from a MARS fitting could be
+\parbox{\linewidth}{
+    \texttt{
+    \begin{tabular}{ll}
+                            & coefficients \\
+    (Intercept)                & 2.78936250 \\
+    h(47-hmdt)                 &-0.01321978 \\ 
+    h(52-sbtp)                 &-0.01779088 \\
+    h(200-vsty)                & 0.00196268 \\ 
+    h(wdsp-7) * h(200-vsty)    &-0.00152861 \\
+    h(44-hmdt) * h(52-sbtp)    & 0.00179851    
+    \end{tabular}
+    }
+}
+The variables $x_1, \cdots, x_4$ are \textit{hmdt, sbtp, vsty} and \textit{wdsp}. The chosen hinge functions $h_m$ are shown in the left column. The coefficients $\beta_m$ are shown in the right column.
+%TODO: Some reference to the algorithm.
+\end{theory}
+
+\begin{code}
+ ozone <- read.table("...")
+ library(earth) # earth is open-source
+ fit <- earth(upo3 ~ ., data = ozone, degree = 2)
+ summary(fit)
+ 
+ # Plot interactions
+ plotmo(fit, degree2 = FALSE)
+ plotmo(fit, degree1 = FALSE)
+\end{code}
+
+
+\subsection{Projection pursuit regression (PPR)}
+\begin{theory}
+The model is
+ \begin{gather*}
+  g_{\text{PPR}}(x) = \mu + \sum_{k=1}^q \beta_k f_k \left( \sum_{j=1}^p \alpha_{jk}x_j \right), \quad\text{where}\\
+  \sum_{j=1}^p \alpha_{jk}^2 = 1, \mathbb{E}[f_k \left( \sum_{j=1}^p \alpha_{jk}X_j \right)]=0,\quad\text{for all $k$}
+ \end{gather*}
+ The nonparametric functions $f_k(\cdot):\mathbb{R}\rightarrow\mathbb{R}$ are the so called \textit{ridge functions}.
+ A sample output from a PPR fitting could be
+ \parbox{\linewidth}{
+  \texttt{
+   \begin{tabular}{lll}
+    \multicolumn{3}{l}{Projection direction vectors:}\\
+         & term 1   & term 2\\
+    vdht & 0.00021  & -0.07819\\
+    wdsp & -0.09305 & -0.95991\\
+    sbtp & 0.91062  & 0.23228\\
+    ibht & -0.00086 & 0.00262 
+   \end{tabular}\\
+   \begin{tabular}{ll}
+    \multicolumn{2}{l}{Coefficients of ridge terms:}\\
+    term 1  & term 2\\
+    0.53914 & 0.10202
+   \end{tabular}
+  }
+ }
+ \begin{itemize}
+  \item PPR was carried out with 2 terms ($k=2$).
+  \item The projection direction vectors are the $\alpha_{jk}$. \textit{ibht} has a negligible overall effect, \textit{wdsp} dominates \textit{term 2}.
+  \item Coefficients of ridge terms are the $\beta_k$.
+ \end{itemize}
+
+\end{theory}
+\begin{application}
+ \begin{itemize}
+  \item In general, it is good if the ridge functions look smoothely.
+  \item A more objective measure is of course a CV score comparison.
+ \end{itemize}
+\end{application}
+
+\begin{code}
+ ozone <- read.table("...")
+ # Important options are:
+ # sm.method = {"supsmu", "spline", "gcvspline"}
+ # nterms
+ # df for spline
+ # bass, span for supsmu
+ # gcvpen for gcvspline
+ fit <- ppr(upo3 ~ ., data = ozone, nterms=4)
+ par(mfrow=c(2,2))
+ plot(fit)
+ predict(fit, xnew)
 \end{code}
