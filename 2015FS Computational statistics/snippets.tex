@@ -30,5 +30,12 @@
  rowMeans()
  colSums()
  rowSums()
+ 
+ # Log transformation
+ dat\$x1 <- log(dat\$x1)
+ d.dat <- subset(dat, select=-upo3)
+ 
+ formula <- y ~ .^2 # 2-way interactions between all explanatory variables
+
  \end{code}
 

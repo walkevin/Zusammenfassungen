@@ -148,3 +148,87 @@ The model is
  plot(fit)
  predict(fit, xnew)
 \end{code}
+
+\subsection{Classification and Regression Trees (CART)}
+\begin{theory}
+ The model function is piecewise constant.
+ \begin{equation*}
+  g_{\text{tree}}(x) = \sum_{r=1}^M \beta_r \mathbf{1}_{[x\in\mathcal{R}_r]}
+ \end{equation*}
+ where $\mathcal{P} = \{\mathcal{R}_1, \dotsc, \mathcal{R}_M\}$ is a partition of $\mathbb{R}^p$. $p$ is the number of explanatory variables.
+ If the partition was given, $\beta_r$ would be estimated as
+ \begin{equation*}
+  \hat{\beta}_r = \sum_{i=1}^n Y_i \mathbf{1}_{[x_i\in\mathcal{R}_r]} / \mathbf{1}_{[x_i\in\mathcal{R}_r]}
+ \end{equation*}
+ which is the mean of the responses of the explanatory variables "living" in region $\mathcal{R}_r$.
+ %TODO: some reference on the algorithm
+ %TODO:\paragraph{Tree structure}
+ \paragraph{Pruning and model selection}
+ To decide on the height of the tree, an error for each tree is determined by cross-validation.
+ The smallest tree is taken, whose error is within the standard error of the minimal error.
+ \end{theory}
+
+\begin{code}
+ data <- read.table("...", header = TRUE)
+ 
+ # Get full tree
+ library(rpart)
+ tree <- rpart(Y ~ ., data = data, control = rpart.control(cp = 0.0, minsplit = 30))
+ 
+ # Plot/Print complexity parameter
+ plotcp(tree)
+ printcp(tree)
+ 
+ # Prune tree
+ ## choose optimal cp according to 1-std-error rule:
+ min.ind <- which.min(tree\$cptable[,"xerror"])
+ min.lim <- tree\$cptable[min.ind, "xerror"] + tree\$cptable[min.ind, "xstd"]
+ cp.opt <- tree\$cptable[(tree\$cptable[,"xerror"] < min.lim),"CP"][1]
+ 
+ ## Pruning
+ tree.pruned <- prune.rpart(tree, cp = cp.opt)
+ 
+ # Compute misclassification error
+ # Test = Training data
+ err1 <- mean(residuals(tree))
+ # Test != Training data
+ err2 <- mean(sapply(newdata\$Y - predict(tree.pruned, data = newdata, type="vector"), function(x) x*x))
+ 
+ # Plotting tree
+ library(rpart.plot)
+ prp(tree, extra=1, type=1, 
+   box.col=c('pink', 'palegreen3', 
+             'lightsteelblue 2','lightgoldenrod 1')[tree\$frame\$yval])
+
+ # Alternative plotting
+ library(maptree)
+ draw.tree(tree)
+\end{code}
+
+\subsection{Variable Selection, Regularization, Ridging and the Lasso}
+\begin{theory}
+ \paragraph{Optimal $\lambda$}
+\end{theory}
+
+\begin{code}
+ dat <- read.table("...", header = TRUE);
+ mm <- model.matrix(someFormula, data = dat)
+ require(glmnet)
+ ridge <- glmnet(x=mm, y=dat\$y, alpha=0)
+ lasso <- glmnet(x=mm, y=dat\$y, alpha=1)
+ 
+ # plot parameters (see plot.glmnet for help)
+ plot(ridge, xvar="lambda")
+ plot(lasso, xvar="lambda")
+ 
+ # 10-fold CV to get optimal lambda
+ set.seed(1)
+ cv.eln <- cv.glmnet(mm, dat\$y, alpha=0.5, nfolds=10)
+ ## Look up minimal lambda and 1SE lambda, resp.
+ lmin <- cv.eln\$lambda.min
+ l1se <- cv.eln\$lambda.1se
+ ## Look up corresponding CV errors
+ cvmin <- cv.eln\$cvm[match(lmin, cv.eln\$lambda)]
+ cv1se <- cv.eln\$cvm[match(l1se, cv.eln\$lambda)]
+ 
+\end{code}
