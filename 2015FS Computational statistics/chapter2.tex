@@ -1,0 +1,40 @@
+\section{Nonparametric Density Estimation}
+\subsection{Kernel estimator}
+\begin{theory}
+Similar to a histogram, the density function $f(\cdot)$ at a point $x$ can be represented as
+\begin{equation*}
+ f(x) = \lim_{h\to 0} \frac{1}{2h} \mathbb{P}[x-h < X \leq x+h]
+\end{equation*}
+The probability can be estimated using a kernel function
+\begin{gather*}
+ \hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K \left( \frac{x - X_i}{h} \right) \\
+ K(x) \geq 0, \int_{-\infty}^{\infty} K(x) dx = 1, K(x) = K(-x)
+\end{gather*}
+$h$ is the bandwidth and is a tuning parameter. Popular kernels are the Gaussian kernel
+\begin{equation*}
+ K_G(x) = \sqrt{2\pi} e^{-x^2 / 2}
+\end{equation*}
+and the Epanechnikov kernel
+\begin{equation*}
+ K_E(x) = \frac{3}{4} \left( 1 - |x|^2 \right) \mathbf{1} (|x| \leq 1)
+\end{equation*}
+\end{theory}
+\begin{code}
+ ke <- density(data, bw = 0.2, kernel="gaussian", n = , from = , to =)
+\end{code}
+
+
+\subsection{Bias-Variance trade-off}
+\begin{align*}
+ \text{Bias} &= \mathbb{E}[\hat{f}(x)] - f(x)\\
+ \text{Variance} &= \mathbb{E}[\hat{f}(x)^2] - \mathbb{E}[\hat{f}(x)]^2
+\end{align*}
+
+\framebox{The bias of $\hat{f}$ increases and the variance of $\hat{f}$ decreases as $h$ increases}
+For example, if $h$ was infinite, $\hat{f}(x)$ would be a constant, thus it had no variance but a big bias.
+
+\subsection{The curse of dimensionality}
+It has been shown that the best possible MSE rate is
+\begin{equation*}
+ \mathcal{O}(n^{-4/(4+d)})
+\end{equation*}
