@@ -206,8 +206,38 @@ The model is
 \end{code}
 
 \subsection{Variable Selection, Regularization, Ridging and the Lasso}
+\begin{application}
+ \begin{itemize}
+  \item For normal linear regression, the number of observations $n$ must be larger than the number of explanatory variables $p$.
+  \item Ridging and Lasso can be used if $p \ll n$
+  \item This situation can also arise, if several explanatory variables are highly correlated.
+  \item Lasso is computationally more costly, but more interesting, because some $\beta_j$ will be zero for large enough $\lambda$
+  \item Ridge regression is computationally easier, and $\beta_j$ will go to zero as $\lambda$ increases, but not be exactly zero.
+  \item The larger $\lambda$, the higher is the bias for $\boldsymbol{\beta}$, but the lower its variance.
+ \end{itemize}
+\end{application}
+
 \begin{theory}
- \paragraph{Optimal $\lambda$}
+ \paragraph{Ridge regression} is defined as
+ \begin{equation*}
+  \tilde{\boldsymbol{\beta}}(s) = \argmin_{\|\boldsymbol{\beta}\|^2 \leq s} \|\mathbf{Y} - X \boldsymbol{\beta}\|^2
+ \end{equation*}
+ This can be expressed with the Lagrange multiplier $\lambda$
+ \begin{equation*}
+  \hat{\boldsymbol{\beta}}^{\ast}(\lambda) = \argmin_{\boldsymbol{\beta}} \left( \|\mathbf{Y} - X\boldsymbol{\beta}\|^2 + \lambda \|\boldsymbol{\beta}\|^2 \right)
+ \end{equation*}
+ This minimization problem is equivalent to the normal equations
+ \begin{equation*}
+  (X^TX+\lambda I) \hat{\boldsymbol{\beta}}^{\ast} = X^T\mathbf{Y}
+ \end{equation*}
+
+ \paragraph{Lasso} is defined as
+ \begin{align*}
+  \hat{\boldsymbol{\beta}}^{\ast}(\lambda) &= \argmin_{\boldsymbol{\beta}} \left( \|\mathbf{Y} - X\boldsymbol{\beta}\|^2 + \lambda \sum_{j=1}^p |\beta_j| \right)\\
+                                           &= \argmin_{\boldsymbol{\beta}} \left( \|\mathbf{Y} - X\boldsymbol{\beta}\|^2 + \lambda \|\boldsymbol{\beta}\|_1 \right)
+ \end{align*} 
+ This is solved by quadratic programming.
+ \paragraph{Optimal $\lambda$} The optimal $\lambda$ can be found e.g. by GCV, k-fold CV or by plotting $\boldsymbol{\beta}$ against $\lambda$ (ridge trace).
 \end{theory}
 
 \begin{code}
