@@ -1,1 +1,165 @@
 \section{Multiple linear regression}
+\subsection{Linear model}
+\begin{theory}
+ The model is
+ \begin{gather*}
+ \mathbf{Y} = X \boldsymbol{\beta} + \boldsymbol{\epsilon}\\
+ \mathbb{E}[\boldsymbol{\epsilon}]\\
+ \Cov(\boldsymbol{\epsilon}) = \mathbb{E}[\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T] = \sigma^2 I_{n\times n}
+ \end{gather*}
+ where $Y$ is the vector of response variables, $X$ is the matrix of predictors (aka explanatory variables), $\epsilon$ is the vector of unknown random errors.
+\end{theory}
+
+\subsection{Least Squares Method}
+\begin{theory}
+ The solution for the linear model is
+ \begin{equation*}
+  \hat{\boldsymbol{\beta}} = \argmin_{\boldsymbol{\beta}} \|\mathbf{Y} - X\boldsymbol{\beta}\|^2
+ \end{equation*}
+ This is equivalent to
+ \begin{equation*}
+  \hat{\boldsymbol{\beta}} = (X^TX)^{-1}X^T\mathbf{Y}
+ \end{equation*}
+ For better numerical stability, this linear system of equations is usually solved with QR-decomposition.
+ Equivalently, this solution can be expressed as a map
+ \begin{gather*}
+  \mathbf{Y} \mapsto \hat{\mathbf{Y}}\\
+  \hat{\mathbf{Y}} = X\hat{\boldsymbol{\beta}} = \underbrace{X(X^TX)^{-1}X^T}_P \mathbf{Y}
+ \end{gather*}
+ \begin{itemize}
+  \item $P$ is symmetric ($P^T = P$)
+  \item $P$ is idempotent ($P^2 = P$)
+  \item $\tr(P) = \tr(I_{p\times p}) = p$
+  \item The above properties characterize $P$ as an orthogonal projection from $\mathbb{R}^n$ to a $p$-dimensional subspace.
+ \end{itemize}
+ The residueals are defined as
+ \begin{equation*}
+  \mathbf{r} = \mathbf{Y} - \hat{\mathbf{Y}}
+ \end{equation*}
+
+\end{theory}
+\begin{application}
+ \begin{itemize}
+  \item Linear regression with multiple predictors cannot be replaced by many regressions on single variables.
+ \end{itemize}
+
+\end{application}
+\begin{code}
+ dat <- read.table("...") # dat has a column named Y, which represents the response variable, and several other columns with explanatory variables.
+ fit <- lm(formula = Y ~ ., data = dat)
+ summary(fit)
+\end{code}
+
+ 
+ 
+\subsection{Properties of Least Squares Estimates}
+\begin{theory}
+ The usual linear model has the following properties.
+ \begin{enumerate}
+  \item $\mathbb{E}[\hat{\boldsymbol{\beta}}] = \boldsymbol{\beta}$: that is, $\hat{\boldsymbol{\beta}}$ is unbiased.
+  \item $\mathbb{E}[\hat{\mathbf{Y}}] = \mathbb{E}[\mathbf{Y}] = X \boldsymbol{\beta}$. Moreover, $\mathbb{E}[\mathbf{r}] = \mathbf{0}$
+  \item $\Cov(\hat{\boldsymbol{\beta}}) = \sigma^2(X^TX)^{-1}$
+  \item $\Cov(\mathbf{Y}) = \sigma^2 I, \Cov(\hat{\mathbf{Y}}) = \sigma^2 P, \Cov(\mathbf{r}) = \sigma^2(I-P)$
+ \end{enumerate}
+
+ \paragraph{Unbiased variance estimator}
+ \begin{equation*}
+  \Var(r_i) = \sigma^2(I-P_{ii})
+ \end{equation*}
+ Then
+ \begin{equation*}
+  \mathbb{E}\left[ \sum_{i=1}^n r_i^2 \right] = \sum_{i=1}^n \Var(r_i) = \sigma^2 \sum_{i=1}^n (1-P_{ii}) = \sigma^2(n-p)
+ \end{equation*}
+ The unbiased estimator is therefore
+ \begin{equation*}
+  \hat{\sigma}^2 = \frac{\sum_{i=1}^n r_i^2}{n-p}
+ \end{equation*}
+
+ \paragraph{Properties with Gaussian errors}
+ \begin{enumerate}
+  \item $\hat{\boldsymbol{\beta}} \sim \mathcal{N}_p(\boldsymbol{\beta}, \sigma^2 (X^TX)^{-1}$
+  \item $\hat{\mathbf{Y}} \sim \mathcal{N}_n (X\boldsymbol{\beta}, \sigma^2 P),\quad \mathbf{r}\sim \mathcal{N}_n(\mathbf{0}, \sigma^2 (I-P))$
+  \item $\hat{\sigma}^2 \sim \frac{\sigma^2}{n-p} \chi^2_{n-p}$
+ \end{enumerate}
+\end{theory}
+
+\subsection{Tests and confidence region}
+\begin{theory}
+\begin{itemize}
+ \item To test the statistical significance of the predictors (i.e. whether the model actually fits), the null-hypothesis is
+$H_0: \beta_2 = \dotsc = \beta_p = 0$ and the alternative hypothesis $H_A: \exists j | \beta_j \neq 0$. This test is done with ANOVA decomposition.
+The relevant number is the \textbf{F-statistic}.
+ \item To test for the goodness of fit, the \textbf{coefficient of determination ($R^2$)} is relevant (1 is good, 0 is bad).
+ \begin{equation*}
+  R^2 = \frac{\| \hat{\mathbf{Y}} - \bar{\mathbf{Y}} \|^2 }{\| \mathbf{Y} - \bar{\mathbf{Y}} \|^2}
+ \end{equation*}
+\end{itemize}
+\end{theory}
+
+\subsection{Analysis of residuals and checking of model assumptions}
+\begin{theory}
+\paragraph{Assumptions of the linear model}
+\begin{itemize}
+ \item The linear regression equation is correct. $\mathbb{E}[\epsilon_i] = 0 \forall i$
+ \item All $x_i$'s are exact.
+ \item The variance of errors is constant ("homoscedasticity"). $\Var(\epsilon_i) = \sigma^2 \forall i$
+ \item The errors are uncorrelated.
+ \item The erros are jointly normally distributed.
+\end{itemize}
+
+\paragraph{Tukey-Anscombe plot} Plot residuals ($r_i$) versus fitted values ($\hat{Y}_i$)
+\begin{itemize}
+ \item[\leftthumbsup] Points fluctuate "randomly" around zero.
+ \item[\leftthumbsdown] Residuals increase with increasing $\hat{Y}_i$
+ \item[\leftthumbsdown] Residuals follow any kind of trend: Linear model probably not appropriate.
+\end{itemize}
+\paragraph{QQ Plot} Check assumptions for the distribution of random variables
+ \begin{itemize}
+  \item[\leftthumbsup] Empirical QQ plot follows theoretical QQ line. 
+ \end{itemize}
+\paragraph{Serial correlation} can be detected by plotting residuals $r_i$ versus observation number $i$
+ \begin{itemize}
+  \item[\leftthumbsup] Points fluctuate "randomly" around zero.
+ \end{itemize}
+
+\end{theory}
+\begin{code}
+ dat <- read.table("...")
+ fit <- lm(formula = Y ~ ., data = dat)
+ 
+ # Tukey-Anscombe plot
+ plot(fitted(fit), resid(fit), xlab = "Fitted Values", ylab = "Residuals", main = "Tukey-Anscombe")
+ abline(h = 0, lty = 2)
+ 
+ # QQ plot
+ qqnorm(resid(fit), xlab = "Standard Normal Quantiles", ylab = "Empirical Quantiles")
+ qqline(resid(fit))
+ 
+ # Serial correlation
+ plot(1:nrow(dat), resid(fit), xlab = "Observation number", ylab = "Residuals", main = "Serial correlation")
+ abline(h = 0, lty = 2) 
+\end{code}
+
+\subsection{Model selection}
+\begin{theory}
+ Determining which predictors should be in the model and which not, is model selection. For linear models, good models will minimize the $C_p$ statistic.
+ \begin{equation*}
+  C_p(\mathcal{M}) = \frac{\SSE{\mathcal{M}}{\hat{\sigma}^2}} - n + 2 |\mathcal{M}|
+ \end{equation*}
+\end{theory}
+
+\begin{code}
+ dat <- read.table("...")
+ fit.full <- lm(formula = Y ~ ., data = dat)
+ 
+ # Backward selection
+ fit.bw <- step(fit.full, dir = "backward")
+ 
+ # Forward selection
+ fit.empty <- lm(formula = Y ~ 1, data = dat)
+ fit.fw <- step(fit.empty, dir="forward", data=dat, scope=list(upper=fit.full, lower, fit.empty))
+
+ # All subsets selection
+ library(leaps)
+ fit.alls <- regsubsets(Y ~ ., data = dat, nvmax = 9) 
+\end{code}
