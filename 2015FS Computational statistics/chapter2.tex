@@ -25,6 +25,7 @@ and the Epanechnikov kernel
 
 
 \subsection{Bias-Variance trade-off}
+\begin{theory}
 \begin{align*}
  \text{Bias} &= \mathbb{E}[\hat{f}(x)] - f(x)\\
  \text{Variance} &= \mathbb{E}[\hat{f}(x)^2] - \mathbb{E}[\hat{f}(x)]^2
@@ -32,9 +33,12 @@ and the Epanechnikov kernel
 
 \framebox{The bias of $\hat{f}$ increases and the variance of $\hat{f}$ decreases as $h$ increases}
 For example, if $h$ was infinite, $\hat{f}(x)$ would be a constant, thus it had no variance but a big bias.
+\end{theory}
 
 \subsection{The curse of dimensionality}
+\begin{theory}
 It has been shown that the best possible MSE rate is
 \begin{equation*}
  \mathcal{O}(n^{-4/(4+d)})
 \end{equation*}
+\end{theory}
